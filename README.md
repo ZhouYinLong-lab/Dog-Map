@@ -18,7 +18,7 @@ npm run preview
 
 ## 新增地点
 
-编辑 `src/data/places.ts`，新增一个 `Place` 对象：
+编辑 `src/data/places.json`，新增一个地点对象：
 
 - `coordinates` 使用 `[经度, 纬度]`；
 - `routeId` 指向 `src/data/routes.ts` 中的路线；
@@ -28,11 +28,13 @@ npm run preview
 
 ## 新增路线
 
-编辑 `src/data/routes.ts`，添加一条 `Route`：
+编辑 `src/data/routes.json`，添加一条路线对象：
 
 - `coordinates` 是路线折线点数组；
 - 每个点使用 `[经度, 纬度]`；
 - 当前示例坐标用于展示界面结构，正式记录时应替换成实际路线坐标。
+
+`src/data/content.ts` 只负责把 JSON 内容加载成页面使用的类型，不需要在新增记录时修改。
 
 ## 地图适配
 

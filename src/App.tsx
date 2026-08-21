@@ -1,7 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 import { MapView } from './components/MapView'
-import { places } from './data/places'
-import { routes } from './data/routes'
+import { places, routes } from './data/content'
 import type { MediaItem } from './types/content'
 
 function MediaBlock({ item }: { item: MediaItem }) {

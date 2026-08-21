@@ -5,6 +5,7 @@ export type MediaItem = {
   src: string
   poster?: string
   alt: string
+  caption?: string
 }
 
 export type Place = {

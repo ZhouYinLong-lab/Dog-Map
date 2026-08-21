@@ -1,11 +1,23 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { MapView } from './components/MapView'
 import { places, routes } from './data/content'
+import { loadRemoteMedia } from './services/mediaApi'
 import type { MediaItem } from './types/content'
 
 function MediaBlock({ item }: { item: MediaItem }) {
+  const [failed, setFailed] = useState(false)
+
+  if (failed) {
+    return (
+      <div className="media-error" role="img" aria-label={`${item.alt}加载失败`}>
+        <span>MEDIA SIGNAL LOST</span>
+        <small>{item.alt}</small>
+      </div>
+    )
+  }
+
   if (item.type === 'video' && item.src) {
-    return <video className="media-block" controls preload="metadata" poster={item.poster} src={item.src} aria-label={item.alt} />
+    return <video className="media-block" controls preload="metadata" poster={item.poster} src={item.src} aria-label={item.alt} onError={() => setFailed(true)} />
   }
 
   if (item.type === 'video') {
@@ -17,17 +29,34 @@ function MediaBlock({ item }: { item: MediaItem }) {
     )
   }
 
-  return <img className="media-block" src={item.src} alt={item.alt} loading="lazy" />
+  return (
+    <figure className="media-figure">
+      <img className="media-block" src={item.src} alt={item.alt} loading="lazy" onError={() => setFailed(true)} />
+      {item.caption && <figcaption>{item.caption}</figcaption>}
+    </figure>
+  )
 }
 
 function App() {
   const [activePlaceId, setActivePlaceId] = useState<string | null>(null)
   const [hoveredPlaceId, setHoveredPlaceId] = useState<string | null>(null)
+  const [remoteMedia, setRemoteMedia] = useState<Record<string, MediaItem[]>>({})
 
   const activePlace = useMemo(
     () => places.find((place) => place.id === activePlaceId) ?? null,
     [activePlaceId],
   )
+
+  useEffect(() => {
+    if (!activePlace) return
+    const controller = new AbortController()
+    loadRemoteMedia(activePlace.id, controller.signal)
+      .then((items) => {
+        if (items) setRemoteMedia((current) => ({ ...current, [activePlace.id]: items }))
+      })
+      .catch(() => undefined)
+    return () => controller.abort()
+  }, [activePlace])
 
   const handleHoverPlace = useCallback((placeId: string | null) => {
     setHoveredPlaceId(placeId)
@@ -90,7 +119,7 @@ function App() {
           <p className="detail-drawer__subtitle">{activePlace.subtitle}</p>
           <p className="detail-drawer__description">{activePlace.description}</p>
           <div className="media-grid">
-            {activePlace.media.map((item, index) => <MediaBlock key={`${item.type}-${index}`} item={item} />)}
+            {(remoteMedia[activePlace.id] ?? activePlace.media).map((item, index) => <MediaBlock key={`${item.type}-${index}`} item={item} />)}
           </div>
           <div className="detail-drawer__footer">
             <span>LOCATION LOCKED</span>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#202020"/>
+  <path d="M0 560 260 400l175 65 240-145 195 72 330-150v518H0Z" fill="#303030"/>
+  <path d="M0 500 270 340l190 120 260-210 170 120 310-170" fill="none" stroke="#e6333b" stroke-width="13"/>
+  <path d="M80 170h430M210 220h720M640 110h400" stroke="#f2eadc" stroke-width="4" opacity=".6"/>
+  <text x="80" y="110" fill="#f1c743" font-family="Arial Narrow, sans-serif" font-size="38" font-weight="700" letter-spacing="8">FIELD NOTE / 01</text>
+  <text x="80" y="690" fill="#f2eadc" font-family="Arial Narrow, sans-serif" font-size="78" font-weight="900">DUSHU LAKE</text>
+</svg>

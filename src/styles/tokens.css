@@ -1,0 +1,15 @@
+:root {
+  --ink: #111111;
+  --ink-soft: #1c1c1b;
+  --ink-panel: rgba(18, 18, 18, 0.93);
+  --paper: #f2eadc;
+  --paper-soft: #d8cfbf;
+  --red: #e6333b;
+  --red-dark: #8e1d27;
+  --yellow: #f1c743;
+  --line: rgba(242, 234, 220, 0.32);
+  --shadow-heavy: 12px 12px 0 rgba(17, 17, 17, 0.72);
+  --display: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  --body: Bahnschrift, 'DIN Alternate', 'Arial Narrow', system-ui, sans-serif;
+  --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}

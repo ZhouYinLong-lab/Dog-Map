@@ -68,7 +68,16 @@ MEDIA_DATABASE_DRIVER=postgres
 
 - `coordinates` 是路线折线点数组；
 - 每个点使用 `[经度, 纬度]`；
+- 不需要手动填写颜色：路线会按顺序从高对比调色板自动分配颜色，地图线、地点标识和图例保持同步；
 - 当前示例坐标用于展示界面结构，正式记录时应替换成实际路线坐标。
+
+## 正式使用前核对
+
+- 将 `src/data/routes.json` 和 `src/data/places.json` 中的示例路线、日期、文字和媒体替换成真实记录；
+- 静态前端继续部署到现有托管平台，单独部署 `server/app.ts` 对应的媒体 API；
+- 生产环境使用 R2 + Postgres 时，设置服务端密钥、`R2_PUBLIC_BASE_URL`、`DATABASE_URL` 和 `MEDIA_ADMIN_TOKEN`，并执行 `server/migrations/001_media_assets.sql`；
+- 不要把 R2 密钥或管理员 token 写入 `VITE_` 变量；
+- 正式使用前为当前地图服务确认访问额度、服务条款和地图资质，必要时替换 `src/components/MapView.tsx` 中的 OSM 栅格源。
 
 `src/data/content.ts` 只负责把 JSON 内容加载成页面使用的类型，不需要在新增记录时修改。
 

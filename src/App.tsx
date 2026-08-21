@@ -83,23 +83,8 @@ function App() {
         <div className="map-slice map-slice--top" aria-hidden="true" />
         <div className="map-slice map-slice--bottom" aria-hidden="true" />
 
-        <div className="status-stamp" aria-hidden="true">
-          <span>SUZHOU</span>
-          <strong>ROUTE<br />ARCHIVE</strong>
-        </div>
-
-        <div className="map-readout" aria-hidden="true">
-          <span>31°16'N</span>
-          <span className="map-readout__slash">/</span>
-          <span>120°44'E</span>
-        </div>
-
         <div className="bottom-strip">
-          <div className="bottom-strip__copy">
-            <span className="eyebrow">NEW SEMESTER / 2026</span>
-            <strong>MOVE THROUGH<br />THE CITY</strong>
-          </div>
-          <div className="route-legend" aria-label="路线图例">
+          <div className="route-legend" role="region" aria-label="路线图例">
             {routes.map((route, index) => (
               <div className="route-legend__route" key={route.id}>
                 <span className="route-legend__line" style={{ backgroundColor: getRouteColor(index) }} />
@@ -111,7 +96,6 @@ function App() {
               <span>DESTINATION</span>
             </div>
           </div>
-          <div className="bottom-strip__hint">HOVER / TAP A STATION</div>
         </div>
       </div>
 

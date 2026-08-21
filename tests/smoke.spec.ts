@@ -5,7 +5,7 @@ test('renders the route archive and destination markers', async ({ page }) => {
   await expect(page).toHaveTitle(/Dog Map/)
   await expect(page.locator('.map-view')).toBeVisible()
   await expect(page.locator('.place-marker')).toHaveCount(2)
-  await expect(page.getByText('MOVE THROUGH')).toBeVisible()
+  await expect(page.getByRole('region', { name: '路线图例' })).toBeVisible()
 })
 
 test('opens and closes a destination detail drawer', async ({ page }) => {

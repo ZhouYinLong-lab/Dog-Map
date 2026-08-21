@@ -8,7 +8,7 @@ export function createStorageProvider(env: NodeJS.ProcessEnv = process.env): Sto
   if (driver === 'local') {
     return new LocalStorageProvider({
       root: env.MEDIA_LOCAL_ROOT ?? path.resolve(process.cwd(), 'data/media'),
-      publicBaseUrl: env.MEDIA_LOCAL_PUBLIC_BASE_URL ?? '/api/media/file',
+      publicBaseUrl: env.MEDIA_LOCAL_PUBLIC_BASE_URL ?? `http://localhost:${env.PORT ?? 8787}/api/media/file`,
     })
   }
 

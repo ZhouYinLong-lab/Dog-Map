@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { mkdir, readFile, rm, stat, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import type { PutObjectInput, ReadObject, StorageProvider, StoredObject } from './types'
-import { normalizeObjectKey, publicObjectPath, resolveSafePath } from './keys'
+import { normalizeObjectKey, resolveSafePath } from './keys'
 
 type LocalStorageOptions = {
   root: string
@@ -68,7 +68,7 @@ export class LocalStorageProvider implements StorageProvider {
   }
 
   getPublicUrl(key: string) {
-    return publicObjectPath(this.publicBaseUrl, key)
+    return `${this.publicBaseUrl.replace(/\/$/, '')}?key=${encodeURIComponent(normalizeObjectKey(key))}`
   }
 }
 

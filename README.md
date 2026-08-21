@@ -16,12 +16,44 @@ npm run build
 npm run preview
 ```
 
+## 媒体服务
+
+前端仍然可以作为静态站放在现有托管平台；媒体上传、读取和删除由独立的 Hono API 服务处理。API 不把图片和视频写进数据库：二进制进入 StorageProvider，数据库只保存文件路径和元信息。
+
+启动本地媒体服务：
+
+```bash
+Copy-Item .env.example .env
+npm run server:dev
+```
+
+默认配置是本地文件系统 + JSON catalog：
+
+- 文件：`data/media/<地点>/<时间>-<名称>-<短 id>.<扩展名>`；
+- 元信息：`data/media-catalog.json`；
+- API：`http://localhost:8787`；
+- `POST /api/media`：multipart 上传，字段为 `file`、`placeId`、`altText`、`caption`、`sortOrder`；
+- `GET /api/media?placeId=<id>`：读取媒体元信息；
+- `DELETE /api/media/<asset id>`：删除对象和元信息；
+- `GET /api/health`：检查当前 storage/database driver。
+
+生产环境切换到 R2 + Postgres 时，将 `.env` 中的：
+
+```text
+MEDIA_STORAGE_DRIVER=r2
+MEDIA_DATABASE_DRIVER=postgres
+```
+
+并填写 R2 S3 endpoint、只授予目标 bucket 读写权限的服务端密钥、R2 自定义域名和 `DATABASE_URL`。先执行 `server/migrations/001_media_assets.sql`，再启动 API。R2 的公开媒体地址建议使用绑定到自有域名的 custom domain；`r2.dev` 只用于开发验证。
+
+所有 storage 和 catalog 实现都通过接口调用，切换存储时不需要修改地图组件或地点 JSON。
+
 ## 新增地点
 
 编辑 `src/data/places.json`，新增一个地点对象：
 
 - `coordinates` 使用 `[经度, 纬度]`；
-- `routeId` 指向 `src/data/routes.ts` 中的路线；
+- `routeId` 指向 `src/data/routes.json` 中的路线；
 - `media` 支持 `image` 和 `video`；
 - 图片或视频放入 `public/media/<地点 id>/`；
 - 暂时没有视频文件时，可以保留 `poster` 和空的 `src`，页面会显示视频占位区。

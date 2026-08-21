@@ -6,9 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck:server": "tsc -p tsconfig.server.json --noEmit",
+    "server:dev": "tsx server/index.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.872.0",
     "maplibre-gl": "^5.13.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
@@ -16,8 +19,10 @@
   "devDependencies": {
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
+    "@types/node": "^24.3.0",
     "@vitejs/plugin-react": "^5.0.2",
     "@playwright/test": "^1.62.1",
+    "tsx": "^4.20.3",
     "typescript": "^5.9.2",
     "vite": "^7.1.3"
   }

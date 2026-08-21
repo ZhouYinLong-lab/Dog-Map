@@ -3,3 +3,5 @@ dist/
 test-results/
 playwright-report/
 .tmp-*.png
+data/media/
+data/media-catalog.json

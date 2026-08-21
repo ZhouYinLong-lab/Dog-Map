@@ -21,7 +21,7 @@ export async function loadRemoteMedia(placeId: string, signal?: AbortSignal): Pr
     .sort((left, right) => left.sortOrder - right.sortOrder)
     .map((asset) => ({
       type: asset.kind,
-      src: asset.kind === 'video' ? asset.publicUrl : asset.publicUrl,
+      src: new URL(asset.publicUrl, apiBaseUrl).toString(),
       alt: asset.altText,
       caption: asset.caption ?? undefined,
     }))

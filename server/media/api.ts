@@ -1,5 +1,5 @@
 import { cors } from 'hono/cors'
-import { Hono } from 'hono'
+import { Hono, type Context } from 'hono'
 import { createMediaCatalog } from './catalog-factory'
 import { MediaService } from './service'
 import { createStorageProvider } from '../storage/factory'
@@ -10,7 +10,11 @@ export function createMediaApi(env: NodeJS.ProcessEnv = process.env) {
   const service = new MediaService(storage, catalog, env)
   const app = new Hono()
 
-  app.use('*', cors({ origin: env.MEDIA_API_ORIGIN ?? '*', allowMethods: ['GET', 'POST', 'DELETE', 'OPTIONS'] }))
+  app.use('*', cors({
+    origin: env.MEDIA_API_ORIGIN ?? '*',
+    allowHeaders: ['Content-Type', 'Authorization'],
+    allowMethods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+  }))
 
   app.get('/api/health', (c) => c.json({ ok: true, storage: storage.driver, database: env.MEDIA_DATABASE_DRIVER ?? 'json' }))
 
@@ -20,6 +24,8 @@ export function createMediaApi(env: NodeJS.ProcessEnv = process.env) {
   })
 
   app.post('/api/media', async (c) => {
+    const denied = requireAdmin(c, env)
+    if (denied) return denied
     try {
       const body = await c.req.parseBody()
       const file = body.file
@@ -43,6 +49,8 @@ export function createMediaApi(env: NodeJS.ProcessEnv = process.env) {
   })
 
   app.delete('/api/media/:id', async (c) => {
+    const denied = requireAdmin(c, env)
+    if (denied) return denied
     const removed = await service.delete(c.req.param('id'))
     return removed ? c.body(null, 204) : c.json({ error: 'Media asset not found' }, 404)
   })
@@ -73,4 +81,17 @@ function firstString(value: unknown) {
   if (typeof value === 'string') return value
   if (Array.isArray(value) && typeof value[0] === 'string') return value[0]
   return undefined
+}
+
+function requireAdmin(c: Context, env: NodeJS.ProcessEnv) {
+  const configuredToken = env.MEDIA_ADMIN_TOKEN?.trim()
+  if (!configuredToken && env.MEDIA_STORAGE_DRIVER === 'r2') {
+    return c.json({ error: 'MEDIA_ADMIN_TOKEN is required when R2 storage is enabled' }, 503)
+  }
+  if (!configuredToken) return null
+  const authorization = c.req.header('Authorization')
+  if (authorization !== `Bearer ${configuredToken}`) {
+    return c.json({ error: 'Admin authorization required' }, 401)
+  }
+  return null
 }

@@ -37,6 +37,8 @@ npm run server:dev
 - `DELETE /api/media/<asset id>`：删除对象和元信息；
 - `GET /api/health`：检查当前 storage/database driver。
 
+如果设置了 `MEDIA_ADMIN_TOKEN`，上传和删除请求必须带 `Authorization: Bearer <token>`。启用 R2 时必须设置这个 token；不要把它放进 `VITE_` 变量，也不要提交到前端或 Git。
+
 生产环境切换到 R2 + Postgres 时，将 `.env` 中的：
 
 ```text
@@ -45,6 +47,8 @@ MEDIA_DATABASE_DRIVER=postgres
 ```
 
 并填写 R2 S3 endpoint、只授予目标 bucket 读写权限的服务端密钥、R2 自定义域名和 `DATABASE_URL`。先执行 `server/migrations/001_media_assets.sql`，再启动 API。R2 的公开媒体地址建议使用绑定到自有域名的 custom domain；`r2.dev` 只用于开发验证。
+
+`server/app.ts` 导出 Hono app，可由现有托管平台的 Node/serverless 入口适配；`server/index.ts` 只是本地 Node 启动器。
 
 所有 storage 和 catalog 实现都通过接口调用，切换存储时不需要修改地图组件或地点 JSON。
 

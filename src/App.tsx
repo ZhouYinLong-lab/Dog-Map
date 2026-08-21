@@ -3,6 +3,7 @@ import { MapView } from './components/MapView'
 import { places, routes } from './data/content'
 import { loadRemoteMedia } from './services/mediaApi'
 import type { MediaItem } from './types/content'
+import { getRouteColor } from './map/routePalette'
 
 function MediaBlock({ item }: { item: MediaItem }) {
   const [failed, setFailed] = useState(false)
@@ -99,10 +100,16 @@ function App() {
             <strong>MOVE THROUGH<br />THE CITY</strong>
           </div>
           <div className="route-legend" aria-label="路线图例">
-            <span className="route-legend__line" />
-            <span>RECORDED ROUTE</span>
-            <span className="route-legend__dot" />
-            <span>DESTINATION</span>
+            {routes.map((route, index) => (
+              <div className="route-legend__route" key={route.id}>
+                <span className="route-legend__line" style={{ backgroundColor: getRouteColor(index) }} />
+                <span>{route.title}</span>
+              </div>
+            ))}
+            <div className="route-legend__destination">
+              <span className="route-legend__dot" />
+              <span>DESTINATION</span>
+            </div>
           </div>
           <div className="bottom-strip__hint">HOVER / TAP A STATION</div>
         </div>

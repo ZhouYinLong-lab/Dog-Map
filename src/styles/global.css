@@ -40,18 +40,17 @@ button { font: inherit; }
 
 .place-marker { position: relative; display: flex; align-items: center; gap: 8px; min-width: 150px; padding: 0; border: 0; color: var(--paper); background: transparent; cursor: pointer; transform-origin: 18px 100%; transition: transform 180ms ease, filter 180ms ease; }
 .place-marker:hover, .place-marker:focus-visible, .place-marker.is-hovered, .place-marker.is-active { z-index: 10; transform: scale(1.1) rotate(-2deg); filter: drop-shadow(7px 7px 0 rgba(17,17,17,0.78)); outline: none; }
-.place-marker__pin { position: relative; flex: 0 0 26px; width: 26px; height: 26px; border: 4px solid var(--ink); background: var(--red); transform: rotate(45deg); box-shadow: 0 0 0 2px var(--paper); }
-.place-marker--yellow .place-marker__pin { background: var(--yellow); }
+.place-marker__pin { position: relative; flex: 0 0 26px; width: 26px; height: 26px; border: 4px solid var(--ink); background: var(--route-color, var(--red)); transform: rotate(45deg); box-shadow: 0 0 0 2px var(--paper); }
 .place-marker__pin::after { content: ''; position: absolute; inset: 6px; background: var(--ink); }
-.place-marker__label { position: relative; display: block; padding: 9px 15px 8px 12px; background: var(--ink); border: 2px solid var(--paper); box-shadow: 5px 5px 0 var(--red); clip-path: polygon(0 0, 92% 0, 100% 30%, 96% 100%, 0 100%); font: 18px/1 var(--display); letter-spacing: 0.03em; white-space: nowrap; }
-.place-marker--yellow .place-marker__label { box-shadow: 5px 5px 0 var(--yellow); }
+.place-marker__label { position: relative; display: block; padding: 9px 15px 8px 12px; background: var(--ink); border: 2px solid var(--paper); box-shadow: 5px 5px 0 var(--route-color, var(--red)); clip-path: polygon(0 0, 92% 0, 100% 30%, 96% 100%, 0 100%); font: 18px/1 var(--display); letter-spacing: 0.03em; white-space: nowrap; }
 
 .bottom-strip { position: absolute; z-index: 4; left: 5.5%; right: 5.5%; bottom: 5.5%; display: flex; align-items: end; justify-content: space-between; gap: 24px; pointer-events: none; }
 .bottom-strip__copy { display: grid; gap: 7px; transform: rotate(-2deg); }
 .eyebrow { color: var(--yellow); font: 10px var(--mono); letter-spacing: 0.16em; }
 .bottom-strip__copy strong { font: 32px/0.84 var(--display); letter-spacing: 0.03em; text-shadow: 4px 4px 0 var(--red-dark); }
-.route-legend { display: flex; align-items: center; gap: 9px; padding: 11px 15px; color: var(--paper); background: rgba(17,17,17,0.78); border: 1px solid var(--line); font: 10px var(--mono); letter-spacing: 0.04em; }
-.route-legend__line { width: 35px; height: 3px; background: var(--red); box-shadow: 0 0 0 2px var(--ink); }
+.route-legend { display: flex; align-items: center; gap: 16px; padding: 11px 15px; color: var(--paper); background: rgba(17,17,17,0.86); border: 1px solid var(--line); font: 10px var(--mono); letter-spacing: 0.04em; }
+.route-legend__route, .route-legend__destination { display: flex; align-items: center; gap: 9px; white-space: nowrap; }
+.route-legend__line { width: 35px; height: 5px; background: var(--red); box-shadow: 0 0 0 2px var(--ink); }
 .route-legend__dot { width: 8px; height: 8px; background: var(--yellow); transform: rotate(45deg); }
 .bottom-strip__hint { color: var(--paper-soft); font: 10px var(--mono); letter-spacing: 0.08em; }
 
@@ -100,6 +99,7 @@ button { font: inherit; }
   .map-readout { right: 7%; bottom: 27%; font-size: 8px; }
   .bottom-strip__copy strong { font-size: 23px; }
   .route-legend { gap: 7px; padding: 9px 10px; font-size: 8px; }
+  .route-legend__route, .route-legend__destination { gap: 6px; }
   .place-marker { min-width: 122px; gap: 6px; }
   .place-marker__pin { flex-basis: 20px; width: 20px; height: 20px; border-width: 3px; }
   .place-marker__pin::after { inset: 5px; }

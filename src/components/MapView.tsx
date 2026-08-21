@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import maplibregl, { type Map } from 'maplibre-gl'
 import type { Place, Route } from '../types/content'
+import { getRouteColor, getRouteColorMap } from '../map/routePalette'
 
 type MapViewProps = {
   places: Place[]
@@ -30,8 +31,8 @@ const mapStyle: maplibregl.StyleSpecification = {
         'raster-saturation': -1,
         'raster-contrast': 0.22,
         'raster-brightness-min': 0.08,
-        'raster-brightness-max': 0.68,
-        'raster-opacity': 0.76,
+        'raster-brightness-max': 0.58,
+        'raster-opacity': 0.72,
       },
     },
   ],
@@ -40,9 +41,9 @@ const mapStyle: maplibregl.StyleSpecification = {
 function routeFeatureCollection(data: Route[]) {
   return {
     type: 'FeatureCollection' as const,
-    features: data.map((item) => ({
+    features: data.map((item, index) => ({
       type: 'Feature' as const,
-      properties: { id: item.id },
+      properties: { id: item.id, title: item.title, color: getRouteColor(index) },
       geometry: {
         type: 'LineString' as const,
         coordinates: item.coordinates,
@@ -86,14 +87,14 @@ export function MapView({
       })
 
       map.addLayer({
-        id: 'route-shadow',
+        id: 'route-ink',
         type: 'line',
         source: 'routes',
         layout: { 'line-cap': 'round', 'line-join': 'round' },
         paint: {
           'line-color': '#0a0a0a',
-          'line-width': ['interpolate', ['linear'], ['zoom'], 9, 8, 13, 12, 17, 18],
-          'line-opacity': 0.86,
+          'line-width': ['interpolate', ['linear'], ['zoom'], 9, 11, 13, 16, 17, 23],
+          'line-opacity': 0.94,
         },
       })
 
@@ -103,10 +104,22 @@ export function MapView({
         source: 'routes',
         layout: { 'line-cap': 'round', 'line-join': 'round' },
         paint: {
-          'line-color': '#e6333b',
-          'line-width': ['interpolate', ['linear'], ['zoom'], 9, 2.3, 13, 3.4, 17, 5],
+          'line-color': ['get', 'color'],
+          'line-width': ['interpolate', ['linear'], ['zoom'], 9, 5.5, 13, 7.5, 17, 10],
           'line-opacity': 0.98,
-          'line-dasharray': [1.2, 1.1],
+        },
+      })
+
+      map.addLayer({
+        id: 'route-highlight',
+        type: 'line',
+        source: 'routes',
+        layout: { 'line-cap': 'butt', 'line-join': 'round' },
+        paint: {
+          'line-color': '#f2eadc',
+          'line-width': ['interpolate', ['linear'], ['zoom'], 9, 1, 13, 1.5, 17, 2],
+          'line-opacity': 0.72,
+          'line-dasharray': [0.25, 2.25],
         },
       })
 
@@ -128,12 +141,14 @@ export function MapView({
     const map = mapRef.current
     if (!map) return
 
+    const routeColors = getRouteColorMap(routes)
     markersRef.current.forEach((marker) => marker.remove())
     markersRef.current = places.map((place) => {
       const element = document.createElement('button')
       element.type = 'button'
       element.className = `place-marker place-marker--${place.accent}`
       element.dataset.placeId = place.id
+      element.style.setProperty('--route-color', routeColors[place.routeId] ?? getRouteColor(0))
       element.setAttribute('aria-label', `打开地点：${place.title}`)
       element.innerHTML = `<span class="place-marker__pin"></span><span class="place-marker__label">${place.title}</span>`
       element.addEventListener('mouseenter', () => onHoverPlace(place.id))
@@ -151,7 +166,7 @@ export function MapView({
       markersRef.current.forEach((marker) => marker.remove())
       markersRef.current = []
     }
-  }, [places, onHoverPlace, onSelectPlace])
+  }, [places, routes, onHoverPlace, onSelectPlace])
 
   useEffect(() => {
     document.querySelectorAll<HTMLElement>('.place-marker').forEach((element) => {

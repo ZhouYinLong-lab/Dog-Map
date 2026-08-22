@@ -16,6 +16,16 @@ npm run build
 npm run preview
 ```
 
+## GitHub Pages
+
+仓库已配置 GitHub Actions。推送到 `master` 后会自动构建并发布静态前端：
+
+```text
+https://zhouyinlong-lab.github.io/Dog-Map/
+```
+
+GitHub Pages 只负责静态前端；媒体 API、R2 和 Postgres 仍需单独部署。没有配置 `VITE_MEDIA_API_URL` 时，页面会使用仓库中 `public/media/` 的静态媒体。
+
 ## 媒体服务
 
 前端仍然可以作为静态站放在现有托管平台；媒体上传、读取和删除由独立的 Hono API 服务处理。API 不把图片和视频写进数据库：二进制进入 StorageProvider，数据库只保存文件路径和元信息。

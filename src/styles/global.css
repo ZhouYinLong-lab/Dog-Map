@@ -16,30 +16,17 @@ button { font: inherit; }
 .map-view { position: absolute; inset: 0; background: #171717; }
 .map-view .maplibregl-canvas { filter: saturate(0.5) contrast(1.28) brightness(0.7); }
 .map-view[data-map-mode='vector'] .maplibregl-canvas { filter: saturate(0.62) contrast(1.18) brightness(0.82); }
+.maplibregl-ctrl-bottom-right { display: none; }
 .maplibregl-ctrl-group { border-radius: 0; border: 1px solid rgba(242,234,220,0.45); background: rgba(17,17,17,0.88); }
 .maplibregl-ctrl-group button { filter: invert(1); }
 .maplibregl-ctrl-attrib { background: rgba(17,17,17,0.68) !important; color: var(--paper-soft); font: 9px var(--mono); }
 .maplibregl-ctrl-attrib a { color: var(--paper); }
 
-.map-stage::before, .map-stage::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-.map-stage::before { background: linear-gradient(118deg, rgba(17,17,17,0.08) 0 25%, transparent 25% 61%, rgba(230,51,59,0.07) 61% 76%, rgba(17,17,17,0.08) 76%); }
-.map-stage::after { background: linear-gradient(133deg, transparent 0 71%, rgba(17,17,17,0.22) 71% 72%, transparent 72%); opacity: 0.92; }
-.map-stage[data-map-mode='vector']::before { background: linear-gradient(118deg, rgba(17,17,17,0.14) 0 25%, rgba(17,17,17,0.04) 25% 61%, rgba(230,51,59,0.08) 61% 76%, rgba(17,17,17,0.12) 76%); }
-.map-stage[data-map-mode='vector']::after { background: linear-gradient(133deg, transparent 0 71%, rgba(17,17,17,0.26) 71% 72%, transparent 72%); }
-.map-stage[data-map-mode='vector'] .map-slice { opacity: 0; }
+.map-stage::before, .map-stage::after, .map-grain, .map-slice, .bottom-strip { display: none; }
 
-.map-grain {
-  position: absolute; inset: 0; pointer-events: none; z-index: 2; opacity: 0.25; mix-blend-mode: screen;
-  background-image: radial-gradient(rgba(242,234,220,0.26) 0.65px, transparent 0.65px);
-  background-size: 5px 5px;
-}
-
-.map-slice { position: absolute; z-index: 3; pointer-events: none; background: var(--red); opacity: 0.96; box-shadow: 11px 11px 0 rgba(17,17,17,0.9); clip-path: polygon(0 18%, 100% 0, 96% 82%, 4% 100%); }
-.map-slice--top { width: 43vw; height: 18px; top: 12%; right: -3vw; transform: rotate(-7deg); }
-.map-slice--bottom { width: 36vw; height: 14px; bottom: 23%; left: -5vw; transform: rotate(-7deg); }
-
-.place-marker { position: relative; display: flex; align-items: center; gap: 8px; min-width: 150px; padding: 0; border: 0; color: var(--paper); background: transparent; cursor: pointer; transform-origin: 18px 100%; transition: transform 180ms ease, filter 180ms ease; }
+.place-marker { position: relative; display: grid; place-items: center; width: 92px; height: 92px; padding: 0; border: 0; color: var(--paper); background: transparent; cursor: pointer; transform-origin: 50% 100%; transition: transform 180ms ease, filter 180ms ease; }
 .place-marker:hover, .place-marker:focus-visible, .place-marker.is-hovered, .place-marker.is-active { z-index: 10; transform: scale(1.1) rotate(-2deg); filter: drop-shadow(7px 7px 0 rgba(17,17,17,0.78)); outline: none; }
+.place-marker__art { display: block; width: 86px; height: 86px; object-fit: contain; }
 .place-marker__pin { position: relative; flex: 0 0 26px; width: 26px; height: 26px; border: 4px solid var(--ink); background: var(--route-color, var(--red)); transform: rotate(45deg); box-shadow: 0 0 0 2px var(--paper); }
 .place-marker__pin::after { content: ''; position: absolute; inset: 6px; background: var(--ink); }
 .place-marker__label { position: relative; display: block; padding: 9px 15px 8px 12px; background: var(--ink); border: 2px solid var(--paper); box-shadow: 5px 5px 0 var(--route-color, var(--red)); clip-path: polygon(0 0, 92% 0, 100% 30%, 96% 100%, 0 100%); font: 18px/1 var(--display); letter-spacing: 0.03em; white-space: nowrap; }

@@ -3,7 +3,6 @@ import { MapView } from './components/MapView'
 import { places, routes } from './data/content'
 import { loadRemoteMedia } from './services/mediaApi'
 import type { MediaItem } from './types/content'
-import { getRouteColor } from './map/routePalette'
 import { artworkDataUri } from './map/artwork'
 
 function MediaBlock({ item }: { item: MediaItem }) {
@@ -43,10 +42,6 @@ function VisualPattern({ id, color, art }: { id: string; color: 'red' | 'teal' |
   return <img className="visual-pattern" src={artworkDataUri(id, color, art)} alt="" aria-hidden="true" />
 }
 
-function artworkColor(index: number): 'red' | 'teal' | 'yellow' {
-  return ['red', 'teal', 'yellow'][index % 3] as 'red' | 'teal' | 'yellow'
-}
-
 function App() {
   const [activePlaceId, setActivePlaceId] = useState<string | null>(null)
   const [hoveredPlaceId, setHoveredPlaceId] = useState<string | null>(null)
@@ -57,11 +52,6 @@ function App() {
     () => places.find((place) => place.id === activePlaceId) ?? null,
     [activePlaceId],
   )
-  const activeRoute = useMemo(
-    () => routes.find((route) => route.id === activeRouteId) ?? null,
-    [activeRouteId],
-  )
-
   useEffect(() => {
     if (!activePlace) return
     const controller = new AbortController()
@@ -99,39 +89,6 @@ function App() {
           onSelectRoute={handleSelectRoute}
         />
 
-        <div className="map-grain" aria-hidden="true" />
-        <div className="map-slice map-slice--top" aria-hidden="true" />
-        <div className="map-slice map-slice--bottom" aria-hidden="true" />
-
-        <div className="bottom-strip">
-          {!activePlace && activeRoute && (
-            <div className="route-focus-card" aria-label={`${activeRoute.title}路线图案`}>
-              <VisualPattern id={activeRoute.id} color={artworkColor(routes.indexOf(activeRoute))} art={activeRoute.art} />
-              <div>
-                <span className="route-focus-card__title">{activeRoute.title}</span>
-                <span className="route-focus-card__mode">{activeRoute.mode}</span>
-              </div>
-            </div>
-          )}
-          <div className="route-legend" role="region" aria-label="路线图例">
-            {routes.map((route, index) => (
-              <button
-                className={`route-legend__route ${route.id === activeRouteId ? 'is-active' : ''}`}
-                key={route.id}
-                type="button"
-                aria-pressed={route.id === activeRouteId}
-                onClick={() => handleSelectRoute(route.id)}
-              >
-                <span className="route-legend__line" style={{ backgroundColor: getRouteColor(index) }} />
-                <span>{route.title}</span>
-              </button>
-            ))}
-            <div className="route-legend__destination">
-              <span className="route-legend__dot" />
-              <span>DESTINATION</span>
-            </div>
-          </div>
-        </div>
       </div>
 
       {activePlace && (

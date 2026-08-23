@@ -4,6 +4,7 @@ import type { Place, Route } from '../types/content'
 import { getRouteColor, getRouteColorMap } from '../map/routePalette'
 import { resolveMapStyle } from '../map/mapStyles'
 import { configureCityScene } from '../map/cityScene'
+import { artworkDataUri } from '../map/artwork'
 
 type MapViewProps = {
   places: Place[]
@@ -347,7 +348,7 @@ export function MapView({
       element.dataset.placeId = place.id
       element.style.setProperty('--route-color', routeColors[place.routeId] ?? getRouteColor(0))
       element.setAttribute('aria-label', `打开地点：${place.title}`)
-      element.innerHTML = `<span class="place-marker__pin"></span><span class="place-marker__label">${place.title}</span>`
+      element.innerHTML = `<img class="place-marker__art" src="${artworkDataUri(place.id, place.accent, place.art)}" alt="" aria-hidden="true" />`
       element.addEventListener('mouseenter', () => onHoverPlace(place.id))
       element.addEventListener('mouseleave', () => onHoverPlace(null))
       element.addEventListener('focus', () => onHoverPlace(place.id))

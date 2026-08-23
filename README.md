@@ -95,6 +95,6 @@ MEDIA_DATABASE_DRIVER=postgres
 
 ## 地图适配
 
-地图渲染集中在 `src/components/MapView.tsx`。默认使用 OpenFreeMap 的 MapLibre 矢量 style，并在可用的建筑高度数据上增加 3D extrusion；路线使用 GeoJSON source 和地图原生 line layer，地点使用坐标锚定的 HTML Marker，因此缩放、拖动时不会漂移。`VITE_MAP_STYLE_URL` 可以替换为自有 MapLibre style JSON，无法访问时会自动回退到 OSM 栅格底图。
+地图渲染集中在 `src/components/MapView.tsx` 与 `src/map/cityScene.ts`。默认使用 OpenFreeMap 的 MapLibre 矢量 style，并在可用的建筑高度数据上增加 3D extrusion；同时使用可配置的 raster-dem 地形源。路线使用 GeoJSON source 和地图原生 line layer，地点使用坐标锚定的 HTML Marker，因此缩放、拖动时不会漂移。`VITE_MAP_STYLE_URL` 可以替换为自有 MapLibre style JSON，无法访问时会自动回退到 OSM 栅格底图；地形源异常时只关闭 terrain，不影响地图和路线继续工作。
 
-当前默认的 OpenFreeMap 公共实例无需 token，但正式长期使用前仍应根据访问量、服务条款和地图资质评估公共实例、自己托管或商业矢量服务的选择。
+当前默认的 OpenFreeMap 公共实例无需 token，地形默认使用公开的 Mapterhorn TileJSON；正式长期使用前仍应根据访问量、服务条款和地图资质评估公共实例、自己托管或商业矢量服务的选择。

@@ -2,6 +2,7 @@ import type { Map } from 'maplibre-gl'
 
 export const terrainSourceUrl = import.meta.env.VITE_TERRAIN_SOURCE_URL?.trim()
   || 'https://tiles.mapterhorn.com/tilejson.json'
+export const terrainEnabled = import.meta.env.VITE_ENABLE_TERRAIN !== 'false'
 
 function setPaintIfLayer(map: Map, layerId: string, property: string, value: unknown) {
   if (map.getLayer(layerId)) map.setPaintProperty(layerId, property, value)
@@ -27,6 +28,8 @@ function addBuildingExtrusion(map: Map) {
 }
 
 function addTerrain(map: Map) {
+  if (!terrainEnabled) return
+
   if (!map.getSource('terrain-dem')) {
     map.addSource('terrain-dem', {
       type: 'raster-dem',
@@ -38,6 +41,10 @@ function addTerrain(map: Map) {
   }
 
   map.setTerrain({ source: 'terrain-dem', exaggeration: 1.35 })
+  map.on('error', (event) => {
+    const sourceId = (event as { sourceId?: string }).sourceId
+    if (sourceId === 'terrain-dem') map.setTerrain(null)
+  })
 }
 
 export function configureCityScene(map: Map) {

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "station",
+    "group": "transport",
+    "label": "Station",
+    "path": "/p5r-map-icons/transport/station.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "train",
+    "group": "transport",
+    "label": "Train",
+    "path": "/p5r-map-icons/transport/train.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "bus",
+    "group": "transport",
+    "label": "Bus",
+    "path": "/p5r-map-icons/transport/bus.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "destination",
+    "group": "transport",
+    "label": "Destination",
+    "path": "/p5r-map-icons/transport/destination.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "school",
+    "group": "locations",
+    "label": "School",
+    "path": "/p5r-map-icons/locations/school.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "home",
+    "group": "locations",
+    "label": "Home",
+    "path": "/p5r-map-icons/locations/home.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "park",
+    "group": "locations",
+    "label": "Park",
+    "path": "/p5r-map-icons/locations/park.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "shrine",
+    "group": "locations",
+    "label": "Shrine",
+    "path": "/p5r-map-icons/locations/shrine.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "museum",
+    "group": "locations",
+    "label": "Museum",
+    "path": "/p5r-map-icons/locations/museum.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "palace",
+    "group": "locations",
+    "label": "Palace",
+    "path": "/p5r-map-icons/locations/palace.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "cafe",
+    "group": "services",
+    "label": "Cafe",
+    "path": "/p5r-map-icons/services/cafe.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "restaurant",
+    "group": "services",
+    "label": "Restaurant",
+    "path": "/p5r-map-icons/services/restaurant.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "shop",
+    "group": "services",
+    "label": "Shop",
+    "path": "/p5r-map-icons/services/shop.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "convenience-store",
+    "group": "services",
+    "label": "Convenience store",
+    "path": "/p5r-map-icons/services/convenience-store.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "bookstore",
+    "group": "services",
+    "label": "Bookstore",
+    "path": "/p5r-map-icons/services/bookstore.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "cinema",
+    "group": "services",
+    "label": "Cinema",
+    "path": "/p5r-map-icons/services/cinema.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "arcade",
+    "group": "services",
+    "label": "Arcade",
+    "path": "/p5r-map-icons/services/arcade.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "gym",
+    "group": "services",
+    "label": "Gym",
+    "path": "/p5r-map-icons/services/gym.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "clinic",
+    "group": "services",
+    "label": "Clinic",
+    "path": "/p5r-map-icons/services/clinic.png",
+    "style": "original-p5r-inspired"
+  },
+  {
+    "id": "memory",
+    "group": "objectives",
+    "label": "Memory",
+    "path": "/p5r-map-icons/objectives/memory.png",
+    "style": "original-p5r-inspired"
+  }
+]

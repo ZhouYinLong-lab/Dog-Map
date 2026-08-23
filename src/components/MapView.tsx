@@ -6,6 +6,8 @@ import { resolveMapStyle } from '../map/mapStyles'
 import { configureCityScene } from '../map/cityScene'
 import { artworkDataUri } from '../map/artwork'
 
+const njuSuzhouCampus: [number, number] = [120.387037, 31.351239]
+
 type MapViewProps = {
   places: Place[]
   routes: Route[]
@@ -138,9 +140,9 @@ export function MapView({
       map = new maplibregl.Map({
         container: mapContainerRef.current,
         style,
-        center: [120.68, 31.3],
-        zoom: 10.8,
-        pitch: mode === 'vector' ? 48 : 0,
+        center: njuSuzhouCampus,
+        zoom: mode === 'vector' ? 13.2 : 11.4,
+        pitch: mode === 'vector' ? 58 : 0,
         bearing: mode === 'vector' ? -12 : 0,
         minZoom: 9,
         maxZoom: 18,
@@ -275,9 +277,6 @@ export function MapView({
         map.on('mouseenter', 'route-core', () => { map!.getCanvas().style.cursor = 'pointer' })
         map.on('mouseleave', 'route-core', () => { map!.getCanvas().style.cursor = '' })
 
-        const bounds = new maplibregl.LngLatBounds()
-        routes.forEach((route) => route.coordinates.forEach((coordinate) => bounds.extend(coordinate)))
-        map.fitBounds(bounds, { padding: { top: 80, right: 160, bottom: 120, left: 80 }, duration: 0 })
         setMapReady((current) => current + 1)
       })
 

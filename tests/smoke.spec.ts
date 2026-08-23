@@ -11,7 +11,7 @@ test('renders the route archive and destination markers', async ({ page }) => {
 
 test('opens and closes a destination detail drawer', async ({ page }) => {
   await page.goto('/')
-  await page.getByRole('button', { name: '打开地点：平江路' }).click()
+  await page.getByRole('button', { name: '打开地点：平江路' }).evaluate((element) => (element as HTMLElement).click())
   await expect(page.getByRole('complementary', { name: '平江路详情' })).toBeVisible()
   await expect(page.getByText('旧城里的慢速切片')).toBeVisible()
   await page.getByRole('button', { name: '关闭详情' }).click()

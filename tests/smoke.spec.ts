@@ -17,6 +17,14 @@ test('opens and closes a destination detail drawer', async ({ page }) => {
   await expect(page.getByRole('complementary', { name: '平江路详情' })).toHaveCount(0)
 })
 
+test('switches the active route and starts route playback', async ({ page }) => {
+  await page.goto('/')
+  const route = page.getByRole('button', { name: '校园 → 平江路' })
+  await route.click()
+  await expect(route).toHaveAttribute('aria-pressed', 'true')
+  await expect(page.locator('.route-legend__route.is-active')).toContainText('校园 → 平江路')
+})
+
 test('mobile layout has no horizontal overflow', async ({ page }) => {
   await page.goto('/')
   const dimensions = await page.evaluate(() => ({

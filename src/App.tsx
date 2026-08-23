@@ -41,6 +41,7 @@ function MediaBlock({ item }: { item: MediaItem }) {
 function App() {
   const [activePlaceId, setActivePlaceId] = useState<string | null>(null)
   const [hoveredPlaceId, setHoveredPlaceId] = useState<string | null>(null)
+  const [activeRouteId, setActiveRouteId] = useState<string | null>(routes[0]?.id ?? null)
   const [remoteMedia, setRemoteMedia] = useState<Record<string, MediaItem[]>>({})
 
   const activePlace = useMemo(
@@ -67,6 +68,10 @@ function App() {
     setActivePlaceId(placeId)
   }, [])
 
+  const handleSelectRoute = useCallback((routeId: string) => {
+    setActiveRouteId(routeId)
+  }, [])
+
   return (
     <main className={`app-shell ${activePlace ? 'has-detail' : ''}`}>
       <div className="map-stage">
@@ -75,8 +80,10 @@ function App() {
           routes={routes}
           activePlaceId={activePlaceId}
           hoveredPlaceId={hoveredPlaceId}
+          activeRouteId={activeRouteId}
           onHoverPlace={handleHoverPlace}
           onSelectPlace={handleSelectPlace}
+          onSelectRoute={handleSelectRoute}
         />
 
         <div className="map-grain" aria-hidden="true" />
@@ -86,10 +93,16 @@ function App() {
         <div className="bottom-strip">
           <div className="route-legend" role="region" aria-label="路线图例">
             {routes.map((route, index) => (
-              <div className="route-legend__route" key={route.id}>
+              <button
+                className={`route-legend__route ${route.id === activeRouteId ? 'is-active' : ''}`}
+                key={route.id}
+                type="button"
+                aria-pressed={route.id === activeRouteId}
+                onClick={() => handleSelectRoute(route.id)}
+              >
                 <span className="route-legend__line" style={{ backgroundColor: getRouteColor(index) }} />
                 <span>{route.title}</span>
-              </div>
+              </button>
             ))}
             <div className="route-legend__destination">
               <span className="route-legend__dot" />

@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1]
-
 export default defineConfig({
   plugins: [react()],
-  base: repositoryName ? `/${repositoryName}/` : '/',
+  // GitHub Pages redirects this project to its custom domain, so assets must
+  // resolve from the domain root instead of /Dog-Map/.
+  base: '/',
 })

@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import maplibregl, { type Map } from 'maplibre-gl'
 import type { Place, Route } from '../types/content'
 import { getRouteColor, getRouteColorMap } from '../map/routePalette'
+import { resolveMapStyle } from '../map/mapStyles'
 
 type MapViewProps = {
   places: Place[]
@@ -10,32 +11,6 @@ type MapViewProps = {
   hoveredPlaceId: string | null
   onHoverPlace: (placeId: string | null) => void
   onSelectPlace: (placeId: string) => void
-}
-
-const mapStyle: maplibregl.StyleSpecification = {
-  version: 8,
-  sources: {
-    osm: {
-      type: 'raster',
-      tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
-      tileSize: 256,
-      attribution: '© OpenStreetMap contributors',
-    },
-  },
-  layers: [
-    {
-      id: 'osm-base',
-      type: 'raster',
-      source: 'osm',
-      paint: {
-        'raster-saturation': -1,
-        'raster-contrast': 0.22,
-        'raster-brightness-min': 0.08,
-        'raster-brightness-max': 0.58,
-        'raster-opacity': 0.72,
-      },
-    },
-  ],
 }
 
 function routeFeatureCollection(data: Route[]) {
@@ -63,83 +38,128 @@ export function MapView({
   const mapContainerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<Map | null>(null)
   const markersRef = useRef<maplibregl.Marker[]>([])
+  const [mapReady, setMapReady] = useState(0)
 
   useEffect(() => {
     if (!mapContainerRef.current) return
 
-    const map = new maplibregl.Map({
-      container: mapContainerRef.current,
-      style: mapStyle,
-      center: [120.68, 31.3],
-      zoom: 10.8,
-      minZoom: 9,
-      maxZoom: 17,
-      attributionControl: false,
+    let disposed = false
+    let map: Map | null = null
+
+    void resolveMapStyle().then(({ style, mode }) => {
+      if (disposed || !mapContainerRef.current) return
+
+      map = new maplibregl.Map({
+        container: mapContainerRef.current,
+        style,
+        center: [120.68, 31.3],
+        zoom: 10.8,
+        pitch: mode === 'vector' ? 48 : 0,
+        bearing: mode === 'vector' ? -12 : 0,
+        minZoom: 9,
+        maxZoom: 18,
+        canvasContextAttributes: { antialias: mode === 'vector' },
+        attributionControl: false,
+      })
+
+      mapContainerRef.current.dataset.mapMode = mode
+      mapContainerRef.current.parentElement?.setAttribute('data-map-mode', mode)
+      map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'bottom-right')
+      map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left')
+
+      map.on('load', () => {
+        if (!map || disposed) return
+
+        if (mode === 'vector' && map.getSource('openmaptiles')) {
+          if (map.getLayer('building')) {
+            map.setPaintProperty('building', 'fill-color', '#242a31')
+            map.setPaintProperty('building', 'fill-opacity', 0.78)
+          }
+
+          if (!map.getLayer('building-3d')) {
+            const firstSymbolLayer = map.getStyle().layers?.find((layer) => layer.type === 'symbol')
+            map.addLayer({
+              id: 'building-3d',
+              type: 'fill-extrusion',
+              source: 'openmaptiles',
+              'source-layer': 'building',
+              minzoom: 12.5,
+              paint: {
+                'fill-extrusion-base': ['get', 'render_min_height'],
+                'fill-extrusion-color': '#303943',
+                'fill-extrusion-height': ['get', 'render_height'],
+                'fill-extrusion-opacity': 0.78,
+              },
+            }, firstSymbolLayer?.id)
+          } else {
+            map.setPaintProperty('building-3d', 'fill-extrusion-color', '#303943')
+            map.setPaintProperty('building-3d', 'fill-extrusion-opacity', 0.78)
+          }
+        }
+
+        map.addSource('routes', {
+          type: 'geojson',
+          data: routeFeatureCollection(routes),
+        })
+
+        map.addLayer({
+          id: 'route-ink',
+          type: 'line',
+          source: 'routes',
+          layout: { 'line-cap': 'round', 'line-join': 'round' },
+          paint: {
+            'line-color': '#0a0a0a',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 9, 11, 13, 16, 17, 23],
+            'line-opacity': 0.94,
+          },
+        })
+
+        map.addLayer({
+          id: 'route-core',
+          type: 'line',
+          source: 'routes',
+          layout: { 'line-cap': 'round', 'line-join': 'round' },
+          paint: {
+            'line-color': ['get', 'color'],
+            'line-width': ['interpolate', ['linear'], ['zoom'], 9, 5.5, 13, 7.5, 17, 10],
+            'line-opacity': 0.98,
+          },
+        })
+
+        map.addLayer({
+          id: 'route-highlight',
+          type: 'line',
+          source: 'routes',
+          layout: { 'line-cap': 'butt', 'line-join': 'round' },
+          paint: {
+            'line-color': '#f2eadc',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 9, 1, 13, 1.5, 17, 2],
+            'line-opacity': 0.72,
+            'line-dasharray': [0.25, 2.25],
+          },
+        })
+
+        const bounds = new maplibregl.LngLatBounds()
+        routes.forEach((route) => route.coordinates.forEach((coordinate) => bounds.extend(coordinate)))
+        map.fitBounds(bounds, { padding: { top: 80, right: 160, bottom: 120, left: 80 }, duration: 0 })
+        setMapReady((current) => current + 1)
+      })
+
+      mapRef.current = map
     })
 
-    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'bottom-right')
-    map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left')
-
-    map.on('load', () => {
-      map.addSource('routes', {
-        type: 'geojson',
-        data: routeFeatureCollection(routes),
-      })
-
-      map.addLayer({
-        id: 'route-ink',
-        type: 'line',
-        source: 'routes',
-        layout: { 'line-cap': 'round', 'line-join': 'round' },
-        paint: {
-          'line-color': '#0a0a0a',
-          'line-width': ['interpolate', ['linear'], ['zoom'], 9, 11, 13, 16, 17, 23],
-          'line-opacity': 0.94,
-        },
-      })
-
-      map.addLayer({
-        id: 'route-core',
-        type: 'line',
-        source: 'routes',
-        layout: { 'line-cap': 'round', 'line-join': 'round' },
-        paint: {
-          'line-color': ['get', 'color'],
-          'line-width': ['interpolate', ['linear'], ['zoom'], 9, 5.5, 13, 7.5, 17, 10],
-          'line-opacity': 0.98,
-        },
-      })
-
-      map.addLayer({
-        id: 'route-highlight',
-        type: 'line',
-        source: 'routes',
-        layout: { 'line-cap': 'butt', 'line-join': 'round' },
-        paint: {
-          'line-color': '#f2eadc',
-          'line-width': ['interpolate', ['linear'], ['zoom'], 9, 1, 13, 1.5, 17, 2],
-          'line-opacity': 0.72,
-          'line-dasharray': [0.25, 2.25],
-        },
-      })
-
-      const bounds = new maplibregl.LngLatBounds()
-      routes.forEach((route) => route.coordinates.forEach((coordinate) => bounds.extend(coordinate)))
-      map.fitBounds(bounds, { padding: { top: 80, right: 160, bottom: 120, left: 80 }, duration: 0 })
-    })
-
-    mapRef.current = map
     return () => {
+      disposed = true
       markersRef.current.forEach((marker) => marker.remove())
       markersRef.current = []
-      map.remove()
+      map?.remove()
       mapRef.current = null
     }
   }, [routes])
 
   useEffect(() => {
     const map = mapRef.current
-    if (!map) return
+    if (!map || !mapReady) return
 
     const routeColors = getRouteColorMap(routes)
     markersRef.current.forEach((marker) => marker.remove())
@@ -166,7 +186,7 @@ export function MapView({
       markersRef.current.forEach((marker) => marker.remove())
       markersRef.current = []
     }
-  }, [places, routes, onHoverPlace, onSelectPlace])
+  }, [mapReady, places, routes, onHoverPlace, onSelectPlace])
 
   useEffect(() => {
     document.querySelectorAll<HTMLElement>('.place-marker').forEach((element) => {

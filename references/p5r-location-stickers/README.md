@@ -6,6 +6,8 @@
 - `destinations/`：海滨、公园、中华街等目的地贴纸
 - `source/`：原始预览图
 - `manifest.json`：来源和文件清单
+- `style-pack.md`：后续地点图案统一使用的视觉规则
+- `generated/`：按风格包生成的地点图示例
 
 来源：
 

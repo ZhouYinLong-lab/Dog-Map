@@ -1,5 +1,17 @@
 [
   {
+    "id": "nju-suzhou-campus",
+    "title": "南京大学苏州校区",
+    "subtitle": "新学期地图的起点",
+    "date": "2026.09.01",
+    "coordinates": [120.387037, 31.351239],
+    "routeId": "campus-to-lake",
+    "accent": "yellow",
+    "description": "把南大苏州校区作为这张地图的原点。之后每一次出发、抵达和路过，都会从这里向城市展开。",
+    "media": [],
+    "markerImage": "/media/nanjing-university-suzhou-campus.png"
+  },
+  {
     "id": "dushu-lake",
     "title": "独墅湖边",
     "subtitle": "从校园出发的第一段散步",

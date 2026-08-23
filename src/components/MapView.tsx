@@ -33,6 +33,10 @@ function routeFeatureCollection(data: Route[], colorOffset = 0) {
   }
 }
 
+function markerScaleForZoom(zoom: number) {
+  return Math.min(1.55, Math.max(0.42, 2 ** (zoom - 13.2)))
+}
+
 function routePointAt(route: Route | undefined, progress: number) {
   if (!route || route.coordinates.length === 0) {
     return null
@@ -102,6 +106,7 @@ export function MapView({
   const mapContainerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<Map | null>(null)
   const markersRef = useRef<maplibregl.Marker[]>([])
+  const markerElementsRef = useRef<HTMLElement[]>([])
   const routeCameraInitializedRef = useRef(false)
   const [mapReady, setMapReady] = useState(0)
 
@@ -236,6 +241,7 @@ export function MapView({
       disposed = true
       markersRef.current.forEach((marker) => marker.remove())
       markersRef.current = []
+      markerElementsRef.current = []
       map?.remove()
       mapRef.current = null
     }
@@ -289,11 +295,11 @@ export function MapView({
     markersRef.current = places.map((place) => {
       const element = document.createElement('button')
       element.type = 'button'
-      element.className = `place-marker place-marker--${place.accent}`
+      element.className = `place-marker place-marker--${place.accent}${place.markerImage ? ' place-marker--sticker' : ''}`
       element.dataset.placeId = place.id
       element.style.setProperty('--route-color', routeColors[place.routeId] ?? getRouteColor(0))
       element.setAttribute('aria-label', `打开地点：${place.title}`)
-      element.innerHTML = `<img class="place-marker__art" src="${artworkDataUri(place.id, place.accent, place.art)}" alt="" aria-hidden="true" />`
+      element.innerHTML = `<img class="place-marker__art" src="${place.markerImage ?? artworkDataUri(place.id, place.accent, place.art)}" alt="" aria-hidden="true" />`
       element.addEventListener('mouseenter', () => onHoverPlace(place.id))
       element.addEventListener('mouseleave', () => onHoverPlace(null))
       element.addEventListener('focus', () => onHoverPlace(place.id))
@@ -304,10 +310,23 @@ export function MapView({
         .setLngLat(place.coordinates)
         .addTo(map)
     })
+    markerElementsRef.current = places.map((place) => document.querySelector<HTMLElement>(`.place-marker[data-place-id="${place.id}"]`)).filter((element): element is HTMLElement => Boolean(element))
+    const updateMarkerScale = () => {
+      const zoomScale = markerScaleForZoom(map.getZoom())
+      markerElementsRef.current.forEach((element) => {
+        const scale = zoomScale * (element.classList.contains('place-marker--sticker') ? 1.12 : 1)
+        element.style.setProperty('--marker-scale', `${scale}`)
+        element.style.setProperty('--marker-hover-scale', `${scale * 1.1}`)
+      })
+    }
+    updateMarkerScale()
+    map.on('zoom', updateMarkerScale)
 
     return () => {
+      map.off('zoom', updateMarkerScale)
       markersRef.current.forEach((marker) => marker.remove())
       markersRef.current = []
+      markerElementsRef.current = []
     }
   }, [mapReady, places, routes, onHoverPlace, onSelectPlace])
 

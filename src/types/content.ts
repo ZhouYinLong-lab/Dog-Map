@@ -23,6 +23,7 @@ export type Place = {
   accent: 'red' | 'yellow'
   description: string
   media: MediaItem[]
+  markerImage?: string
   art?: ArtworkSpec
 }
 

@@ -4,8 +4,9 @@ test('renders the route archive and destination markers', async ({ page }) => {
   await page.goto('/')
   await expect(page).toHaveTitle(/Dog Map/)
   await expect(page.locator('.map-view')).toBeVisible()
-  await expect(page.locator('.place-marker')).toHaveCount(2)
-  await expect(page.locator('.place-marker__art')).toHaveCount(2)
+  await expect(page.locator('.place-marker')).toHaveCount(3)
+  await expect(page.locator('.place-marker__art')).toHaveCount(3)
+  await expect(page.getByRole('button', { name: '打开地点：南京大学苏州校区' })).toHaveClass(/place-marker--sticker/)
   await expect(page.getByRole('region', { name: '路线图例' })).toHaveCount(0)
 })
 
@@ -21,7 +22,7 @@ test('opens and closes a destination detail drawer', async ({ page }) => {
 test('keeps the map focused on map and visit artwork', async ({ page }) => {
   await page.goto('/')
   await expect(page.locator('.bottom-strip')).toHaveCount(0)
-  await expect(page.locator('.place-marker__art')).toHaveCount(2)
+  await expect(page.locator('.place-marker__art')).toHaveCount(3)
 })
 
 test('mobile layout has no horizontal overflow', async ({ page }) => {

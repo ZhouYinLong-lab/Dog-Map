@@ -30,9 +30,9 @@ function routeFeatureCollection(data: Route[], colorOffset = 0) {
   }
 }
 
-function routePulseFeature(route: Route | undefined, progress: number, color = getRouteColor(0)) {
+function routePointAt(route: Route | undefined, progress: number) {
   if (!route || route.coordinates.length === 0) {
-    return { type: 'FeatureCollection' as const, features: [] }
+    return null
   }
 
   const segments = route.coordinates.slice(1).map((coordinate, index) => {
@@ -58,14 +58,55 @@ function routePulseFeature(route: Route | undefined, progress: number, color = g
     point = segment.coordinate
   }
 
+  return point
+}
+
+function routeProgressFeature(route: Route | undefined, progress: number, color = getRouteColor(0)) {
+  if (!route || route.coordinates.length === 0) {
+    return { type: 'FeatureCollection' as const, features: [] }
+  }
+
+  const point = routePointAt(route, progress) ?? route.coordinates[0]
+  const coordinates = route.coordinates.slice(0)
+  const remaining = Math.min(1, Math.max(0, progress))
+  const segmentCount = Math.max(1, coordinates.length - 1)
+  const segmentProgress = remaining * segmentCount
+  const segmentIndex = Math.min(coordinates.length - 2, Math.floor(segmentProgress))
+  const segmentRatio = segmentProgress - segmentIndex
+  coordinates.splice(segmentIndex + 1)
+  if (coordinates.length > 1 || progress > 0) coordinates.push(point)
+
   return {
     type: 'FeatureCollection' as const,
     features: [{
       type: 'Feature' as const,
-      properties: { color },
-      geometry: { type: 'Point' as const, coordinates: point },
+      properties: { id: route.id, title: route.title, color, progress: segmentRatio },
+      geometry: { type: 'LineString' as const, coordinates },
     }],
   }
+}
+
+function routeParticleFeature(route: Route | undefined, progress: number, color = getRouteColor(0)) {
+  if (!route || route.coordinates.length === 0) {
+    return { type: 'FeatureCollection' as const, features: [] }
+  }
+
+  const particles = Array.from({ length: 10 }, (_, index) => {
+    const particleProgress = (progress - index * 0.018 + 1) % 1
+    const point = routePointAt(route, particleProgress) ?? route.coordinates[0]
+    return {
+      type: 'Feature' as const,
+      properties: {
+        color,
+        kind: index === 0 ? 'head' : 'particle',
+        opacity: index === 0 ? 1 : Math.max(0.12, 0.8 - index * 0.07),
+        radius: index === 0 ? 6 : Math.max(1.5, 4.5 - index * 0.3),
+      },
+      geometry: { type: 'Point' as const, coordinates: point },
+    }
+  })
+
+  return { type: 'FeatureCollection' as const, features: particles }
 }
 
 export function MapView({
@@ -166,7 +207,7 @@ export function MapView({
         })
         map.addSource('route-pulse', {
           type: 'geojson',
-          data: routePulseFeature(activeRoute, 0, getRouteColor(activeRouteIndex)),
+          data: routeParticleFeature(activeRoute, 0, getRouteColor(activeRouteIndex)),
         })
         map.addLayer({
           id: 'route-active-ink',
@@ -207,9 +248,9 @@ export function MapView({
           type: 'circle',
           source: 'route-pulse',
           paint: {
-            'circle-radius': ['interpolate', ['linear'], ['zoom'], 9, 9, 13, 13, 17, 18],
+            'circle-radius': ['interpolate', ['linear'], ['zoom'], 9, ['get', 'radius'], 13, ['*', ['get', 'radius'], 1.45], 17, ['*', ['get', 'radius'], 1.8]],
             'circle-color': '#fff8ea',
-            'circle-opacity': 0.32,
+            'circle-opacity': ['case', ['==', ['get', 'kind'], 'head'], 0.38, 0],
             'circle-blur': 0.55,
           },
         })
@@ -218,10 +259,11 @@ export function MapView({
           type: 'circle',
           source: 'route-pulse',
           paint: {
-            'circle-radius': ['interpolate', ['linear'], ['zoom'], 9, 4, 13, 6, 17, 8],
+            'circle-radius': ['interpolate', ['linear'], ['zoom'], 9, ['get', 'radius'], 13, ['*', ['get', 'radius'], 1.35], 17, ['*', ['get', 'radius'], 1.7]],
             'circle-color': ['get', 'color'],
             'circle-stroke-color': '#fff8ea',
             'circle-stroke-width': 2,
+            'circle-opacity': ['get', 'opacity'],
           },
         })
 
@@ -263,8 +305,8 @@ export function MapView({
     const activeRouteColor = getRouteColor(activeRouteIndex)
     const shouldMoveCamera = routeCameraInitializedRef.current
     routeCameraInitializedRef.current = true
-    activeSource.setData(activeRoute ? routeFeatureCollection([activeRoute], activeRouteIndex) : { type: 'FeatureCollection' as const, features: [] })
-    pulseSource.setData(routePulseFeature(activeRoute, 0, activeRouteColor))
+    activeSource.setData(routeProgressFeature(activeRoute, 0, activeRouteColor))
+    pulseSource.setData(routeParticleFeature(activeRoute, 0, activeRouteColor))
 
     if (activeRoute && shouldMoveCamera) {
       const bounds = new maplibregl.LngLatBounds()
@@ -275,9 +317,16 @@ export function MapView({
     let frame = 0
     const startedAt = performance.now()
     const duration = 5200
+    let lastCameraAt = startedAt
     const animate = (now: number) => {
       const progress = ((now - startedAt) % duration) / duration
-      pulseSource.setData(routePulseFeature(activeRoute, progress, activeRouteColor))
+      activeSource.setData(routeProgressFeature(activeRoute, progress, activeRouteColor))
+      pulseSource.setData(routeParticleFeature(activeRoute, progress, activeRouteColor))
+      if (activeRoute && shouldMoveCamera && now - lastCameraAt > 180) {
+        const point = routePointAt(activeRoute, progress)
+        if (point) map.easeTo({ center: point, duration: 180, essential: true })
+        lastCameraAt = now
+      }
       frame = requestAnimationFrame(animate)
     }
     frame = requestAnimationFrame(animate)

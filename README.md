@@ -71,6 +71,7 @@ MEDIA_DATABASE_DRIVER=postgres
 - `media` 支持 `image` 和 `video`；
 - 图片或视频放入 `public/media/<地点 id>/`；
 - 暂时没有视频文件时，可以保留 `poster` 和空的 `src`，页面会显示视频占位区。
+- 可选 `art` 字段生成稳定的透明不规则图案，例如 `{"seed":"lake","variant":"orbit"}`；地点详情打开时只显示当前地点的图案。
 
 ## 新增路线
 
@@ -79,6 +80,7 @@ MEDIA_DATABASE_DRIVER=postgres
 - `coordinates` 是路线折线点数组；
 - 每个点使用 `[经度, 纬度]`；
 - 不需要手动填写颜色：路线会按顺序从高对比调色板自动分配颜色，地图线、地点标识和图例保持同步；
+- 可选 `art` 字段生成路线图案；当前选中的路线会显示一个图案并循环播放路线光点，点击图例可以切换路线和镜头跟随；
 - 当前示例坐标用于展示界面结构，正式记录时应替换成实际路线坐标。
 
 ## 正式使用前核对
@@ -93,6 +95,6 @@ MEDIA_DATABASE_DRIVER=postgres
 
 ## 地图适配
 
-地图渲染集中在 `src/components/MapView.tsx`。路线使用 GeoJSON source 和地图原生 line layer，地点使用坐标锚定的 HTML Marker，因此缩放、拖动时不会漂移。后续更换高德、MapTiler 或其他底图时，优先只替换地图初始化和底图 style，不要改动内容数据与详情 UI。
+地图渲染集中在 `src/components/MapView.tsx`。默认使用 OpenFreeMap 的 MapLibre 矢量 style，并在可用的建筑高度数据上增加 3D extrusion；路线使用 GeoJSON source 和地图原生 line layer，地点使用坐标锚定的 HTML Marker，因此缩放、拖动时不会漂移。`VITE_MAP_STYLE_URL` 可以替换为自有 MapLibre style JSON，无法访问时会自动回退到 OSM 栅格底图。
 
-当前默认使用 OpenStreetMap 栅格底图进行本地运行验证，正式部署时请根据访问范围、服务条款和地图资质更换为合适的地图服务。
+当前默认的 OpenFreeMap 公共实例无需 token，但正式长期使用前仍应根据访问量、服务条款和地图资质评估公共实例、自己托管或商业矢量服务的选择。

@@ -1,0 +1,82 @@
+[
+  {
+    "file": "station-menu/travel-menu.png",
+    "label": "Persona 5 travel menu",
+    "source": "https://miro.medium.com/v2/resize%3Afit%3A1400/1%2AywrfuejLWpdnvqM4pFpqTw.jpeg"
+  },
+  {
+    "file": "station-menu/shibuya-facilities-map.png",
+    "label": "Shibuya facilities map",
+    "source": "https://img.kamigame.jp/ktj3WzAIeArNWGcQilw9MoXZRHEFRj6NzKBQ72jURstpoP_z39Biw1X-HFcO7cr2jurdY33BlIYgDa5pFSIl4hl4g5DTAvhEjxQKElH7SYJYvQ"
+  },
+  {
+    "file": "yongen-jaya/cafe-leblanc.png",
+    "label": "Café Leblanc",
+    "source": "https://cdn.gracza.pl/gallery/html/news/954753421.jpg"
+  },
+  {
+    "file": "yongen-jaya/cafe-leblanc-evening.png",
+    "label": "Café Leblanc evening",
+    "source": "https://static.fanbyte.com/uploads/2020/04/Persona-5-Royal-Game-Show-Answers.jpg"
+  },
+  {
+    "file": "yongen-jaya/backstreets.png",
+    "label": "Yongen-jaya backstreets",
+    "source": "https://ixbt.online/live/images/original/27/05/93/2023/07/27/9fbcef3c5e.jpg"
+  },
+  {
+    "file": "shibuya/central-street.png",
+    "label": "Shibuya Central Street",
+    "source": "https://cdn.mos.cms.futurecdn.net/sPor7wRbUh8bYJXTue74xk.jpg"
+  },
+  {
+    "file": "shibuya/underground-walkway.png",
+    "label": "Shibuya Underground Walkway",
+    "source": "https://maroonersrock.com/wp-content/uploads/2020/03/Persona-5-Royal-screenshot-16.jpg"
+  },
+  {
+    "file": "shibuya/station-square.png",
+    "label": "Station Square",
+    "source": "https://xboxplay.games/uploadStream/65335.jpg"
+  },
+  {
+    "file": "kichijoji/shopping-district.png",
+    "label": "Kichijoji Shopping District",
+    "source": "https://www.wingamestore.com/images_screenshots/persona-5-royal-111894.jpeg"
+  },
+  {
+    "file": "kichijoji/night-stroll.png",
+    "label": "Kichijoji night stroll",
+    "source": "https://samurai-gamers.com/wp-content/uploads/2019/10/Personal-5-Royal-Kichijoji-Area-11.jpg"
+  },
+  {
+    "file": "shinjuku/main-street.png",
+    "label": "Shinjuku main street",
+    "source": "https://gameranx.com/wp-content/uploads/2017/01/Persona-5-PV03.jpg"
+  },
+  {
+    "file": "akihabara/electric-town.png",
+    "label": "Akihabara Electric Town",
+    "source": "https://livedoor.blogimg.jp/mngw84/imgs/8/9/89e730cb.jpg"
+  },
+  {
+    "file": "ichigaya/fishing-pond.png",
+    "label": "Ichigaya fishing pond",
+    "source": "https://assetsio.gnwcdn.com/persona-5-guardian-of-the-pond-como-atrapar-al-pez-mas-dificil-de-capturar-1491475629531.jpg?auto=webp&enable=upscale&fit=crop&format=png&height=900&quality=100&width=1600"
+  },
+  {
+    "file": "kanda/church.png",
+    "label": "Kanda Church",
+    "source": "https://imgix.bustle.com/uploads/image/2022/11/3/fab4519e-4183-46c6-80ce-23e11d568ede-body-1.jpg?auto=format%2Ccompress&dpr=2&fit=max&h=399&q=50&w=710"
+  },
+  {
+    "file": "shinagawa/aquarium.png",
+    "label": "Shinagawa aquarium",
+    "source": "https://p5r.jp/resources/img/top/ss/royal3_sec1_ss3_19662297f68e7c6a4301bbdec85234fb.jpg"
+  },
+  {
+    "file": "odaiba/seaside-park.png",
+    "label": "Odaiba Seaside Park",
+    "source": "https://www.svg.com/img/gallery/persona-5-royal-how-to-unlock-the-seaside-park-hangout-spot/read-about-it-or-wait-for-a-confidant-event-1665874609.jpg"
+  }
+]

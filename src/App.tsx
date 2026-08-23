@@ -4,6 +4,7 @@ import { places, routes } from './data/content'
 import { loadRemoteMedia } from './services/mediaApi'
 import type { MediaItem } from './types/content'
 import { getRouteColor } from './map/routePalette'
+import { artworkDataUri } from './map/artwork'
 
 function MediaBlock({ item }: { item: MediaItem }) {
   const [failed, setFailed] = useState(false)
@@ -38,6 +39,14 @@ function MediaBlock({ item }: { item: MediaItem }) {
   )
 }
 
+function VisualPattern({ id, color, art }: { id: string; color: 'red' | 'teal' | 'yellow'; art?: Parameters<typeof artworkDataUri>[2] }) {
+  return <img className="visual-pattern" src={artworkDataUri(id, color, art)} alt="" aria-hidden="true" />
+}
+
+function artworkColor(index: number): 'red' | 'teal' | 'yellow' {
+  return ['red', 'teal', 'yellow'][index % 3] as 'red' | 'teal' | 'yellow'
+}
+
 function App() {
   const [activePlaceId, setActivePlaceId] = useState<string | null>(null)
   const [hoveredPlaceId, setHoveredPlaceId] = useState<string | null>(null)
@@ -47,6 +56,10 @@ function App() {
   const activePlace = useMemo(
     () => places.find((place) => place.id === activePlaceId) ?? null,
     [activePlaceId],
+  )
+  const activeRoute = useMemo(
+    () => routes.find((route) => route.id === activeRouteId) ?? null,
+    [activeRouteId],
   )
 
   useEffect(() => {
@@ -91,6 +104,15 @@ function App() {
         <div className="map-slice map-slice--bottom" aria-hidden="true" />
 
         <div className="bottom-strip">
+          {!activePlace && activeRoute && (
+            <div className="route-focus-card" aria-label={`${activeRoute.title}路线图案`}>
+              <VisualPattern id={activeRoute.id} color={artworkColor(routes.indexOf(activeRoute))} art={activeRoute.art} />
+              <div>
+                <span className="route-focus-card__title">{activeRoute.title}</span>
+                <span className="route-focus-card__mode">{activeRoute.mode}</span>
+              </div>
+            </div>
+          )}
           <div className="route-legend" role="region" aria-label="路线图例">
             {routes.map((route, index) => (
               <button
@@ -122,6 +144,7 @@ function App() {
           <h1>{activePlace.title}</h1>
           <p className="detail-drawer__subtitle">{activePlace.subtitle}</p>
           <p className="detail-drawer__description">{activePlace.description}</p>
+          <VisualPattern id={activePlace.id} color={activePlace.accent} art={activePlace.art} />
           <div className="media-grid">
             {(remoteMedia[activePlace.id] ?? activePlace.media).map((item, index) => <MediaBlock key={`${item.type}-${index}`} item={item} />)}
           </div>

@@ -8,6 +8,11 @@ export type MediaItem = {
   caption?: string
 }
 
+export type ArtworkSpec = {
+  seed?: string
+  variant?: 'burst' | 'slash' | 'orbit'
+}
+
 export type Place = {
   id: string
   title: string
@@ -18,6 +23,7 @@ export type Place = {
   accent: 'red' | 'yellow'
   description: string
   media: MediaItem[]
+  art?: ArtworkSpec
 }
 
 export type Route = {
@@ -25,4 +31,5 @@ export type Route = {
   title: string
   mode: string
   coordinates: Coordinates[]
+  art?: ArtworkSpec
 }

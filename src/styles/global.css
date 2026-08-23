@@ -44,6 +44,12 @@ button { font: inherit; }
 .place-marker__label { position: relative; display: block; padding: 9px 15px 8px 12px; background: var(--ink); border: 2px solid var(--paper); box-shadow: 5px 5px 0 var(--route-color, var(--red)); clip-path: polygon(0 0, 92% 0, 100% 30%, 96% 100%, 0 100%); font: 18px/1 var(--display); letter-spacing: 0.03em; white-space: nowrap; }
 
 .bottom-strip { position: absolute; z-index: 4; left: 5.5%; right: 5.5%; bottom: 5.5%; display: flex; align-items: end; justify-content: center; gap: 24px; pointer-events: none; }
+.route-focus-card { display: flex; align-items: center; gap: 10px; min-width: 182px; color: var(--paper); pointer-events: auto; }
+.visual-pattern { display: block; width: 86px; height: 86px; object-fit: contain; filter: drop-shadow(6px 7px 0 rgba(17,17,17,0.86)); transition: transform 180ms ease; }
+.visual-pattern:hover { transform: rotate(-4deg) scale(1.08); }
+.route-focus-card__title, .route-focus-card__mode { display: block; }
+.route-focus-card__title { max-width: 120px; font: 18px/1 var(--display); }
+.route-focus-card__mode { margin-top: 7px; color: var(--yellow); font: 9px var(--mono); letter-spacing: 0.08em; }
 .eyebrow { color: var(--yellow); font: 10px var(--mono); letter-spacing: 0.16em; }
 .route-legend { display: flex; align-items: center; gap: 16px; padding: 11px 15px; color: var(--paper); background: rgba(17,17,17,0.86); border: 1px solid var(--line); font: 10px var(--mono); letter-spacing: 0.04em; pointer-events: auto; }
 .route-legend__route, .route-legend__destination { display: flex; align-items: center; gap: 9px; white-space: nowrap; }
@@ -63,6 +69,7 @@ button { font: inherit; }
 .detail-drawer__subtitle { margin: 0 0 24px; color: var(--yellow); font-size: 15px; letter-spacing: 0.03em; }
 .detail-drawer__description { margin: 0 0 28px; color: var(--paper-soft); font-size: 15px; line-height: 1.75; }
 .media-grid { display: grid; gap: 12px; }
+.detail-drawer > .visual-pattern { width: 120px; height: 120px; margin: 0 0 22px auto; }
 .media-figure { margin: 0; }
 .media-block, .video-placeholder, .media-error { display: block; width: 100%; min-height: 140px; object-fit: cover; border: 2px solid var(--paper); background: #292929; }
 .media-figure figcaption { margin-top: 7px; color: var(--paper-soft); font: 10px/1.4 var(--mono); }

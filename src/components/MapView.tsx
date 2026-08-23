@@ -3,6 +3,7 @@ import maplibregl, { type GeoJSONSource, type Map } from 'maplibre-gl'
 import type { Place, Route } from '../types/content'
 import { getRouteColor, getRouteColorMap } from '../map/routePalette'
 import { resolveMapStyle } from '../map/mapStyles'
+import { configureCityScene } from '../map/cityScene'
 
 type MapViewProps = {
   places: Place[]
@@ -113,32 +114,7 @@ export function MapView({
       map.on('load', () => {
         if (!map || disposed) return
 
-        if (mode === 'vector' && map.getSource('openmaptiles')) {
-          if (map.getLayer('building')) {
-            map.setPaintProperty('building', 'fill-color', '#242a31')
-            map.setPaintProperty('building', 'fill-opacity', 0.78)
-          }
-
-          if (!map.getLayer('building-3d')) {
-            const firstSymbolLayer = map.getStyle().layers?.find((layer) => layer.type === 'symbol')
-            map.addLayer({
-              id: 'building-3d',
-              type: 'fill-extrusion',
-              source: 'openmaptiles',
-              'source-layer': 'building',
-              minzoom: 12.5,
-              paint: {
-                'fill-extrusion-base': ['get', 'render_min_height'],
-                'fill-extrusion-color': '#303943',
-                'fill-extrusion-height': ['get', 'render_height'],
-                'fill-extrusion-opacity': 0.78,
-              },
-            }, firstSymbolLayer?.id)
-          } else {
-            map.setPaintProperty('building-3d', 'fill-extrusion-color', '#303943')
-            map.setPaintProperty('building-3d', 'fill-extrusion-opacity', 0.78)
-          }
-        }
+        if (mode === 'vector') configureCityScene(map)
 
         map.addSource('routes', {
           type: 'geojson',
@@ -352,7 +328,7 @@ export function MapView({
     const map = mapRef.current
     if (!map || !activePlaceId) return
     const place = places.find((candidate) => candidate.id === activePlaceId)
-    if (place) map.easeTo({ center: place.coordinates, duration: 650, offset: [-100, 0] })
+    if (place) map.easeTo({ center: place.coordinates, zoom: Math.max(map.getZoom(), 13.2), pitch: 58, duration: 650, offset: [-100, 0] })
   }, [activePlaceId, places])
 
   return <div className="map-view" ref={mapContainerRef} aria-label="苏州路线地图" />

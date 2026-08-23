@@ -26,6 +26,7 @@ button { font: inherit; }
 .map-stage::after { background: linear-gradient(133deg, transparent 0 71%, rgba(17,17,17,0.22) 71% 72%, transparent 72%); opacity: 0.92; }
 .map-stage[data-map-mode='vector']::before { background: linear-gradient(118deg, rgba(17,17,17,0.14) 0 25%, rgba(17,17,17,0.04) 25% 61%, rgba(230,51,59,0.08) 61% 76%, rgba(17,17,17,0.12) 76%); }
 .map-stage[data-map-mode='vector']::after { background: linear-gradient(133deg, transparent 0 71%, rgba(17,17,17,0.26) 71% 72%, transparent 72%); }
+.map-stage[data-map-mode='vector'] .map-slice { opacity: 0; }
 
 .map-grain {
   position: absolute; inset: 0; pointer-events: none; z-index: 2; opacity: 0.25; mix-blend-mode: screen;

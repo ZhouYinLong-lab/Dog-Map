@@ -89,29 +89,6 @@ function routeProgressFeature(route: Route | undefined, progress: number, color 
   }
 }
 
-function routeParticleFeature(route: Route | undefined, progress: number, color = getRouteColor(0)) {
-  if (!route || route.coordinates.length === 0) {
-    return { type: 'FeatureCollection' as const, features: [] }
-  }
-
-  const particles = Array.from({ length: 10 }, (_, index) => {
-    const particleProgress = (progress - index * 0.018 + 1) % 1
-    const point = routePointAt(route, particleProgress) ?? route.coordinates[0]
-    return {
-      type: 'Feature' as const,
-      properties: {
-        color,
-        kind: index === 0 ? 'head' : 'particle',
-        opacity: index === 0 ? 1 : Math.max(0.12, 0.8 - index * 0.07),
-        radius: index === 0 ? 6 : Math.max(1.5, 4.5 - index * 0.3),
-      },
-      geometry: { type: 'Point' as const, coordinates: point },
-    }
-  })
-
-  return { type: 'FeatureCollection' as const, features: particles }
-}
-
 export function MapView({
   places,
   routes,
@@ -208,10 +185,6 @@ export function MapView({
           type: 'geojson',
           data: activeRoute ? routeFeatureCollection([activeRoute], activeRouteIndex) : { type: 'FeatureCollection' as const, features: [] },
         })
-        map.addSource('route-pulse', {
-          type: 'geojson',
-          data: routeParticleFeature(activeRoute, 0, getRouteColor(activeRouteIndex)),
-        })
         map.addLayer({
           id: 'route-active-ink',
           type: 'line',
@@ -246,30 +219,6 @@ export function MapView({
             'line-dasharray': [0.2, 2.1],
           },
         })
-        map.addLayer({
-          id: 'route-pulse-halo',
-          type: 'circle',
-          source: 'route-pulse',
-          paint: {
-            'circle-radius': ['interpolate', ['linear'], ['zoom'], 9, ['get', 'radius'], 13, ['*', ['get', 'radius'], 1.45], 17, ['*', ['get', 'radius'], 1.8]],
-            'circle-color': '#fff8ea',
-            'circle-opacity': ['case', ['==', ['get', 'kind'], 'head'], 0.38, 0],
-            'circle-blur': 0.55,
-          },
-        })
-        map.addLayer({
-          id: 'route-pulse',
-          type: 'circle',
-          source: 'route-pulse',
-          paint: {
-            'circle-radius': ['interpolate', ['linear'], ['zoom'], 9, ['get', 'radius'], 13, ['*', ['get', 'radius'], 1.35], 17, ['*', ['get', 'radius'], 1.7]],
-            'circle-color': ['get', 'color'],
-            'circle-stroke-color': '#fff8ea',
-            'circle-stroke-width': 2,
-            'circle-opacity': ['get', 'opacity'],
-          },
-        })
-
         map.on('click', 'route-core', (event) => {
           const routeId = event.features?.[0]?.properties?.id
           if (typeof routeId === 'string') onSelectRoute(routeId)
@@ -298,15 +247,13 @@ export function MapView({
 
     const activeRoute = routes.find((route) => route.id === activeRouteId)
     const activeSource = map.getSource('route-active') as GeoJSONSource | undefined
-    const pulseSource = map.getSource('route-pulse') as GeoJSONSource | undefined
-    if (!activeSource || !pulseSource) return
+    if (!activeSource) return
 
     const activeRouteIndex = activeRoute ? routes.indexOf(activeRoute) : 0
     const activeRouteColor = getRouteColor(activeRouteIndex)
     const shouldMoveCamera = routeCameraInitializedRef.current
     routeCameraInitializedRef.current = true
     activeSource.setData(routeProgressFeature(activeRoute, 0, activeRouteColor))
-    pulseSource.setData(routeParticleFeature(activeRoute, 0, activeRouteColor))
 
     if (activeRoute && shouldMoveCamera) {
       const bounds = new maplibregl.LngLatBounds()
@@ -321,7 +268,6 @@ export function MapView({
     const animate = (now: number) => {
       const progress = ((now - startedAt) % duration) / duration
       activeSource.setData(routeProgressFeature(activeRoute, progress, activeRouteColor))
-      pulseSource.setData(routeParticleFeature(activeRoute, progress, activeRouteColor))
       if (activeRoute && shouldMoveCamera && now - lastCameraAt > 180) {
         const point = routePointAt(activeRoute, progress)
         if (point) map.easeTo({ center: point, duration: 180, essential: true })

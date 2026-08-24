@@ -65,6 +65,8 @@ test('scales marker artwork with map zoom', async ({ page }) => {
   const afterZoomIn = await marker.boundingBox()
   expect(afterZoomIn).not.toBeNull()
   expect(afterZoomIn!.width).toBeGreaterThan(before!.width + 10)
+  const zoomInScale = await marker.evaluate((element) => Number.parseFloat(getComputedStyle(element).getPropertyValue('--marker-scale')))
+  expect(zoomInScale).toBeLessThanOrEqual(1.35)
 
   await page.mouse.wheel(0, 1200)
   await page.waitForTimeout(350)

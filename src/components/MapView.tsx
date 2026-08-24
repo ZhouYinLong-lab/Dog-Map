@@ -34,7 +34,7 @@ function routeFeatureCollection(data: Route[], colorOffset = 0) {
 }
 
 function markerScaleForZoom(zoom: number, referenceZoom: number) {
-  return 2 ** (zoom - referenceZoom)
+  return Math.min(1.35, 2 ** (zoom - referenceZoom))
 }
 
 function routePointAt(route: Route | undefined, progress: number) {

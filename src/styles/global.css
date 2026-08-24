@@ -21,7 +21,7 @@ button { font: inherit; }
 .maplibregl-ctrl-group button { filter: invert(1); }
 .maplibregl-ctrl-attrib { background: rgba(17,17,17,0.68) !important; color: var(--paper-soft); font: 9px var(--mono); }
 .maplibregl-ctrl-attrib a { color: var(--paper); }
-.github-repo-link { position: fixed; z-index: 12; left: 18px; bottom: 18px; display: grid; place-items: center; width: 42px; height: 42px; color: var(--paper); background: rgba(17,17,17,0.86); border: 1px solid var(--paper); box-shadow: 5px 5px 0 rgba(17,17,17,0.58); transition: color 160ms ease, background 160ms ease, transform 160ms ease; }
+.github-repo-link { position: fixed; z-index: 12; left: 18px; bottom: 74px; display: grid; place-items: center; width: 42px; height: 42px; color: var(--paper); background: rgba(17,17,17,0.86); border: 1px solid var(--paper); box-shadow: 5px 5px 0 rgba(17,17,17,0.58); transition: color 160ms ease, background 160ms ease, transform 160ms ease; }
 .github-repo-link svg { width: 24px; height: 24px; }
 .github-repo-link:hover, .github-repo-link:focus-visible { color: var(--ink); background: var(--yellow); transform: translateY(-2px); outline: none; }
 
@@ -80,6 +80,7 @@ button { font: inherit; }
 @keyframes lightbox-in { from { opacity: 0; } to { opacity: 1; } }
 
 @media (max-width: 840px) {
+  .github-repo-link { left: 14px; bottom: 62px; }
   .bottom-strip { left: 7%; right: 7%; bottom: 6%; align-items: start; flex-direction: column; gap: 12px; }
   .route-legend { order: 3; }
   .detail-drawer { top: auto; width: 100%; max-height: 72vh; padding: 34px 7% 28px; border-top: 0; border-left: 0; clip-path: polygon(3% 0, 100% 0, 100% 100%, 0 100%, 0 7%); }

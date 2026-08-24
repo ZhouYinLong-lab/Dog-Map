@@ -129,7 +129,7 @@ export function MapView({
         center: njuSuzhouCampus,
         zoom: initialZoom,
         pitch: mode === 'vector' ? 58 : 0,
-        bearing: mode === 'vector' ? -12 : 0,
+        bearing: 0,
         minZoom: 9,
         maxZoom: 18,
         canvasContextAttributes: { antialias: mode === 'vector' },

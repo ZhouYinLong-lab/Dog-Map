@@ -302,7 +302,7 @@ export function MapView({
       element.className = `place-marker place-marker--${place.accent}${place.markerImage ? ' place-marker--sticker' : ''}`
       element.dataset.placeId = place.id
       element.style.visibility = !activePlaceId || place.id === activePlaceId ? 'visible' : 'hidden'
-      element.style.setProperty('--route-color', routeColors[place.routeId] ?? getRouteColor(0))
+      element.style.setProperty('--route-color', (place.routeId ? routeColors[place.routeId] : undefined) ?? getRouteColor(0))
       element.setAttribute('aria-label', `打开地点：${place.title}`)
       element.innerHTML = `<span class="place-marker__visual"><img class="place-marker__art" src="${place.markerImage ?? artworkDataUri(place.id, place.accent, place.art)}" alt="" aria-hidden="true" /></span>`
       element.addEventListener('mouseenter', () => onHoverPlace(place.id))

@@ -1,22 +1,23 @@
 import { expect, test } from '@playwright/test'
 
-test('renders the route archive and destination markers', async ({ page }) => {
+test('renders the current destination marker without demo content', async ({ page }) => {
   await page.goto('/')
   await expect(page).toHaveTitle(/Dog Map/)
   await expect(page.locator('.map-view')).toBeVisible()
-  await expect(page.locator('.place-marker')).toHaveCount(3)
-  await expect(page.locator('.place-marker__art')).toHaveCount(3)
+  await expect(page.locator('.place-marker')).toHaveCount(1)
+  await expect(page.locator('.place-marker__art')).toHaveCount(1)
   await expect(page.getByRole('button', { name: '打开地点：南京大学苏州校区' })).toHaveClass(/place-marker--sticker/)
+  await expect(page.getByRole('button', { name: '打开地点：平江路' })).toHaveCount(0)
   await expect(page.getByRole('region', { name: '路线图例' })).toHaveCount(0)
 })
 
-test('opens and closes a destination detail drawer', async ({ page }) => {
+test('opens and closes the current destination detail drawer', async ({ page }) => {
   await page.goto('/')
-  await page.getByRole('button', { name: '打开地点：平江路' }).evaluate((element) => (element as HTMLElement).click())
-  await expect(page.getByRole('complementary', { name: '平江路详情' })).toBeVisible()
-  await expect(page.getByText('旧城里的慢速切片')).toBeVisible()
+  await page.getByRole('button', { name: '打开地点：南京大学苏州校区' }).click()
+  await expect(page.getByRole('complementary', { name: '南京大学苏州校区详情' })).toBeVisible()
+  await expect(page.getByText('骑车初遇')).toBeVisible()
   await page.getByRole('button', { name: '关闭详情' }).click()
-  await expect(page.getByRole('complementary', { name: '平江路详情' })).toHaveCount(0)
+  await expect(page.getByRole('complementary', { name: '南京大学苏州校区详情' })).toHaveCount(0)
 })
 
 test('shows the selected place identity and hides map overlays in the detail view', async ({ page }) => {
@@ -24,7 +25,6 @@ test('shows the selected place identity and hides map overlays in the detail vie
   await page.getByRole('button', { name: '打开地点：南京大学苏州校区' }).click()
   await expect(page.locator('.detail-drawer__identity')).toContainText('南京大学苏州校区')
   await expect(page.locator('.place-marker').first()).toHaveCSS('visibility', 'visible')
-  await expect(page.locator('.place-marker').nth(1)).toHaveCSS('visibility', 'hidden')
 })
 
 test('has a GitHub repository link in the lower-left corner', async ({ page }) => {
@@ -45,7 +45,7 @@ test('opens an image preview and closes it with Escape', async ({ page }) => {
 test('keeps the map focused on map and visit artwork', async ({ page }) => {
   await page.goto('/')
   await expect(page.locator('.bottom-strip')).toHaveCount(0)
-  await expect(page.locator('.place-marker__art')).toHaveCount(3)
+  await expect(page.locator('.place-marker__art')).toHaveCount(1)
 })
 
 test('scales marker artwork with map zoom', async ({ page }) => {

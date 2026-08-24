@@ -23,7 +23,7 @@ Dog Map 用地图记录出发、抵达和路过的地点。路线和地点由内
 ## 核心功能
 
 - MapLibre 地图与 3D 城市场景
-- 多条路线的展示、选择和动态高亮
+- 路线数据结构，后续可继续添加路线并动态高亮
 - 地点图标随地图缩放比例变化
 - 地点详情抽屉与多媒体内容
 - 点击图片查看大图，支持背景、关闭按钮和 `Esc` 退出
@@ -60,7 +60,7 @@ npm run test:e2e
 编辑 `src/data/places.json`，新增地点对象：
 
 - `coordinates` 使用 `[经度, 纬度]`；
-- `routeId` 指向 `src/data/routes.json` 中的路线；
+- `routeId`（可选）指向 `src/data/routes.json` 中的路线；
 - `media` 支持多张图片和视频；
 - `markerImage` 可指定地点图标；
 - `art` 可生成稳定的地点图案。

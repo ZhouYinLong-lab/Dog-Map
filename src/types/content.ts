@@ -19,7 +19,7 @@ export type Place = {
   subtitle: string
   date: string
   coordinates: Coordinates
-  routeId: string
+  routeId?: string
   accent: 'red' | 'yellow'
   description: string
   media: MediaItem[]

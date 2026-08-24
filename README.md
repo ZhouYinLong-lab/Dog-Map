@@ -1,100 +1,116 @@
 # Dog Map
 
-一个以南京大学苏州校区为中心的个人路线档案网页。地图是主体，地点和路线以内容数据驱动，界面使用原创的 P5R-inspired 黑红米白斜切视觉语言。
+[![Build](https://github.com/ZhouYinLong-lab/Dog-Map/actions/workflows/deploy-pages.yml/badge.svg?branch=master)](https://github.com/ZhouYinLong-lab/Dog-Map/actions/workflows/deploy-pages.yml)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=111111)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
+[![MapLibre GL](https://img.shields.io/badge/MapLibre%20GL-5-396CB2?logo=maplibre&logoColor=white)](https://maplibre.org/)
 
-## 开发
+一个以南京大学苏州校区为起点的个人路线档案地图。
+
+[在线查看 Dog Map](https://zhouyinlong-lab.github.io/Dog-Map/)
+
+## 标签
+
+`React` `TypeScript` `Vite` `MapLibre GL` `Photo Archive` `Personal Map` `P5R-inspired`
+
+## Overview / 项目简介
+
+Dog Map 用地图记录出发、抵达和路过的地点。路线和地点由内容数据驱动，点击地点后可以查看对应的标题、照片和视频。
+
+视觉上采用原创的黑、红、米白、黄色斜切语言，并将地点图标、路线颜色和媒体内容整合到同一张城市地图中。
+
+## 核心功能
+
+- MapLibre 地图与 3D 城市场景
+- 多条路线的展示、选择和动态高亮
+- 地点图标随地图缩放比例变化
+- 地点详情抽屉与多媒体内容
+- 点击图片查看大图，支持背景、关闭按钮和 `Esc` 退出
+- 响应式移动端布局
+- 静态照片与可选媒体 API 两种内容来源
+
+## Getting Started / 本地开发
 
 ```bash
 npm install
 npm run dev
 ```
 
-生产构建：
+生产构建检查：
 
 ```bash
 npm run build
+```
+
+预览构建结果：
+
+```bash
 npm run preview
 ```
 
-## GitHub Pages
-
-仓库已配置 GitHub Actions。推送到 `master` 后会自动构建并发布静态前端：
-
-```text
-https://zhouyinlong-lab.github.io/Dog-Map/
-```
-
-GitHub Pages 只负责静态前端；媒体 API、R2 和 Postgres 仍需单独部署。没有配置 `VITE_MEDIA_API_URL` 时，页面会使用仓库中 `public/media/` 的静态媒体。
-
-## 媒体服务
-
-前端仍然可以作为静态站放在现有托管平台；媒体上传、读取和删除由独立的 Hono API 服务处理。API 不把图片和视频写进数据库：二进制进入 StorageProvider，数据库只保存文件路径和元信息。
-
-启动本地媒体服务：
+运行端到端测试：
 
 ```bash
-Copy-Item .env.example .env
-npm run server:dev
+npm run test:e2e
 ```
 
-默认配置是本地文件系统 + JSON catalog：
+## 添加地点
 
-- 文件：`data/media/<地点>/<时间>-<名称>-<短 id>.<扩展名>`；
-- 元信息：`data/media-catalog.json`；
-- API：`http://localhost:8787`；
-- `POST /api/media`：multipart 上传，字段为 `file`、`placeId`、`altText`、`caption`、`sortOrder`；
-- `GET /api/media?placeId=<id>`：读取媒体元信息；
-- `DELETE /api/media/<asset id>`：删除对象和元信息；
-- `GET /api/health`：检查当前 storage/database driver。
-
-如果设置了 `MEDIA_ADMIN_TOKEN`，上传和删除请求必须带 `Authorization: Bearer <token>`。启用 R2 时必须设置这个 token；不要把它放进 `VITE_` 变量，也不要提交到前端或 Git。
-
-生产环境切换到 R2 + Postgres 时，将 `.env` 中的：
-
-```text
-MEDIA_STORAGE_DRIVER=r2
-MEDIA_DATABASE_DRIVER=postgres
-```
-
-并填写 R2 S3 endpoint、只授予目标 bucket 读写权限的服务端密钥、R2 自定义域名和 `DATABASE_URL`。先执行 `server/migrations/001_media_assets.sql`，再启动 API。R2 的公开媒体地址建议使用绑定到自有域名的 custom domain；`r2.dev` 只用于开发验证。
-
-`server/app.ts` 导出 Hono app，可由现有托管平台的 Node/serverless 入口适配；`server/index.ts` 只是本地 Node 启动器。
-
-所有 storage 和 catalog 实现都通过接口调用，切换存储时不需要修改地图组件或地点 JSON。
-
-## 新增地点
-
-编辑 `src/data/places.json`，新增一个地点对象：
+编辑 `src/data/places.json`，新增地点对象：
 
 - `coordinates` 使用 `[经度, 纬度]`；
 - `routeId` 指向 `src/data/routes.json` 中的路线；
-- `media` 支持 `image` 和 `video`；
-- 图片或视频放入 `public/media/<地点 id>/`；
-- 暂时没有视频文件时，可以保留 `poster` 和空的 `src`，页面会显示视频占位区。
-- 可选 `art` 字段生成稳定的透明不规则图案，例如 `{"seed":"lake","variant":"orbit"}`；地点详情打开时只显示当前地点的图案。
+- `media` 支持多张图片和视频；
+- `markerImage` 可指定地点图标；
+- `art` 可生成稳定的地点图案。
 
-## 新增路线
+## 添加路线
 
-编辑 `src/data/routes.json`，添加一条路线对象：
+编辑 `src/data/routes.json`：
 
-- `coordinates` 是路线折线点数组；
-- 每个点使用 `[经度, 纬度]`；
-- 不需要手动填写颜色：路线会按顺序从高对比调色板自动分配颜色，地图线、地点标识和图例保持同步；
-- 可选 `art` 字段生成路线图案；当前选中的路线会以更粗的高亮线显示，并跟随路线调整镜头；
-- 当前示例坐标用于展示界面结构，正式记录时应替换成实际路线坐标。
+- `coordinates` 使用 `[经度, 纬度]` 的折线点数组；
+- `title` 是路线名称；
+- `mode` 是步行、公交或其他出行方式；
+- 路线颜色会根据顺序自动分配。
 
-## 正式使用前核对
+## 添加照片
 
-- 将 `src/data/routes.json` 和 `src/data/places.json` 中的示例路线、日期、文字和媒体替换成真实记录；
-- 静态前端继续部署到现有托管平台，单独部署 `server/app.ts` 对应的媒体 API；
-- 生产环境使用 R2 + Postgres 时，设置服务端密钥、`R2_PUBLIC_BASE_URL`、`DATABASE_URL` 和 `MEDIA_ADMIN_TOKEN`，并执行 `server/migrations/001_media_assets.sql`；
-- 不要把 R2 密钥或管理员 token 写入 `VITE_` 变量；
-- 正式使用前为当前地图服务确认访问额度、服务条款和地图资质，必要时替换 `src/components/MapView.tsx` 中的 OSM 栅格源。
+网页使用的图片放在：
 
-`src/data/content.ts` 只负责把 JSON 内容加载成页面使用的类型，不需要在新增记录时修改。
+```text
+public/media/<地点 id>/
+```
 
-## 地图适配
+原始照片可以保存在本地项目目录：
 
-地图渲染集中在 `src/components/MapView.tsx` 与 `src/map/cityScene.ts`。默认使用 OpenFreeMap 的 MapLibre 矢量 style，并在可用的建筑高度数据上增加 3D extrusion；同时使用可配置的 raster-dem 地形源。路线使用 GeoJSON source 和地图原生 line layer，地点使用坐标锚定的 HTML Marker，因此缩放、拖动时不会漂移。`VITE_MAP_STYLE_URL` 可以替换为自有 MapLibre style JSON，无法访问时会自动回退到 OSM 栅格底图；地形源异常时只关闭 terrain，不影响地图和路线继续工作。
+```text
+media-originals/<地点 id>/
+```
 
-当前默认的 OpenFreeMap 公共实例无需 token，地形默认使用公开的 Mapterhorn TileJSON；正式长期使用前仍应根据访问量、服务条款和地图资质评估公共实例、自己托管或商业矢量服务的选择。
+`media-originals/` 默认不会提交到 Git。建议网页使用 WebP，原图只作为本地素材归档。
+
+## Repository Structure / 仓库结构
+
+```text
+Dog-Map/
+├── public/media/             # 网页使用的图片、视频和占位资源
+├── media-originals/          # 本地原图目录，不提交到 Git
+├── src/
+│   ├── components/           # 地图和界面组件
+│   ├── data/                 # 地点、路线和内容数据
+│   ├── map/                  # 地图样式、路线和图案逻辑
+│   ├── services/             # 媒体 API 客户端
+│   └── styles/               # 全局样式和设计令牌
+├── server/                   # 可选的媒体服务
+├── tests/                    # Playwright 端到端测试
+└── README.md
+```
+
+## Contact / 问题反馈
+
+发现问题或有新的路线、地点建议，可以提交 [GitHub Issue](https://github.com/ZhouYinLong-lab/Dog-Map/issues)。
+
+## License / 许可证
+
+仓库当前未单独声明许可证。代码和图片素材如需复用，请先联系项目作者。

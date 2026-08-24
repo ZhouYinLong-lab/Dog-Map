@@ -23,7 +23,14 @@ test('shows the selected place identity and hides map overlays in the detail vie
   await page.goto('/')
   await page.getByRole('button', { name: '打开地点：南京大学苏州校区' }).click()
   await expect(page.locator('.detail-drawer__identity')).toContainText('南京大学苏州校区')
-  await expect(page.locator('.place-marker').first()).toHaveCSS('visibility', 'hidden')
+  await expect(page.locator('.place-marker').first()).toHaveCSS('visibility', 'visible')
+  await expect(page.locator('.place-marker').nth(1)).toHaveCSS('visibility', 'hidden')
+})
+
+test('has a GitHub repository link in the lower-left corner', async ({ page }) => {
+  await page.goto('/')
+  const link = page.getByRole('link', { name: '打开 Dog Map GitHub 仓库' })
+  await expect(link).toHaveAttribute('href', 'https://github.com/ZhouYinLong-lab/Dog-Map')
 })
 
 test('opens an image preview and closes it with Escape', async ({ page }) => {

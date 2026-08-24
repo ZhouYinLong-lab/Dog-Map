@@ -297,7 +297,7 @@ export function MapView({
       element.type = 'button'
       element.className = `place-marker place-marker--${place.accent}${place.markerImage ? ' place-marker--sticker' : ''}`
       element.dataset.placeId = place.id
-      element.style.visibility = activePlaceId ? 'hidden' : 'visible'
+      element.style.visibility = !activePlaceId || place.id === activePlaceId ? 'visible' : 'hidden'
       element.style.setProperty('--route-color', routeColors[place.routeId] ?? getRouteColor(0))
       element.setAttribute('aria-label', `打开地点：${place.title}`)
       element.innerHTML = `<img class="place-marker__art" src="${place.markerImage ?? artworkDataUri(place.id, place.accent, place.art)}" alt="" aria-hidden="true" />`
@@ -347,7 +347,8 @@ export function MapView({
       if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibility)
     })
     markerElementsRef.current.forEach((element) => {
-      element.style.visibility = visibility
+      const isSelected = element.dataset.placeId === activePlaceId
+      element.style.visibility = !activePlaceId || isSelected ? 'visible' : 'hidden'
     })
   }, [activePlaceId, mapReady])
 

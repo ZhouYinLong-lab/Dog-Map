@@ -130,9 +130,11 @@ function App() {
               alt=""
               aria-hidden="true"
             />
-            <span className="detail-drawer__identity-name">{activePlace.title}</span>
+            <div className="detail-drawer__identity-copy">
+              <h1 className="detail-drawer__identity-name">{activePlace.title}</h1>
+              <p className="detail-drawer__identity-subtitle">{activePlace.subtitle}</p>
+            </div>
           </div>
-          <h1 className="detail-drawer__media-title">{activePlace.subtitle}</h1>
           <div className="media-grid">
             {(remoteMedia[activePlace.id] ?? activePlace.media).map((item, index) => <MediaBlock key={`${item.type}-${index}`} item={item} onPreview={setPreviewItem} />)}
           </div>

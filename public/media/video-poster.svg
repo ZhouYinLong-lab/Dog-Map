@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
-  <rect width="1200" height="760" fill="#111111"/>
-  <path d="M0 90h1200M0 180h1200M0 270h1200M0 360h1200M0 450h1200M0 540h1200M0 630h1200" stroke="#f2eadc" stroke-width="2" opacity=".2"/>
-  <path d="M170 0 990 760M410 0 1200 730M0 350 440 760" stroke="#e6333b" stroke-width="24" opacity=".9"/>
-  <text x="80" y="130" fill="#f1c743" font-family="monospace" font-size="40" letter-spacing="6">MOTION SLOT</text>
-  <text x="80" y="670" fill="#f2eadc" font-family="Arial Narrow, sans-serif" font-size="76" font-weight="900">VIDEO / 00:00</text>
-</svg>

@@ -297,6 +297,7 @@ export function MapView({
       element.type = 'button'
       element.className = `place-marker place-marker--${place.accent}${place.markerImage ? ' place-marker--sticker' : ''}`
       element.dataset.placeId = place.id
+      element.style.visibility = activePlaceId ? 'hidden' : 'visible'
       element.style.setProperty('--route-color', routeColors[place.routeId] ?? getRouteColor(0))
       element.setAttribute('aria-label', `打开地点：${place.title}`)
       element.innerHTML = `<img class="place-marker__art" src="${place.markerImage ?? artworkDataUri(place.id, place.accent, place.art)}" alt="" aria-hidden="true" />`
@@ -314,8 +315,9 @@ export function MapView({
     const updateMarkerScale = () => {
       const zoomScale = markerScaleForZoom(map.getZoom())
       markerElementsRef.current.forEach((element) => {
-        element.style.setProperty('--marker-scale', `${zoomScale}`)
-        element.style.setProperty('--marker-hover-scale', `${zoomScale * 1.1}`)
+        const scale = zoomScale * (element.classList.contains('place-marker--sticker') ? 1.12 : 1)
+        element.style.setProperty('--marker-scale', `${scale}`)
+        element.style.setProperty('--marker-hover-scale', `${scale * 1.1}`)
       })
     }
     updateMarkerScale()
@@ -327,7 +329,27 @@ export function MapView({
       markersRef.current = []
       markerElementsRef.current = []
     }
-  }, [mapReady, places, routes, onHoverPlace, onSelectPlace])
+  }, [activePlaceId, mapReady, places, routes, onHoverPlace, onSelectPlace])
+
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || !mapReady) return
+
+    const visibility = activePlaceId ? 'none' : 'visible'
+    ;[
+      'route-ink',
+      'route-core',
+      'route-highlight',
+      'route-active-ink',
+      'route-active-core',
+      'route-active-highlight',
+    ].forEach((layerId) => {
+      if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibility)
+    })
+    markerElementsRef.current.forEach((element) => {
+      element.style.visibility = visibility
+    })
+  }, [activePlaceId, mapReady])
 
   useEffect(() => {
     document.querySelectorAll<HTMLElement>('.place-marker').forEach((element) => {

@@ -3,6 +3,7 @@ import { MapView } from './components/MapView'
 import { places, routes } from './data/content'
 import { loadRemoteMedia } from './services/mediaApi'
 import type { MediaItem } from './types/content'
+import { artworkDataUri } from './map/artwork'
 
 function MediaBlock({ item, onPreview }: { item: MediaItem; onPreview: (item: MediaItem) => void }) {
   const [failed, setFailed] = useState(false)
@@ -122,6 +123,15 @@ function App() {
       {activePlace && (
         <aside className="detail-drawer" aria-label={`${activePlace.title}详情`}>
           <button className="detail-drawer__close" type="button" onClick={() => setActivePlaceId(null)} aria-label="关闭详情">×</button>
+          <div className="detail-drawer__identity" aria-label={activePlace.title}>
+            <img
+              className="detail-drawer__identity-icon"
+              src={activePlace.markerImage ?? artworkDataUri(activePlace.id, activePlace.accent, activePlace.art)}
+              alt=""
+              aria-hidden="true"
+            />
+            <span className="detail-drawer__identity-name">{activePlace.title}</span>
+          </div>
           <h1 className="detail-drawer__media-title">{activePlace.subtitle}</h1>
           <div className="media-grid">
             {(remoteMedia[activePlace.id] ?? activePlace.media).map((item, index) => <MediaBlock key={`${item.type}-${index}`} item={item} onPreview={setPreviewItem} />)}

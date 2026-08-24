@@ -4,7 +4,7 @@ import { places, routes } from './data/content'
 import { loadRemoteMedia } from './services/mediaApi'
 import type { MediaItem } from './types/content'
 
-function MediaBlock({ item }: { item: MediaItem }) {
+function MediaBlock({ item, onPreview }: { item: MediaItem; onPreview: (item: MediaItem) => void }) {
   const [failed, setFailed] = useState(false)
 
   if (failed) {
@@ -31,9 +31,41 @@ function MediaBlock({ item }: { item: MediaItem }) {
 
   return (
     <figure className="media-figure">
-      <img className="media-block" src={item.src} alt={item.alt} loading="lazy" onError={() => setFailed(true)} />
+      <button className="media-preview-trigger" type="button" onClick={() => onPreview(item)} aria-label={`预览：${item.alt}`}>
+        <img className="media-block" src={item.src} alt={item.alt} loading="lazy" onError={() => setFailed(true)} />
+      </button>
       {item.caption && <figcaption>{item.caption}</figcaption>}
     </figure>
+  )
+}
+
+function ImageLightbox({ item, onClose }: { item: MediaItem; onClose: () => void }) {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose()
+    }
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [onClose])
+
+  return (
+    <div
+      className="media-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`图片预览：${item.alt}`}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) onClose()
+      }}
+    >
+      <button className="media-lightbox__close" type="button" onClick={onClose} aria-label="关闭图片预览" autoFocus>×</button>
+      <img className="media-lightbox__image" src={item.src} alt={item.alt} onClick={(event) => event.stopPropagation()} />
+    </div>
   )
 }
 
@@ -42,6 +74,7 @@ function App() {
   const [hoveredPlaceId, setHoveredPlaceId] = useState<string | null>(null)
   const [activeRouteId, setActiveRouteId] = useState<string | null>(routes[0]?.id ?? null)
   const [remoteMedia, setRemoteMedia] = useState<Record<string, MediaItem[]>>({})
+  const [previewItem, setPreviewItem] = useState<MediaItem | null>(null)
 
   const activePlace = useMemo(
     () => places.find((place) => place.id === activePlaceId) ?? null,
@@ -91,10 +124,12 @@ function App() {
           <button className="detail-drawer__close" type="button" onClick={() => setActivePlaceId(null)} aria-label="关闭详情">×</button>
           <h1 className="detail-drawer__media-title">{activePlace.subtitle}</h1>
           <div className="media-grid">
-            {(remoteMedia[activePlace.id] ?? activePlace.media).map((item, index) => <MediaBlock key={`${item.type}-${index}`} item={item} />)}
+            {(remoteMedia[activePlace.id] ?? activePlace.media).map((item, index) => <MediaBlock key={`${item.type}-${index}`} item={item} onPreview={setPreviewItem} />)}
           </div>
         </aside>
       )}
+
+      {previewItem && <ImageLightbox item={previewItem} onClose={() => setPreviewItem(null)} />}
     </main>
   )
 }

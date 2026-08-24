@@ -19,6 +19,15 @@ test('opens and closes a destination detail drawer', async ({ page }) => {
   await expect(page.getByRole('complementary', { name: '平江路详情' })).toHaveCount(0)
 })
 
+test('opens an image preview and closes it with Escape', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: '打开地点：南京大学苏州校区' }).click()
+  await page.getByRole('button', { name: '预览：骑车初遇照片 01' }).click()
+  await expect(page.getByRole('dialog', { name: '图片预览：骑车初遇照片 01' })).toBeVisible()
+  await page.keyboard.press('Escape')
+  await expect(page.getByRole('dialog')).toHaveCount(0)
+})
+
 test('keeps the map focused on map and visit artwork', async ({ page }) => {
   await page.goto('/')
   await expect(page.locator('.bottom-strip')).toHaveCount(0)

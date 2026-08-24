@@ -3,7 +3,6 @@ import { MapView } from './components/MapView'
 import { places, routes } from './data/content'
 import { loadRemoteMedia } from './services/mediaApi'
 import type { MediaItem } from './types/content'
-import { artworkDataUri } from './map/artwork'
 
 function MediaBlock({ item }: { item: MediaItem }) {
   const [failed, setFailed] = useState(false)
@@ -36,10 +35,6 @@ function MediaBlock({ item }: { item: MediaItem }) {
       {item.caption && <figcaption>{item.caption}</figcaption>}
     </figure>
   )
-}
-
-function VisualPattern({ id, color, art }: { id: string; color: 'red' | 'teal' | 'yellow'; art?: Parameters<typeof artworkDataUri>[2] }) {
-  return <img className="visual-pattern" src={artworkDataUri(id, color, art)} alt="" aria-hidden="true" />
 }
 
 function App() {
@@ -94,20 +89,9 @@ function App() {
       {activePlace && (
         <aside className="detail-drawer" aria-label={`${activePlace.title}详情`}>
           <button className="detail-drawer__close" type="button" onClick={() => setActivePlaceId(null)} aria-label="关闭详情">×</button>
-          <div className="detail-drawer__header">
-            <span className="eyebrow">{activePlace.date} / {activePlace.accent.toUpperCase()}</span>
-            <span className="detail-drawer__slash">///</span>
-          </div>
-          <h1>{activePlace.title}</h1>
-          <p className="detail-drawer__subtitle">{activePlace.subtitle}</p>
-          <p className="detail-drawer__description">{activePlace.description}</p>
-          <VisualPattern id={activePlace.id} color={activePlace.accent} art={activePlace.art} />
+          <h1 className="detail-drawer__media-title">{activePlace.subtitle}</h1>
           <div className="media-grid">
             {(remoteMedia[activePlace.id] ?? activePlace.media).map((item, index) => <MediaBlock key={`${item.type}-${index}`} item={item} />)}
-          </div>
-          <div className="detail-drawer__footer">
-            <span>LOCATION LOCKED</span>
-            <span>{activePlace.coordinates[1].toFixed(4)} / {activePlace.coordinates[0].toFixed(4)}</span>
           </div>
         </aside>
       )}

@@ -314,9 +314,8 @@ export function MapView({
     const updateMarkerScale = () => {
       const zoomScale = markerScaleForZoom(map.getZoom())
       markerElementsRef.current.forEach((element) => {
-        const scale = zoomScale * (element.classList.contains('place-marker--sticker') ? 1.12 : 1)
-        element.style.setProperty('--marker-scale', `${scale}`)
-        element.style.setProperty('--marker-hover-scale', `${scale * 1.1}`)
+        element.style.setProperty('--marker-scale', `${zoomScale}`)
+        element.style.setProperty('--marker-hover-scale', `${zoomScale * 1.1}`)
       })
     }
     updateMarkerScale()

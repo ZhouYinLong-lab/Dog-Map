@@ -27,8 +27,10 @@ button { font: inherit; }
 
 .map-stage::before, .map-stage::after, .map-grain, .map-slice, .bottom-strip { display: none; }
 
-.place-marker { --marker-scale: 1; --marker-hover-scale: 1.1; position: relative; display: grid; place-items: center; width: 92px; height: 92px; padding: 0; border: 0; color: var(--paper); background: transparent; cursor: pointer; transform: scale(var(--marker-scale)); transform-origin: 50% 100%; transition: transform 180ms ease, filter 180ms ease; }
-.place-marker:hover, .place-marker:focus-visible, .place-marker.is-hovered, .place-marker.is-active { z-index: 10; transform: scale(var(--marker-hover-scale)) rotate(-2deg); filter: drop-shadow(7px 7px 0 rgba(17,17,17,0.78)); outline: none; }
+.place-marker { --marker-scale: 1; --marker-hover-scale: 1.1; position: relative; display: grid; place-items: center; width: 92px; height: 92px; padding: 0; border: 0; color: var(--paper); background: transparent; cursor: pointer; }
+.place-marker__visual { display: grid; place-items: center; width: 100%; height: 100%; transform: scale(var(--marker-scale)); transform-origin: 50% 100%; transition: transform 180ms ease, filter 180ms ease; }
+.place-marker:hover, .place-marker:focus-visible, .place-marker.is-hovered, .place-marker.is-active { z-index: 10; outline: none; }
+.place-marker:hover .place-marker__visual, .place-marker:focus-visible .place-marker__visual, .place-marker.is-hovered .place-marker__visual, .place-marker.is-active .place-marker__visual { transform: scale(var(--marker-hover-scale)) rotate(-2deg); filter: drop-shadow(7px 7px 0 rgba(17,17,17,0.78)); }
 .place-marker__art { display: block; width: 86px; height: 86px; object-fit: contain; }
 .place-marker--sticker { width: 168px; height: 180px; }
 .place-marker--sticker .place-marker__art { width: 168px; height: 180px; }

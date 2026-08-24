@@ -33,8 +33,8 @@ function routeFeatureCollection(data: Route[], colorOffset = 0) {
   }
 }
 
-function markerScaleForZoom(zoom: number) {
-  return Math.min(1.55, Math.max(0.42, 2 ** (zoom - 13.2)))
+function markerScaleForZoom(zoom: number, referenceZoom: number) {
+  return 2 ** (zoom - referenceZoom)
 }
 
 function routePointAt(route: Route | undefined, progress: number) {
@@ -107,6 +107,7 @@ export function MapView({
   const mapRef = useRef<Map | null>(null)
   const markersRef = useRef<maplibregl.Marker[]>([])
   const markerElementsRef = useRef<HTMLElement[]>([])
+  const markerReferenceZoomRef = useRef(13.2)
   const routeCameraInitializedRef = useRef(false)
   const [mapReady, setMapReady] = useState(0)
 
@@ -119,11 +120,14 @@ export function MapView({
     void resolveMapStyle().then(({ style, mode }) => {
       if (disposed || !mapContainerRef.current) return
 
+      const initialZoom = mode === 'vector' ? 13.2 : 11.4
+      markerReferenceZoomRef.current = initialZoom
+
       map = new maplibregl.Map({
         container: mapContainerRef.current,
         style,
         center: njuSuzhouCampus,
-        zoom: mode === 'vector' ? 13.2 : 11.4,
+        zoom: initialZoom,
         pitch: mode === 'vector' ? 58 : 0,
         bearing: mode === 'vector' ? -12 : 0,
         minZoom: 9,
@@ -300,7 +304,7 @@ export function MapView({
       element.style.visibility = !activePlaceId || place.id === activePlaceId ? 'visible' : 'hidden'
       element.style.setProperty('--route-color', routeColors[place.routeId] ?? getRouteColor(0))
       element.setAttribute('aria-label', `打开地点：${place.title}`)
-      element.innerHTML = `<img class="place-marker__art" src="${place.markerImage ?? artworkDataUri(place.id, place.accent, place.art)}" alt="" aria-hidden="true" />`
+      element.innerHTML = `<span class="place-marker__visual"><img class="place-marker__art" src="${place.markerImage ?? artworkDataUri(place.id, place.accent, place.art)}" alt="" aria-hidden="true" /></span>`
       element.addEventListener('mouseenter', () => onHoverPlace(place.id))
       element.addEventListener('mouseleave', () => onHoverPlace(null))
       element.addEventListener('focus', () => onHoverPlace(place.id))
@@ -313,9 +317,9 @@ export function MapView({
     })
     markerElementsRef.current = places.map((place) => document.querySelector<HTMLElement>(`.place-marker[data-place-id="${place.id}"]`)).filter((element): element is HTMLElement => Boolean(element))
     const updateMarkerScale = () => {
-      const zoomScale = markerScaleForZoom(map.getZoom())
+      const zoomScale = markerScaleForZoom(map.getZoom(), markerReferenceZoomRef.current)
       markerElementsRef.current.forEach((element) => {
-        const scale = zoomScale * (element.classList.contains('place-marker--sticker') ? 1.12 : 1)
+        const scale = zoomScale
         element.style.setProperty('--marker-scale', `${scale}`)
         element.style.setProperty('--marker-hover-scale', `${scale * 1.1}`)
       })

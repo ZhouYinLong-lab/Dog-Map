@@ -48,6 +48,31 @@ test('keeps the map focused on map and visit artwork', async ({ page }) => {
   await expect(page.locator('.place-marker__art')).toHaveCount(3)
 })
 
+test('scales marker artwork with map zoom', async ({ page }) => {
+  await page.goto('/')
+  const marker = page.locator('.place-marker__visual').first()
+  await expect(marker).toBeVisible()
+  const before = await marker.boundingBox()
+  expect(before).not.toBeNull()
+
+  const map = page.locator('.map-view')
+  const mapBox = await map.boundingBox()
+  expect(mapBox).not.toBeNull()
+  await page.mouse.move(mapBox!.x + mapBox!.width / 2, mapBox!.y + mapBox!.height / 2)
+  await page.mouse.wheel(0, -600)
+  await page.waitForTimeout(350)
+
+  const afterZoomIn = await marker.boundingBox()
+  expect(afterZoomIn).not.toBeNull()
+  expect(afterZoomIn!.width).toBeGreaterThan(before!.width + 10)
+
+  await page.mouse.wheel(0, 1200)
+  await page.waitForTimeout(350)
+  const afterZoomOut = await marker.boundingBox()
+  expect(afterZoomOut).not.toBeNull()
+  expect(afterZoomOut!.width).toBeLessThan(afterZoomIn!.width - 10)
+})
+
 test('mobile layout has no horizontal overflow', async ({ page }) => {
   await page.goto('/')
   const dimensions = await page.evaluate(() => ({

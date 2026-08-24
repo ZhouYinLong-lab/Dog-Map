@@ -6,3 +6,4 @@ playwright-report/
 .tmp-*
 data/media/
 data/media-catalog.json
+media-originals/

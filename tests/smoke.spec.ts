@@ -11,6 +11,13 @@ test('renders the current destination marker without demo content', async ({ pag
   await expect(page.getByRole('region', { name: '路线图例' })).toHaveCount(0)
 })
 
+test('shows the map source attribution', async ({ page }) => {
+  await page.goto('/')
+  const attribution = page.locator('.maplibregl-ctrl-attrib')
+  await expect(attribution).toBeVisible()
+  await expect(attribution).toContainText(/OpenStreetMap|OpenFreeMap/)
+})
+
 test('opens and closes the current destination detail drawer', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('button', { name: '打开地点：南京大学苏州校区' }).click()

@@ -94,7 +94,7 @@ media-originals/<地点 id>/
 
 ```text
 Dog-Map/
-├── public/media/             # 网页使用的图片、视频和占位资源
+├── public/media/             # 网页使用的图片、视频和地点素材
 ├── media-originals/          # 本地原图目录，不提交到 Git
 ├── src/
 │   ├── components/           # 地图和界面组件
@@ -113,4 +113,16 @@ Dog-Map/
 
 ## License / 许可证
 
-仓库当前未单独声明许可证。代码和图片素材如需复用，请先联系项目作者。
+### 项目源代码
+
+Dog Map 的原创源代码采用 [MIT License](./LICENSE)。该许可只适用于本项目原创代码，不包含图片、地图数据和第三方软件或服务。
+
+### 图片素材
+
+项目照片、照片的 WebP 版本和自制图片素材采用 [CC BY-NC-ND 4.0](./LICENSE-MEDIA.md)。使用时需要署名，不得用于商业用途，也不得发布修改后的版本。
+
+### 地图与第三方来源
+
+地图渲染使用 MapLibre GL JS，地图服务与地图数据的许可、署名和来源见
+[THIRD-PARTY-NOTICES.md](./THIRD-PARTY-NOTICES.md)。地图数据归属 OpenStreetMap，
+并遵循 ODbL 要求；网页地图角落会显示相应的 attribution。

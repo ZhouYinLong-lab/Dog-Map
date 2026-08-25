@@ -73,25 +73,31 @@ function ImageLightbox({ items, index, onClose, onNavigate }: { items: MediaItem
       }}
       >
       <button className="media-lightbox__close" type="button" onClick={onClose} aria-label="关闭图片预览" autoFocus>×</button>
-      <button
-        className="media-lightbox__nav media-lightbox__nav--previous"
-        type="button"
-        onClick={() => onNavigate(index - 1)}
-        disabled={!canGoPrevious}
-        aria-label="上一张图片"
-      >
-        ←
-      </button>
-      <img className="media-lightbox__image" src={item.src} alt={item.alt} onClick={(event) => event.stopPropagation()} />
-      <button
-        className="media-lightbox__nav media-lightbox__nav--next"
-        type="button"
-        onClick={() => onNavigate(index + 1)}
-        disabled={!canGoNext}
-        aria-label="下一张图片"
-      >
-        →
-      </button>
+      <div className="media-lightbox__stage" onClick={(event) => event.stopPropagation()}>
+        <img className="media-lightbox__image" src={item.src} alt={item.alt} />
+        <button
+          className="media-lightbox__nav media-lightbox__nav--previous"
+          type="button"
+          onClick={() => onNavigate(index - 1)}
+          disabled={!canGoPrevious}
+          aria-label="上一张图片"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 12H5M11 6l-6 6 6 6" />
+          </svg>
+        </button>
+        <button
+          className="media-lightbox__nav media-lightbox__nav--next"
+          type="button"
+          onClick={() => onNavigate(index + 1)}
+          disabled={!canGoNext}
+          aria-label="下一张图片"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </button>
+      </div>
     </div>
   )
 }

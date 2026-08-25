@@ -11,6 +11,13 @@ test('renders the current destination markers without demo content', async ({ pa
   await expect(page.getByRole('region', { name: '路线图例' })).toHaveCount(0)
 })
 
+test('keeps every place marker in the map positioning layer', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.locator('.place-marker')).toHaveCount(2)
+  const positions = await page.locator('.place-marker').evaluateAll((elements) => elements.map((element) => getComputedStyle(element).position))
+  expect(positions.every((position) => position === 'absolute')).toBeTruthy()
+})
+
 test('shows the map source attribution', async ({ page }) => {
   await page.goto('/')
   const attribution = page.locator('.maplibregl-ctrl-attrib')

@@ -1,13 +1,13 @@
 import { expect, test } from '@playwright/test'
 
-test('renders the current destination marker without demo content', async ({ page }) => {
+test('renders the current destination markers without demo content', async ({ page }) => {
   await page.goto('/')
   await expect(page).toHaveTitle(/Dog Map/)
   await expect(page.locator('.map-view')).toBeVisible()
-  await expect(page.locator('.place-marker')).toHaveCount(1)
-  await expect(page.locator('.place-marker__art')).toHaveCount(1)
+  await expect(page.locator('.place-marker')).toHaveCount(2)
+  await expect(page.locator('.place-marker__art')).toHaveCount(2)
   await expect(page.getByRole('button', { name: '打开地点：南京大学苏州校区' })).toHaveClass(/place-marker--sticker/)
-  await expect(page.getByRole('button', { name: '打开地点：平江路' })).toHaveCount(0)
+  await expect(page.getByRole('button', { name: '打开地点：东渚夜市' })).toHaveClass(/place-marker--sticker/)
   await expect(page.getByRole('region', { name: '路线图例' })).toHaveCount(0)
 })
 
@@ -68,7 +68,7 @@ test('opens an image preview and closes it with Escape', async ({ page }) => {
 test('keeps the map focused on map and visit artwork', async ({ page }) => {
   await page.goto('/')
   await expect(page.locator('.bottom-strip')).toHaveCount(0)
-  await expect(page.locator('.place-marker__art')).toHaveCount(1)
+  await expect(page.locator('.place-marker__art')).toHaveCount(2)
 })
 
 test('scales marker artwork with map zoom', async ({ page }) => {

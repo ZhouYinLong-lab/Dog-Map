@@ -32,5 +32,22 @@
       { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824103504.webp", "alt": "骑车初遇照片 22" }
     ],
     "markerImage": "/media/nanjing-university-suzhou-campus.png"
+  },
+  {
+    "id": "dongzhu-night-market",
+    "title": "东渚夜市",
+    "subtitle": "骑车夜访",
+    "date": "2026.08.25",
+    "coordinates": [120.4004, 31.3294],
+    "accent": "red",
+    "description": "沿着渚镇路骑到东渚夜市，在拱形灯牌和密集摊位的霓虹里，买下今晚的烟火气。",
+    "media": [
+      { "type": "image", "src": "/media/dongzhu-night-market/dongzhu-night-market-01.webp", "alt": "东渚夜市骑行抵达照片 01" },
+      { "type": "image", "src": "/media/dongzhu-night-market/dongzhu-night-market-02.webp", "alt": "东渚夜市骑行抵达照片 02" },
+      { "type": "image", "src": "/media/dongzhu-night-market/dongzhu-night-market-03.webp", "alt": "东渚夜市夜间街景照片" },
+      { "type": "image", "src": "/media/dongzhu-night-market/dongzhu-night-market-04.webp", "alt": "东渚夜市拱形入口照片" },
+      { "type": "image", "src": "/media/dongzhu-night-market/dongzhu-night-market-05.webp", "alt": "东渚夜市摊位照片" }
+    ],
+    "markerImage": "/media/dongzhu-night-market/dongzhu-night-market-sticker.png"
   }
 ]

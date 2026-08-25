@@ -77,10 +77,10 @@ button { font: inherit; }
 .media-lightbox__image { display: block; max-width: min(calc(100vw - 96px), 1400px); max-height: calc(100vh - 96px); object-fit: contain; border: 2px solid var(--paper); box-shadow: 12px 12px 0 rgba(0,0,0,0.58); }
 .media-lightbox__close { position: absolute; top: 22px; right: 24px; z-index: 1; width: 42px; height: 42px; border: 1px solid var(--paper); color: var(--paper); background: var(--ink); cursor: pointer; font-size: 30px; line-height: 1; }
 .media-lightbox__close:hover, .media-lightbox__close:focus-visible { color: var(--ink); background: var(--paper); outline: none; }
-.media-lightbox__nav { position: absolute; top: 50%; z-index: 1; display: grid; place-items: center; width: 56px; height: 72px; padding: 0; border: 3px solid #fff; color: #fff; background: #000; cursor: pointer; transform: translateY(-50%); transition: background 160ms ease, opacity 160ms ease; }
+.media-lightbox__nav { position: fixed; top: 50%; z-index: 1; display: grid; place-items: center; width: 56px; height: 72px; padding: 0; border: 3px solid #fff; color: #fff; background: #000; cursor: pointer; transform: translateY(-50%); transition: background 160ms ease, opacity 160ms ease; }
 .media-lightbox__nav svg { display: block; width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 3.5; stroke-linecap: square; stroke-linejoin: miter; }
-.media-lightbox__nav--previous { left: -68px; }
-.media-lightbox__nav--next { right: -68px; }
+.media-lightbox__nav--previous { left: max(16px, calc(50% - 768px)); }
+.media-lightbox__nav--next { right: max(16px, calc(50% - 768px)); }
 .media-lightbox__nav:hover, .media-lightbox__nav:focus-visible { background: #fff; color: #000; outline: none; }
 .media-lightbox__nav:disabled { opacity: 0.28; cursor: not-allowed; }
 .media-lightbox__nav:disabled:hover { color: #fff; background: #000; }
@@ -118,8 +118,8 @@ button { font: inherit; }
   .media-lightbox__close { top: 12px; right: 12px; }
   .media-lightbox__nav { width: 44px; height: 58px; }
   .media-lightbox__nav svg { width: 28px; height: 28px; }
-  .media-lightbox__nav--previous { left: -52px; }
-  .media-lightbox__nav--next { right: -52px; }
+  .media-lightbox__nav--previous { left: 10px; }
+  .media-lightbox__nav--next { right: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

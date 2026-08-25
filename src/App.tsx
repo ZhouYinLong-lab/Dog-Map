@@ -5,7 +5,7 @@ import { loadRemoteMedia } from './services/mediaApi'
 import type { MediaItem } from './types/content'
 import { artworkDataUri } from './map/artwork'
 
-function MediaBlock({ item, onPreview }: { item: MediaItem; onPreview: (item: MediaItem) => void }) {
+function MediaBlock({ item, onPreview }: { item: MediaItem; onPreview: () => void }) {
   const [failed, setFailed] = useState(false)
 
   if (failed) {
@@ -32,7 +32,7 @@ function MediaBlock({ item, onPreview }: { item: MediaItem; onPreview: (item: Me
 
   return (
     <figure className="media-figure">
-      <button className="media-preview-trigger" type="button" onClick={() => onPreview(item)} aria-label={`预览：${item.alt}`}>
+      <button className="media-preview-trigger" type="button" onClick={onPreview} aria-label={`预览：${item.alt}`}>
         <img className="media-block" src={item.src} alt={item.alt} loading="lazy" onError={() => setFailed(true)} />
       </button>
       {item.caption && <figcaption>{item.caption}</figcaption>}
@@ -40,10 +40,16 @@ function MediaBlock({ item, onPreview }: { item: MediaItem; onPreview: (item: Me
   )
 }
 
-function ImageLightbox({ item, onClose }: { item: MediaItem; onClose: () => void }) {
+function ImageLightbox({ items, index, onClose, onNavigate }: { items: MediaItem[]; index: number; onClose: () => void; onNavigate: (index: number) => void }) {
+  const item = items[index]
+  const canGoPrevious = index > 0
+  const canGoNext = index < items.length - 1
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose()
+      if (event.key === 'ArrowLeft' && canGoPrevious) onNavigate(index - 1)
+      if (event.key === 'ArrowRight' && canGoNext) onNavigate(index + 1)
     }
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
@@ -52,7 +58,9 @@ function ImageLightbox({ item, onClose }: { item: MediaItem; onClose: () => void
       document.body.style.overflow = previousOverflow
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [onClose])
+  }, [canGoNext, canGoPrevious, index, onClose, onNavigate])
+
+  if (!item) return null
 
   return (
     <div
@@ -63,9 +71,27 @@ function ImageLightbox({ item, onClose }: { item: MediaItem; onClose: () => void
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose()
       }}
-    >
+      >
       <button className="media-lightbox__close" type="button" onClick={onClose} aria-label="关闭图片预览" autoFocus>×</button>
+      <button
+        className="media-lightbox__nav media-lightbox__nav--previous"
+        type="button"
+        onClick={() => onNavigate(index - 1)}
+        disabled={!canGoPrevious}
+        aria-label="上一张图片"
+      >
+        ←
+      </button>
       <img className="media-lightbox__image" src={item.src} alt={item.alt} onClick={(event) => event.stopPropagation()} />
+      <button
+        className="media-lightbox__nav media-lightbox__nav--next"
+        type="button"
+        onClick={() => onNavigate(index + 1)}
+        disabled={!canGoNext}
+        aria-label="下一张图片"
+      >
+        →
+      </button>
     </div>
   )
 }
@@ -75,12 +101,14 @@ function App() {
   const [hoveredPlaceId, setHoveredPlaceId] = useState<string | null>(null)
   const [activeRouteId, setActiveRouteId] = useState<string | null>(routes[0]?.id ?? null)
   const [remoteMedia, setRemoteMedia] = useState<Record<string, MediaItem[]>>({})
-  const [previewItem, setPreviewItem] = useState<MediaItem | null>(null)
+  const [previewIndex, setPreviewIndex] = useState<number | null>(null)
 
   const activePlace = useMemo(
     () => places.find((place) => place.id === activePlaceId) ?? null,
     [activePlaceId],
   )
+  const previewItems = activePlace ? (remoteMedia[activePlace.id] ?? activePlace.media) : []
+  const previewItem = previewIndex === null ? null : previewItems[previewIndex] ?? null
   useEffect(() => {
     if (!activePlace) return
     const controller = new AbortController()
@@ -136,12 +164,19 @@ function App() {
             </div>
           </div>
           <div className="media-grid">
-            {(remoteMedia[activePlace.id] ?? activePlace.media).map((item, index) => <MediaBlock key={`${item.type}-${index}`} item={item} onPreview={setPreviewItem} />)}
+            {previewItems.map((item, index) => <MediaBlock key={`${item.type}-${index}`} item={item} onPreview={() => setPreviewIndex(index)} />)}
           </div>
         </aside>
       )}
 
-      {previewItem && <ImageLightbox item={previewItem} onClose={() => setPreviewItem(null)} />}
+      {previewItem && previewIndex !== null && (
+        <ImageLightbox
+          items={previewItems}
+          index={previewIndex}
+          onClose={() => setPreviewIndex(null)}
+          onNavigate={setPreviewIndex}
+        />
+      )}
 
       <a
         className="github-repo-link"

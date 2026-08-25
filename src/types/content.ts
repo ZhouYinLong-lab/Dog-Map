@@ -19,6 +19,8 @@ export type Place = {
   subtitle: string
   date: string
   coordinates: Coordinates
+  coordinateSource: 'photo-exif' | 'map-poi'
+  coordinateReference: string
   routeId?: string
   accent: 'red' | 'yellow'
   description: string

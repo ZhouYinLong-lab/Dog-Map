@@ -1,0 +1,13 @@
+{
+  "nju-suzhou-campus": {
+    "coordinates": [120.387037, 31.351239],
+    "toleranceMeters": 20,
+    "source": "Amap POI: 南京大学苏州校区（东区）",
+    "referenceUrl": "https://www.amap.com/place/B0I2VU5PUC"
+  },
+  "dongzhu-night-market": {
+    "coordinates": [120.394792, 31.336724],
+    "toleranceMeters": 150,
+    "source": "五张现场原图 GPS EXIF 坐标的平均值"
+  }
+}

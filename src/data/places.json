@@ -5,6 +5,8 @@
     "subtitle": "骑车初遇",
     "date": "2026.08.24",
     "coordinates": [120.387037, 31.351239],
+    "coordinateSource": "map-poi",
+    "coordinateReference": "Amap POI：南京大学苏州校区（东区）",
     "accent": "yellow",
     "description": "把南大苏州校区作为这张地图的原点。之后每一次出发、抵达和路过，都会从这里向城市展开。",
     "media": [
@@ -39,6 +41,8 @@
     "subtitle": "骑车夜访",
     "date": "2026.08.25",
     "coordinates": [120.394792, 31.336724],
+    "coordinateSource": "photo-exif",
+    "coordinateReference": "五张现场原图 GPS EXIF 坐标的平均值",
     "accent": "red",
     "description": "沿着渚镇路骑到东渚夜市，在拱形灯牌和密集摊位的霓虹里，买下今晚的烟火气。",
     "media": [

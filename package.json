@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run validate:places && tsc -b && vite build",
     "preview": "vite preview",
     "test:e2e": "playwright test",
     "typecheck:server": "tsc -p tsconfig.server.json --noEmit",
-    "server:dev": "tsx server/index.ts"
+    "server:dev": "tsx server/index.ts",
+    "validate:places": "node scripts/validate-place-coordinates.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.872.0",

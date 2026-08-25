@@ -60,10 +60,20 @@ npm run test:e2e
 编辑 `src/data/places.json`，新增地点对象：
 
 - `coordinates` 使用 `[经度, 纬度]`；
+- `coordinateSource` 必须填写 `photo-exif` 或 `map-poi`；
+- `coordinateReference` 必须说明坐标依据；
 - `routeId`（可选）指向 `src/data/routes.json` 中的路线；
 - `media` 支持多张图片和视频；
 - `markerImage` 可指定地点图标；
 - `art` 可生成稳定的地点图案。
+
+坐标证据同步记录在 `data/place-coordinate-evidence.json`。提交前运行：
+
+```bash
+npm run validate:places
+```
+
+生产构建会自动执行这项校验；地点坐标与证据坐标超过允许误差时，构建会失败。
 
 ## 添加路线
 

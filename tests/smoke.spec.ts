@@ -41,6 +41,22 @@ test('shows the selected place identity and hides map overlays in the detail vie
   await expect(page.locator('.place-marker').first()).toHaveCSS('visibility', 'visible')
 })
 
+test('keeps other place markers visible and allows switching directly between places', async ({ page }) => {
+  await page.goto('/')
+  const campusMarker = page.getByRole('button', { name: '打开地点：南京大学苏州校区' })
+  const nightMarketMarker = page.getByRole('button', { name: '打开地点：东渚夜市' })
+
+  await campusMarker.click()
+  await expect(page.getByRole('complementary', { name: '南京大学苏州校区详情' })).toBeVisible()
+  await expect(nightMarketMarker).toBeVisible()
+  await expect(nightMarketMarker).toHaveCSS('visibility', 'visible')
+
+  await nightMarketMarker.click()
+  await expect(page.getByRole('complementary', { name: '东渚夜市详情' })).toBeVisible()
+  await expect(campusMarker).toBeVisible()
+  await expect(campusMarker).toHaveCSS('visibility', 'visible')
+})
+
 test('has a GitHub repository link in the lower-left corner', async ({ page }) => {
   await page.goto('/')
   const link = page.getByRole('link', { name: '打开 Dog Map GitHub 仓库' })

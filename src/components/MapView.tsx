@@ -301,7 +301,7 @@ export function MapView({
       element.type = 'button'
       element.className = `place-marker place-marker--${place.accent}${place.markerImage ? ' place-marker--sticker' : ''}`
       element.dataset.placeId = place.id
-      element.style.visibility = !activePlaceId || place.id === activePlaceId ? 'visible' : 'hidden'
+      element.style.visibility = 'visible'
       element.style.setProperty('--route-color', (place.routeId ? routeColors[place.routeId] : undefined) ?? getRouteColor(0))
       element.setAttribute('aria-label', `打开地点：${place.title}`)
       element.innerHTML = `<span class="place-marker__visual"><img class="place-marker__art" src="${place.markerImage ?? artworkDataUri(place.id, place.accent, place.art)}" alt="" aria-hidden="true" /></span>`
@@ -333,7 +333,7 @@ export function MapView({
       markersRef.current = []
       markerElementsRef.current = []
     }
-  }, [activePlaceId, mapReady, places, routes, onHoverPlace, onSelectPlace])
+  }, [mapReady, places, routes, onHoverPlace, onSelectPlace])
 
   useEffect(() => {
     const map = mapRef.current
@@ -351,8 +351,7 @@ export function MapView({
       if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visibility)
     })
     markerElementsRef.current.forEach((element) => {
-      const isSelected = element.dataset.placeId === activePlaceId
-      element.style.visibility = !activePlaceId || isSelected ? 'visible' : 'hidden'
+      element.style.visibility = 'visible'
     })
   }, [activePlaceId, mapReady])
 

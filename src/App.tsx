@@ -204,7 +204,7 @@ function App() {
             <div className="detail-drawer__identity-copy">
               <h1 className="detail-drawer__identity-name">{activePlace.title}</h1>
               {activePlace.englishTitle && <p className="detail-drawer__identity-english">{activePlace.englishTitle}</p>}
-              <p className="detail-drawer__identity-subtitle">{activePlace.subtitle} <span aria-hidden="true">·</span> {activePlace.date}</p>
+              <p className="detail-drawer__identity-subtitle">{activePlace.subtitle}</p>
             </div>
           </div>
           {selectedShop ? (

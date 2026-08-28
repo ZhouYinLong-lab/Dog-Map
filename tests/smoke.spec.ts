@@ -61,6 +61,7 @@ test('opens the first Dongzhu shop log with the storefront photo first', async (
   await page.goto('/')
   await page.getByRole('button', { name: '打开地点：东渚夜市与街道' }).click()
   await expect(page.getByRole('complementary', { name: '东渚夜市与街道详情' })).toBeVisible()
+  await expect(page.locator('.detail-drawer')).not.toContainText('2026.08.25')
   await expect(page.getByRole('heading', { name: '探店' })).toBeVisible()
 
   await page.getByRole('button', { name: '打开探店：椒点川菜' }).click()

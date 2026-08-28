@@ -64,6 +64,8 @@ npm run test:e2e
 - `coordinateReference` 必须说明坐标依据；
 - `routeId`（可选）指向 `src/data/routes.json` 中的路线；
 - `media` 支持多张图片和视频；
+- `englishTitle`（可选）用于详情页的英文地点名；
+- `shops`（可选）用于地点下的探店记录，每条记录包含店名、类型、简介和独立照片集；
 - `markerImage` 可指定地点图标；
 - `art` 可生成稳定的地点图案。
 
@@ -90,6 +92,12 @@ npm run validate:places
 
 ```text
 public/media/<地点 id>/
+```
+
+探店照片可以继续按店铺分目录保存：
+
+```text
+public/media/<地点 id>/shops/<店铺 id>/
 ```
 
 原始照片可以保存在本地项目目录：

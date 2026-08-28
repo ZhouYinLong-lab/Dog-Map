@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { MapView } from './components/MapView'
 import { places, routes } from './data/content'
 import { loadRemoteMedia } from './services/mediaApi'
-import type { MediaItem } from './types/content'
+import type { MediaItem, Shop } from './types/content'
 import { artworkDataUri } from './map/artwork'
 
 function MediaBlock({ item, onPreview }: { item: MediaItem; onPreview: () => void }) {
@@ -102,19 +102,51 @@ function ImageLightbox({ items, index, onClose, onNavigate }: { items: MediaItem
   )
 }
 
+function ShopCard({ shop, onOpen }: { shop: Shop; onOpen: () => void }) {
+  const cover = shop.media[0]
+
+  return (
+    <button className="shop-card" type="button" onClick={onOpen} aria-label={`打开探店：${shop.name}`}>
+      <span className="shop-card__cover">
+        {cover && <img src={cover.src} alt="" loading="lazy" />}
+        <span className="shop-card__count">{shop.media.length.toString().padStart(2, '0')} PHOTOS</span>
+      </span>
+      <span className="shop-card__copy">
+        <span className="shop-card__category">{shop.category}</span>
+        <strong className="shop-card__name">{shop.name}</strong>
+        <span className="shop-card__summary">{shop.summary}</span>
+        <span className="shop-card__open">OPEN LOG <span aria-hidden="true">↗</span></span>
+      </span>
+    </button>
+  )
+}
+
 function App() {
   const [activePlaceId, setActivePlaceId] = useState<string | null>(null)
   const [hoveredPlaceId, setHoveredPlaceId] = useState<string | null>(null)
   const [activeRouteId, setActiveRouteId] = useState<string | null>(routes[0]?.id ?? null)
   const [remoteMedia, setRemoteMedia] = useState<Record<string, MediaItem[]>>({})
   const [previewIndex, setPreviewIndex] = useState<number | null>(null)
+  const [selectedShopId, setSelectedShopId] = useState<string | null>(null)
 
   const activePlace = useMemo(
     () => places.find((place) => place.id === activePlaceId) ?? null,
     [activePlaceId],
   )
-  const previewItems = activePlace ? (remoteMedia[activePlace.id] ?? activePlace.media) : []
+  const selectedShop = activePlace?.shops?.find((shop) => shop.id === selectedShopId) ?? null
+  const hasShops = Boolean(activePlace?.shops?.length)
+  const previewItems = selectedShop
+    ? selectedShop.media
+    : activePlace
+      ? (remoteMedia[activePlace.id] ?? activePlace.media)
+      : []
   const previewItem = previewIndex === null ? null : previewItems[previewIndex] ?? null
+
+  useEffect(() => {
+    setSelectedShopId(null)
+    setPreviewIndex(null)
+  }, [activePlaceId])
+
   useEffect(() => {
     if (!activePlace) return
     const controller = new AbortController()
@@ -132,6 +164,11 @@ function App() {
 
   const handleSelectPlace = useCallback((placeId: string) => {
     setActivePlaceId(placeId)
+  }, [])
+
+  const handleSelectShop = useCallback((shopId: string) => {
+    setSelectedShopId(shopId)
+    setPreviewIndex(null)
   }, [])
 
   const handleSelectRoute = useCallback((routeId: string) => {
@@ -166,12 +203,59 @@ function App() {
             />
             <div className="detail-drawer__identity-copy">
               <h1 className="detail-drawer__identity-name">{activePlace.title}</h1>
-              <p className="detail-drawer__identity-subtitle">{activePlace.subtitle}</p>
+              {activePlace.englishTitle && <p className="detail-drawer__identity-english">{activePlace.englishTitle}</p>}
+              <p className="detail-drawer__identity-subtitle">{activePlace.subtitle} <span aria-hidden="true">·</span> {activePlace.date}</p>
             </div>
           </div>
-          <div className="media-grid">
-            {previewItems.map((item, index) => <MediaBlock key={`${item.type}-${index}`} item={item} onPreview={() => setPreviewIndex(index)} />)}
-          </div>
+          {selectedShop ? (
+            <section className="shop-detail" aria-label={`${selectedShop.name}探店详情`}>
+              <button className="shop-detail__back" type="button" onClick={() => setSelectedShopId(null)}>
+                <span aria-hidden="true">←</span> 返回地点
+              </button>
+              <div className="shop-detail__heading">
+                <span className="detail-section__index">SHOP / {selectedShop.category.toUpperCase()}</span>
+                <h2>{selectedShop.name}</h2>
+              </div>
+              <p className="detail-drawer__description">{selectedShop.description}</p>
+              {selectedShop.tags && (
+                <div className="shop-tags" aria-label="店铺标签">
+                  {selectedShop.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                </div>
+              )}
+              <div className="detail-section__heading">
+                <span className="detail-section__index">01 / PHOTO LOG</span>
+                <h3>现场照片</h3>
+              </div>
+              <div className="media-grid">
+                {previewItems.map((item, index) => <MediaBlock key={`${item.type}-${index}`} item={item} onPreview={() => setPreviewIndex(index)} />)}
+              </div>
+            </section>
+          ) : (
+            <>
+              <p className="detail-drawer__description">{activePlace.description}</p>
+              {hasShops && activePlace.shops && (
+                <section className="detail-section detail-section--shops" aria-label="探店列表">
+                  <div className="detail-section__heading">
+                    <span className="detail-section__index">01 / SHOPPING LOG</span>
+                    <h2>探店</h2>
+                    <span className="detail-section__count">{activePlace.shops.length.toString().padStart(2, '0')} PLACES</span>
+                  </div>
+                  <div className="shop-list">
+                    {activePlace.shops.map((shop) => <ShopCard key={shop.id} shop={shop} onOpen={() => handleSelectShop(shop.id)} />)}
+                  </div>
+                </section>
+              )}
+              <section className="detail-section" aria-label="地点照片">
+                <div className="detail-section__heading">
+                  <span className="detail-section__index">{hasShops ? '02' : '01'} / FIELD NOTES</span>
+                  <h2>地点图册</h2>
+                </div>
+                <div className="media-grid">
+                  {(remoteMedia[activePlace.id] ?? activePlace.media).map((item, index) => <MediaBlock key={`${item.type}-${index}`} item={item} onPreview={() => setPreviewIndex(index)} />)}
+                </div>
+              </section>
+            </>
+          )}
         </aside>
       )}
 

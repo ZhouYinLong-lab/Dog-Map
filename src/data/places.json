@@ -2,6 +2,7 @@
   {
     "id": "nju-suzhou-campus",
     "title": "南京大学苏州校区",
+    "englishTitle": "NANJING UNIVERSITY · SUZHOU CAMPUS",
     "subtitle": "骑车初遇",
     "date": "2026.08.24",
     "coordinates": [120.387037, 31.351239],
@@ -37,7 +38,8 @@
   },
   {
     "id": "dongzhu-night-market",
-    "title": "东渚夜市",
+    "title": "东渚夜市与街道",
+    "englishTitle": "DONGZHU NIGHT MARKET & STREET",
     "subtitle": "骑车夜访",
     "date": "2026.08.25",
     "coordinates": [120.394792, 31.336724],
@@ -51,6 +53,23 @@
       { "type": "image", "src": "/media/dongzhu-night-market/dongzhu-night-market-03.webp", "alt": "东渚夜市夜间街景照片" },
       { "type": "image", "src": "/media/dongzhu-night-market/dongzhu-night-market-04.webp", "alt": "东渚夜市拱形入口照片" },
       { "type": "image", "src": "/media/dongzhu-night-market/dongzhu-night-market-05.webp", "alt": "东渚夜市摊位照片" }
+    ],
+    "shops": [
+      {
+        "id": "jiaodian-sichuan-cuisine",
+        "name": "椒点川菜",
+        "category": "川菜",
+        "summary": "东渚夜市与街道里的第一家探店记录。",
+        "description": "记录这次到店看到的门头、菜品和同行用餐片段，先把一顿饭的现场感留在地图里。",
+        "tags": ["川菜", "正餐", "东渚"],
+        "media": [
+          { "type": "image", "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-02.webp", "alt": "椒点川菜店铺门头照片" },
+          { "type": "image", "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-01.webp", "alt": "椒点川菜菜品照片" },
+          { "type": "image", "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-03.webp", "alt": "椒点川菜同行用餐照片" },
+          { "type": "image", "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-04.webp", "alt": "椒点川菜整桌菜品照片" },
+          { "type": "image", "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-05.webp", "alt": "椒点川菜菜品细节照片" }
+        ]
+      }
     ],
     "markerImage": "/media/dongzhu-night-market/dongzhu-night-market-sticker.png"
   }

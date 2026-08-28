@@ -7,7 +7,7 @@ test('renders the current destination markers without demo content', async ({ pa
   await expect(page.locator('.place-marker')).toHaveCount(2)
   await expect(page.locator('.place-marker__art')).toHaveCount(2)
   await expect(page.getByRole('button', { name: '打开地点：南京大学苏州校区' })).toHaveClass(/place-marker--sticker/)
-  await expect(page.getByRole('button', { name: '打开地点：东渚夜市' })).toHaveClass(/place-marker--sticker/)
+  await expect(page.getByRole('button', { name: '打开地点：东渚夜市与街道' })).toHaveClass(/place-marker--sticker/)
   await expect(page.getByRole('region', { name: '路线图例' })).toHaveCount(0)
 })
 
@@ -44,7 +44,7 @@ test('shows the selected place identity and hides map overlays in the detail vie
 test('keeps other place markers visible and allows switching directly between places', async ({ page }) => {
   await page.goto('/')
   const campusMarker = page.getByRole('button', { name: '打开地点：南京大学苏州校区' })
-  const nightMarketMarker = page.getByRole('button', { name: '打开地点：东渚夜市' })
+  const nightMarketMarker = page.getByRole('button', { name: '打开地点：东渚夜市与街道' })
 
   await campusMarker.click()
   await expect(page.getByRole('complementary', { name: '南京大学苏州校区详情' })).toBeVisible()
@@ -52,9 +52,26 @@ test('keeps other place markers visible and allows switching directly between pl
   await expect(nightMarketMarker).toHaveCSS('visibility', 'visible')
 
   await nightMarketMarker.click()
-  await expect(page.getByRole('complementary', { name: '东渚夜市详情' })).toBeVisible()
+  await expect(page.getByRole('complementary', { name: '东渚夜市与街道详情' })).toBeVisible()
   await expect(campusMarker).toBeVisible()
   await expect(campusMarker).toHaveCSS('visibility', 'visible')
+})
+
+test('opens the first Dongzhu shop log with the storefront photo first', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: '打开地点：东渚夜市与街道' }).click()
+  await expect(page.getByRole('complementary', { name: '东渚夜市与街道详情' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '探店' })).toBeVisible()
+
+  await page.getByRole('button', { name: '打开探店：椒点川菜' }).click()
+  await expect(page.getByRole('region', { name: '椒点川菜探店详情' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '椒点川菜' })).toBeVisible()
+  await expect(page.getByRole('button', { name: '预览：椒点川菜店铺门头照片' }).first()).toBeVisible()
+  await expect(page.locator('.media-preview-trigger')).toHaveCount(5)
+  await expect(page.locator('.shop-detail .media-figure figcaption')).toHaveCount(0)
+
+  await page.getByRole('button', { name: /返回地点/ }).click()
+  await expect(page.getByRole('button', { name: '打开探店：椒点川菜' })).toBeVisible()
 })
 
 test('has a GitHub repository link in the lower-left corner', async ({ page }) => {

@@ -8,6 +8,16 @@ export type MediaItem = {
   caption?: string
 }
 
+export type Shop = {
+  id: string
+  name: string
+  category: string
+  summary: string
+  description: string
+  tags?: string[]
+  media: MediaItem[]
+}
+
 export type ArtworkSpec = {
   seed?: string
   variant?: 'burst' | 'slash' | 'orbit'
@@ -16,6 +26,7 @@ export type ArtworkSpec = {
 export type Place = {
   id: string
   title: string
+  englishTitle?: string
   subtitle: string
   date: string
   coordinates: Coordinates
@@ -25,6 +36,7 @@ export type Place = {
   accent: 'red' | 'yellow'
   description: string
   media: MediaItem[]
+  shops?: Shop[]
   markerImage?: string
   art?: ArtworkSpec
 }

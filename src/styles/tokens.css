@@ -9,7 +9,8 @@
   --yellow: #f1c743;
   --line: rgba(242, 234, 220, 0.32);
   --shadow-heavy: 12px 12px 0 rgba(17, 17, 17, 0.72);
-  --display: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  --body: Bahnschrift, 'DIN Alternate', 'Arial Narrow', system-ui, sans-serif;
-  --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --optima-nova-black: 'Optima Nova Black', 'Optima Nova', Optima, 'Arial Narrow', sans-serif;
+  --display: var(--optima-nova-black);
+  --body: var(--optima-nova-black);
+  --mono: var(--optima-nova-black);
 }

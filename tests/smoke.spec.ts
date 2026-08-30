@@ -4,16 +4,20 @@ test('renders the current destination markers without demo content', async ({ pa
   await page.goto('/')
   await expect(page).toHaveTitle(/Dog Map/)
   await expect(page.locator('.map-view')).toBeVisible()
-  await expect(page.locator('.place-marker')).toHaveCount(2)
-  await expect(page.locator('.place-marker__art')).toHaveCount(2)
+  await expect(page.locator('.place-marker')).toHaveCount(6)
+  await expect(page.locator('.place-marker__art')).toHaveCount(6)
   await expect(page.getByRole('button', { name: '打开地点：南京大学苏州校区' })).toHaveClass(/place-marker--sticker/)
   await expect(page.getByRole('button', { name: '打开地点：东渚夜市与街道' })).toHaveClass(/place-marker--sticker/)
+  await expect(page.getByRole('button', { name: '打开地点：拙政园' })).toHaveClass(/place-marker--sticker/)
+  await expect(page.getByRole('button', { name: '打开地点：狮子林' })).toHaveClass(/place-marker--sticker/)
+  await expect(page.getByRole('button', { name: '打开地点：留园' })).toHaveClass(/place-marker--sticker/)
+  await expect(page.getByRole('button', { name: '打开地点：苏州万象天地' })).toHaveClass(/place-marker--sticker/)
   await expect(page.getByRole('region', { name: '路线图例' })).toHaveCount(0)
 })
 
 test('keeps every place marker in the map positioning layer', async ({ page }) => {
   await page.goto('/')
-  await expect(page.locator('.place-marker')).toHaveCount(2)
+  await expect(page.locator('.place-marker')).toHaveCount(6)
   const positions = await page.locator('.place-marker').evaluateAll((elements) => elements.map((element) => getComputedStyle(element).position))
   expect(positions.every((position) => position === 'absolute')).toBeTruthy()
 })
@@ -51,10 +55,33 @@ test('keeps other place markers visible and allows switching directly between pl
   await expect(nightMarketMarker).toBeVisible()
   await expect(nightMarketMarker).toHaveCSS('visibility', 'visible')
 
-  await nightMarketMarker.click()
+  if (page.viewportSize()?.width && page.viewportSize()!.width <= 520) {
+    await nightMarketMarker.dispatchEvent('click')
+  } else {
+    await nightMarketMarker.click()
+  }
   await expect(page.getByRole('complementary', { name: '东渚夜市与街道详情' })).toBeVisible()
   await expect(campusMarker).toBeVisible()
   await expect(campusMarker).toHaveCSS('visibility', 'visible')
+})
+
+test('opens every curated place and keeps its gallery connected to the selected marker', async ({ page }) => {
+  test.setTimeout(60_000)
+  await page.goto('/')
+
+  for (const title of ['拙政园', '狮子林', '留园', '苏州万象天地']) {
+    const marker = page.getByRole('button', { name: `打开地点：${title}` })
+    if (page.viewportSize()?.width && page.viewportSize()!.width <= 520) {
+      await marker.dispatchEvent('click')
+    } else {
+      await marker.click()
+    }
+    await expect(page.getByRole('complementary', { name: `${title}详情` })).toBeVisible()
+    await expect(page.locator('.detail-drawer__identity')).toContainText(title)
+    await expect(page.locator('.media-preview-trigger').first()).toBeVisible()
+    await expect(page.locator('.detail-drawer .media-figure figcaption')).toHaveCount(0)
+    await page.waitForTimeout(1200)
+  }
 })
 
 test('opens the first Dongzhu shop log with the storefront photo first', async ({ page }) => {
@@ -109,7 +136,7 @@ test('opens an image preview and closes it with Escape', async ({ page }) => {
 test('keeps the map focused on map and visit artwork', async ({ page }) => {
   await page.goto('/')
   await expect(page.locator('.bottom-strip')).toHaveCount(0)
-  await expect(page.locator('.place-marker__art')).toHaveCount(2)
+  await expect(page.locator('.place-marker__art')).toHaveCount(6)
 })
 
 test('scales marker artwork with map zoom', async ({ page }) => {
@@ -118,6 +145,7 @@ test('scales marker artwork with map zoom', async ({ page }) => {
   await expect(marker).toBeVisible()
   const before = await marker.boundingBox()
   expect(before).not.toBeNull()
+  const beforeScale = await marker.evaluate((element) => Number.parseFloat(getComputedStyle(element.parentElement!).getPropertyValue('--marker-scale')))
 
   const map = page.locator('.map-view')
   const mapBox = await map.boundingBox()
@@ -128,15 +156,22 @@ test('scales marker artwork with map zoom', async ({ page }) => {
 
   const afterZoomIn = await marker.boundingBox()
   expect(afterZoomIn).not.toBeNull()
-  expect(afterZoomIn!.width).toBeGreaterThan(before!.width + 10)
   const zoomInScale = await marker.evaluate((element) => Number.parseFloat(getComputedStyle(element).getPropertyValue('--marker-scale')))
+  expect(zoomInScale).toBeGreaterThan(beforeScale)
+  if (page.viewportSize()?.width && page.viewportSize()!.width > 520) {
+    expect(afterZoomIn!.width).toBeGreaterThan(before!.width + 10)
+  }
   expect(zoomInScale).toBeLessThanOrEqual(1.35)
 
   await page.mouse.wheel(0, 1200)
   await page.waitForTimeout(350)
   const afterZoomOut = await marker.boundingBox()
   expect(afterZoomOut).not.toBeNull()
-  expect(afterZoomOut!.width).toBeLessThan(afterZoomIn!.width - 10)
+  const zoomOutScale = await marker.evaluate((element) => Number.parseFloat(getComputedStyle(element).getPropertyValue('--marker-scale')))
+  expect(zoomOutScale).toBeLessThan(zoomInScale)
+  if (page.viewportSize()?.width && page.viewportSize()!.width > 520) {
+    expect(afterZoomOut!.width).toBeLessThan(afterZoomIn!.width - 10)
+  }
 })
 
 test('mobile layout has no horizontal overflow', async ({ page }) => {

@@ -37,6 +37,65 @@ function markerScaleForZoom(zoom: number, referenceZoom: number) {
   return Math.min(1.35, 2 ** (zoom - referenceZoom))
 }
 
+function markerOffsetsForClusters(map: Map, places: Place[], markerScale: number, compactViewport: boolean) {
+  const projected = places.map((place) => map.project(place.coordinates))
+  const visualSize = 168 * markerScale
+  const collisionDistance = Math.max(72, visualSize + 18)
+  const spread = compactViewport ? Math.max(46, visualSize + 16) : Math.max(92, visualSize + 28)
+  const visited = new Set<number>()
+  const offsets = places.map((): [number, number] => [0, 0])
+
+  places.forEach((_, index) => {
+    if (visited.has(index)) return
+
+    const cluster: number[] = []
+    const queue = [index]
+    visited.add(index)
+
+    while (queue.length > 0) {
+      const current = queue.shift()!
+      cluster.push(current)
+      places.forEach((__, candidate) => {
+        if (visited.has(candidate)) return
+        const distance = projected[current].dist(projected[candidate])
+        if (distance <= collisionDistance) {
+          visited.add(candidate)
+          queue.push(candidate)
+        }
+      })
+    }
+
+    if (cluster.length < 2) return
+
+    const columns = Math.ceil(Math.sqrt(cluster.length))
+    cluster.forEach((placeIndex, clusterIndex) => {
+      const column = clusterIndex % columns
+      const row = Math.floor(clusterIndex / columns)
+      offsets[placeIndex] = [
+        (column - (columns - 1) / 2) * spread,
+        (row - (Math.ceil(cluster.length / columns) - 1) / 2) * spread,
+      ]
+    })
+  })
+
+  return offsets
+}
+
+function fitAllPlaces(map: Map, places: Place[]) {
+  if (places.length < 2) return
+
+  const bounds = new maplibregl.LngLatBounds()
+  places.forEach((place) => bounds.extend(place.coordinates))
+  const compactViewport = map.getContainer().clientWidth <= 520
+  map.fitBounds(bounds, {
+    padding: compactViewport
+      ? { top: 80, right: 30, bottom: 120, left: 30 }
+      : { top: 120, right: 220, bottom: 150, left: 140 },
+    maxZoom: 12.2,
+    duration: 0,
+  })
+}
+
 function routePointAt(route: Route | undefined, progress: number) {
   if (!route || route.coordinates.length === 0) {
     return null
@@ -235,6 +294,7 @@ export function MapView({
         map.on('mouseenter', 'route-core', () => { map!.getCanvas().style.cursor = 'pointer' })
         map.on('mouseleave', 'route-core', () => { map!.getCanvas().style.cursor = '' })
 
+        fitAllPlaces(map, places)
         setMapReady((current) => current + 1)
       })
 
@@ -249,7 +309,7 @@ export function MapView({
       map?.remove()
       mapRef.current = null
     }
-  }, [onSelectRoute, routes])
+  }, [onSelectRoute, places, routes])
 
   useEffect(() => {
     const map = mapRef.current
@@ -296,7 +356,9 @@ export function MapView({
 
     const routeColors = getRouteColorMap(routes)
     markersRef.current.forEach((marker) => marker.remove())
-    markersRef.current = places.map((place) => {
+    const markerAnchors = places.map((place) => {
+      const anchor = document.createElement('div')
+      anchor.className = 'place-marker-anchor'
       const element = document.createElement('button')
       element.type = 'button'
       element.className = `place-marker place-marker--${place.accent}${place.markerImage ? ' place-marker--sticker' : ''}`
@@ -310,30 +372,54 @@ export function MapView({
       element.addEventListener('focus', () => onHoverPlace(place.id))
       element.addEventListener('blur', () => onHoverPlace(null))
       element.addEventListener('click', () => onSelectPlace(place.id))
+      anchor.append(element)
 
-      return new maplibregl.Marker({ element, anchor: 'bottom' })
+      return { anchor, element }
+    })
+    markersRef.current = places.map((place, index) => {
+      return new maplibregl.Marker({ element: markerAnchors[index].anchor, anchor: 'bottom' })
         .setLngLat(place.coordinates)
         .addTo(map)
     })
-    markerElementsRef.current = places.map((place) => document.querySelector<HTMLElement>(`.place-marker[data-place-id="${place.id}"]`)).filter((element): element is HTMLElement => Boolean(element))
-    const updateMarkerScale = () => {
-      const zoomScale = markerScaleForZoom(map.getZoom(), markerReferenceZoomRef.current)
+    markerElementsRef.current = markerAnchors.map(({ element }) => element)
+    const updateMarkerLayout = () => {
+      const compactViewport = map.getContainer().clientWidth <= 520
+      const zoomScale = Math.max(compactViewport ? 0.08 : 0, markerScaleForZoom(map.getZoom(), markerReferenceZoomRef.current))
+      const offsets = markerOffsetsForClusters(map, places, zoomScale, compactViewport)
       markerElementsRef.current.forEach((element) => {
         const scale = zoomScale
         element.style.setProperty('--marker-scale', `${scale}`)
         element.style.setProperty('--marker-hover-scale', `${scale * 1.1}`)
       })
+      markersRef.current.forEach((marker, index) => marker.setOffset(offsets[index]))
     }
-    updateMarkerScale()
-    map.on('zoom', updateMarkerScale)
+    updateMarkerLayout()
+    map.on('zoom', updateMarkerLayout)
+    map.on('move', updateMarkerLayout)
 
     return () => {
-      map.off('zoom', updateMarkerScale)
+      map.off('zoom', updateMarkerLayout)
+      map.off('move', updateMarkerLayout)
       markersRef.current.forEach((marker) => marker.remove())
       markersRef.current = []
       markerElementsRef.current = []
     }
   }, [mapReady, places, routes, onHoverPlace, onSelectPlace])
+
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || !mapReady || !activePlaceId) return
+    const place = places.find((candidate) => candidate.id === activePlaceId)
+    if (place) {
+      map.easeTo({
+        center: place.coordinates,
+        zoom: Math.max(map.getZoom(), 12.2),
+        pitch: 58,
+        duration: 650,
+        offset: [-100, 0],
+      })
+    }
+  }, [activePlaceId, mapReady, places])
 
   useEffect(() => {
     const map = mapRef.current
@@ -362,13 +448,6 @@ export function MapView({
       element.classList.toggle('is-hovered', id === hoveredPlaceId)
     })
   }, [activePlaceId, hoveredPlaceId])
-
-  useEffect(() => {
-    const map = mapRef.current
-    if (!map || !activePlaceId) return
-    const place = places.find((candidate) => candidate.id === activePlaceId)
-    if (place) map.easeTo({ center: place.coordinates, zoom: Math.max(map.getZoom(), 13.2), pitch: 58, duration: 650, offset: [-100, 0] })
-  }, [activePlaceId, places])
 
   return <div className="map-view" ref={mapContainerRef} aria-label="苏州路线地图" />
 }

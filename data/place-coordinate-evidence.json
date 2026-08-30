@@ -9,5 +9,25 @@
     "coordinates": [120.394792, 31.336724],
     "toleranceMeters": 150,
     "source": "五张现场原图 GPS EXIF 坐标的平均值"
+  },
+  "zhuozheng-garden": {
+    "coordinates": [120.624446, 31.326458],
+    "toleranceMeters": 150,
+    "source": "精选照片 GPS EXIF 坐标的平均值"
+  },
+  "shizilin-garden": {
+    "coordinates": [120.624711, 31.323431],
+    "toleranceMeters": 150,
+    "source": "精选照片 GPS EXIF 坐标的平均值"
+  },
+  "liuyuan-garden": {
+    "coordinates": [120.588176, 31.31763],
+    "toleranceMeters": 150,
+    "source": "精选照片 GPS EXIF 坐标的平均值"
+  },
+  "suzhou-mixc-world": {
+    "coordinates": [120.594657, 31.314872],
+    "toleranceMeters": 150,
+    "source": "精选照片 GPS EXIF 坐标的平均值"
   }
 }

@@ -72,5 +72,102 @@
       }
     ],
     "markerImage": "/media/dongzhu-night-market/dongzhu-night-market-sticker.png"
+  },
+  {
+    "id": "zhuozheng-garden",
+    "title": "拙政园",
+    "englishTitle": "ZHUOZHENG GARDEN",
+    "subtitle": "园林初访",
+    "date": "2026.08.30",
+    "coordinates": [120.624446, 31.326458],
+    "coordinateSource": "photo-exif",
+    "coordinateReference": "精选照片 GPS EXIF 坐标的平均值",
+    "accent": "yellow",
+    "description": "以水景、亭台和园林借景为主的苏州古典园林记录。",
+    "media": [
+      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-01.webp", "alt": "拙政园照片 01" },
+      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-02.webp", "alt": "拙政园照片 02" },
+      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-03.webp", "alt": "拙政园照片 03" },
+      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-04.webp", "alt": "拙政园照片 04" },
+      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-05.webp", "alt": "拙政园照片 05" },
+      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-06.webp", "alt": "拙政园照片 06" },
+      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-07.webp", "alt": "拙政园照片 07" },
+      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-08.webp", "alt": "拙政园照片 08" },
+      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-09.webp", "alt": "拙政园照片 09" },
+      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-10.webp", "alt": "拙政园照片 10" },
+      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-11.webp", "alt": "拙政园照片 11" },
+      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-12.webp", "alt": "拙政园照片 12" }
+    ],
+    "markerImage": "/media/zhuozheng-garden/zhuozheng-garden-sticker.png"
+  },
+  {
+    "id": "shizilin-garden",
+    "title": "狮子林",
+    "englishTitle": "LION GROVE GARDEN",
+    "subtitle": "假山穿行",
+    "date": "2026.08.30",
+    "coordinates": [120.624711, 31.323431],
+    "coordinateSource": "photo-exif",
+    "coordinateReference": "精选照片 GPS EXIF 坐标的平均值",
+    "accent": "red",
+    "description": "以太湖石假山、洞壑和园林空间为主的狮子林记录。",
+    "media": [
+      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-01.webp", "alt": "狮子林照片 01" },
+      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-02.webp", "alt": "狮子林照片 02" },
+      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-03.webp", "alt": "狮子林照片 03" },
+      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-04.webp", "alt": "狮子林照片 04" },
+      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-05.webp", "alt": "狮子林照片 05" },
+      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-06.webp", "alt": "狮子林照片 06" },
+      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-07.webp", "alt": "狮子林照片 07" },
+      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-08.webp", "alt": "狮子林照片 08" },
+      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-09.webp", "alt": "狮子林照片 09" },
+      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-10.webp", "alt": "狮子林照片 10" }
+    ],
+    "markerImage": "/media/shizilin-garden/shizilin-garden-sticker.png"
+  },
+  {
+    "id": "liuyuan-garden",
+    "title": "留园",
+    "englishTitle": "LINGERING GARDEN",
+    "subtitle": "长廊留影",
+    "date": "2026.08.30",
+    "coordinates": [120.588176, 31.31763],
+    "coordinateSource": "photo-exif",
+    "coordinateReference": "精选照片 GPS EXIF 坐标的平均值",
+    "accent": "yellow",
+    "description": "以长廊、漏窗、水院和叠石为主的留园记录。",
+    "media": [
+      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-01.webp", "alt": "留园照片 01" },
+      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-02.webp", "alt": "留园照片 02" },
+      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-03.webp", "alt": "留园照片 03" },
+      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-04.webp", "alt": "留园照片 04" },
+      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-05.webp", "alt": "留园照片 05" },
+      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-06.webp", "alt": "留园照片 06" },
+      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-07.webp", "alt": "留园照片 07" },
+      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-08.webp", "alt": "留园照片 08" },
+      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-09.webp", "alt": "留园照片 09" },
+      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-10.webp", "alt": "留园照片 10" }
+    ],
+    "markerImage": "/media/liuyuan-garden/liuyuan-garden-sticker.png"
+  },
+  {
+    "id": "suzhou-mixc-world",
+    "title": "苏州万象天地",
+    "englishTitle": "SUZHOU MIXC WORLD",
+    "subtitle": "城市漫游",
+    "date": "2026.08.30",
+    "coordinates": [120.594657, 31.314872],
+    "coordinateSource": "photo-exif",
+    "coordinateReference": "精选照片 GPS EXIF 坐标的平均值",
+    "accent": "red",
+    "description": "以开放式商业街区、建筑立面和公共空间为主的城市记录。",
+    "media": [
+      { "type": "image", "src": "/media/suzhou-mixc-world/suzhou-mixc-world-01.webp", "alt": "苏州万象天地照片 01" },
+      { "type": "image", "src": "/media/suzhou-mixc-world/suzhou-mixc-world-02.webp", "alt": "苏州万象天地照片 02" },
+      { "type": "image", "src": "/media/suzhou-mixc-world/suzhou-mixc-world-03.webp", "alt": "苏州万象天地照片 03" },
+      { "type": "image", "src": "/media/suzhou-mixc-world/suzhou-mixc-world-04.webp", "alt": "苏州万象天地照片 04" },
+      { "type": "image", "src": "/media/suzhou-mixc-world/suzhou-mixc-world-05.webp", "alt": "苏州万象天地照片 05" }
+    ],
+    "markerImage": "/media/suzhou-mixc-world/suzhou-mixc-world-sticker.png"
   }
 ]

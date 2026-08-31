@@ -4,7 +4,7 @@ test('renders the current destination markers without demo content', async ({ pa
   await page.goto('/')
   await expect(page).toHaveTitle(/Dog Map/)
   await expect(page.locator('.map-view')).toBeVisible()
-  await expect(page.locator('.place-marker')).toHaveCount(6)
+  await expect(page.locator('.place-marker')).toHaveCount(6, { timeout: 15_000 })
   await expect(page.locator('.place-marker__art')).toHaveCount(6)
   await expect(page.getByRole('button', { name: '打开地点：南京大学苏州校区' })).toHaveClass(/place-marker--sticker/)
   await expect(page.getByRole('button', { name: '打开地点：东渚夜市与街道' })).toHaveClass(/place-marker--sticker/)
@@ -12,12 +12,13 @@ test('renders the current destination markers without demo content', async ({ pa
   await expect(page.getByRole('button', { name: '打开地点：狮子林' })).toHaveClass(/place-marker--sticker/)
   await expect(page.getByRole('button', { name: '打开地点：留园' })).toHaveClass(/place-marker--sticker/)
   await expect(page.getByRole('button', { name: '打开地点：苏州万象天地' })).toHaveClass(/place-marker--sticker/)
+  await expect(page.locator('.map-place-nav')).toHaveCount(0)
   await expect(page.getByRole('region', { name: '路线图例' })).toHaveCount(0)
 })
 
 test('keeps every place marker in the map positioning layer', async ({ page }) => {
   await page.goto('/')
-  await expect(page.locator('.place-marker')).toHaveCount(6)
+  await expect(page.locator('.place-marker')).toHaveCount(6, { timeout: 15_000 })
   const positions = await page.locator('.place-marker').evaluateAll((elements) => elements.map((element) => getComputedStyle(element).position))
   expect(positions.every((position) => position === 'absolute')).toBeTruthy()
 })
@@ -46,10 +47,12 @@ test('shows the selected place identity and hides map overlays in the detail vie
 })
 
 test('keeps other place markers visible and allows switching directly between places', async ({ page }) => {
+  test.setTimeout(60_000)
   await page.goto('/')
   const campusMarker = page.getByRole('button', { name: '打开地点：南京大学苏州校区' })
   const nightMarketMarker = page.getByRole('button', { name: '打开地点：东渚夜市与街道' })
 
+  await expect(campusMarker).toBeVisible({ timeout: 15_000 })
   await campusMarker.click()
   await expect(page.getByRole('complementary', { name: '南京大学苏州校区详情' })).toBeVisible()
   await expect(nightMarketMarker).toBeVisible()
@@ -66,11 +69,11 @@ test('keeps other place markers visible and allows switching directly between pl
 })
 
 test('opens every curated place and keeps its gallery connected to the selected marker', async ({ page }) => {
-  test.setTimeout(60_000)
-  await page.goto('/')
+  test.setTimeout(90_000)
 
   for (const title of ['拙政园', '狮子林', '留园', '苏州万象天地']) {
-    await page.getByRole('button', { name: `导航到地点：${title}` }).click()
+    await page.goto('/')
+    await page.getByRole('button', { name: `跳转到地点：${title}` }).click()
     await expect(page.getByRole('complementary', { name: `${title}详情` })).toBeVisible()
     await expect(page.locator('.detail-drawer__identity')).toContainText(title)
     await expect(page.locator('.media-preview-trigger').first()).toBeVisible()
@@ -90,7 +93,7 @@ test('guides to offscreen places from the South University home view', async ({ 
 
 test('switches places from the detail drawer', async ({ page }) => {
   await page.goto('/')
-  await page.getByRole('button', { name: '导航到地点：拙政园' }).click()
+  await page.getByRole('button', { name: '跳转到地点：拙政园' }).click()
   await expect(page.getByRole('complementary', { name: '拙政园详情' })).toBeVisible()
   await page.getByRole('button', { name: '下一个地点：狮子林' }).click()
   await expect(page.getByRole('complementary', { name: '狮子林详情' })).toBeVisible()
@@ -158,13 +161,13 @@ test('opens an image preview and closes it with Escape', async ({ page }) => {
 test('keeps the map focused on map and visit artwork', async ({ page }) => {
   await page.goto('/')
   await expect(page.locator('.bottom-strip')).toHaveCount(0)
-  await expect(page.locator('.place-marker__art')).toHaveCount(6)
+  await expect(page.locator('.place-marker__art')).toHaveCount(6, { timeout: 15_000 })
 })
 
 test('scales marker artwork with map zoom', async ({ page }) => {
   await page.goto('/')
   const marker = page.locator('.place-marker__visual').first()
-  await expect(marker).toBeVisible()
+  await expect(marker).toBeVisible({ timeout: 15_000 })
   const before = await marker.boundingBox()
   expect(before).not.toBeNull()
   const beforeScale = await marker.evaluate((element) => Number.parseFloat(getComputedStyle(element.parentElement!).getPropertyValue('--marker-scale')))

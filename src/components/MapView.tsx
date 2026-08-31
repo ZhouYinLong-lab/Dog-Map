@@ -584,25 +584,6 @@ export function MapView({
     <div className="map-shell">
       <div className="map-view" ref={mapContainerRef} aria-label="苏州路线地图" />
       <div className="map-overlay">
-        <nav className="map-place-nav" aria-label="地点导航">
-          <span className="map-place-nav__eyebrow">DESTINATIONS / {places.length.toString().padStart(2, '0')}</span>
-          <div className="map-place-nav__list">
-            {places.map((place, index) => (
-              <button
-                className={place.id === activePlaceId ? 'map-place-nav__item is-active' : 'map-place-nav__item'}
-                key={place.id}
-                type="button"
-                aria-current={place.id === activePlaceId ? 'location' : undefined}
-                aria-label={'导航到地点：' + place.title}
-                onClick={() => onSelectPlace(place.id)}
-              >
-                <span>{(index + 1).toString().padStart(2, '0')}</span>
-                <strong>{place.title}</strong>
-              </button>
-            ))}
-          </div>
-        </nav>
-
         <div className="map-offscreen-guides" aria-label="画面外地点">
           {offscreenGuides.map((guide) => (
             <button

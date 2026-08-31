@@ -17,6 +17,17 @@ type MapViewProps = {
   onHoverPlace: (placeId: string | null) => void
   onSelectPlace: (placeId: string) => void
   onSelectRoute: (routeId: string) => void
+  onClearPlace: () => void
+}
+
+type OffscreenGuide = {
+  placeId: string
+  title: string
+  distanceKm: number
+  left: number
+  top: number
+  angle: number
+  edge?: 'top' | 'right' | 'bottom' | 'left'
 }
 
 function routeFeatureCollection(data: Route[], colorOffset = 0) {
@@ -81,7 +92,7 @@ function markerOffsetsForClusters(map: Map, places: Place[], markerScale: number
   return offsets
 }
 
-function fitAllPlaces(map: Map, places: Place[]) {
+function fitAllPlaces(map: Map, places: Place[], duration = 900) {
   if (places.length < 2) return
 
   const bounds = new maplibregl.LngLatBounds()
@@ -92,8 +103,91 @@ function fitAllPlaces(map: Map, places: Place[]) {
       ? { top: 80, right: 30, bottom: 120, left: 30 }
       : { top: 120, right: 220, bottom: 150, left: 140 },
     maxZoom: 12.2,
-    duration: 0,
+    duration,
   })
+}
+
+function distanceInKm(first: [number, number], second: [number, number]) {
+  const toRadians = (value: number) => value * Math.PI / 180
+  const latitudeDelta = toRadians(second[1] - first[1])
+  const longitudeDelta = toRadians(second[0] - first[0])
+  const latitude = toRadians((first[1] + second[1]) / 2)
+  const earthRadiusKm = 6371
+  const northSouth = latitudeDelta * earthRadiusKm
+  const eastWest = longitudeDelta * earthRadiusKm * Math.cos(latitude)
+  return Math.hypot(northSouth, eastWest)
+}
+
+function offscreenGuidesForMap(map: Map, places: Place[]): OffscreenGuide[] {
+  const { width, height } = map.getContainer().getBoundingClientRect()
+  const center = { x: width / 2, y: height / 2 }
+  const margin = Math.min(72, Math.max(36, Math.min(width, height) * 0.12))
+  const horizontalLimit = Math.max(1, center.x - margin)
+  const verticalLimit = Math.max(1, center.y - margin)
+  const mapCenter: [number, number] = [map.getCenter().lng, map.getCenter().lat]
+
+  const guides: OffscreenGuide[] = places.flatMap<OffscreenGuide>((place) => {
+    const point = map.project(place.coordinates)
+    if (point.x >= margin && point.x <= width - margin && point.y >= margin && point.y <= height - margin) return []
+
+    const deltaX = point.x - center.x
+    const deltaY = point.y - center.y
+    const horizontalScale = deltaX === 0 ? Number.POSITIVE_INFINITY : horizontalLimit / Math.abs(deltaX)
+    const verticalScale = deltaY === 0 ? Number.POSITIVE_INFINITY : verticalLimit / Math.abs(deltaY)
+    const scale = Math.min(horizontalScale, verticalScale)
+    const left = Math.min(width - margin, Math.max(margin, center.x + deltaX * scale))
+    const top = Math.min(height - margin, Math.max(margin, center.y + deltaY * scale))
+
+    return [{
+      placeId: place.id,
+      title: place.title,
+      distanceKm: distanceInKm(mapCenter, place.coordinates),
+      left,
+      top,
+      angle: Math.atan2(deltaY, deltaX) * 180 / Math.PI,
+      edge: undefined,
+    }]
+  })
+
+  const edges = new globalThis.Map<'top' | 'right' | 'bottom' | 'left', OffscreenGuide[]>()
+  guides.forEach((guide) => {
+    const distances = [
+      { edge: 'top' as const, distance: guide.top - margin },
+      { edge: 'right' as const, distance: width - margin - guide.left },
+      { edge: 'bottom' as const, distance: height - margin - guide.top },
+      { edge: 'left' as const, distance: guide.left - margin },
+    ]
+    const edge = distances.sort((first, second) => first.distance - second.distance)[0].edge
+    guide.edge = edge
+    const group = edges.get(edge) ?? []
+    group.push(guide)
+    edges.set(edge, group)
+  })
+
+  edges.forEach((group, edge) => {
+    const horizontal = edge === 'top' || edge === 'bottom'
+    const axisStart = margin
+    const axisEnd = horizontal
+      ? width - margin
+      : Math.max(margin, height - margin - 82)
+    const axisLength = Math.max(0, axisEnd - axisStart)
+    const axis = (guide: OffscreenGuide) => horizontal ? guide.left : guide.top
+    const setAxis = (guide: OffscreenGuide, value: number) => {
+      if (horizontal) guide.left = value
+      else guide.top = value
+    }
+    group.sort((first, second) => axis(first) - axis(second))
+    const gap = group.length < 2 ? 0 : Math.min(150, axisLength / (group.length - 1))
+    const positions: number[] = []
+    group.forEach((guide, index) => {
+      const previous = positions[index - 1] ?? axisStart - gap
+      positions.push(Math.max(axis(guide), previous + gap))
+    })
+    const overflow = (positions[positions.length - 1] ?? axisStart) - axisEnd
+    positions.forEach((position, index) => setAxis(group[index], Math.min(axisEnd, Math.max(axisStart, position - Math.max(0, overflow)))))
+  })
+
+  return guides
 }
 
 function routePointAt(route: Route | undefined, progress: number) {
@@ -161,14 +255,17 @@ export function MapView({
   onHoverPlace,
   onSelectPlace,
   onSelectRoute,
+  onClearPlace,
 }: MapViewProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<Map | null>(null)
   const markersRef = useRef<maplibregl.Marker[]>([])
   const markerElementsRef = useRef<HTMLElement[]>([])
   const markerReferenceZoomRef = useRef(13.2)
+  const homePitchRef = useRef(58)
   const routeCameraInitializedRef = useRef(false)
   const [mapReady, setMapReady] = useState(0)
+  const [offscreenGuides, setOffscreenGuides] = useState<OffscreenGuide[]>([])
 
   useEffect(() => {
     if (!mapContainerRef.current) return
@@ -181,6 +278,7 @@ export function MapView({
 
       const initialZoom = mode === 'vector' ? 13.2 : 11.4
       markerReferenceZoomRef.current = initialZoom
+      homePitchRef.current = mode === 'vector' ? 58 : 0
 
       map = new maplibregl.Map({
         container: mapContainerRef.current,
@@ -294,7 +392,6 @@ export function MapView({
         map.on('mouseenter', 'route-core', () => { map!.getCanvas().style.cursor = 'pointer' })
         map.on('mouseleave', 'route-core', () => { map!.getCanvas().style.cursor = '' })
 
-        fitAllPlaces(map, places)
         setMapReady((current) => current + 1)
       })
 
@@ -425,6 +522,21 @@ export function MapView({
     const map = mapRef.current
     if (!map || !mapReady) return
 
+    const updateOffscreenGuides = () => setOffscreenGuides(offscreenGuidesForMap(map, places))
+    updateOffscreenGuides()
+    map.on('move', updateOffscreenGuides)
+    map.on('resize', updateOffscreenGuides)
+
+    return () => {
+      map.off('move', updateOffscreenGuides)
+      map.off('resize', updateOffscreenGuides)
+    }
+  }, [mapReady, places])
+
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || !mapReady) return
+
     const visibility = activePlaceId ? 'none' : 'visible'
     ;[
       'route-ink',
@@ -449,5 +561,84 @@ export function MapView({
     })
   }, [activePlaceId, hoveredPlaceId])
 
-  return <div className="map-view" ref={mapContainerRef} aria-label="苏州路线地图" />
+  const handleViewAll = () => {
+    const map = mapRef.current
+    if (!map) return
+    onClearPlace()
+    fitAllPlaces(map, places)
+  }
+
+  const handleReturnHome = () => {
+    const map = mapRef.current
+    if (!map) return
+    onClearPlace()
+    map.easeTo({
+      center: njuSuzhouCampus,
+      zoom: markerReferenceZoomRef.current,
+      pitch: homePitchRef.current,
+      duration: 900,
+    })
+  }
+
+  return (
+    <div className="map-shell">
+      <div className="map-view" ref={mapContainerRef} aria-label="苏州路线地图" />
+      <div className="map-overlay">
+        <nav className="map-place-nav" aria-label="地点导航">
+          <span className="map-place-nav__eyebrow">DESTINATIONS / {places.length.toString().padStart(2, '0')}</span>
+          <div className="map-place-nav__list">
+            {places.map((place, index) => (
+              <button
+                className={place.id === activePlaceId ? 'map-place-nav__item is-active' : 'map-place-nav__item'}
+                key={place.id}
+                type="button"
+                aria-current={place.id === activePlaceId ? 'location' : undefined}
+                aria-label={'导航到地点：' + place.title}
+                onClick={() => onSelectPlace(place.id)}
+              >
+                <span>{(index + 1).toString().padStart(2, '0')}</span>
+                <strong>{place.title}</strong>
+              </button>
+            ))}
+          </div>
+        </nav>
+
+        <div className="map-offscreen-guides" aria-label="画面外地点">
+          {offscreenGuides.map((guide) => (
+            <button
+              className="map-offscreen-guide"
+              key={guide.placeId}
+              type="button"
+              aria-label={'跳转到地点：' + guide.title}
+              style={{
+                left: guide.left,
+                top: guide.top,
+                transform: guide.edge === 'right'
+                  ? 'translate(-100%, -50%)'
+                  : guide.edge === 'left'
+                    ? 'translate(0, -50%)'
+                    : 'translate(-50%, -50%)',
+              }}
+              onClick={() => onSelectPlace(guide.placeId)}
+            >
+              <span className="map-offscreen-guide__arrow" style={{ transform: 'rotate(' + guide.angle + 'deg)' }}>➤</span>
+              <span className="map-offscreen-guide__label">
+                <strong>{guide.title}</strong>
+                <small>{guide.distanceKm.toFixed(1)} KM</small>
+              </span>
+            </button>
+          ))}
+        </div>
+
+        <div className="map-actions" aria-label="地图视角">
+          <button type="button" aria-label="查看全部地点" onClick={handleViewAll}>
+            查看全图 <span aria-hidden="true">↗</span>
+          </button>
+          <button type="button" aria-label="返回南苏主视角" onClick={handleReturnHome}>
+            南苏主视角
+          </button>
+        </div>
+      </div>
+    </div>
+  )
 }

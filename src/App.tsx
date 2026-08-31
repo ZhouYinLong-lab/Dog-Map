@@ -133,6 +133,9 @@ function App() {
     () => places.find((place) => place.id === activePlaceId) ?? null,
     [activePlaceId],
   )
+  const activePlaceIndex = activePlace ? places.findIndex((place) => place.id === activePlace.id) : -1
+  const previousPlace = activePlaceIndex >= 0 ? places[(activePlaceIndex - 1 + places.length) % places.length] : null
+  const nextPlace = activePlaceIndex >= 0 ? places[(activePlaceIndex + 1) % places.length] : null
   const selectedShop = activePlace?.shops?.find((shop) => shop.id === selectedShopId) ?? null
   const hasShops = Boolean(activePlace?.shops?.length)
   const previewItems = selectedShop
@@ -166,6 +169,10 @@ function App() {
     setActivePlaceId(placeId)
   }, [])
 
+  const handleClearPlace = useCallback(() => {
+    setActivePlaceId(null)
+  }, [])
+
   const handleSelectShop = useCallback((shopId: string) => {
     setSelectedShopId(shopId)
     setPreviewIndex(null)
@@ -186,6 +193,7 @@ function App() {
           activeRouteId={activeRouteId}
           onHoverPlace={handleHoverPlace}
           onSelectPlace={handleSelectPlace}
+          onClearPlace={handleClearPlace}
           onSelectRoute={handleSelectRoute}
         />
 
@@ -255,6 +263,21 @@ function App() {
                 </div>
               </section>
             </>
+          )}
+          {previousPlace && nextPlace && (
+            <nav className="detail-place-nav" aria-label="详情地点切换">
+              <span className="detail-place-nav__index">
+                {String(activePlaceIndex + 1).padStart(2, '0')} / {String(places.length).padStart(2, '0')}
+              </span>
+              <button type="button" aria-label={`上一个地点：${previousPlace.title}`} onClick={() => handleSelectPlace(previousPlace.id)}>
+                <span aria-hidden="true">←</span>
+                <strong>{previousPlace.title}</strong>
+              </button>
+              <button type="button" aria-label={`下一个地点：${nextPlace.title}`} onClick={() => handleSelectPlace(nextPlace.id)}>
+                <strong>{nextPlace.title}</strong>
+                <span aria-hidden="true">→</span>
+              </button>
+            </nav>
           )}
         </aside>
       )}

@@ -13,7 +13,26 @@ button { font: inherit; }
 
 .app-shell { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--ink); }
 .map-stage { position: absolute; inset: 0; overflow: hidden; }
+.map-shell { position: absolute; inset: 0; }
 .map-view { position: absolute; inset: 0; background: #171717; }
+.map-overlay { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+.map-place-nav { position: absolute; top: 22px; left: 24px; width: min(620px, calc(100vw - 48px)); padding: 12px 14px; color: var(--paper); background: rgba(17,17,17,0.88); border: 1px solid var(--line); box-shadow: 7px 7px 0 rgba(17,17,17,0.46); pointer-events: auto; }
+.map-place-nav__eyebrow { display: block; margin-bottom: 9px; color: var(--yellow); font: 9px var(--mono); letter-spacing: 0.1em; }
+.map-place-nav__list { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: thin; }
+.map-place-nav__item { flex: 0 0 auto; display: flex; align-items: center; gap: 8px; padding: 7px 9px; color: var(--paper-soft); border: 1px solid transparent; background: transparent; cursor: pointer; font: 11px var(--body); white-space: nowrap; }
+.map-place-nav__item span { color: var(--yellow); font: 9px var(--mono); }
+.map-place-nav__item:hover, .map-place-nav__item:focus-visible, .map-place-nav__item.is-active { color: var(--ink); background: var(--paper); border-color: var(--paper); outline: none; }
+.map-place-nav__item.is-active span { color: var(--red); }
+.map-offscreen-guides { position: absolute; inset: 0; pointer-events: none; }
+.map-offscreen-guide { position: absolute; display: flex; align-items: center; gap: 7px; width: 150px; max-width: 150px; padding: 5px 8px 5px 5px; color: var(--paper); background: rgba(17,17,17,0.92); border: 1px solid var(--paper); box-shadow: 4px 4px 0 var(--red); cursor: pointer; pointer-events: auto; }
+.map-offscreen-guide:hover, .map-offscreen-guide:focus-visible { color: var(--ink); background: var(--yellow); outline: none; }
+.map-offscreen-guide__arrow { display: grid; place-items: center; width: 24px; height: 24px; color: var(--yellow); background: var(--red); font: 16px/1 var(--mono); }
+.map-offscreen-guide__label { display: grid; gap: 3px; min-width: 0; text-align: left; }
+.map-offscreen-guide__label strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 12px/1 var(--display); }
+.map-offscreen-guide__label small { font: 8px var(--mono); letter-spacing: 0.05em; }
+.map-actions { position: absolute; right: 24px; bottom: 24px; display: flex; gap: 8px; pointer-events: auto; }
+.map-actions button { padding: 9px 12px; color: var(--paper); background: rgba(17,17,17,0.88); border: 1px solid var(--paper); cursor: pointer; font: 10px var(--mono); letter-spacing: 0.06em; }
+.map-actions button:hover, .map-actions button:focus-visible { color: var(--ink); background: var(--yellow); outline: none; }
 .map-view .maplibregl-canvas { filter: saturate(0.5) contrast(1.28) brightness(0.7); }
 .map-view[data-map-mode='vector'] .maplibregl-canvas { filter: saturate(0.62) contrast(1.18) brightness(0.82); }
 .maplibregl-ctrl-bottom-right { display: none; }
@@ -62,6 +81,12 @@ button { font: inherit; }
 .detail-drawer__identity-english { margin: 8px 0 0; color: var(--paper-soft); font: 10px/1.15 var(--mono); letter-spacing: 0.04em; }
 .detail-drawer__identity-subtitle { margin: 12px 0 0; color: var(--yellow); font: 16px/1.1 var(--body); letter-spacing: 0.03em; }
 .detail-drawer__description { margin: 0 0 26px; color: var(--paper-soft); font: 15px/1.55 var(--body); }
+.detail-place-nav { display: grid; grid-template-columns: auto 1fr 1fr; gap: 8px; align-items: center; margin-top: 34px; padding-top: 14px; border-top: 1px solid var(--line); }
+.detail-place-nav__index { color: var(--yellow); font: 9px var(--mono); }
+.detail-place-nav button { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-width: 0; padding: 8px 0; color: var(--paper-soft); border: 0; background: transparent; cursor: pointer; font: 11px var(--body); }
+.detail-place-nav button:last-child { text-align: right; }
+.detail-place-nav button strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.detail-place-nav button:hover, .detail-place-nav button:focus-visible { color: var(--yellow); outline: none; }
 .detail-section { margin-top: 28px; }
 .detail-section__heading { display: flex; align-items: baseline; gap: 10px; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
 .detail-section__heading h2, .detail-section__heading h3 { margin: 0; color: var(--paper); font: 22px/1 var(--display); letter-spacing: 0.04em; }
@@ -116,6 +141,8 @@ button { font: inherit; }
 
 @media (max-width: 840px) {
   .github-repo-link { left: 14px; bottom: 62px; }
+  .map-place-nav { top: 14px; left: 14px; width: calc(100% - 28px); }
+  .map-actions { right: 14px; bottom: 14px; }
   .bottom-strip { left: 7%; right: 7%; bottom: 6%; align-items: start; flex-direction: column; gap: 12px; }
   .route-legend { order: 3; }
   .detail-drawer { top: auto; width: 100%; max-height: 72vh; padding: 34px 7% 28px; border-top: 0; border-left: 0; clip-path: polygon(3% 0, 100% 0, 100% 100%, 0 100%, 0 7%); }
@@ -127,12 +154,20 @@ button { font: inherit; }
   .detail-drawer__identity-subtitle { margin-top: 8px; font-size: 14px; }
   .detail-drawer__close { top: 22px; right: 7%; }
   .detail-drawer__description { font-size: 14px; }
+  .detail-place-nav { grid-template-columns: 1fr 1fr; }
+  .detail-place-nav__index { grid-column: 1 / -1; }
   .shop-card { grid-template-columns: 92px minmax(0, 1fr); }
   .shop-card__name { font-size: 22px; }
   .media-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 520px) {
+  .map-place-nav { padding: 10px; }
+  .map-place-nav__item { padding: 6px 7px; font-size: 10px; }
+  .map-offscreen-guide { width: 132px; max-width: 132px; }
+  .map-offscreen-guide__label strong { font-size: 10px; }
+  .map-actions { left: 14px; right: 14px; justify-content: flex-end; }
+  .map-actions button { padding: 8px 9px; font-size: 8px; }
   .map-slice--top { width: 60vw; }
   .map-slice--bottom { width: 56vw; }
   .route-legend { gap: 7px; padding: 9px 10px; font-size: 8px; }

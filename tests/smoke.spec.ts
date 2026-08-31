@@ -70,18 +70,40 @@ test('opens every curated place and keeps its gallery connected to the selected 
   await page.goto('/')
 
   for (const title of ['拙政园', '狮子林', '留园', '苏州万象天地']) {
-    const marker = page.getByRole('button', { name: `打开地点：${title}` })
-    if (page.viewportSize()?.width && page.viewportSize()!.width <= 520) {
-      await marker.dispatchEvent('click')
-    } else {
-      await marker.click()
-    }
+    await page.getByRole('button', { name: `导航到地点：${title}` }).click()
     await expect(page.getByRole('complementary', { name: `${title}详情` })).toBeVisible()
     await expect(page.locator('.detail-drawer__identity')).toContainText(title)
     await expect(page.locator('.media-preview-trigger').first()).toBeVisible()
     await expect(page.locator('.detail-drawer .media-figure figcaption')).toHaveCount(0)
     await page.waitForTimeout(1200)
   }
+})
+
+test('guides to offscreen places from the South University home view', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByRole('button', { name: '返回南苏主视角' })).toBeVisible()
+  await expect(page.getByRole('button', { name: '查看全部地点' })).toBeVisible()
+  await expect(page.locator('.map-offscreen-guide')).not.toHaveCount(0)
+  await page.getByRole('button', { name: '跳转到地点：拙政园' }).click()
+  await expect(page.getByRole('complementary', { name: '拙政园详情' })).toBeVisible()
+})
+
+test('switches places from the detail drawer', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: '导航到地点：拙政园' }).click()
+  await expect(page.getByRole('complementary', { name: '拙政园详情' })).toBeVisible()
+  await page.getByRole('button', { name: '下一个地点：狮子林' }).click()
+  await expect(page.getByRole('complementary', { name: '狮子林详情' })).toBeVisible()
+  await page.getByRole('button', { name: '上一个地点：拙政园' }).click()
+  await expect(page.getByRole('complementary', { name: '拙政园详情' })).toBeVisible()
+})
+
+test('keeps South University as home view with an explicit all-locations entry', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: '查看全部地点' }).click()
+  await expect(page.getByRole('button', { name: '返回南苏主视角' })).toBeVisible()
+  await page.getByRole('button', { name: '返回南苏主视角' }).click()
+  await expect(page.getByRole('button', { name: '跳转到地点：拙政园' })).toBeVisible()
 })
 
 test('opens the first Dongzhu shop log with the storefront photo first', async ({ page }) => {

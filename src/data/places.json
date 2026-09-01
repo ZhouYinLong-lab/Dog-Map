@@ -37,6 +37,31 @@
     "markerImage": "/media/nanjing-university-suzhou-campus.png"
   },
   {
+    "id": "nju-gulou-campus",
+    "title": "南京大学鼓楼校区",
+    "englishTitle": "NANJING UNIVERSITY · GULOU CAMPUS",
+    "subtitle": "在鼓楼度过的一年四季",
+    "date": "2026.09.01",
+    "coordinates": [118.779562, 32.055153],
+    "coordinateSource": "map-poi",
+    "coordinateReference": "高德地图 POI：南京大学(鼓楼校区)",
+    "accent": "yellow",
+    "description": "在鼓楼校区度过的一年四季，从银杏路、窗边光影到老建筑与讲堂，把这一年的校园生活留在地图里。",
+    "media": [
+      { "type": "image", "src": "/media/nju-gulou-campus/0F2406AEB9824AE952760A8B478E3DBE.webp", "alt": "南京大学鼓楼校区照片 01" },
+      { "type": "image", "src": "/media/nju-gulou-campus/29FF1F93214FFB354D860A4B795ACCC5.webp", "alt": "南京大学鼓楼校区照片 02" },
+      { "type": "image", "src": "/media/nju-gulou-campus/2C76DE961DAB804CA8A6EAFA28E801AB.webp", "alt": "南京大学鼓楼校区照片 03" },
+      { "type": "image", "src": "/media/nju-gulou-campus/456B8F79385AD11588DA377E5ECCCECA.webp", "alt": "南京大学鼓楼校区照片 04" },
+      { "type": "image", "src": "/media/nju-gulou-campus/56995005B0E2A8DA540F757C32885508.webp", "alt": "南京大学鼓楼校区照片 05" },
+      { "type": "image", "src": "/media/nju-gulou-campus/8F2563D5E00E8AB83C9229B67A1D7899.webp", "alt": "南京大学鼓楼校区照片 06" },
+      { "type": "image", "src": "/media/nju-gulou-campus/B17C5E72FBF71F01A68FF75441043751.webp", "alt": "南京大学鼓楼校区照片 07" },
+      { "type": "image", "src": "/media/nju-gulou-campus/D5E891FB0EB2E6758E43589E576E1A9A.webp", "alt": "南京大学鼓楼校区照片 08" },
+      { "type": "image", "src": "/media/nju-gulou-campus/F0A7D7C461504C97AB211E0A3D6356D3.webp", "alt": "南京大学鼓楼校区照片 09" },
+      { "type": "image", "src": "/media/nju-gulou-campus/FC77788EBC0F7D6FF436CB8F23FAF3DA.webp", "alt": "南京大学鼓楼校区照片 10" }
+    ],
+    "markerImage": "/media/nju-gulou-campus/nju-gulou-campus-sticker.png"
+  },
+  {
     "id": "dongzhu-night-market",
     "title": "东渚夜市与街道",
     "englishTitle": "DONGZHU NIGHT MARKET & STREET",

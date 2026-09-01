@@ -5,6 +5,12 @@
     "source": "Amap POI: 南京大学苏州校区（东区）",
     "referenceUrl": "https://www.amap.com/place/B0I2VU5PUC"
   },
+  "nju-gulou-campus": {
+    "coordinates": [118.779562, 32.055153],
+    "toleranceMeters": 20,
+    "source": "高德地图 POI：南京大学(鼓楼校区)",
+    "referenceUrl": "https://ditu.amap.com/place/B00190B4AC"
+  },
   "dongzhu-night-market": {
     "coordinates": [120.394792, 31.336724],
     "toleranceMeters": 150,

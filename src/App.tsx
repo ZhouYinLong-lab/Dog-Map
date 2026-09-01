@@ -33,7 +33,7 @@ function MediaBlock({ item, onPreview }: { item: MediaItem; onPreview: () => voi
   return (
     <figure className="media-figure">
       <button className="media-preview-trigger" type="button" onClick={onPreview} aria-label={`预览：${item.alt}`}>
-        <img className="media-block" src={item.src} alt={item.alt} loading="lazy" onError={() => setFailed(true)} />
+        <img className="media-block" src={item.src} alt={item.alt} loading="lazy" decoding="async" onError={() => setFailed(true)} />
       </button>
       {item.caption && <figcaption>{item.caption}</figcaption>}
     </figure>
@@ -74,7 +74,7 @@ function ImageLightbox({ items, index, onClose, onNavigate }: { items: MediaItem
       >
       <button className="media-lightbox__close" type="button" onClick={onClose} aria-label="关闭图片预览" autoFocus>×</button>
       <div className="media-lightbox__stage" onClick={(event) => event.stopPropagation()}>
-        <img className="media-lightbox__image" src={item.src} alt={item.alt} />
+        <img className="media-lightbox__image" src={item.src} alt={item.alt} decoding="async" />
         <button
           className="media-lightbox__nav media-lightbox__nav--previous"
           type="button"
@@ -108,7 +108,7 @@ function ShopCard({ shop, onOpen }: { shop: Shop; onOpen: () => void }) {
   return (
     <button className="shop-card" type="button" onClick={onOpen} aria-label={`打开探店：${shop.name}`}>
       <span className="shop-card__cover">
-        {cover && <img src={cover.src} alt="" loading="lazy" />}
+        {cover && <img src={cover.src} alt="" loading="lazy" decoding="async" />}
         <span className="shop-card__count">{shop.media.length.toString().padStart(2, '0')} PHOTOS</span>
       </span>
       <span className="shop-card__copy">

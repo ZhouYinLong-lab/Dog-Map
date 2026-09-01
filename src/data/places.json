@@ -34,7 +34,7 @@
       { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824103457.webp", "alt": "骑车初遇照片 21" },
       { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824103504.webp", "alt": "骑车初遇照片 22" }
     ],
-    "markerImage": "/media/nanjing-university-suzhou-campus.png"
+    "markerImage": "/media/nanjing-university-suzhou-campus.webp"
   },
   {
     "id": "nju-gulou-campus",
@@ -59,7 +59,7 @@
       { "type": "image", "src": "/media/nju-gulou-campus/F0A7D7C461504C97AB211E0A3D6356D3.webp", "alt": "南京大学鼓楼校区照片 09" },
       { "type": "image", "src": "/media/nju-gulou-campus/FC77788EBC0F7D6FF436CB8F23FAF3DA.webp", "alt": "南京大学鼓楼校区照片 10" }
     ],
-    "markerImage": "/media/nju-gulou-campus/nju-gulou-campus-sticker.png"
+    "markerImage": "/media/nju-gulou-campus/nju-gulou-campus-sticker.webp"
   },
   {
     "id": "dongzhu-night-market",
@@ -96,7 +96,7 @@
         ]
       }
     ],
-    "markerImage": "/media/dongzhu-night-market/dongzhu-night-market-sticker.png"
+    "markerImage": "/media/dongzhu-night-market/dongzhu-night-market-sticker.webp"
   },
   {
     "id": "zhuozheng-garden",
@@ -123,7 +123,7 @@
       { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-11.webp", "alt": "拙政园照片 11" },
       { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-12.webp", "alt": "拙政园照片 12" }
     ],
-    "markerImage": "/media/zhuozheng-garden/zhuozheng-garden-sticker.png"
+    "markerImage": "/media/zhuozheng-garden/zhuozheng-garden-sticker.webp"
   },
   {
     "id": "shizilin-garden",
@@ -148,7 +148,7 @@
       { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-09.webp", "alt": "狮子林照片 09" },
       { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-10.webp", "alt": "狮子林照片 10" }
     ],
-    "markerImage": "/media/shizilin-garden/shizilin-garden-sticker.png"
+    "markerImage": "/media/shizilin-garden/shizilin-garden-sticker.webp"
   },
   {
     "id": "liuyuan-garden",
@@ -173,7 +173,7 @@
       { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-09.webp", "alt": "留园照片 09" },
       { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-10.webp", "alt": "留园照片 10" }
     ],
-    "markerImage": "/media/liuyuan-garden/liuyuan-garden-sticker.png"
+    "markerImage": "/media/liuyuan-garden/liuyuan-garden-sticker.webp"
   },
   {
     "id": "suzhou-mixc-world",
@@ -193,6 +193,6 @@
       { "type": "image", "src": "/media/suzhou-mixc-world/suzhou-mixc-world-04.webp", "alt": "苏州万象天地照片 04" },
       { "type": "image", "src": "/media/suzhou-mixc-world/suzhou-mixc-world-05.webp", "alt": "苏州万象天地照片 05" }
     ],
-    "markerImage": "/media/suzhou-mixc-world/suzhou-mixc-world-sticker.png"
+    "markerImage": "/media/suzhou-mixc-world/suzhou-mixc-world-sticker.webp"
   }
 ]

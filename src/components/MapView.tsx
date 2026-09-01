@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import maplibregl, { type GeoJSONSource, type Map } from 'maplibre-gl'
+import type { GeoJSONSource, Map, Marker } from 'maplibre-gl'
 import type { Place, Route } from '../types/content'
 import { getRouteColor, getRouteColorMap } from '../map/routePalette'
 import { resolveMapStyle } from '../map/mapStyles'
@@ -95,10 +95,13 @@ function markerOffsetsForClusters(map: Map, places: Place[], markerScale: number
 function fitAllPlaces(map: Map, places: Place[], duration = 900) {
   if (places.length < 2) return
 
-  const bounds = new maplibregl.LngLatBounds()
-  places.forEach((place) => bounds.extend(place.coordinates))
+  const longitudes = places.map((place) => place.coordinates[0])
+  const latitudes = places.map((place) => place.coordinates[1])
   const compactViewport = map.getContainer().clientWidth <= 520
-  map.fitBounds(bounds, {
+  map.fitBounds([
+    [Math.min(...longitudes), Math.min(...latitudes)],
+    [Math.max(...longitudes), Math.max(...latitudes)],
+  ], {
     padding: compactViewport
       ? { top: 80, right: 30, bottom: 120, left: 30 }
       : { top: 120, right: 220, bottom: 150, left: 140 },
@@ -118,16 +121,20 @@ function distanceInKm(first: [number, number], second: [number, number]) {
   return Math.hypot(northSouth, eastWest)
 }
 
-function offscreenGuidesForMap(map: Map, places: Place[]): OffscreenGuide[] {
-  const { width, height } = map.getContainer().getBoundingClientRect()
+function offscreenGuidesForPoints(
+  width: number,
+  height: number,
+  mapCenter: [number, number],
+  places: Place[],
+  project: (place: Place) => { x: number; y: number },
+): OffscreenGuide[] {
   const center = { x: width / 2, y: height / 2 }
   const margin = Math.min(72, Math.max(36, Math.min(width, height) * 0.12))
   const horizontalLimit = Math.max(1, center.x - margin)
   const verticalLimit = Math.max(1, center.y - margin)
-  const mapCenter: [number, number] = [map.getCenter().lng, map.getCenter().lat]
 
   const guides: OffscreenGuide[] = places.flatMap<OffscreenGuide>((place) => {
-    const point = map.project(place.coordinates)
+    const point = project(place)
     if (point.x >= margin && point.x <= width - margin && point.y >= margin && point.y <= height - margin) return []
 
     const deltaX = point.x - center.x
@@ -188,6 +195,40 @@ function offscreenGuidesForMap(map: Map, places: Place[]): OffscreenGuide[] {
   })
 
   return guides
+}
+
+function offscreenGuidesForMap(map: Map, places: Place[]): OffscreenGuide[] {
+  const { width, height } = map.getContainer().getBoundingClientRect()
+  return offscreenGuidesForPoints(
+    width,
+    height,
+    [map.getCenter().lng, map.getCenter().lat],
+    places,
+    (place) => map.project(place.coordinates),
+  )
+}
+
+function offscreenGuidesForHomeViewport(width: number, height: number, places: Place[]): OffscreenGuide[] {
+  const zoom = 13.2
+  const worldSize = 512 * 2 ** zoom
+  const longitudeToWorldX = (longitude: number) => (longitude + 180) / 360 * worldSize
+  const latitudeToWorldY = (latitude: number) => {
+    const sine = Math.sin(latitude * Math.PI / 180)
+    return (0.5 - Math.log((1 + sine) / (1 - sine)) / (4 * Math.PI)) * worldSize
+  }
+  const centerX = longitudeToWorldX(njuSuzhouCampus[0])
+  const centerY = latitudeToWorldY(njuSuzhouCampus[1])
+
+  return offscreenGuidesForPoints(
+    width,
+    height,
+    njuSuzhouCampus,
+    places,
+    (place) => ({
+      x: width / 2 + longitudeToWorldX(place.coordinates[0]) - centerX,
+      y: height / 2 + latitudeToWorldY(place.coordinates[1]) - centerY,
+    }),
+  )
 }
 
 function routePointAt(route: Route | undefined, progress: number) {
@@ -259,7 +300,8 @@ export function MapView({
 }: MapViewProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<Map | null>(null)
-  const markersRef = useRef<maplibregl.Marker[]>([])
+  const mapLibreRef = useRef<typeof import('maplibre-gl') | null>(null)
+  const markersRef = useRef<Marker[]>([])
   const markerElementsRef = useRef<HTMLElement[]>([])
   const markerReferenceZoomRef = useRef(13.2)
   const homePitchRef = useRef(58)
@@ -268,13 +310,20 @@ export function MapView({
   const [offscreenGuides, setOffscreenGuides] = useState<OffscreenGuide[]>([])
 
   useEffect(() => {
+    if (mapReady || !mapContainerRef.current) return
+    const { width, height } = mapContainerRef.current.getBoundingClientRect()
+    setOffscreenGuides(offscreenGuidesForHomeViewport(width, height, places))
+  }, [mapReady, places])
+
+  useEffect(() => {
     if (!mapContainerRef.current) return
 
     let disposed = false
     let map: Map | null = null
 
-    void resolveMapStyle().then(({ style, mode }) => {
+    void Promise.all([import('maplibre-gl'), resolveMapStyle()]).then(([maplibregl, { style, mode }]) => {
       if (disposed || !mapContainerRef.current) return
+      mapLibreRef.current = maplibregl
 
       const initialZoom = mode === 'vector' ? 13.2 : 11.4
       markerReferenceZoomRef.current = initialZoom
@@ -422,20 +471,32 @@ export function MapView({
     routeCameraInitializedRef.current = true
     activeSource.setData(routeProgressFeature(activeRoute, 0, activeRouteColor))
 
-    if (activeRoute && shouldMoveCamera) {
-      const bounds = new maplibregl.LngLatBounds()
-      activeRoute.coordinates.forEach((coordinate) => bounds.extend(coordinate))
-      map.fitBounds(bounds, { padding: { top: 100, right: 180, bottom: 150, left: 100 }, duration: 900 })
+    // There is no animation to run when the project has no routes yet.
+    if (!activeRoute) return
+
+    if (shouldMoveCamera) {
+      const longitudes = activeRoute.coordinates.map((coordinate) => coordinate[0])
+      const latitudes = activeRoute.coordinates.map((coordinate) => coordinate[1])
+      map.fitBounds([
+        [Math.min(...longitudes), Math.min(...latitudes)],
+        [Math.max(...longitudes), Math.max(...latitudes)],
+      ], { padding: { top: 100, right: 180, bottom: 150, left: 100 }, duration: 900 })
     }
 
     let frame = 0
     const startedAt = performance.now()
     const duration = 5200
     let lastCameraAt = startedAt
+    let lastRenderedAt = startedAt - 1000 / 30
     const animate = (now: number) => {
+      if (now - lastRenderedAt < 1000 / 30) {
+        frame = requestAnimationFrame(animate)
+        return
+      }
       const progress = ((now - startedAt) % duration) / duration
       activeSource.setData(routeProgressFeature(activeRoute, progress, activeRouteColor))
-      if (activeRoute && shouldMoveCamera && now - lastCameraAt > 180) {
+      lastRenderedAt = now
+      if (shouldMoveCamera && now - lastCameraAt > 180) {
         const point = routePointAt(activeRoute, progress)
         if (point) map.easeTo({ center: point, duration: 180, essential: true })
         lastCameraAt = now
@@ -449,7 +510,8 @@ export function MapView({
 
   useEffect(() => {
     const map = mapRef.current
-    if (!map || !mapReady) return
+    const maplibregl = mapLibreRef.current
+    if (!map || !mapReady || !maplibregl) return
 
     const routeColors = getRouteColorMap(routes)
     markersRef.current.forEach((marker) => marker.remove())
@@ -463,7 +525,7 @@ export function MapView({
       element.style.visibility = 'visible'
       element.style.setProperty('--route-color', (place.routeId ? routeColors[place.routeId] : undefined) ?? getRouteColor(0))
       element.setAttribute('aria-label', `打开地点：${place.title}`)
-      element.innerHTML = `<span class="place-marker__visual"><img class="place-marker__art" src="${place.markerImage ?? artworkDataUri(place.id, place.accent, place.art)}" alt="" aria-hidden="true" /></span>`
+      element.innerHTML = `<span class="place-marker__visual"><img class="place-marker__art" src="${place.markerImage ?? artworkDataUri(place.id, place.accent, place.art)}" alt="" aria-hidden="true" decoding="async" /></span>`
       element.addEventListener('mouseenter', () => onHoverPlace(place.id))
       element.addEventListener('mouseleave', () => onHoverPlace(null))
       element.addEventListener('focus', () => onHoverPlace(place.id))
@@ -479,22 +541,28 @@ export function MapView({
         .addTo(map)
     })
     markerElementsRef.current = markerAnchors.map(({ element }) => element)
+    let layoutFrame = 0
     const updateMarkerLayout = () => {
-      const compactViewport = map.getContainer().clientWidth <= 520
-      const zoomScale = Math.max(compactViewport ? 0.08 : 0, markerScaleForZoom(map.getZoom(), markerReferenceZoomRef.current))
-      const offsets = markerOffsetsForClusters(map, places, zoomScale, compactViewport)
-      markerElementsRef.current.forEach((element) => {
-        const scale = zoomScale
-        element.style.setProperty('--marker-scale', `${scale}`)
-        element.style.setProperty('--marker-hover-scale', `${scale * 1.1}`)
+      if (layoutFrame) return
+      layoutFrame = requestAnimationFrame(() => {
+        layoutFrame = 0
+        const compactViewport = map.getContainer().clientWidth <= 520
+        const zoomScale = Math.max(compactViewport ? 0.08 : 0, markerScaleForZoom(map.getZoom(), markerReferenceZoomRef.current))
+        const offsets = markerOffsetsForClusters(map, places, zoomScale, compactViewport)
+        markerElementsRef.current.forEach((element) => {
+          const scale = zoomScale
+          element.style.setProperty('--marker-scale', `${scale}`)
+          element.style.setProperty('--marker-hover-scale', `${scale * 1.1}`)
+        })
+        markersRef.current.forEach((marker, index) => marker.setOffset(offsets[index]))
       })
-      markersRef.current.forEach((marker, index) => marker.setOffset(offsets[index]))
     }
     updateMarkerLayout()
     map.on('zoom', updateMarkerLayout)
     map.on('move', updateMarkerLayout)
 
     return () => {
+      if (layoutFrame) cancelAnimationFrame(layoutFrame)
       map.off('zoom', updateMarkerLayout)
       map.off('move', updateMarkerLayout)
       markersRef.current.forEach((marker) => marker.remove())
@@ -522,13 +590,26 @@ export function MapView({
     const map = mapRef.current
     if (!map || !mapReady) return
 
-    const updateOffscreenGuides = () => setOffscreenGuides(offscreenGuidesForMap(map, places))
+    let guideFrame = 0
+    const updateOffscreenGuides = () => {
+      if (guideFrame) return
+      guideFrame = requestAnimationFrame(() => {
+        guideFrame = 0
+        setOffscreenGuides(offscreenGuidesForMap(map, places))
+      })
+    }
+    // Render the first guide set synchronously, then coalesce camera events
+    // into one React update per frame while the map is moving.
+    setOffscreenGuides(offscreenGuidesForMap(map, places))
     updateOffscreenGuides()
     map.on('move', updateOffscreenGuides)
+    map.on('moveend', updateOffscreenGuides)
     map.on('resize', updateOffscreenGuides)
 
     return () => {
+      if (guideFrame) cancelAnimationFrame(guideFrame)
       map.off('move', updateOffscreenGuides)
+      map.off('moveend', updateOffscreenGuides)
       map.off('resize', updateOffscreenGuides)
     }
   }, [mapReady, places])

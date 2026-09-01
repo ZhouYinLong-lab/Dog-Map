@@ -30,9 +30,12 @@ export const rasterFallbackStyle: StyleSpecification = {
 
 export async function resolveMapStyle() {
   try {
-    const response = await fetch(vectorMapStyleUrl, { method: 'GET' })
+    const response = await fetch(vectorMapStyleUrl, { method: 'GET', cache: 'force-cache' })
     if (!response.ok) throw new Error(`Map style request failed: ${response.status}`)
-    return { style: vectorMapStyleUrl, mode: 'vector' as const }
+    // Pass the already downloaded style object to MapLibre so it does not
+    // request the same style URL a second time during map initialization.
+    const style = await response.json() as StyleSpecification
+    return { style, mode: 'vector' as const }
   } catch {
     return { style: rasterFallbackStyle, mode: 'raster' as const }
   }

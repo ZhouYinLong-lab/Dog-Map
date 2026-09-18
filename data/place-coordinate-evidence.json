@@ -36,9 +36,19 @@
     "toleranceMeters": 150,
     "source": "精选照片 GPS EXIF 坐标的平均值"
   },
-  "taihu-cycling": {
-    "coordinates": [120.306595, 31.315448],
-    "toleranceMeters": 4000,
-    "source": "11张现场原图 GPS EXIF 坐标的平均值；PNG路线截图无EXIF"
+  "taihu-cycling-park": {
+    "coordinates": [120.329319, 31.341511],
+    "toleranceMeters": 20,
+    "source": "照片 01 GPS EXIF 坐标：苏州环太湖自行车运动公园招牌"
+  },
+  "wanfo-temple": {
+    "coordinates": [120.324911, 31.318212],
+    "toleranceMeters": 1200,
+    "source": "3张现场原图 GPS EXIF 坐标的平均值（万佛寺及寺门周边）"
+  },
+  "taihu-lakeshore": {
+    "coordinates": [120.295499, 31.31054],
+    "toleranceMeters": 2000,
+    "source": "7张现场原图 GPS EXIF 坐标的平均值（太湖岸线与环湖道路）"
   }
 }

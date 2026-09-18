@@ -196,30 +196,60 @@
     "markerImage": "/media/suzhou-mixc-world/suzhou-mixc-world-sticker.webp"
   },
   {
-    "id": "taihu-cycling",
-    "title": "环太湖骑行",
-    "englishTitle": "TAIHU CYCLING ROUTE",
-    "subtitle": "夜骑太湖",
+    "id": "taihu-cycling-park",
+    "title": "苏州环太湖自行车运动公园",
+    "englishTitle": "TAIHU CYCLING PARK",
+    "subtitle": "骑行起点",
     "date": "2026.09.18",
-    "coordinates": [120.306595, 31.315448],
+    "coordinates": [120.329319, 31.341511],
     "coordinateSource": "photo-exif",
-    "coordinateReference": "11张现场原图 GPS EXIF 坐标的平均值（环太湖骑行路线）",
-    "accent": "red",
-    "description": "从苏州环太湖自行车运动公园出发，沿太湖岸线夜骑，经过万佛寺、湖岸道路与沿线灯火。",
+    "coordinateReference": "照片 01 GPS EXIF 坐标：苏州环太湖自行车运动公园招牌",
+    "accent": "yellow",
+    "description": "从环太湖自行车运动公园的招牌开始，记录这次夜骑太湖的出发点。",
     "media": [
-      { "type": "image", "src": "/media/taihu-cycling/01.webp", "alt": "苏州环太湖自行车运动公园招牌" },
-      { "type": "image", "src": "/media/taihu-cycling/02.webp", "alt": "万佛寺山门" },
-      { "type": "image", "src": "/media/taihu-cycling/03.webp", "alt": "太湖沿线石刻" },
-      { "type": "image", "src": "/media/taihu-cycling/04.webp", "alt": "太湖骑行道路" },
-      { "type": "image", "src": "/media/taihu-cycling/05.webp", "alt": "环湖道路入口" },
-      { "type": "image", "src": "/media/taihu-cycling/06.webp", "alt": "太湖夜色" },
-      { "type": "image", "src": "/media/taihu-cycling/07.webp", "alt": "太湖岸线夜景" },
-      { "type": "image", "src": "/media/taihu-cycling/08.webp", "alt": "太湖沿线灯光" },
-      { "type": "image", "src": "/media/taihu-cycling/09.webp", "alt": "环湖道路夜景" },
-      { "type": "image", "src": "/media/taihu-cycling/10.webp", "alt": "太湖骑行路段" },
-      { "type": "image", "src": "/media/taihu-cycling/11.webp", "alt": "太湖夜骑道路" },
-      { "type": "image", "src": "/media/taihu-cycling/12-route-screenshot.webp", "alt": "太湖骑行路线记录" }
+      { "type": "image", "src": "/media/taihu-cycling-park/01.webp", "alt": "苏州环太湖自行车运动公园招牌" }
     ],
-    "markerImage": "/media/taihu-cycling/taihu-cycling-sticker.webp"
+    "markerImage": "/media/taihu-cycling-park/taihu-cycling-park-sticker.webp"
+  },
+  {
+    "id": "wanfo-temple",
+    "title": "万佛寺",
+    "englishTitle": "WANFO TEMPLE",
+    "subtitle": "夜访寺门",
+    "date": "2026.09.18",
+    "coordinates": [120.324911, 31.318212],
+    "coordinateSource": "photo-exif",
+    "coordinateReference": "3张现场原图 GPS EXIF 坐标的平均值（万佛寺及寺门周边）",
+    "accent": "red",
+    "description": "夜骑经过万佛寺，记录寺门、拱门和沿线道路的静谧光线。",
+    "media": [
+      { "type": "image", "src": "/media/wanfo-temple/01.webp", "alt": "万佛寺山门" },
+      { "type": "image", "src": "/media/wanfo-temple/02.webp", "alt": "万佛寺周边道路" },
+      { "type": "image", "src": "/media/wanfo-temple/03.webp", "alt": "万佛寺周边拱门" }
+    ],
+    "markerImage": "/media/wanfo-temple/wanfo-temple-sticker.webp"
+  },
+  {
+    "id": "taihu-lakeshore",
+    "title": "太湖岸线",
+    "englishTitle": "TAIHU LAKESHORE",
+    "subtitle": "湖岸夜骑",
+    "date": "2026.09.18",
+    "coordinates": [120.295499, 31.310540],
+    "coordinateSource": "photo-exif",
+    "coordinateReference": "7张现场原图 GPS EXIF 坐标的平均值（太湖岸线与环湖道路）",
+    "accent": "yellow",
+    "description": "从太湖沿线的石刻、灯光和湖面，到夜骑路线截图，留下这一段靠水展开的道路。",
+    "media": [
+      { "type": "image", "src": "/media/taihu-lakeshore/01.webp", "alt": "太湖沿线石刻" },
+      { "type": "image", "src": "/media/taihu-lakeshore/02.webp", "alt": "太湖夜色" },
+      { "type": "image", "src": "/media/taihu-lakeshore/03.webp", "alt": "太湖岸线夜景" },
+      { "type": "image", "src": "/media/taihu-lakeshore/04.webp", "alt": "太湖沿线灯光" },
+      { "type": "image", "src": "/media/taihu-lakeshore/05.webp", "alt": "环湖道路夜景" },
+      { "type": "image", "src": "/media/taihu-lakeshore/06.webp", "alt": "太湖骑行路段" },
+      { "type": "image", "src": "/media/taihu-lakeshore/07.webp", "alt": "太湖夜骑道路" },
+      { "type": "image", "src": "/media/taihu-lakeshore/08-route-screenshot.webp", "alt": "太湖骑行路线记录" }
+    ],
+    "markerImage": "/media/taihu-lakeshore/taihu-lakeshore-sticker.webp"
   }
 ]

@@ -45,8 +45,8 @@ button { font: inherit; }
 .place-marker:hover, .place-marker:focus-visible, .place-marker.is-hovered, .place-marker.is-active { z-index: 10; outline: none; }
 .place-marker:hover, .place-marker:focus-visible, .place-marker.is-hovered, .place-marker.is-active { transform: translateX(-50%) scale(var(--marker-hover-scale)) rotate(-2deg); filter: drop-shadow(7px 7px 0 rgba(17,17,17,0.78)); }
 .place-marker__art { display: block; width: 86px; height: 86px; object-fit: contain; }
-.place-marker--sticker { width: 168px; height: 180px; }
-.place-marker--sticker .place-marker__art { width: 168px; height: 180px; }
+.place-marker--sticker { width: 132px; height: 142px; }
+.place-marker--sticker .place-marker__art { width: 132px; height: 142px; }
 .place-marker__pin { position: relative; flex: 0 0 26px; width: 26px; height: 26px; border: 4px solid var(--ink); background: var(--route-color, var(--red)); transform: rotate(45deg); box-shadow: 0 0 0 2px var(--paper); }
 .place-marker__pin::after { content: ''; position: absolute; inset: 6px; background: var(--ink); }
 .place-marker__label { position: relative; display: block; padding: 9px 15px 8px 12px; background: var(--ink); border: 2px solid var(--paper); box-shadow: 5px 5px 0 var(--route-color, var(--red)); clip-path: polygon(0 0, 92% 0, 100% 30%, 96% 100%, 0 100%); font: 18px/1 var(--display); letter-spacing: 0.03em; white-space: nowrap; }
@@ -163,6 +163,8 @@ button { font: inherit; }
   .route-legend { gap: 7px; padding: 9px 10px; font-size: 8px; }
   .route-legend__route, .route-legend__destination { gap: 6px; }
   .place-marker { min-width: 122px; gap: 6px; }
+  .place-marker--sticker { width: 120px; height: 128px; }
+  .place-marker--sticker .place-marker__art { width: 120px; height: 128px; }
   .place-marker__pin { flex-basis: 20px; width: 20px; height: 20px; border-width: 3px; }
   .place-marker__pin::after { inset: 5px; }
   .place-marker__label { padding: 7px 10px; font-size: 14px; box-shadow: 4px 4px 0 var(--red); }

@@ -51,8 +51,8 @@ function markerScaleForZoom(zoom: number, referenceZoom: number) {
 function markerOffsetsForClusters(map: Map, places: Place[], markerScale: number, compactViewport: boolean) {
   const projected = places.map((place) => map.project(place.coordinates))
   const visualSize = 168 * markerScale
-  const collisionDistance = Math.max(72, visualSize + 18)
-  const spread = compactViewport ? Math.max(46, visualSize + 16) : Math.max(92, visualSize + 28)
+  const collisionDistance = Math.max(150, visualSize + 120)
+  const spread = compactViewport ? Math.max(84, visualSize + 80) : Math.max(132, visualSize + 80)
   const visited = new Set<number>()
   const offsets = places.map((): [number, number] => [0, 0])
 
@@ -541,23 +541,27 @@ export function MapView({
         .addTo(map)
     })
     markerElementsRef.current = markerAnchors.map(({ element }) => element)
+    const applyMarkerLayout = () => {
+      const compactViewport = map.getContainer().clientWidth <= 520
+      const zoomScale = Math.max(compactViewport ? 0.08 : 0, markerScaleForZoom(map.getZoom(), markerReferenceZoomRef.current))
+      const offsets = markerOffsetsForClusters(map, places, zoomScale, compactViewport)
+      markerElementsRef.current.forEach((element) => {
+        const scale = zoomScale
+        element.style.setProperty('--marker-scale', `${scale}`)
+        element.style.setProperty('--marker-hover-scale', `${scale * 1.1}`)
+      })
+      markersRef.current.forEach((marker, index) => marker.setOffset(offsets[index]))
+    }
     let layoutFrame = 0
     const updateMarkerLayout = () => {
       if (layoutFrame) return
       layoutFrame = requestAnimationFrame(() => {
         layoutFrame = 0
-        const compactViewport = map.getContainer().clientWidth <= 520
-        const zoomScale = Math.max(compactViewport ? 0.08 : 0, markerScaleForZoom(map.getZoom(), markerReferenceZoomRef.current))
-        const offsets = markerOffsetsForClusters(map, places, zoomScale, compactViewport)
-        markerElementsRef.current.forEach((element) => {
-          const scale = zoomScale
-          element.style.setProperty('--marker-scale', `${scale}`)
-          element.style.setProperty('--marker-hover-scale', `${scale * 1.1}`)
-        })
-        markersRef.current.forEach((marker, index) => marker.setOffset(offsets[index]))
+        applyMarkerLayout()
       })
     }
-    updateMarkerLayout()
+    // Apply the first collision layout before the markers can receive input.
+    applyMarkerLayout()
     map.on('zoom', updateMarkerLayout)
     map.on('move', updateMarkerLayout)
 

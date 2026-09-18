@@ -35,5 +35,10 @@
     "coordinates": [120.594657, 31.314872],
     "toleranceMeters": 150,
     "source": "精选照片 GPS EXIF 坐标的平均值"
+  },
+  "taihu-cycling": {
+    "coordinates": [120.306595, 31.315448],
+    "toleranceMeters": 4000,
+    "source": "11张现场原图 GPS EXIF 坐标的平均值；PNG路线截图无EXIF"
   }
 }

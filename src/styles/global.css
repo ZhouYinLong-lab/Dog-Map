@@ -39,7 +39,7 @@ button { font: inherit; }
 
 .map-stage::before, .map-stage::after, .map-grain, .map-slice, .bottom-strip { display: none; }
 
-.place-marker-anchor { position: relative; z-index: 2; display: block; width: 0; height: 0; pointer-events: none; }
+.place-marker-anchor { position: relative; z-index: 5; display: block; width: 0; height: 0; pointer-events: none; }
 .place-marker { --marker-scale: 1; --marker-hover-scale: 1.1; position: absolute; left: 0; bottom: 0; display: grid; place-items: center; width: 92px; height: 92px; padding: 0; border: 0; color: var(--paper); background: transparent; cursor: pointer; pointer-events: auto; transform: translateX(-50%) scale(var(--marker-scale)); transform-origin: 50% 100%; transition: transform 180ms ease, filter 180ms ease; }
 .place-marker__visual { display: grid; place-items: center; width: 100%; height: 100%; }
 .place-marker:hover, .place-marker:focus-visible, .place-marker.is-hovered, .place-marker.is-active { z-index: 10; outline: none; }

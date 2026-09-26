@@ -4,8 +4,8 @@ test('renders the current destination markers without demo content', async ({ pa
   await page.goto('/')
   await expect(page).toHaveTitle(/Dog Map/)
   await expect(page.locator('.map-view')).toBeVisible()
-  await expect(page.locator('.place-marker')).toHaveCount(10, { timeout: 15_000 })
-  await expect(page.locator('.place-marker__art')).toHaveCount(10)
+  await expect(page.locator('.place-marker')).toHaveCount(11, { timeout: 15_000 })
+  await expect(page.locator('.place-marker__art')).toHaveCount(11)
   await expect(page.getByRole('button', { name: '打开地点：南京大学苏州校区' })).toHaveClass(/place-marker--sticker/)
   await expect(page.getByRole('button', { name: '打开地点：东渚夜市与街道' })).toHaveClass(/place-marker--sticker/)
   await expect(page.getByRole('button', { name: '打开地点：拙政园' })).toHaveClass(/place-marker--sticker/)
@@ -22,7 +22,7 @@ test('renders the current destination markers without demo content', async ({ pa
 
 test('keeps every place marker in the map positioning layer', async ({ page }) => {
   await page.goto('/')
-  await expect(page.locator('.place-marker')).toHaveCount(10, { timeout: 15_000 })
+  await expect(page.locator('.place-marker')).toHaveCount(11, { timeout: 15_000 })
   const positions = await page.locator('.place-marker').evaluateAll((elements) => elements.map((element) => getComputedStyle(element).position))
   expect(positions.every((position) => position === 'absolute')).toBeTruthy()
 })
@@ -92,7 +92,7 @@ test('opens the Gulou campus gallery with the requested seasonal title', async (
   await page.getByRole('button', { name: '跳转到地点：南京大学鼓楼校区' }).click()
   await expect(page.getByRole('complementary', { name: '南京大学鼓楼校区详情' })).toBeVisible()
   await expect(page.locator('.detail-drawer__identity')).toContainText('在鼓楼度过的一年四季')
-  await expect(page.locator('.media-preview-trigger')).toHaveCount(10)
+  await expect(page.locator('.media-preview-trigger')).toHaveCount(26)
   await expect(page.locator('.detail-drawer .media-figure figcaption')).toHaveCount(0)
 })
 
@@ -194,7 +194,7 @@ test('opens an image preview and closes it with Escape', async ({ page }) => {
 test('keeps the map focused on map and visit artwork', async ({ page }) => {
   await page.goto('/')
   await expect(page.locator('.bottom-strip')).toHaveCount(0)
-  await expect(page.locator('.place-marker__art')).toHaveCount(10, { timeout: 15_000 })
+  await expect(page.locator('.place-marker__art')).toHaveCount(11, { timeout: 15_000 })
 })
 
 test('scales marker artwork with map zoom', async ({ page }) => {

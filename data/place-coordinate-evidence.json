@@ -50,5 +50,10 @@
     "coordinates": [120.295499, 31.31054],
     "toleranceMeters": 2000,
     "source": "7张现场原图 GPS EXIF 坐标的平均值（太湖岸线与环湖道路）"
+  },
+  "xuanwu-lake": {
+    "coordinates": [118.787189, 32.078646],
+    "toleranceMeters": 30,
+    "source": "22张玄武湖现场照片 GPS EXIF 坐标的平均值；另2张转存图片无GPS EXIF"
   }
 }

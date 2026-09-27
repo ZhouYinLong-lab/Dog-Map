@@ -48,6 +48,25 @@ function markerScaleForZoom(zoom: number, referenceZoom: number) {
   return Math.min(1.35, 2 ** (zoom - referenceZoom))
 }
 
+function markerScaleForPhotoCounts(places: Place[]) {
+  const photoCounts = places.map((place) => (
+    place.media.filter((media) => media.type === 'image').length
+    + (place.shops ?? []).reduce((total, shop) => (
+      total + shop.media.filter((media) => media.type === 'image').length
+    ), 0)
+  ))
+  const sortedCounts = [...photoCounts].sort((first, second) => first - second)
+  const middle = Math.floor(sortedCounts.length / 2)
+  const median = sortedCounts.length % 2
+    ? sortedCounts[middle]
+    : (sortedCounts[middle - 1] + sortedCounts[middle]) / 2
+
+  return photoCounts.map((count) => {
+    const areaRatioScale = Math.sqrt(Math.max(1, count) / Math.max(1, median))
+    return Math.min(1.4, Math.max(0.7, areaRatioScale))
+  })
+}
+
 function fitAllPlaces(map: Map, places: Place[], duration = 900) {
   if (places.length < 2) return
 
@@ -501,10 +520,12 @@ export function MapView({
         .addTo(map)
     })
     markerElementsRef.current = markerAnchors.map(({ element }) => element)
+    const photoScales = markerScaleForPhotoCounts(places)
     const applyMarkerScale = () => {
       const compactViewport = map.getContainer().clientWidth <= 520
       const zoomScale = Math.max(compactViewport ? 0.08 : 0, markerScaleForZoom(map.getZoom(), markerReferenceZoomRef.current))
-      markerElementsRef.current.forEach((element) => {
+      markerElementsRef.current.forEach((element, index) => {
+        element.style.setProperty('--marker-photo-scale', `${photoScales[index]}`)
         element.style.setProperty('--marker-scale', `${zoomScale}`)
         element.style.setProperty('--marker-hover-scale', `${zoomScale * 1.1}`)
       })

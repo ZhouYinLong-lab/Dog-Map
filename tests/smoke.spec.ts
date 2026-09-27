@@ -232,6 +232,19 @@ test('scales marker artwork with map zoom', async ({ page }) => {
   }
 })
 
+test('scales place markers by their included photo count', async ({ page }) => {
+  await page.goto('/')
+  const bikeParkMarker = page.getByRole('button', { name: '打开地点：苏州环太湖自行车运动公园' })
+  const gulouMarker = page.getByRole('button', { name: '打开地点：南京大学鼓楼校区' })
+  await expect(bikeParkMarker).toBeVisible({ timeout: 15_000 })
+  await expect(gulouMarker).toBeVisible()
+
+  const photoScale = async (marker: typeof bikeParkMarker) => marker.evaluate((element) => (
+    Number.parseFloat(getComputedStyle(element).getPropertyValue('--marker-photo-scale'))
+  ))
+  expect(await photoScale(bikeParkMarker)).toBeLessThan(await photoScale(gulouMarker))
+})
+
 test('mobile layout has no horizontal overflow', async ({ page }) => {
   await page.goto('/')
   const dimensions = await page.evaluate(() => ({

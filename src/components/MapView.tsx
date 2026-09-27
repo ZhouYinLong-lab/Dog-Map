@@ -283,6 +283,7 @@ export function MapView({
   const routeCameraInitializedRef = useRef(false)
   const [mapReady, setMapReady] = useState(0)
   const [offscreenGuides, setOffscreenGuides] = useState<OffscreenGuide[]>([])
+  const [offscreenGuidesVisible, setOffscreenGuidesVisible] = useState(false)
 
   useEffect(() => {
     if (mapReady || !mapContainerRef.current) return
@@ -645,7 +646,12 @@ export function MapView({
     <div className="map-shell">
       <div className="map-view" ref={mapContainerRef} aria-label="苏州路线地图" />
       <div className="map-overlay">
-        <div className="map-offscreen-guides" aria-label="画面外地点">
+        <div
+          className="map-offscreen-guides"
+          id="map-offscreen-guides"
+          aria-label="画面外地点"
+          hidden={!offscreenGuidesVisible}
+        >
           {offscreenGuides.map((guide) => (
             <button
               className="map-offscreen-guide"
@@ -673,6 +679,15 @@ export function MapView({
         </div>
 
         <div className="map-actions" aria-label="地图视角">
+          <button
+            type="button"
+            aria-label={offscreenGuidesVisible ? '隐藏地点箭头' : '显示地点箭头'}
+            aria-expanded={offscreenGuidesVisible}
+            aria-controls="map-offscreen-guides"
+            onClick={() => setOffscreenGuidesVisible((visible) => !visible)}
+          >
+            {offscreenGuidesVisible ? '隐藏箭头' : '显示箭头'} <span aria-hidden="true">{offscreenGuidesVisible ? '−' : '↗'}</span>
+          </button>
           <button type="button" aria-label="查看全部地点" onClick={handleViewAll}>
             查看全图 <span aria-hidden="true">↗</span>
           </button>

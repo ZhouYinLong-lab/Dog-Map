@@ -48,50 +48,6 @@ function markerScaleForZoom(zoom: number, referenceZoom: number) {
   return Math.min(1.35, 2 ** (zoom - referenceZoom))
 }
 
-function markerOffsetsForClusters(map: Map, places: Place[], markerScale: number, compactViewport: boolean) {
-  const projected = places.map((place) => map.project(place.coordinates))
-  const visualSize = 168 * markerScale
-  const collisionDistance = Math.max(150, visualSize + 120)
-  const spread = compactViewport ? Math.max(84, visualSize + 80) : Math.max(132, visualSize + 80)
-  const visited = new Set<number>()
-  const offsets = places.map((): [number, number] => [0, 0])
-
-  places.forEach((_, index) => {
-    if (visited.has(index)) return
-
-    const cluster: number[] = []
-    const queue = [index]
-    visited.add(index)
-
-    while (queue.length > 0) {
-      const current = queue.shift()!
-      cluster.push(current)
-      places.forEach((__, candidate) => {
-        if (visited.has(candidate)) return
-        const distance = projected[current].dist(projected[candidate])
-        if (distance <= collisionDistance) {
-          visited.add(candidate)
-          queue.push(candidate)
-        }
-      })
-    }
-
-    if (cluster.length < 2) return
-
-    const columns = Math.ceil(Math.sqrt(cluster.length))
-    cluster.forEach((placeIndex, clusterIndex) => {
-      const column = clusterIndex % columns
-      const row = Math.floor(clusterIndex / columns)
-      offsets[placeIndex] = [
-        (column - (columns - 1) / 2) * spread,
-        (row - (Math.ceil(cluster.length / columns) - 1) / 2) * spread,
-      ]
-    })
-  })
-
-  return offsets
-}
-
 function fitAllPlaces(map: Map, places: Place[], duration = 900) {
   if (places.length < 2) return
 
@@ -536,39 +492,38 @@ export function MapView({
       return { anchor, element }
     })
     markersRef.current = places.map((place, index) => {
-      return new maplibregl.Marker({ element: markerAnchors[index].anchor, anchor: 'bottom' })
+      return new maplibregl.Marker({
+        element: markerAnchors[index].anchor,
+        anchor: 'bottom',
+        subpixelPositioning: true,
+      })
         .setLngLat(place.coordinates)
         .addTo(map)
     })
     markerElementsRef.current = markerAnchors.map(({ element }) => element)
-    const applyMarkerLayout = () => {
+    const applyMarkerScale = () => {
       const compactViewport = map.getContainer().clientWidth <= 520
       const zoomScale = Math.max(compactViewport ? 0.08 : 0, markerScaleForZoom(map.getZoom(), markerReferenceZoomRef.current))
-      const offsets = markerOffsetsForClusters(map, places, zoomScale, compactViewport)
       markerElementsRef.current.forEach((element) => {
-        const scale = zoomScale
-        element.style.setProperty('--marker-scale', `${scale}`)
-        element.style.setProperty('--marker-hover-scale', `${scale * 1.1}`)
-      })
-      markersRef.current.forEach((marker, index) => marker.setOffset(offsets[index]))
-    }
-    let layoutFrame = 0
-    const updateMarkerLayout = () => {
-      if (layoutFrame) return
-      layoutFrame = requestAnimationFrame(() => {
-        layoutFrame = 0
-        applyMarkerLayout()
+        element.style.setProperty('--marker-scale', `${zoomScale}`)
+        element.style.setProperty('--marker-hover-scale', `${zoomScale * 1.1}`)
       })
     }
-    // Apply the first collision layout before the markers can receive input.
-    applyMarkerLayout()
-    map.on('zoom', updateMarkerLayout)
-    map.on('move', updateMarkerLayout)
+    let scaleFrame = 0
+    const updateMarkerScale = () => {
+      if (scaleFrame) return
+      scaleFrame = requestAnimationFrame(() => {
+        scaleFrame = 0
+        applyMarkerScale()
+      })
+    }
+    // Keep each DOM marker anchored to its geographic coordinate; only its visual size changes.
+    applyMarkerScale()
+    map.on('zoom', updateMarkerScale)
 
     return () => {
-      if (layoutFrame) cancelAnimationFrame(layoutFrame)
-      map.off('zoom', updateMarkerLayout)
-      map.off('move', updateMarkerLayout)
+      if (scaleFrame) cancelAnimationFrame(scaleFrame)
+      map.off('zoom', updateMarkerScale)
       markersRef.current.forEach((marker) => marker.remove())
       markersRef.current = []
       markerElementsRef.current = []

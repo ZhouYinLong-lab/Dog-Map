@@ -3,6 +3,7 @@ export type Coordinates = [number, number]
 export type MediaItem = {
   type: 'image' | 'video'
   src: string
+  thumbnail?: string
   poster?: string
   alt: string
   caption?: string

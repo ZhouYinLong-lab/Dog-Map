@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run validate:places && tsc -b && vite build",
+    "build": "npm run validate:places && npm run validate:media && tsc -b && vite build",
     "preview": "vite preview",
     "test:e2e": "playwright test",
     "typecheck:server": "tsc -p tsconfig.server.json --noEmit",
     "server:dev": "tsx server/index.ts",
+    "assets:derive": "node scripts/generate-media-derivatives.mjs",
+    "validate:media": "node scripts/validate-media-derivatives.mjs",
     "validate:places": "node scripts/validate-place-coordinates.mjs"
   },
   "dependencies": {

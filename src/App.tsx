@@ -5,6 +5,14 @@ import { loadRemoteMedia } from './services/mediaApi'
 import type { MediaItem, Shop } from './types/content'
 import { artworkDataUri } from './map/artwork'
 
+function thumbnailSource(item: MediaItem) {
+  if (item.thumbnail) return item.thumbnail
+  if (item.src.startsWith('/media/') && item.type === 'image' && /\.webp$/i.test(item.src)) {
+    return item.src.replace(/\.webp$/i, '.thumb.webp')
+  }
+  return item.src
+}
+
 function MediaBlock({ item, onPreview }: { item: MediaItem; onPreview: () => void }) {
   const [failed, setFailed] = useState(false)
 
@@ -33,7 +41,7 @@ function MediaBlock({ item, onPreview }: { item: MediaItem; onPreview: () => voi
   return (
     <figure className="media-figure">
       <button className="media-preview-trigger" type="button" onClick={onPreview} aria-label={`预览：${item.alt}`}>
-        <img className="media-block" src={item.src} alt={item.alt} loading="lazy" decoding="async" onError={() => setFailed(true)} />
+        <img className="media-block" src={thumbnailSource(item)} alt={item.alt} loading="lazy" decoding="async" onError={() => setFailed(true)} />
       </button>
       {item.caption && <figcaption>{item.caption}</figcaption>}
     </figure>
@@ -108,7 +116,7 @@ function ShopCard({ shop, onOpen }: { shop: Shop; onOpen: () => void }) {
   return (
     <button className="shop-card" type="button" onClick={onOpen} aria-label={`打开探店：${shop.name}`}>
       <span className="shop-card__cover">
-        {cover && <img src={cover.src} alt="" loading="lazy" decoding="async" />}
+        {cover && <img src={thumbnailSource(cover)} alt="" loading="lazy" decoding="async" />}
         <span className="shop-card__count">{shop.media.length.toString().padStart(2, '0')} PHOTOS</span>
       </span>
       <span className="shop-card__copy">

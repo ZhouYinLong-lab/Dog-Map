@@ -443,9 +443,10 @@ export function MapView({
 
     const activeRouteIndex = activeRoute ? routes.indexOf(activeRoute) : 0
     const activeRouteColor = getRouteColor(activeRouteIndex)
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const shouldMoveCamera = routeCameraInitializedRef.current
     routeCameraInitializedRef.current = true
-    activeSource.setData(routeProgressFeature(activeRoute, 0, activeRouteColor))
+    activeSource.setData(routeProgressFeature(activeRoute, reducedMotion ? 1 : 0, activeRouteColor))
 
     // There is no animation to run when the project has no routes yet.
     if (!activeRoute) return
@@ -456,8 +457,10 @@ export function MapView({
       map.fitBounds([
         [Math.min(...longitudes), Math.min(...latitudes)],
         [Math.max(...longitudes), Math.max(...latitudes)],
-      ], { padding: { top: 100, right: 180, bottom: 150, left: 100 }, duration: 900 })
+      ], { padding: { top: 100, right: 180, bottom: 150, left: 100 }, duration: reducedMotion ? 0 : 900 })
     }
+
+    if (reducedMotion) return
 
     let frame = 0
     const startedAt = performance.now()
@@ -469,7 +472,8 @@ export function MapView({
         frame = requestAnimationFrame(animate)
         return
       }
-      const progress = ((now - startedAt) % duration) / duration
+      // Reveal the route once, then leave the map idle until the route changes.
+      const progress = Math.min(1, (now - startedAt) / duration)
       activeSource.setData(routeProgressFeature(activeRoute, progress, activeRouteColor))
       lastRenderedAt = now
       if (shouldMoveCamera && now - lastCameraAt > 180) {
@@ -477,7 +481,7 @@ export function MapView({
         if (point) map.easeTo({ center: point, duration: 180, essential: true })
         lastCameraAt = now
       }
-      frame = requestAnimationFrame(animate)
+      if (progress < 1) frame = requestAnimationFrame(animate)
     }
     frame = requestAnimationFrame(animate)
 
@@ -501,7 +505,16 @@ export function MapView({
       element.style.visibility = 'visible'
       element.style.setProperty('--route-color', (place.routeId ? routeColors[place.routeId] : undefined) ?? getRouteColor(0))
       element.setAttribute('aria-label', `打开地点：${place.title}`)
-      element.innerHTML = `<span class="place-marker__visual"><img class="place-marker__art" src="${place.markerImage ?? artworkDataUri(place.id, place.accent, place.art)}" alt="" aria-hidden="true" decoding="async" /></span>`
+      const markerImage = place.markerImage
+        ? place.markerImage.replace(/\.webp$/i, '.marker.webp')
+        : artworkDataUri(place.id, place.accent, place.art)
+      element.innerHTML = `<span class="place-marker__visual"><img class="place-marker__art" src="${markerImage}" alt="" aria-hidden="true" loading="lazy" decoding="async" /></span>`
+      const art = element.querySelector<HTMLImageElement>('.place-marker__art')
+      if (art && place.markerImage) {
+        art.addEventListener('error', () => {
+          art.src = place.markerImage!
+        }, { once: true })
+      }
       element.addEventListener('mouseenter', () => onHoverPlace(place.id))
       element.addEventListener('mouseleave', () => onHoverPlace(null))
       element.addEventListener('focus', () => onHoverPlace(place.id))

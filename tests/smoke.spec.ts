@@ -28,9 +28,17 @@ test('loads every active place marker illustration', async ({ page }) => {
   await page.goto('/')
   const artwork = page.locator('.place-marker__art')
   await expect(artwork).toHaveCount(11, { timeout: 15_000 })
-  await expect.poll(() => artwork.evaluateAll((images) => images.every((image) => (
-    image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0
-  )))).toBe(true)
+  await expect(artwork.first()).toHaveAttribute('loading', 'lazy')
+  await expect(artwork.first()).toHaveAttribute('src', /\.marker\.webp$/)
+  await expect.poll(() => artwork.evaluateAll((images) => {
+    const visibleImages = images.filter((image) => {
+      const bounds = image.getBoundingClientRect()
+      return bounds.right > 0 && bounds.bottom > 0 && bounds.left < innerWidth && bounds.top < innerHeight
+    })
+    return visibleImages.length > 0 && visibleImages.every((image) => (
+      image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0
+    ))
+  })).toBe(true)
 })
 
 test('keeps every place marker in the map positioning layer', async ({ page }) => {
@@ -200,9 +208,13 @@ test('has a GitHub repository link in the lower-left corner', async ({ page }) =
 test('opens an image preview and closes it with Escape', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('button', { name: '打开地点：南京大学苏州校区' }).click()
+  const thumbnail = page.locator('.media-block').first()
+  await expect(thumbnail).toHaveAttribute('src', /IMG20260824095359\.thumb\.webp$/)
+  await expect.poll(() => thumbnail.evaluate((image) => image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0)).toBe(true)
   await page.getByRole('button', { name: '预览：骑车初遇照片 01' }).click()
   await expect(page.getByRole('dialog', { name: '图片预览：骑车初遇照片 01' })).toBeVisible()
   const image = page.locator('.media-lightbox__image')
+  await expect(image).toHaveAttribute('src', /IMG20260824095359\.webp$/)
   const imageBox = await image.boundingBox()
   const previousBox = await page.getByRole('button', { name: '上一张图片' }).boundingBox()
   const nextBox = await page.getByRole('button', { name: '下一张图片' }).boundingBox()

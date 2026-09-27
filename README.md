@@ -108,6 +108,8 @@ media-originals/<地点 id>/
 
 `media-originals/` 默认不会提交到 Git。建议网页使用 WebP，原图只作为本地素材归档。
 
+新增或替换 `places.json` 中的本地 WebP 照片/地点贴纸后（需要安装 ImageMagick），运行 `npm run assets:derive` 生成图册缩略图和地图贴纸轻量版。图册先加载最长边 960px 的缩略图，点击后仍查看原图；地图贴纸使用最长边 512px 版本。`npm run build` 会校验派生文件是否齐全。
+
 ## Repository Structure / 仓库结构
 
 ```text

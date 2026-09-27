@@ -2,6 +2,7 @@ import type { MediaItem } from '../types/content'
 
 type ApiMediaAsset = {
   publicUrl: string
+  thumbnailUrl?: string | null
   kind: 'image' | 'video'
   altText: string
   caption: string | null
@@ -22,6 +23,7 @@ export async function loadRemoteMedia(placeId: string, signal?: AbortSignal): Pr
     .map((asset) => ({
       type: asset.kind,
       src: new URL(asset.publicUrl, apiBaseUrl).toString(),
+      thumbnail: asset.thumbnailUrl ? new URL(asset.thumbnailUrl, apiBaseUrl).toString() : undefined,
       alt: asset.altText,
       caption: asset.caption ?? undefined,
     }))

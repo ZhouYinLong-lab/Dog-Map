@@ -20,6 +20,15 @@ test('renders the current destination markers without demo content', async ({ pa
   await expect(page.getByRole('region', { name: '路线图例' })).toHaveCount(0)
 })
 
+test('loads every place marker illustration after the label refresh', async ({ page }) => {
+  await page.goto('/')
+  const artwork = page.locator('.place-marker__art')
+  await expect(artwork).toHaveCount(11, { timeout: 15_000 })
+  await expect.poll(() => artwork.evaluateAll((images) => images.every((image) => (
+    image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0
+  )))).toBe(true)
+})
+
 test('keeps every place marker in the map positioning layer', async ({ page }) => {
   await page.goto('/')
   await expect(page.locator('.place-marker')).toHaveCount(11, { timeout: 15_000 })

@@ -1,6 +1,6 @@
 # Favicon concepts — round badge
 
-These concepts are retained for review. The selected active site favicon is `02-route-map-no-wheel.png`, copied to `/favicon.ico` in 16, 32, 48, and 64 px sizes.
+These concepts are retained for reference; the active favicon was later simplified to the bold map-pin concept in `favicon-candidates-v4`.
 
 - `01-dog-map-circle.png` — dog/map badge.
 - `02-cycle-route-circle.png` — route badge with bicycle wheel.

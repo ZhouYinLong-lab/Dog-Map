@@ -20,7 +20,7 @@ test('renders the current destination markers without demo content', async ({ pa
   await expect(page.getByRole('region', { name: '路线图例' })).toHaveCount(0)
 })
 
-test('loads every place marker illustration after the label refresh', async ({ page }) => {
+test('loads every active place marker illustration', async ({ page }) => {
   await page.goto('/')
   const artwork = page.locator('.place-marker__art')
   await expect(artwork).toHaveCount(11, { timeout: 15_000 })

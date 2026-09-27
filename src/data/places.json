@@ -34,7 +34,7 @@
       { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824103457.webp", "alt": "骑车初遇照片 21" },
       { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824103504.webp", "alt": "骑车初遇照片 22" }
     ],
-    "markerImage": "/media/nju-suzhou-campus/nju-suzhou-campus-sticker-v3.webp"
+    "markerImage": "/media/nju-suzhou-campus/nju-suzhou-campus-sticker-v4.webp"
   },
   {
     "id": "nju-gulou-campus",
@@ -75,7 +75,7 @@
       { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-25.webp", "alt": "南京大学鼓楼校区照片 25" },
       { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-26.webp", "alt": "南京大学鼓楼校区照片 26" }
     ],
-    "markerImage": "/media/nju-gulou-campus/nju-gulou-campus-sticker-v3.webp"
+    "markerImage": "/media/nju-gulou-campus/nju-gulou-campus-sticker-v4.webp"
   },
   {
     "id": "dongzhu-night-market",
@@ -112,7 +112,7 @@
         ]
       }
     ],
-    "markerImage": "/media/dongzhu-night-market/dongzhu-night-market-sticker-v3.webp"
+    "markerImage": "/media/dongzhu-night-market/dongzhu-night-market-sticker-v4.webp"
   },
   {
     "id": "zhuozheng-garden",
@@ -139,7 +139,7 @@
       { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-11.webp", "alt": "拙政园照片 11" },
       { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-12.webp", "alt": "拙政园照片 12" }
     ],
-    "markerImage": "/media/zhuozheng-garden/zhuozheng-garden-sticker-v3.webp"
+    "markerImage": "/media/zhuozheng-garden/zhuozheng-garden-sticker-v4.webp"
   },
   {
     "id": "shizilin-garden",
@@ -164,7 +164,7 @@
       { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-09.webp", "alt": "狮子林照片 09" },
       { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-10.webp", "alt": "狮子林照片 10" }
     ],
-    "markerImage": "/media/shizilin-garden/shizilin-garden-sticker-v3.webp"
+    "markerImage": "/media/shizilin-garden/shizilin-garden-sticker-v4.webp"
   },
   {
     "id": "liuyuan-garden",
@@ -189,7 +189,7 @@
       { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-09.webp", "alt": "留园照片 09" },
       { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-10.webp", "alt": "留园照片 10" }
     ],
-    "markerImage": "/media/liuyuan-garden/liuyuan-garden-sticker-v3.webp"
+    "markerImage": "/media/liuyuan-garden/liuyuan-garden-sticker-v4.webp"
   },
   {
     "id": "suzhou-mixc-world",
@@ -209,7 +209,7 @@
       { "type": "image", "src": "/media/suzhou-mixc-world/suzhou-mixc-world-04.webp", "alt": "苏州万象天地照片 04" },
       { "type": "image", "src": "/media/suzhou-mixc-world/suzhou-mixc-world-05.webp", "alt": "苏州万象天地照片 05" }
     ],
-    "markerImage": "/media/suzhou-mixc-world/suzhou-mixc-world-sticker-v3.webp"
+    "markerImage": "/media/suzhou-mixc-world/suzhou-mixc-world-sticker-v4.webp"
   },
   {
     "id": "taihu-cycling-park",
@@ -243,7 +243,7 @@
       { "type": "image", "src": "/media/wanfo-temple/02.webp", "alt": "万佛寺周边道路" },
       { "type": "image", "src": "/media/wanfo-temple/03.webp", "alt": "万佛寺周边拱门" }
     ],
-    "markerImage": "/media/wanfo-temple/wanfo-temple-sticker-v3.webp"
+    "markerImage": "/media/wanfo-temple/wanfo-temple-sticker-v4.webp"
   },
   {
     "id": "taihu-lakeshore",
@@ -266,7 +266,7 @@
       { "type": "image", "src": "/media/taihu-lakeshore/07.webp", "alt": "太湖夜骑道路" },
       { "type": "image", "src": "/media/taihu-lakeshore/08-route-screenshot.webp", "alt": "太湖骑行路线记录" }
     ],
-    "markerImage": "/media/taihu-lakeshore/taihu-lakeshore-sticker-v3.webp"
+    "markerImage": "/media/taihu-lakeshore/taihu-lakeshore-sticker-v4.webp"
   },
   {
     "id": "xuanwu-lake",
@@ -305,6 +305,6 @@
       { "type": "image", "src": "/media/xuanwu-lake/23.webp", "alt": "玄武湖照片 23" },
       { "type": "image", "src": "/media/xuanwu-lake/24.webp", "alt": "玄武湖照片 24" }
     ],
-    "markerImage": "/media/xuanwu-lake/xuanwu-lake-sticker-v3.webp"
+    "markerImage": "/media/xuanwu-lake/xuanwu-lake-sticker-v4.webp"
   }
 ]

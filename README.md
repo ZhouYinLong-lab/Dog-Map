@@ -57,6 +57,8 @@ npm run test:e2e
 
 ## 添加地点
 
+新增或更新地点必须遵循[地点更新规范](./docs/place-update-workflow.md)，尤其是图标风格验收、原图保护和坐标证据要求。
+
 编辑 `src/data/places.json`，新增地点对象：
 
 - `coordinates` 使用 `[经度, 纬度]`；

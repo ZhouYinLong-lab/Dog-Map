@@ -8,8 +8,8 @@ test('renders the current destination markers without demo content', async ({ pa
   await page.goto('/')
   await expect(page).toHaveTitle(/Dog Map/)
   await expect(page.locator('.map-view')).toBeVisible()
-  await expect(page.locator('.place-marker')).toHaveCount(11, { timeout: 15_000 })
-  await expect(page.locator('.place-marker__art')).toHaveCount(11)
+  await expect(page.locator('.place-marker')).toHaveCount(17, { timeout: 15_000 })
+  await expect(page.locator('.place-marker__art')).toHaveCount(17)
   await expect(page.getByRole('button', { name: '打开地点：南京大学苏州校区' })).toHaveClass(/place-marker--sticker/)
   await expect(page.getByRole('button', { name: '打开地点：东渚夜市与街道' })).toHaveClass(/place-marker--sticker/)
   await expect(page.getByRole('button', { name: '打开地点：拙政园' })).toHaveClass(/place-marker--sticker/)
@@ -20,6 +20,12 @@ test('renders the current destination markers without demo content', async ({ pa
   await expect(page.getByRole('button', { name: '打开地点：苏州环太湖自行车运动公园' })).toHaveClass(/place-marker--sticker/)
   await expect(page.getByRole('button', { name: '打开地点：万佛寺' })).toHaveClass(/place-marker--sticker/)
   await expect(page.getByRole('button', { name: '打开地点：太湖岸线' })).toHaveClass(/place-marker--sticker/)
+  await expect(page.getByRole('button', { name: '打开地点：徐州至黄山路上' })).toHaveClass(/place-marker--sticker/)
+  await expect(page.getByRole('button', { name: '打开地点：黄山' })).toHaveClass(/place-marker--sticker/)
+  await expect(page.getByRole('button', { name: '打开地点：宏村' })).toHaveClass(/place-marker--sticker/)
+  await expect(page.getByRole('button', { name: '打开地点：西湖' })).toHaveClass(/place-marker--sticker/)
+  await expect(page.getByRole('button', { name: '打开地点：北寺塔' })).toHaveClass(/place-marker--sticker/)
+  await expect(page.getByRole('button', { name: '打开地点：平仓巷' })).toHaveClass(/place-marker--sticker/)
   await expect(page.locator('.map-place-nav')).toHaveCount(0)
   await expect(page.getByRole('region', { name: '路线图例' })).toHaveCount(0)
 })
@@ -27,7 +33,7 @@ test('renders the current destination markers without demo content', async ({ pa
 test('loads every active place marker illustration', async ({ page }) => {
   await page.goto('/')
   const artwork = page.locator('.place-marker__art')
-  await expect(artwork).toHaveCount(11, { timeout: 15_000 })
+  await expect(artwork).toHaveCount(17, { timeout: 15_000 })
   await expect(artwork.first()).toHaveAttribute('loading', 'lazy')
   await expect(artwork.first()).toHaveAttribute('src', /\.marker\.webp$/)
   await expect.poll(() => artwork.evaluateAll((images) => {
@@ -43,7 +49,7 @@ test('loads every active place marker illustration', async ({ page }) => {
 
 test('keeps every place marker in the map positioning layer', async ({ page }) => {
   await page.goto('/')
-  await expect(page.locator('.place-marker')).toHaveCount(11, { timeout: 15_000 })
+  await expect(page.locator('.place-marker')).toHaveCount(17, { timeout: 15_000 })
   const positions = await page.locator('.place-marker').evaluateAll((elements) => elements.map((element) => getComputedStyle(element).position))
   expect(positions.every((position) => position === 'absolute')).toBeTruthy()
 })
@@ -97,7 +103,7 @@ test('keeps other place markers visible and allows switching directly between pl
 test('opens every curated place and keeps its gallery connected to the selected marker', async ({ page }) => {
   test.setTimeout(90_000)
 
-  for (const title of ['拙政园', '狮子林', '留园', '苏州万象天地']) {
+  for (const title of ['拙政园', '狮子林', '留园', '苏州万象天地', '徐州至黄山路上', '黄山', '宏村', '西湖', '北寺塔', '平仓巷']) {
     await page.goto('/')
     await showOffscreenGuides(page)
     const guide = page.getByRole('button', { name: `跳转到地点：${title}` })
@@ -237,7 +243,7 @@ test('opens an image preview and closes it with Escape', async ({ page }) => {
 test('keeps the map focused on map and visit artwork', async ({ page }) => {
   await page.goto('/')
   await expect(page.locator('.bottom-strip')).toHaveCount(0)
-  await expect(page.locator('.place-marker__art')).toHaveCount(11, { timeout: 15_000 })
+  await expect(page.locator('.place-marker__art')).toHaveCount(17, { timeout: 15_000 })
 })
 
 test('scales marker artwork with map zoom', async ({ page }) => {

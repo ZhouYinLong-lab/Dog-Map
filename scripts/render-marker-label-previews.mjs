@@ -5,6 +5,7 @@ import { execFileSync } from 'node:child_process'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const outputDirectory = resolve(process.argv[2] ?? join(root, '.tmp-marker-labels'))
+const requestedPlaces = new Set(process.argv.slice(3))
 const places = JSON.parse(readFileSync(join(root, 'src/data/places.json'), 'utf8'))
 
 const labelTopByPlace = {
@@ -58,7 +59,7 @@ function svgForPlace(place, width, height) {
 }
 
 mkdirSync(outputDirectory, { recursive: true })
-for (const place of places.filter((item) => item.id !== 'taihu-cycling-park')) {
+for (const place of places.filter((item) => item.id !== 'taihu-cycling-park' && (requestedPlaces.size === 0 || requestedPlaces.has(item.id)))) {
   const sourcePath = place.id === 'nju-suzhou-campus'
     ? '/media/nanjing-university-suzhou-campus.webp'
     : place.markerImage.replace(/-sticker(?:-v\d+)?\.webp$/, '-sticker.webp')

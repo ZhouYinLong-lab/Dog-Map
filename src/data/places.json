@@ -5,34 +5,125 @@
     "englishTitle": "NANJING UNIVERSITY · SUZHOU CAMPUS",
     "subtitle": "骑车初遇",
     "date": "2026.08.24",
-    "coordinates": [120.387037, 31.351239],
+    "coordinates": [
+      120.387037,
+      31.351239
+    ],
     "coordinateSource": "map-poi",
     "coordinateReference": "Amap POI：南京大学苏州校区（东区）",
     "accent": "yellow",
     "description": "把南大苏州校区作为这张地图的原点。之后每一次出发、抵达和路过，都会从这里向城市展开。",
     "media": [
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824095359.webp", "alt": "骑车初遇照片 01" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824095405.webp", "alt": "骑车初遇照片 02" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824095410.webp", "alt": "骑车初遇照片 03" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824095438.webp", "alt": "骑车初遇照片 04" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824095937.webp", "alt": "骑车初遇照片 05" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824100011.webp", "alt": "骑车初遇照片 06" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824100031.webp", "alt": "骑车初遇照片 07" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824100145.webp", "alt": "骑车初遇照片 08" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824100152.webp", "alt": "骑车初遇照片 09" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824100201.webp", "alt": "骑车初遇照片 10" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824100247.webp", "alt": "骑车初遇照片 11" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824100300.webp", "alt": "骑车初遇照片 12" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824100306.webp", "alt": "骑车初遇照片 13" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824100754.webp", "alt": "骑车初遇照片 14" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824101516.webp", "alt": "骑车初遇照片 15" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824101552.webp", "alt": "骑车初遇照片 16" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824101854.webp", "alt": "骑车初遇照片 17" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824102302.webp", "alt": "骑车初遇照片 18" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824102346.webp", "alt": "骑车初遇照片 19" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824103131.webp", "alt": "骑车初遇照片 20" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824103457.webp", "alt": "骑车初遇照片 21" },
-      { "type": "image", "src": "/media/nju-suzhou-campus/IMG20260824103504.webp", "alt": "骑车初遇照片 22" }
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824095359.webp",
+        "alt": "骑车初遇照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824095405.webp",
+        "alt": "骑车初遇照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824095410.webp",
+        "alt": "骑车初遇照片 03"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824095438.webp",
+        "alt": "骑车初遇照片 04"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824095937.webp",
+        "alt": "骑车初遇照片 05"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824100011.webp",
+        "alt": "骑车初遇照片 06"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824100031.webp",
+        "alt": "骑车初遇照片 07"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824100145.webp",
+        "alt": "骑车初遇照片 08"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824100152.webp",
+        "alt": "骑车初遇照片 09"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824100201.webp",
+        "alt": "骑车初遇照片 10"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824100247.webp",
+        "alt": "骑车初遇照片 11"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824100300.webp",
+        "alt": "骑车初遇照片 12"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824100306.webp",
+        "alt": "骑车初遇照片 13"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824100754.webp",
+        "alt": "骑车初遇照片 14"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824101516.webp",
+        "alt": "骑车初遇照片 15"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824101552.webp",
+        "alt": "骑车初遇照片 16"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824101854.webp",
+        "alt": "骑车初遇照片 17"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824102302.webp",
+        "alt": "骑车初遇照片 18"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824102346.webp",
+        "alt": "骑车初遇照片 19"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824103131.webp",
+        "alt": "骑车初遇照片 20"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824103457.webp",
+        "alt": "骑车初遇照片 21"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-suzhou-campus/IMG20260824103504.webp",
+        "alt": "骑车初遇照片 22"
+      }
     ],
     "markerImage": "/media/nju-suzhou-campus/nju-suzhou-campus-sticker-v4.webp"
   },
@@ -42,38 +133,145 @@
     "englishTitle": "NANJING UNIVERSITY · GULOU CAMPUS",
     "subtitle": "在鼓楼度过的一年四季",
     "date": "2026.09.26",
-    "coordinates": [118.779562, 32.055153],
+    "coordinates": [
+      118.779562,
+      32.055153
+    ],
     "coordinateSource": "map-poi",
     "coordinateReference": "高德地图 POI：南京大学(鼓楼校区)",
     "accent": "yellow",
     "description": "在鼓楼校区度过的一年四季，从银杏路、窗边光影到老建筑与讲堂，把这一年的校园生活留在地图里。",
     "media": [
-      { "type": "image", "src": "/media/nju-gulou-campus/0F2406AEB9824AE952760A8B478E3DBE.webp", "alt": "南京大学鼓楼校区照片 01" },
-      { "type": "image", "src": "/media/nju-gulou-campus/29FF1F93214FFB354D860A4B795ACCC5.webp", "alt": "南京大学鼓楼校区照片 02" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2C76DE961DAB804CA8A6EAFA28E801AB.webp", "alt": "南京大学鼓楼校区照片 03" },
-      { "type": "image", "src": "/media/nju-gulou-campus/456B8F79385AD11588DA377E5ECCCECA.webp", "alt": "南京大学鼓楼校区照片 04" },
-      { "type": "image", "src": "/media/nju-gulou-campus/56995005B0E2A8DA540F757C32885508.webp", "alt": "南京大学鼓楼校区照片 05" },
-      { "type": "image", "src": "/media/nju-gulou-campus/8F2563D5E00E8AB83C9229B67A1D7899.webp", "alt": "南京大学鼓楼校区照片 06" },
-      { "type": "image", "src": "/media/nju-gulou-campus/B17C5E72FBF71F01A68FF75441043751.webp", "alt": "南京大学鼓楼校区照片 07" },
-      { "type": "image", "src": "/media/nju-gulou-campus/D5E891FB0EB2E6758E43589E576E1A9A.webp", "alt": "南京大学鼓楼校区照片 08" },
-      { "type": "image", "src": "/media/nju-gulou-campus/F0A7D7C461504C97AB211E0A3D6356D3.webp", "alt": "南京大学鼓楼校区照片 09" },
-      { "type": "image", "src": "/media/nju-gulou-campus/FC77788EBC0F7D6FF436CB8F23FAF3DA.webp", "alt": "南京大学鼓楼校区照片 10" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-11.webp", "alt": "南京大学鼓楼校区照片 11" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-12.webp", "alt": "南京大学鼓楼校区照片 12" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-13.webp", "alt": "南京大学鼓楼校区照片 13" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-14.webp", "alt": "南京大学鼓楼校区照片 14" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-15.webp", "alt": "南京大学鼓楼校区照片 15" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-16.webp", "alt": "南京大学鼓楼校区照片 16" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-17.webp", "alt": "南京大学鼓楼校区照片 17" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-18.webp", "alt": "南京大学鼓楼校区照片 18" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-19.webp", "alt": "南京大学鼓楼校区照片 19" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-20.webp", "alt": "南京大学鼓楼校区照片 20" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-21.webp", "alt": "南京大学鼓楼校区照片 21" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-22.webp", "alt": "南京大学鼓楼校区照片 22" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-23.webp", "alt": "南京大学鼓楼校区照片 23" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-24.webp", "alt": "南京大学鼓楼校区照片 24" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-25.webp", "alt": "南京大学鼓楼校区照片 25" },
-      { "type": "image", "src": "/media/nju-gulou-campus/2026-09-26-26.webp", "alt": "南京大学鼓楼校区照片 26" }
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/0F2406AEB9824AE952760A8B478E3DBE.webp",
+        "alt": "南京大学鼓楼校区照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/29FF1F93214FFB354D860A4B795ACCC5.webp",
+        "alt": "南京大学鼓楼校区照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2C76DE961DAB804CA8A6EAFA28E801AB.webp",
+        "alt": "南京大学鼓楼校区照片 03"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/456B8F79385AD11588DA377E5ECCCECA.webp",
+        "alt": "南京大学鼓楼校区照片 04"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/56995005B0E2A8DA540F757C32885508.webp",
+        "alt": "南京大学鼓楼校区照片 05"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/8F2563D5E00E8AB83C9229B67A1D7899.webp",
+        "alt": "南京大学鼓楼校区照片 06"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/B17C5E72FBF71F01A68FF75441043751.webp",
+        "alt": "南京大学鼓楼校区照片 07"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/D5E891FB0EB2E6758E43589E576E1A9A.webp",
+        "alt": "南京大学鼓楼校区照片 08"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/F0A7D7C461504C97AB211E0A3D6356D3.webp",
+        "alt": "南京大学鼓楼校区照片 09"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/FC77788EBC0F7D6FF436CB8F23FAF3DA.webp",
+        "alt": "南京大学鼓楼校区照片 10"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-11.webp",
+        "alt": "南京大学鼓楼校区照片 11"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-12.webp",
+        "alt": "南京大学鼓楼校区照片 12"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-13.webp",
+        "alt": "南京大学鼓楼校区照片 13"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-14.webp",
+        "alt": "南京大学鼓楼校区照片 14"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-15.webp",
+        "alt": "南京大学鼓楼校区照片 15"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-16.webp",
+        "alt": "南京大学鼓楼校区照片 16"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-17.webp",
+        "alt": "南京大学鼓楼校区照片 17"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-18.webp",
+        "alt": "南京大学鼓楼校区照片 18"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-19.webp",
+        "alt": "南京大学鼓楼校区照片 19"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-20.webp",
+        "alt": "南京大学鼓楼校区照片 20"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-21.webp",
+        "alt": "南京大学鼓楼校区照片 21"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-22.webp",
+        "alt": "南京大学鼓楼校区照片 22"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-23.webp",
+        "alt": "南京大学鼓楼校区照片 23"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-24.webp",
+        "alt": "南京大学鼓楼校区照片 24"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-25.webp",
+        "alt": "南京大学鼓楼校区照片 25"
+      },
+      {
+        "type": "image",
+        "src": "/media/nju-gulou-campus/2026-09-26-26.webp",
+        "alt": "南京大学鼓楼校区照片 26"
+      }
     ],
     "markerImage": "/media/nju-gulou-campus/nju-gulou-campus-sticker-v4.webp"
   },
@@ -83,17 +281,40 @@
     "englishTitle": "DONGZHU NIGHT MARKET & STREET",
     "subtitle": "骑车夜访",
     "date": "2026.08.25",
-    "coordinates": [120.394792, 31.336724],
+    "coordinates": [
+      120.394792,
+      31.336724
+    ],
     "coordinateSource": "photo-exif",
     "coordinateReference": "五张现场原图 GPS EXIF 坐标的平均值",
     "accent": "red",
     "description": "沿着渚镇路骑到东渚夜市，在拱形灯牌和密集摊位的霓虹里，买下今晚的烟火气。",
     "media": [
-      { "type": "image", "src": "/media/dongzhu-night-market/dongzhu-night-market-01.webp", "alt": "东渚夜市骑行抵达照片 01" },
-      { "type": "image", "src": "/media/dongzhu-night-market/dongzhu-night-market-02.webp", "alt": "东渚夜市骑行抵达照片 02" },
-      { "type": "image", "src": "/media/dongzhu-night-market/dongzhu-night-market-03.webp", "alt": "东渚夜市夜间街景照片" },
-      { "type": "image", "src": "/media/dongzhu-night-market/dongzhu-night-market-04.webp", "alt": "东渚夜市拱形入口照片" },
-      { "type": "image", "src": "/media/dongzhu-night-market/dongzhu-night-market-05.webp", "alt": "东渚夜市摊位照片" }
+      {
+        "type": "image",
+        "src": "/media/dongzhu-night-market/dongzhu-night-market-01.webp",
+        "alt": "东渚夜市骑行抵达照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/dongzhu-night-market/dongzhu-night-market-02.webp",
+        "alt": "东渚夜市骑行抵达照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/dongzhu-night-market/dongzhu-night-market-03.webp",
+        "alt": "东渚夜市夜间街景照片"
+      },
+      {
+        "type": "image",
+        "src": "/media/dongzhu-night-market/dongzhu-night-market-04.webp",
+        "alt": "东渚夜市拱形入口照片"
+      },
+      {
+        "type": "image",
+        "src": "/media/dongzhu-night-market/dongzhu-night-market-05.webp",
+        "alt": "东渚夜市摊位照片"
+      }
     ],
     "shops": [
       {
@@ -102,13 +323,37 @@
         "category": "川菜",
         "summary": "东渚夜市与街道里的第一家探店记录。",
         "description": "记录这次到店看到的门头、菜品和同行用餐片段，先把一顿饭的现场感留在地图里。",
-        "tags": ["川菜", "正餐", "东渚"],
+        "tags": [
+          "川菜",
+          "正餐",
+          "东渚"
+        ],
         "media": [
-          { "type": "image", "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-02.webp", "alt": "椒点川菜店铺门头照片" },
-          { "type": "image", "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-01.webp", "alt": "椒点川菜菜品照片" },
-          { "type": "image", "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-03.webp", "alt": "椒点川菜同行用餐照片" },
-          { "type": "image", "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-04.webp", "alt": "椒点川菜整桌菜品照片" },
-          { "type": "image", "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-05.webp", "alt": "椒点川菜菜品细节照片" }
+          {
+            "type": "image",
+            "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-02.webp",
+            "alt": "椒点川菜店铺门头照片"
+          },
+          {
+            "type": "image",
+            "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-01.webp",
+            "alt": "椒点川菜菜品照片"
+          },
+          {
+            "type": "image",
+            "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-03.webp",
+            "alt": "椒点川菜同行用餐照片"
+          },
+          {
+            "type": "image",
+            "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-04.webp",
+            "alt": "椒点川菜整桌菜品照片"
+          },
+          {
+            "type": "image",
+            "src": "/media/dongzhu-night-market/shops/jiaodian-sichuan-cuisine/jiaodian-sichuan-cuisine-05.webp",
+            "alt": "椒点川菜菜品细节照片"
+          }
         ]
       }
     ],
@@ -120,24 +365,75 @@
     "englishTitle": "ZHUOZHENG GARDEN",
     "subtitle": "园林初访",
     "date": "2026.08.30",
-    "coordinates": [120.624446, 31.326458],
+    "coordinates": [
+      120.624446,
+      31.326458
+    ],
     "coordinateSource": "photo-exif",
     "coordinateReference": "精选照片 GPS EXIF 坐标的平均值",
     "accent": "yellow",
     "description": "以水景、亭台和园林借景为主的苏州古典园林记录。",
     "media": [
-      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-01.webp", "alt": "拙政园照片 01" },
-      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-02.webp", "alt": "拙政园照片 02" },
-      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-03.webp", "alt": "拙政园照片 03" },
-      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-04.webp", "alt": "拙政园照片 04" },
-      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-05.webp", "alt": "拙政园照片 05" },
-      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-06.webp", "alt": "拙政园照片 06" },
-      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-07.webp", "alt": "拙政园照片 07" },
-      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-08.webp", "alt": "拙政园照片 08" },
-      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-09.webp", "alt": "拙政园照片 09" },
-      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-10.webp", "alt": "拙政园照片 10" },
-      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-11.webp", "alt": "拙政园照片 11" },
-      { "type": "image", "src": "/media/zhuozheng-garden/zhuozheng-garden-12.webp", "alt": "拙政园照片 12" }
+      {
+        "type": "image",
+        "src": "/media/zhuozheng-garden/zhuozheng-garden-01.webp",
+        "alt": "拙政园照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/zhuozheng-garden/zhuozheng-garden-02.webp",
+        "alt": "拙政园照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/zhuozheng-garden/zhuozheng-garden-03.webp",
+        "alt": "拙政园照片 03"
+      },
+      {
+        "type": "image",
+        "src": "/media/zhuozheng-garden/zhuozheng-garden-04.webp",
+        "alt": "拙政园照片 04"
+      },
+      {
+        "type": "image",
+        "src": "/media/zhuozheng-garden/zhuozheng-garden-05.webp",
+        "alt": "拙政园照片 05"
+      },
+      {
+        "type": "image",
+        "src": "/media/zhuozheng-garden/zhuozheng-garden-06.webp",
+        "alt": "拙政园照片 06"
+      },
+      {
+        "type": "image",
+        "src": "/media/zhuozheng-garden/zhuozheng-garden-07.webp",
+        "alt": "拙政园照片 07"
+      },
+      {
+        "type": "image",
+        "src": "/media/zhuozheng-garden/zhuozheng-garden-08.webp",
+        "alt": "拙政园照片 08"
+      },
+      {
+        "type": "image",
+        "src": "/media/zhuozheng-garden/zhuozheng-garden-09.webp",
+        "alt": "拙政园照片 09"
+      },
+      {
+        "type": "image",
+        "src": "/media/zhuozheng-garden/zhuozheng-garden-10.webp",
+        "alt": "拙政园照片 10"
+      },
+      {
+        "type": "image",
+        "src": "/media/zhuozheng-garden/zhuozheng-garden-11.webp",
+        "alt": "拙政园照片 11"
+      },
+      {
+        "type": "image",
+        "src": "/media/zhuozheng-garden/zhuozheng-garden-12.webp",
+        "alt": "拙政园照片 12"
+      }
     ],
     "markerImage": "/media/zhuozheng-garden/zhuozheng-garden-sticker-v4.webp"
   },
@@ -147,22 +443,65 @@
     "englishTitle": "LION GROVE GARDEN",
     "subtitle": "假山穿行",
     "date": "2026.08.30",
-    "coordinates": [120.624711, 31.323431],
+    "coordinates": [
+      120.624711,
+      31.323431
+    ],
     "coordinateSource": "photo-exif",
     "coordinateReference": "精选照片 GPS EXIF 坐标的平均值",
     "accent": "red",
     "description": "以太湖石假山、洞壑和园林空间为主的狮子林记录。",
     "media": [
-      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-01.webp", "alt": "狮子林照片 01" },
-      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-02.webp", "alt": "狮子林照片 02" },
-      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-03.webp", "alt": "狮子林照片 03" },
-      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-04.webp", "alt": "狮子林照片 04" },
-      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-05.webp", "alt": "狮子林照片 05" },
-      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-06.webp", "alt": "狮子林照片 06" },
-      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-07.webp", "alt": "狮子林照片 07" },
-      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-08.webp", "alt": "狮子林照片 08" },
-      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-09.webp", "alt": "狮子林照片 09" },
-      { "type": "image", "src": "/media/shizilin-garden/shizilin-garden-10.webp", "alt": "狮子林照片 10" }
+      {
+        "type": "image",
+        "src": "/media/shizilin-garden/shizilin-garden-01.webp",
+        "alt": "狮子林照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/shizilin-garden/shizilin-garden-02.webp",
+        "alt": "狮子林照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/shizilin-garden/shizilin-garden-03.webp",
+        "alt": "狮子林照片 03"
+      },
+      {
+        "type": "image",
+        "src": "/media/shizilin-garden/shizilin-garden-04.webp",
+        "alt": "狮子林照片 04"
+      },
+      {
+        "type": "image",
+        "src": "/media/shizilin-garden/shizilin-garden-05.webp",
+        "alt": "狮子林照片 05"
+      },
+      {
+        "type": "image",
+        "src": "/media/shizilin-garden/shizilin-garden-06.webp",
+        "alt": "狮子林照片 06"
+      },
+      {
+        "type": "image",
+        "src": "/media/shizilin-garden/shizilin-garden-07.webp",
+        "alt": "狮子林照片 07"
+      },
+      {
+        "type": "image",
+        "src": "/media/shizilin-garden/shizilin-garden-08.webp",
+        "alt": "狮子林照片 08"
+      },
+      {
+        "type": "image",
+        "src": "/media/shizilin-garden/shizilin-garden-09.webp",
+        "alt": "狮子林照片 09"
+      },
+      {
+        "type": "image",
+        "src": "/media/shizilin-garden/shizilin-garden-10.webp",
+        "alt": "狮子林照片 10"
+      }
     ],
     "markerImage": "/media/shizilin-garden/shizilin-garden-sticker-v4.webp"
   },
@@ -172,22 +511,65 @@
     "englishTitle": "LINGERING GARDEN",
     "subtitle": "长廊留影",
     "date": "2026.08.30",
-    "coordinates": [120.588176, 31.31763],
+    "coordinates": [
+      120.588176,
+      31.31763
+    ],
     "coordinateSource": "photo-exif",
     "coordinateReference": "精选照片 GPS EXIF 坐标的平均值",
     "accent": "yellow",
     "description": "以长廊、漏窗、水院和叠石为主的留园记录。",
     "media": [
-      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-01.webp", "alt": "留园照片 01" },
-      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-02.webp", "alt": "留园照片 02" },
-      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-03.webp", "alt": "留园照片 03" },
-      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-04.webp", "alt": "留园照片 04" },
-      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-05.webp", "alt": "留园照片 05" },
-      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-06.webp", "alt": "留园照片 06" },
-      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-07.webp", "alt": "留园照片 07" },
-      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-08.webp", "alt": "留园照片 08" },
-      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-09.webp", "alt": "留园照片 09" },
-      { "type": "image", "src": "/media/liuyuan-garden/liuyuan-garden-10.webp", "alt": "留园照片 10" }
+      {
+        "type": "image",
+        "src": "/media/liuyuan-garden/liuyuan-garden-01.webp",
+        "alt": "留园照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/liuyuan-garden/liuyuan-garden-02.webp",
+        "alt": "留园照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/liuyuan-garden/liuyuan-garden-03.webp",
+        "alt": "留园照片 03"
+      },
+      {
+        "type": "image",
+        "src": "/media/liuyuan-garden/liuyuan-garden-04.webp",
+        "alt": "留园照片 04"
+      },
+      {
+        "type": "image",
+        "src": "/media/liuyuan-garden/liuyuan-garden-05.webp",
+        "alt": "留园照片 05"
+      },
+      {
+        "type": "image",
+        "src": "/media/liuyuan-garden/liuyuan-garden-06.webp",
+        "alt": "留园照片 06"
+      },
+      {
+        "type": "image",
+        "src": "/media/liuyuan-garden/liuyuan-garden-07.webp",
+        "alt": "留园照片 07"
+      },
+      {
+        "type": "image",
+        "src": "/media/liuyuan-garden/liuyuan-garden-08.webp",
+        "alt": "留园照片 08"
+      },
+      {
+        "type": "image",
+        "src": "/media/liuyuan-garden/liuyuan-garden-09.webp",
+        "alt": "留园照片 09"
+      },
+      {
+        "type": "image",
+        "src": "/media/liuyuan-garden/liuyuan-garden-10.webp",
+        "alt": "留园照片 10"
+      }
     ],
     "markerImage": "/media/liuyuan-garden/liuyuan-garden-sticker-v4.webp"
   },
@@ -197,17 +579,40 @@
     "englishTitle": "SUZHOU MIXC WORLD",
     "subtitle": "城市漫游",
     "date": "2026.08.30",
-    "coordinates": [120.594657, 31.314872],
+    "coordinates": [
+      120.594657,
+      31.314872
+    ],
     "coordinateSource": "photo-exif",
     "coordinateReference": "精选照片 GPS EXIF 坐标的平均值",
     "accent": "red",
     "description": "以开放式商业街区、建筑立面和公共空间为主的城市记录。",
     "media": [
-      { "type": "image", "src": "/media/suzhou-mixc-world/suzhou-mixc-world-01.webp", "alt": "苏州万象天地照片 01" },
-      { "type": "image", "src": "/media/suzhou-mixc-world/suzhou-mixc-world-02.webp", "alt": "苏州万象天地照片 02" },
-      { "type": "image", "src": "/media/suzhou-mixc-world/suzhou-mixc-world-03.webp", "alt": "苏州万象天地照片 03" },
-      { "type": "image", "src": "/media/suzhou-mixc-world/suzhou-mixc-world-04.webp", "alt": "苏州万象天地照片 04" },
-      { "type": "image", "src": "/media/suzhou-mixc-world/suzhou-mixc-world-05.webp", "alt": "苏州万象天地照片 05" }
+      {
+        "type": "image",
+        "src": "/media/suzhou-mixc-world/suzhou-mixc-world-01.webp",
+        "alt": "苏州万象天地照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/suzhou-mixc-world/suzhou-mixc-world-02.webp",
+        "alt": "苏州万象天地照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/suzhou-mixc-world/suzhou-mixc-world-03.webp",
+        "alt": "苏州万象天地照片 03"
+      },
+      {
+        "type": "image",
+        "src": "/media/suzhou-mixc-world/suzhou-mixc-world-04.webp",
+        "alt": "苏州万象天地照片 04"
+      },
+      {
+        "type": "image",
+        "src": "/media/suzhou-mixc-world/suzhou-mixc-world-05.webp",
+        "alt": "苏州万象天地照片 05"
+      }
     ],
     "markerImage": "/media/suzhou-mixc-world/suzhou-mixc-world-sticker-v4.webp"
   },
@@ -217,13 +622,20 @@
     "englishTitle": "TAIHU CYCLING PARK",
     "subtitle": "骑行起点",
     "date": "2026.09.18",
-    "coordinates": [120.329319, 31.341511],
+    "coordinates": [
+      120.329319,
+      31.341511
+    ],
     "coordinateSource": "photo-exif",
     "coordinateReference": "照片 01 GPS EXIF 坐标：苏州环太湖自行车运动公园招牌",
     "accent": "yellow",
     "description": "从环太湖自行车运动公园的招牌开始，记录这次夜骑太湖的出发点。",
     "media": [
-      { "type": "image", "src": "/media/taihu-cycling-park/01.webp", "alt": "苏州环太湖自行车运动公园招牌" }
+      {
+        "type": "image",
+        "src": "/media/taihu-cycling-park/01.webp",
+        "alt": "苏州环太湖自行车运动公园招牌"
+      }
     ],
     "markerImage": "/media/taihu-cycling-park/taihu-cycling-park-sticker.webp"
   },
@@ -233,15 +645,30 @@
     "englishTitle": "WANFO TEMPLE",
     "subtitle": "夜访寺门",
     "date": "2026.09.18",
-    "coordinates": [120.324911, 31.318212],
+    "coordinates": [
+      120.324911,
+      31.318212
+    ],
     "coordinateSource": "photo-exif",
     "coordinateReference": "3张现场原图 GPS EXIF 坐标的平均值（万佛寺及寺门周边）",
     "accent": "red",
     "description": "夜骑经过万佛寺，记录寺门、拱门和沿线道路的静谧光线。",
     "media": [
-      { "type": "image", "src": "/media/wanfo-temple/01.webp", "alt": "万佛寺山门" },
-      { "type": "image", "src": "/media/wanfo-temple/02.webp", "alt": "万佛寺周边道路" },
-      { "type": "image", "src": "/media/wanfo-temple/03.webp", "alt": "万佛寺周边拱门" }
+      {
+        "type": "image",
+        "src": "/media/wanfo-temple/01.webp",
+        "alt": "万佛寺山门"
+      },
+      {
+        "type": "image",
+        "src": "/media/wanfo-temple/02.webp",
+        "alt": "万佛寺周边道路"
+      },
+      {
+        "type": "image",
+        "src": "/media/wanfo-temple/03.webp",
+        "alt": "万佛寺周边拱门"
+      }
     ],
     "markerImage": "/media/wanfo-temple/wanfo-temple-sticker-v4.webp"
   },
@@ -251,20 +678,55 @@
     "englishTitle": "TAIHU LAKESHORE",
     "subtitle": "湖岸夜骑",
     "date": "2026.09.18",
-    "coordinates": [120.295499, 31.310540],
+    "coordinates": [
+      120.295499,
+      31.31054
+    ],
     "coordinateSource": "photo-exif",
     "coordinateReference": "7张现场原图 GPS EXIF 坐标的平均值（太湖岸线与环湖道路）",
     "accent": "yellow",
     "description": "从太湖沿线的石刻、灯光和湖面，到夜骑路线截图，留下这一段靠水展开的道路。",
     "media": [
-      { "type": "image", "src": "/media/taihu-lakeshore/01.webp", "alt": "太湖沿线石刻" },
-      { "type": "image", "src": "/media/taihu-lakeshore/02.webp", "alt": "太湖夜色" },
-      { "type": "image", "src": "/media/taihu-lakeshore/03.webp", "alt": "太湖岸线夜景" },
-      { "type": "image", "src": "/media/taihu-lakeshore/04.webp", "alt": "太湖沿线灯光" },
-      { "type": "image", "src": "/media/taihu-lakeshore/05.webp", "alt": "环湖道路夜景" },
-      { "type": "image", "src": "/media/taihu-lakeshore/06.webp", "alt": "太湖骑行路段" },
-      { "type": "image", "src": "/media/taihu-lakeshore/07.webp", "alt": "太湖夜骑道路" },
-      { "type": "image", "src": "/media/taihu-lakeshore/08-route-screenshot.webp", "alt": "太湖骑行路线记录" }
+      {
+        "type": "image",
+        "src": "/media/taihu-lakeshore/01.webp",
+        "alt": "太湖沿线石刻"
+      },
+      {
+        "type": "image",
+        "src": "/media/taihu-lakeshore/02.webp",
+        "alt": "太湖夜色"
+      },
+      {
+        "type": "image",
+        "src": "/media/taihu-lakeshore/03.webp",
+        "alt": "太湖岸线夜景"
+      },
+      {
+        "type": "image",
+        "src": "/media/taihu-lakeshore/04.webp",
+        "alt": "太湖沿线灯光"
+      },
+      {
+        "type": "image",
+        "src": "/media/taihu-lakeshore/05.webp",
+        "alt": "环湖道路夜景"
+      },
+      {
+        "type": "image",
+        "src": "/media/taihu-lakeshore/06.webp",
+        "alt": "太湖骑行路段"
+      },
+      {
+        "type": "image",
+        "src": "/media/taihu-lakeshore/07.webp",
+        "alt": "太湖夜骑道路"
+      },
+      {
+        "type": "image",
+        "src": "/media/taihu-lakeshore/08-route-screenshot.webp",
+        "alt": "太湖骑行路线记录"
+      }
     ],
     "markerImage": "/media/taihu-lakeshore/taihu-lakeshore-sticker-v4.webp"
   },
@@ -274,37 +736,1239 @@
     "englishTitle": "XUANWU LAKE",
     "subtitle": "湖畔漫行",
     "date": "2026.09.26",
-    "coordinates": [118.787189, 32.078646],
+    "coordinates": [
+      118.787189,
+      32.078646
+    ],
     "coordinateSource": "photo-exif",
     "coordinateReference": "22 张现场照片 GPS EXIF 坐标的平均值；另 2 张转存图片无 GPS EXIF",
     "accent": "yellow",
     "description": "沿着玄武湖岸线漫行，荷塘、亭影与南京城的天际线在水面交替出现；雨雾间经过石桥，也留下了湖鸟与岸边植物的近景。",
     "media": [
-      { "type": "image", "src": "/media/xuanwu-lake/01.webp", "alt": "玄武湖照片 01" },
-      { "type": "image", "src": "/media/xuanwu-lake/02.webp", "alt": "玄武湖照片 02" },
-      { "type": "image", "src": "/media/xuanwu-lake/03.webp", "alt": "玄武湖照片 03" },
-      { "type": "image", "src": "/media/xuanwu-lake/04.webp", "alt": "玄武湖照片 04" },
-      { "type": "image", "src": "/media/xuanwu-lake/05.webp", "alt": "玄武湖照片 05" },
-      { "type": "image", "src": "/media/xuanwu-lake/06.webp", "alt": "玄武湖照片 06" },
-      { "type": "image", "src": "/media/xuanwu-lake/07.webp", "alt": "玄武湖照片 07" },
-      { "type": "image", "src": "/media/xuanwu-lake/08.webp", "alt": "玄武湖照片 08" },
-      { "type": "image", "src": "/media/xuanwu-lake/09.webp", "alt": "玄武湖照片 09" },
-      { "type": "image", "src": "/media/xuanwu-lake/10.webp", "alt": "玄武湖照片 10" },
-      { "type": "image", "src": "/media/xuanwu-lake/11.webp", "alt": "玄武湖照片 11" },
-      { "type": "image", "src": "/media/xuanwu-lake/12.webp", "alt": "玄武湖照片 12" },
-      { "type": "image", "src": "/media/xuanwu-lake/13.webp", "alt": "玄武湖照片 13" },
-      { "type": "image", "src": "/media/xuanwu-lake/14.webp", "alt": "玄武湖照片 14" },
-      { "type": "image", "src": "/media/xuanwu-lake/15.webp", "alt": "玄武湖照片 15" },
-      { "type": "image", "src": "/media/xuanwu-lake/16.webp", "alt": "玄武湖照片 16" },
-      { "type": "image", "src": "/media/xuanwu-lake/17.webp", "alt": "玄武湖照片 17" },
-      { "type": "image", "src": "/media/xuanwu-lake/18.webp", "alt": "玄武湖照片 18" },
-      { "type": "image", "src": "/media/xuanwu-lake/19.webp", "alt": "玄武湖照片 19" },
-      { "type": "image", "src": "/media/xuanwu-lake/20.webp", "alt": "玄武湖照片 20" },
-      { "type": "image", "src": "/media/xuanwu-lake/21.webp", "alt": "玄武湖照片 21" },
-      { "type": "image", "src": "/media/xuanwu-lake/22.webp", "alt": "玄武湖照片 22" },
-      { "type": "image", "src": "/media/xuanwu-lake/23.webp", "alt": "玄武湖照片 23" },
-      { "type": "image", "src": "/media/xuanwu-lake/24.webp", "alt": "玄武湖照片 24" }
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/01.webp",
+        "alt": "玄武湖照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/02.webp",
+        "alt": "玄武湖照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/03.webp",
+        "alt": "玄武湖照片 03"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/04.webp",
+        "alt": "玄武湖照片 04"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/05.webp",
+        "alt": "玄武湖照片 05"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/06.webp",
+        "alt": "玄武湖照片 06"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/07.webp",
+        "alt": "玄武湖照片 07"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/08.webp",
+        "alt": "玄武湖照片 08"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/09.webp",
+        "alt": "玄武湖照片 09"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/10.webp",
+        "alt": "玄武湖照片 10"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/11.webp",
+        "alt": "玄武湖照片 11"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/12.webp",
+        "alt": "玄武湖照片 12"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/13.webp",
+        "alt": "玄武湖照片 13"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/14.webp",
+        "alt": "玄武湖照片 14"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/15.webp",
+        "alt": "玄武湖照片 15"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/16.webp",
+        "alt": "玄武湖照片 16"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/17.webp",
+        "alt": "玄武湖照片 17"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/18.webp",
+        "alt": "玄武湖照片 18"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/19.webp",
+        "alt": "玄武湖照片 19"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/20.webp",
+        "alt": "玄武湖照片 20"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/21.webp",
+        "alt": "玄武湖照片 21"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/22.webp",
+        "alt": "玄武湖照片 22"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/23.webp",
+        "alt": "玄武湖照片 23"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuanwu-lake/24.webp",
+        "alt": "玄武湖照片 24"
+      }
     ],
     "markerImage": "/media/xuanwu-lake/xuanwu-lake-sticker-v4.webp"
+  },
+  {
+    "id": "xuzhou-huangshan-road",
+    "title": "徐州至黄山路上",
+    "englishTitle": "ON THE ROAD TO HUANGSHAN",
+    "subtitle": "一路向南",
+    "date": "2026.10.03",
+    "coordinates": [
+      117.7805,
+      30.8052
+    ],
+    "coordinateSource": "photo-exif",
+    "coordinateReference": "沿途原图 GPS EXIF；选择高速中途重复坐标簇（2张）",
+    "description": "从出发到抵达，记录高速沿途的山影、云雾与行程片段。",
+    "accent": "yellow",
+    "media": [
+      {
+        "type": "image",
+        "src": "/media/xuzhou-huangshan-road/xuzhou-huangshan-road-01.webp",
+        "alt": "徐州至黄山路上照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuzhou-huangshan-road/xuzhou-huangshan-road-02.webp",
+        "alt": "徐州至黄山路上照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuzhou-huangshan-road/xuzhou-huangshan-road-03.webp",
+        "alt": "徐州至黄山路上照片 03"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuzhou-huangshan-road/xuzhou-huangshan-road-04.webp",
+        "alt": "徐州至黄山路上照片 04"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuzhou-huangshan-road/xuzhou-huangshan-road-05.webp",
+        "alt": "徐州至黄山路上照片 05"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuzhou-huangshan-road/xuzhou-huangshan-road-06.webp",
+        "alt": "徐州至黄山路上照片 06"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuzhou-huangshan-road/xuzhou-huangshan-road-07.webp",
+        "alt": "徐州至黄山路上照片 07"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuzhou-huangshan-road/xuzhou-huangshan-road-08.webp",
+        "alt": "徐州至黄山路上照片 08"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuzhou-huangshan-road/xuzhou-huangshan-road-09.webp",
+        "alt": "徐州至黄山路上照片 09"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuzhou-huangshan-road/xuzhou-huangshan-road-10.webp",
+        "alt": "徐州至黄山路上照片 10"
+      },
+      {
+        "type": "image",
+        "src": "/media/xuzhou-huangshan-road/xuzhou-huangshan-road-11.webp",
+        "alt": "徐州至黄山路上照片 11"
+      }
+    ],
+    "markerImage": "/media/xuzhou-huangshan-road/xuzhou-huangshan-road-sticker-v4.webp"
+  },
+  {
+    "id": "huangshan",
+    "title": "黄山",
+    "englishTitle": "HUANGSHAN",
+    "subtitle": "云上黄山",
+    "date": "2026.10.04",
+    "coordinates": [
+      118.171971,
+      30.112807
+    ],
+    "coordinateSource": "photo-exif",
+    "coordinateReference": "42张黄山现场照片 GPS EXIF 坐标均值；3张照片无 GPS",
+    "description": "登高途中，松影、峰石与云雾构成这次黄山行的记忆。",
+    "accent": "yellow",
+    "media": [
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-01.webp",
+        "alt": "黄山照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-02.webp",
+        "alt": "黄山照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-03.webp",
+        "alt": "黄山照片 03"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-04.webp",
+        "alt": "黄山照片 04"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-05.webp",
+        "alt": "黄山照片 05"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-06.webp",
+        "alt": "黄山照片 06"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-07.webp",
+        "alt": "黄山照片 07"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-08.webp",
+        "alt": "黄山照片 08"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-09.webp",
+        "alt": "黄山照片 09"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-10.webp",
+        "alt": "黄山照片 10"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-11.webp",
+        "alt": "黄山照片 11"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-12.webp",
+        "alt": "黄山照片 12"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-13.webp",
+        "alt": "黄山照片 13"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-14.webp",
+        "alt": "黄山照片 14"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-15.webp",
+        "alt": "黄山照片 15"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-16.webp",
+        "alt": "黄山照片 16"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-17.webp",
+        "alt": "黄山照片 17"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-18.webp",
+        "alt": "黄山照片 18"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-19.webp",
+        "alt": "黄山照片 19"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-20.webp",
+        "alt": "黄山照片 20"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-21.webp",
+        "alt": "黄山照片 21"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-22.webp",
+        "alt": "黄山照片 22"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-23.webp",
+        "alt": "黄山照片 23"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-24.webp",
+        "alt": "黄山照片 24"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-25.webp",
+        "alt": "黄山照片 25"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-26.webp",
+        "alt": "黄山照片 26"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-27.webp",
+        "alt": "黄山照片 27"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-28.webp",
+        "alt": "黄山照片 28"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-29.webp",
+        "alt": "黄山照片 29"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-30.webp",
+        "alt": "黄山照片 30"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-31.webp",
+        "alt": "黄山照片 31"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-32.webp",
+        "alt": "黄山照片 32"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-33.webp",
+        "alt": "黄山照片 33"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-34.webp",
+        "alt": "黄山照片 34"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-35.webp",
+        "alt": "黄山照片 35"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-36.webp",
+        "alt": "黄山照片 36"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-37.webp",
+        "alt": "黄山照片 37"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-38.webp",
+        "alt": "黄山照片 38"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-39.webp",
+        "alt": "黄山照片 39"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-40.webp",
+        "alt": "黄山照片 40"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-41.webp",
+        "alt": "黄山照片 41"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-42.webp",
+        "alt": "黄山照片 42"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-43.webp",
+        "alt": "黄山照片 43"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-44.webp",
+        "alt": "黄山照片 44"
+      },
+      {
+        "type": "image",
+        "src": "/media/huangshan/huangshan-45.webp",
+        "alt": "黄山照片 45"
+      }
+    ],
+    "markerImage": "/media/huangshan/huangshan-sticker-v4.webp"
+  },
+  {
+    "id": "hongcun",
+    "title": "宏村",
+    "englishTitle": "HONGCUN",
+    "subtitle": "月沼水巷",
+    "date": "2026.10.05",
+    "coordinates": [
+      117.9842,
+      30.0048
+    ],
+    "coordinateSource": "photo-exif",
+    "coordinateReference": "43张现场照片 GPS EXIF 坐标中位数",
+    "description": "白墙黛瓦映在水面，石桥与村巷串起宏村的行走片段。",
+    "accent": "yellow",
+    "media": [
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-01.webp",
+        "alt": "宏村照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-02.webp",
+        "alt": "宏村照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-03.webp",
+        "alt": "宏村照片 03"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-04.webp",
+        "alt": "宏村照片 04"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-05.webp",
+        "alt": "宏村照片 05"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-06.webp",
+        "alt": "宏村照片 06"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-07.webp",
+        "alt": "宏村照片 07"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-08.webp",
+        "alt": "宏村照片 08"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-09.webp",
+        "alt": "宏村照片 09"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-10.webp",
+        "alt": "宏村照片 10"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-11.webp",
+        "alt": "宏村照片 11"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-12.webp",
+        "alt": "宏村照片 12"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-13.webp",
+        "alt": "宏村照片 13"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-14.webp",
+        "alt": "宏村照片 14"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-15.webp",
+        "alt": "宏村照片 15"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-16.webp",
+        "alt": "宏村照片 16"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-17.webp",
+        "alt": "宏村照片 17"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-18.webp",
+        "alt": "宏村照片 18"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-19.webp",
+        "alt": "宏村照片 19"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-20.webp",
+        "alt": "宏村照片 20"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-21.webp",
+        "alt": "宏村照片 21"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-22.webp",
+        "alt": "宏村照片 22"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-23.webp",
+        "alt": "宏村照片 23"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-24.webp",
+        "alt": "宏村照片 24"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-25.webp",
+        "alt": "宏村照片 25"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-26.webp",
+        "alt": "宏村照片 26"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-27.webp",
+        "alt": "宏村照片 27"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-28.webp",
+        "alt": "宏村照片 28"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-29.webp",
+        "alt": "宏村照片 29"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-30.webp",
+        "alt": "宏村照片 30"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-31.webp",
+        "alt": "宏村照片 31"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-32.webp",
+        "alt": "宏村照片 32"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-33.webp",
+        "alt": "宏村照片 33"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-34.webp",
+        "alt": "宏村照片 34"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-35.webp",
+        "alt": "宏村照片 35"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-36.webp",
+        "alt": "宏村照片 36"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-37.webp",
+        "alt": "宏村照片 37"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-38.webp",
+        "alt": "宏村照片 38"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-39.webp",
+        "alt": "宏村照片 39"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-40.webp",
+        "alt": "宏村照片 40"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-41.webp",
+        "alt": "宏村照片 41"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-42.webp",
+        "alt": "宏村照片 42"
+      },
+      {
+        "type": "image",
+        "src": "/media/hongcun/hongcun-43.webp",
+        "alt": "宏村照片 43"
+      }
+    ],
+    "markerImage": "/media/hongcun/hongcun-sticker-v4.webp"
+  },
+  {
+    "id": "west-lake",
+    "title": "西湖",
+    "englishTitle": "WEST LAKE",
+    "subtitle": "湖山漫行",
+    "date": "2026.10.06",
+    "coordinates": [
+      120.1407,
+      30.2413
+    ],
+    "coordinateSource": "photo-exif",
+    "coordinateReference": "70张西湖现场照片 GPS EXIF 坐标中位数；1张坐标离群，2张无 GPS",
+    "description": "以西湖作为一个完整地点，湖岸、柳影与远山都收进同一段漫行。",
+    "accent": "yellow",
+    "media": [
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-01.webp",
+        "alt": "西湖照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-02.webp",
+        "alt": "西湖照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-03.webp",
+        "alt": "西湖照片 03"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-04.webp",
+        "alt": "西湖照片 04"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-05.webp",
+        "alt": "西湖照片 05"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-06.webp",
+        "alt": "西湖照片 06"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-07.webp",
+        "alt": "西湖照片 07"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-08.webp",
+        "alt": "西湖照片 08"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-09.webp",
+        "alt": "西湖照片 09"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-10.webp",
+        "alt": "西湖照片 10"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-11.webp",
+        "alt": "西湖照片 11"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-12.webp",
+        "alt": "西湖照片 12"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-13.webp",
+        "alt": "西湖照片 13"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-14.webp",
+        "alt": "西湖照片 14"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-15.webp",
+        "alt": "西湖照片 15"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-16.webp",
+        "alt": "西湖照片 16"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-17.webp",
+        "alt": "西湖照片 17"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-18.webp",
+        "alt": "西湖照片 18"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-19.webp",
+        "alt": "西湖照片 19"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-20.webp",
+        "alt": "西湖照片 20"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-21.webp",
+        "alt": "西湖照片 21"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-22.webp",
+        "alt": "西湖照片 22"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-23.webp",
+        "alt": "西湖照片 23"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-24.webp",
+        "alt": "西湖照片 24"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-25.webp",
+        "alt": "西湖照片 25"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-26.webp",
+        "alt": "西湖照片 26"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-27.webp",
+        "alt": "西湖照片 27"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-28.webp",
+        "alt": "西湖照片 28"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-29.webp",
+        "alt": "西湖照片 29"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-30.webp",
+        "alt": "西湖照片 30"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-31.webp",
+        "alt": "西湖照片 31"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-32.webp",
+        "alt": "西湖照片 32"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-33.webp",
+        "alt": "西湖照片 33"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-34.webp",
+        "alt": "西湖照片 34"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-35.webp",
+        "alt": "西湖照片 35"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-36.webp",
+        "alt": "西湖照片 36"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-37.webp",
+        "alt": "西湖照片 37"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-38.webp",
+        "alt": "西湖照片 38"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-39.webp",
+        "alt": "西湖照片 39"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-40.webp",
+        "alt": "西湖照片 40"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-41.webp",
+        "alt": "西湖照片 41"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-42.webp",
+        "alt": "西湖照片 42"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-43.webp",
+        "alt": "西湖照片 43"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-44.webp",
+        "alt": "西湖照片 44"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-45.webp",
+        "alt": "西湖照片 45"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-46.webp",
+        "alt": "西湖照片 46"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-47.webp",
+        "alt": "西湖照片 47"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-48.webp",
+        "alt": "西湖照片 48"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-49.webp",
+        "alt": "西湖照片 49"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-50.webp",
+        "alt": "西湖照片 50"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-51.webp",
+        "alt": "西湖照片 51"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-52.webp",
+        "alt": "西湖照片 52"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-53.webp",
+        "alt": "西湖照片 53"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-54.webp",
+        "alt": "西湖照片 54"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-55.webp",
+        "alt": "西湖照片 55"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-56.webp",
+        "alt": "西湖照片 56"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-57.webp",
+        "alt": "西湖照片 57"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-58.webp",
+        "alt": "西湖照片 58"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-59.webp",
+        "alt": "西湖照片 59"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-60.webp",
+        "alt": "西湖照片 60"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-61.webp",
+        "alt": "西湖照片 61"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-62.webp",
+        "alt": "西湖照片 62"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-63.webp",
+        "alt": "西湖照片 63"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-64.webp",
+        "alt": "西湖照片 64"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-65.webp",
+        "alt": "西湖照片 65"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-66.webp",
+        "alt": "西湖照片 66"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-67.webp",
+        "alt": "西湖照片 67"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-68.webp",
+        "alt": "西湖照片 68"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-69.webp",
+        "alt": "西湖照片 69"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-70.webp",
+        "alt": "西湖照片 70"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-71.webp",
+        "alt": "西湖照片 71"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-72.webp",
+        "alt": "西湖照片 72"
+      },
+      {
+        "type": "image",
+        "src": "/media/west-lake/west-lake-73.webp",
+        "alt": "西湖照片 73"
+      }
+    ],
+    "markerImage": "/media/west-lake/west-lake-sticker-v4.webp"
+  },
+  {
+    "id": "beisi-pagoda",
+    "title": "北寺塔",
+    "englishTitle": "BEISI PAGODA",
+    "subtitle": "塔影入城",
+    "date": "",
+    "coordinates": [
+      120.619574,
+      31.32235
+    ],
+    "coordinateSource": "map-poi",
+    "coordinateReference": "高德地图 POI：报恩寺塔（照片无 GPS EXIF）",
+    "description": "以北寺塔的层檐轮廓为中心，留下塔影与周边街巷。",
+    "accent": "yellow",
+    "media": [
+      {
+        "type": "image",
+        "src": "/media/beisi-pagoda/beisi-pagoda-01.webp",
+        "alt": "北寺塔照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/beisi-pagoda/beisi-pagoda-02.webp",
+        "alt": "北寺塔照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/beisi-pagoda/beisi-pagoda-03.webp",
+        "alt": "北寺塔照片 03"
+      },
+      {
+        "type": "image",
+        "src": "/media/beisi-pagoda/beisi-pagoda-04.webp",
+        "alt": "北寺塔照片 04"
+      },
+      {
+        "type": "image",
+        "src": "/media/beisi-pagoda/beisi-pagoda-05.webp",
+        "alt": "北寺塔照片 05"
+      },
+      {
+        "type": "image",
+        "src": "/media/beisi-pagoda/beisi-pagoda-06.webp",
+        "alt": "北寺塔照片 06"
+      },
+      {
+        "type": "image",
+        "src": "/media/beisi-pagoda/beisi-pagoda-07.webp",
+        "alt": "北寺塔照片 07"
+      },
+      {
+        "type": "image",
+        "src": "/media/beisi-pagoda/beisi-pagoda-08.webp",
+        "alt": "北寺塔照片 08"
+      },
+      {
+        "type": "image",
+        "src": "/media/beisi-pagoda/beisi-pagoda-09.webp",
+        "alt": "北寺塔照片 09"
+      }
+    ],
+    "markerImage": "/media/beisi-pagoda/beisi-pagoda-sticker-v4.webp"
+  },
+  {
+    "id": "pingcang-lane",
+    "title": "平仓巷",
+    "englishTitle": "PINGCANG LANE",
+    "subtitle": "平江水巷",
+    "date": "2026.10.07",
+    "coordinates": [
+      120.629711,
+      31.314932
+    ],
+    "coordinateSource": "photo-exif",
+    "coordinateReference": "18张现场照片 GPS EXIF 坐标中位数",
+    "description": "沿河小巷、石桥与游船，记录平仓巷水岸间的片刻。",
+    "accent": "yellow",
+    "media": [
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-01.webp",
+        "alt": "平仓巷照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-02.webp",
+        "alt": "平仓巷照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-03.webp",
+        "alt": "平仓巷照片 03"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-04.webp",
+        "alt": "平仓巷照片 04"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-05.webp",
+        "alt": "平仓巷照片 05"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-06.webp",
+        "alt": "平仓巷照片 06"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-07.webp",
+        "alt": "平仓巷照片 07"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-08.webp",
+        "alt": "平仓巷照片 08"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-09.webp",
+        "alt": "平仓巷照片 09"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-10.webp",
+        "alt": "平仓巷照片 10"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-11.webp",
+        "alt": "平仓巷照片 11"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-12.webp",
+        "alt": "平仓巷照片 12"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-13.webp",
+        "alt": "平仓巷照片 13"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-14.webp",
+        "alt": "平仓巷照片 14"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-15.webp",
+        "alt": "平仓巷照片 15"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-16.webp",
+        "alt": "平仓巷照片 16"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-17.webp",
+        "alt": "平仓巷照片 17"
+      },
+      {
+        "type": "image",
+        "src": "/media/pingcang-lane/pingcang-lane-18.webp",
+        "alt": "平仓巷照片 18"
+      }
+    ],
+    "markerImage": "/media/pingcang-lane/pingcang-lane-sticker-v4.webp"
   }
 ]

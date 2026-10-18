@@ -2,7 +2,7 @@ import type { Map } from 'maplibre-gl'
 
 export const terrainSourceUrl = import.meta.env.VITE_TERRAIN_SOURCE_URL?.trim()
   || 'https://tiles.mapterhorn.com/tilejson.json'
-export const terrainEnabled = import.meta.env.VITE_ENABLE_TERRAIN !== 'false'
+export const terrainEnabled = import.meta.env.VITE_ENABLE_TERRAIN === 'true'
 
 function setPaintIfLayer(map: Map, layerId: string, property: string, value: unknown) {
   if (map.getLayer(layerId)) map.setPaintProperty(layerId, property, value)
@@ -16,7 +16,7 @@ function addBuildingExtrusion(map: Map) {
     type: 'fill-extrusion',
     source: 'openmaptiles',
     'source-layer': 'building',
-    minzoom: 10.5,
+    minzoom: 12.5,
     paint: {
       'fill-extrusion-base': ['coalesce', ['get', 'render_min_height'], 0],
       'fill-extrusion-color': '#2c3f4b',

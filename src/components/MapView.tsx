@@ -314,7 +314,7 @@ export function MapView({
         bearing: 0,
         minZoom: 9,
         maxZoom: 18,
-        canvasContextAttributes: { antialias: mode === 'vector' },
+        canvasContextAttributes: { antialias: false, powerPreference: 'high-performance' },
         attributionControl: false,
       })
 

@@ -582,31 +582,40 @@ export function MapView({
 
   useEffect(() => {
     const map = mapRef.current
-    if (!map || !mapReady) return
+    if (!map || !mapReady || !offscreenGuidesVisible) return
 
-    let guideFrame = 0
+    let lastUpdateAt = 0
+    let trailingUpdate: ReturnType<typeof setTimeout> | undefined
     const updateOffscreenGuides = () => {
-      if (guideFrame) return
-      guideFrame = requestAnimationFrame(() => {
-        guideFrame = 0
-        setOffscreenGuides(offscreenGuidesForMap(map, places))
-      })
+      const now = performance.now()
+      const remaining = 100 - (now - lastUpdateAt)
+      if (remaining > 0) {
+        if (trailingUpdate === undefined) {
+          trailingUpdate = setTimeout(() => {
+            trailingUpdate = undefined
+            lastUpdateAt = performance.now()
+            setOffscreenGuides(offscreenGuidesForMap(map, places))
+          }, remaining)
+        }
+        return
+      }
+      lastUpdateAt = now
+      setOffscreenGuides(offscreenGuidesForMap(map, places))
     }
-    // Render the first guide set synchronously, then coalesce camera events
-    // into one React update per frame while the map is moving.
+    // Keep visible guides responsive without making React compete with the
+    // map's 3D render loop. Hidden guides do no per-move work at all.
     setOffscreenGuides(offscreenGuidesForMap(map, places))
-    updateOffscreenGuides()
     map.on('move', updateOffscreenGuides)
     map.on('moveend', updateOffscreenGuides)
     map.on('resize', updateOffscreenGuides)
 
     return () => {
-      if (guideFrame) cancelAnimationFrame(guideFrame)
+      if (trailingUpdate !== undefined) clearTimeout(trailingUpdate)
       map.off('move', updateOffscreenGuides)
       map.off('moveend', updateOffscreenGuides)
       map.off('resize', updateOffscreenGuides)
     }
-  }, [mapReady, places])
+  }, [mapReady, offscreenGuidesVisible, places])
 
   useEffect(() => {
     const map = mapRef.current

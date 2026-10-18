@@ -1970,5 +1970,68 @@
       }
     ],
     "markerImage": "/media/pingcang-lane/pingcang-lane-sticker-v4.webp"
+  },
+  {
+    "id": "jinji-lake",
+    "title": "金鸡湖",
+    "englishTitle": "JINJI LAKE",
+    "subtitle": "湖光城色",
+    "date": "2026.10.18",
+    "coordinates": [
+      120.679619,
+      31.323192
+    ],
+    "coordinateSource": "photo-exif",
+    "coordinateReference": "9张金鸡湖现场照片 GPS EXIF 坐标均值；拍摄点最大偏离约344米",
+    "accent": "yellow",
+    "description": "湖岸灯火与城市天际线倒映在金鸡湖面，收进夜色里的苏州水岸。",
+    "media": [
+      {
+        "type": "image",
+        "src": "/media/jinji-lake/jinji-lake-01.webp",
+        "alt": "金鸡湖照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/jinji-lake/jinji-lake-02.webp",
+        "alt": "金鸡湖照片 02"
+      },
+      {
+        "type": "image",
+        "src": "/media/jinji-lake/jinji-lake-03.webp",
+        "alt": "金鸡湖照片 03"
+      },
+      {
+        "type": "image",
+        "src": "/media/jinji-lake/jinji-lake-04.webp",
+        "alt": "金鸡湖照片 04"
+      },
+      {
+        "type": "image",
+        "src": "/media/jinji-lake/jinji-lake-05.webp",
+        "alt": "金鸡湖照片 05"
+      },
+      {
+        "type": "image",
+        "src": "/media/jinji-lake/jinji-lake-06.webp",
+        "alt": "金鸡湖照片 06"
+      },
+      {
+        "type": "image",
+        "src": "/media/jinji-lake/jinji-lake-07.webp",
+        "alt": "金鸡湖照片 07"
+      },
+      {
+        "type": "image",
+        "src": "/media/jinji-lake/jinji-lake-08.webp",
+        "alt": "金鸡湖照片 08"
+      },
+      {
+        "type": "image",
+        "src": "/media/jinji-lake/jinji-lake-09.webp",
+        "alt": "金鸡湖照片 09"
+      }
+    ],
+    "markerImage": "/media/jinji-lake/jinji-lake-sticker-v4.webp"
   }
 ]

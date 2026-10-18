@@ -137,5 +137,13 @@
     ],
     "toleranceMeters": 250,
     "source": "18张现场照片 GPS EXIF 坐标中位数"
+  },
+  "jinji-lake": {
+    "coordinates": [
+      120.679619,
+      31.323192
+    ],
+    "toleranceMeters": 400,
+    "source": "9张金鸡湖现场照片 GPS EXIF 坐标均值；最大偏离约344米"
   }
 }

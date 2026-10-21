@@ -3,7 +3,7 @@
 v5：47 秒，1920×1080，30fps，原创配乐，无旁白。
 
 成片：`renders/dog-map-pixel-journey-v5.mp4`；本地播放器：`watch.html`。
-无文字像素封面：`covers/dog-map-cover-pixel-v2.png`；风格与裁切说明：`covers/README.md`。
+无文字像素封面（右侧图标与旅行画片）：`covers/dog-map-cover-pixel-v3.png`；风格与裁切说明：`covers/README.md`。
 v1–v4 成片均保留在 `renders/`，不要与新版混淆。
 
 右侧 15 张真实照片统一放进 512×400 大相框：新照片覆盖在前，旧照片仅露出窄边，偏转限制在 0–2°。横竖照片使用主体取景展示，不拉伸、不改原文件；切换地点整叠退场，西湖片尾保留。右上图标与照片列对齐。

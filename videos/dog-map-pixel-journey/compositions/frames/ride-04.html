@@ -8,23 +8,18 @@
 <img id="ride4-web" src="assets/web/huangshan-detail.png" alt="Dog Map 04 / 黄山真实网页截图">
 </div>
 <img id="ride4-icon" class="ride-icon" src="assets/ride/huangshan-icon.webp" alt="当前地点原网站图标">
+<div id="ride4-stack" class="ride-photo-stack">
 <div id="ride4-photo1" class="ride-photo" style="left:1346px;top:367px;width:536px;height:402px"><img src="assets/ride/huangshan-photo-1.webp" alt="04 / 黄山真实旅行照片 1"></div><div id="ride4-counter1" class="ride-counter" style="left:1346px;top:793px">PHOTO / 01</div>
 <div id="ride4-photo2" class="ride-photo" style="left:1346px;top:367px;width:536px;height:402px"><img src="assets/ride/huangshan-photo-2.webp" alt="04 / 黄山真实旅行照片 2"></div><div id="ride4-counter2" class="ride-counter" style="left:1346px;top:793px">PHOTO / 02</div>
 <div id="ride4-photo3" class="ride-photo" style="left:1346px;top:367px;width:536px;height:402px"><img src="assets/ride/huangshan-photo-3.webp" alt="04 / 黄山真实旅行照片 3"></div><div id="ride4-counter3" class="ride-counter" style="left:1346px;top:793px">PHOTO / 03</div>
+</div>
 
 </div><script>
 (()=>{const tl=gsap.timeline({paused:true});
 tl.fromTo('#ride4-title',{opacity:0,y:10},{opacity:1,y:0,duration:.35},.15);
 tl.fromTo('#ride4-icon',{opacity:0,y:12},{opacity:1,y:0,duration:.4},.15);
 
-tl.fromTo('#ride4-photo1',{opacity:0,x:48,y:20},{opacity:1,x:0,y:0,duration:.45,ease:'power2.out'},0.5);
-tl.fromTo('#ride4-counter1',{opacity:0},{opacity:1,duration:.15},0.75);
-tl.to('#ride4-photo1',{opacity:0,y:-18,duration:.25},2.65);tl.to('#ride4-counter1',{opacity:0,duration:.1},2.65);
-tl.fromTo('#ride4-photo2',{opacity:0,x:48,y:20},{opacity:1,x:0,y:0,duration:.45,ease:'power2.out'},2.65);
-tl.fromTo('#ride4-counter2',{opacity:0},{opacity:1,duration:.15},2.9);
-tl.to('#ride4-photo2',{opacity:0,y:-18,duration:.25},4.8);tl.to('#ride4-counter2',{opacity:0,duration:.1},4.8);
-tl.fromTo('#ride4-photo3',{opacity:0,x:48,y:20},{opacity:1,x:0,y:0,duration:.45,ease:'power2.out'},4.8);
-tl.fromTo('#ride4-counter3',{opacity:0},{opacity:1,duration:.15},5.05);
+window.addRidePhotoStack(tl,'ride4',{exit:true});
 
 
 window.__timelines['scene-04']=tl;})();

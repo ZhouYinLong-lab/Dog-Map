@@ -1,6 +1,17 @@
 # RPG Maker × Turner — production style contract
 
-## v2 override: website-first cycling edit
+## v3 override: accumulating photo stack
+
+The user's sketch specifies a real stack, not a carousel. Each new photo is
+painted above the preceding photos; older cards retain full opacity and their
+settled pose. Keep natural aspect ratios, no filters or crops. Slight alternating
+tilts and 80px bottom-edge spacing expose older images even across mixed formats.
+The original upper-right sticker is separate from the pile. Leave the website
+panel, titles, global cyclist and original music unchanged. Only the whole pile
+exits during a location change; the last pile holds through the final frame.
+Shared implementation: assets/photo-stack.js. Regression checks: npm test.
+
+## v2 foundation: website-first cycling edit
 
 Latest user direction supersedes the old full-world scene layout below.
 Use the real website screenshots as the dominant surface (~29 seconds fully visible).

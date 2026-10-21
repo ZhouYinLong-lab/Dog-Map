@@ -1,0 +1,26 @@
+<!doctype html><html lang="zh-CN"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=1920,height=1080">
+<title>Dog Map — 私人旅行存档</title>
+<script src="assets/gsap.min.js"></script><script src="assets/places.js"></script><script src="assets/pixel.js"></script>
+<link rel="stylesheet" href="assets/scenes.css"><link rel="stylesheet" href="assets/ride.css"><script src="assets/ride.js"></script>
+<style>html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#11182B}#film{position:relative;width:100%;height:100%}.clip{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}</style>
+</head><body>
+<div data-hf-id="hf-w77k" id="film" data-composition-id="main" data-start="0" data-duration="35" data-width="1920" data-height="1080">
+<div data-hf-id="hf-ktum" id="campus-scene" class="clip" data-composition-id="scene-01" data-composition-src="compositions/frames/ride-01.html" data-start="0" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div data-hf-id="hf-crfj" id="market-scene" class="clip" data-composition-id="scene-02" data-composition-src="compositions/frames/ride-02.html" data-start="7" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div data-hf-id="hf-x239" id="lake-scene" class="clip" data-composition-id="scene-03" data-composition-src="compositions/frames/ride-03.html" data-start="14" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div data-hf-id="hf-jp4x" id="memory-scene" class="clip" data-composition-id="scene-04" data-composition-src="compositions/frames/ride-04.html" data-start="21" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div data-hf-id="hf-347u" id="outro-scene" class="clip" data-composition-id="scene-05" data-composition-src="compositions/frames/ride-05.html" data-start="28" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
+<canvas id="ride-travel" width="480" height="40" data-layout-allow-overflow></canvas>
+<audio data-hf-id="hf-ued2" id="music-original" src="assets/journey.wav" data-start="0" data-duration="35" data-track-index="2" data-volume="0.8"></audio>
+<img id="rider-source" src="assets/rider-sheet.png" alt="" style="display:none" data-layout-ignore>
+</div><script>
+window.__timelines=window.__timelines||{};
+document.getElementById('rider-source').decode().then(()=>{
+  const state={t:0};const timeline=gsap.timeline({paused:true});
+  timeline.to(state,{t:35,duration:35,ease:'none',onUpdate:()=>drawRideProgress(state.t)},0);
+  drawRideProgress(0);window.__timelines.main=timeline;
+  if(window.__hfForceTimelineRebind)window.__hfForceTimelineRebind();
+});
+</script>
+</body></html>

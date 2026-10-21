@@ -1,0 +1,31 @@
+<!doctype html><html><body><template>
+<div id="ride5-root" class="ride-root" data-composition-id="scene-05" data-width="1920" data-height="1080" data-duration="7">
+<div class="ride-ground"></div>
+<div class="ride-eye">DOG MAP / 西湖</div><h1 id="ride5-title" class="ride-title">走过的地方，都是我的存档。</h1>
+<div id="ride5-label" class="ride-screen-label">真实网页 · map.zylatent.com</div>
+<div class="ride-screen">
+
+<img id="ride5-web" src="assets/web/west-lake-detail.png" alt="Dog Map DOG MAP / 西湖真实网页截图">
+</div>
+<img id="ride5-icon" class="ride-icon" src="assets/ride/west-lake-icon.webp" alt="当前地点原网站图标">
+<div id="ride5-photo1" class="ride-photo" style="left:1347px;top:469px;width:535px;height:198px"><img src="assets/ride/west-lake-photo-1.webp" alt="DOG MAP / 西湖真实旅行照片 1"></div><div id="ride5-counter1" class="ride-counter" style="left:1347px;top:691px">PHOTO / 01</div>
+<div id="ride5-photo2" class="ride-photo" style="left:1409px;top:294px;width:411px;height:548px"><img src="assets/ride/west-lake-photo-2.webp" alt="DOG MAP / 西湖真实旅行照片 2"></div><div id="ride5-counter2" class="ride-counter" style="left:1409px;top:866px">PHOTO / 02</div>
+<div id="ride5-photo3" class="ride-photo" style="left:1346px;top:367px;width:536px;height:402px"><img src="assets/ride/west-lake-photo-3.webp" alt="DOG MAP / 西湖真实旅行照片 3"></div><div id="ride5-counter3" class="ride-counter" style="left:1346px;top:793px">PHOTO / 03</div>
+<div id="ride5-cta" class="ride-cta">打开地图 · 继续探索 → map.zylatent.com</div>
+</div><script>
+(()=>{const tl=gsap.timeline({paused:true});
+tl.fromTo('#ride5-title',{opacity:0,y:10},{opacity:1,y:0,duration:.35},.15);
+tl.fromTo('#ride5-icon',{opacity:0,y:12},{opacity:1,y:0,duration:.4},.15);
+
+tl.fromTo('#ride5-photo1',{opacity:0,x:48,y:20},{opacity:1,x:0,y:0,duration:.45,ease:'power2.out'},0.5);
+tl.fromTo('#ride5-counter1',{opacity:0},{opacity:1,duration:.15},0.75);
+tl.to('#ride5-photo1',{opacity:0,y:-18,duration:.25},2.65);tl.to('#ride5-counter1',{opacity:0,duration:.1},2.65);
+tl.fromTo('#ride5-photo2',{opacity:0,x:48,y:20},{opacity:1,x:0,y:0,duration:.45,ease:'power2.out'},2.65);
+tl.fromTo('#ride5-counter2',{opacity:0},{opacity:1,duration:.15},2.9);
+tl.to('#ride5-photo2',{opacity:0,y:-18,duration:.25},4.8);tl.to('#ride5-counter2',{opacity:0,duration:.1},4.8);
+tl.fromTo('#ride5-photo3',{opacity:0,x:48,y:20},{opacity:1,x:0,y:0,duration:.45,ease:'power2.out'},4.8);
+tl.fromTo('#ride5-counter3',{opacity:0},{opacity:1,duration:.15},5.05);
+
+tl.fromTo('#ride5-label',{opacity:1},{opacity:0,duration:.2},4.3);tl.fromTo('#ride5-cta',{opacity:0,y:8},{opacity:1,y:0,duration:.4},4.5);
+window.__timelines['scene-05']=tl;})();
+</script></template></body></html>

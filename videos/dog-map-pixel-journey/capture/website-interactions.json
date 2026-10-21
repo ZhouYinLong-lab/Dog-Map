@@ -1,0 +1,58 @@
+[
+  {
+    "name": "home",
+    "url": "https://map.zylatent.com/",
+    "title": "Dog Map",
+    "viewport": "1920x1080",
+    "capturedAt": "2026-10-21T00:21:22.847Z",
+    "method": "Real production website, browser UI interaction only; no DOM restyling"
+  },
+  {
+    "name": "market-detail",
+    "url": "https://map.zylatent.com/",
+    "title": "Dog Map",
+    "viewport": "1920x1080",
+    "capturedAt": "2026-10-21T00:21:25.466Z",
+    "method": "Real production website, browser UI interaction only; no DOM restyling"
+  },
+  {
+    "name": "all-places",
+    "url": "https://map.zylatent.com/",
+    "title": "Dog Map",
+    "viewport": "1920x1080",
+    "capturedAt": "2026-10-21T00:21:30.563Z",
+    "method": "Real production website, browser UI interaction only; no DOM restyling"
+  },
+  {
+    "name": "lake-detail",
+    "url": "https://map.zylatent.com/",
+    "title": "Dog Map",
+    "viewport": "1920x1080",
+    "capturedAt": "2026-10-21T00:21:32.879Z",
+    "method": "Real production website, browser UI interaction only; no DOM restyling"
+  },
+  {
+    "name": "lake-photo",
+    "url": "https://map.zylatent.com/",
+    "title": "Dog Map",
+    "viewport": "1920x1080",
+    "capturedAt": "2026-10-21T00:21:35.091Z",
+    "method": "Real production website, browser UI interaction only; no DOM restyling"
+  },
+  {
+    "name": "huangshan-detail",
+    "url": "https://map.zylatent.com/",
+    "title": "Dog Map",
+    "viewport": "1920x1080",
+    "capturedAt": "2026-10-21T00:21:43.260Z",
+    "method": "Real production website, browser UI interaction only; no DOM restyling"
+  },
+  {
+    "name": "west-lake-detail",
+    "url": "https://map.zylatent.com/",
+    "title": "Dog Map",
+    "viewport": "1920x1080",
+    "capturedAt": "2026-10-21T00:21:52.381Z",
+    "method": "Real production website, browser UI interaction only; no DOM restyling"
+  }
+]

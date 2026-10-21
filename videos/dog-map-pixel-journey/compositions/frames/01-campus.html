@@ -1,0 +1,15 @@
+<!doctype html><html><body><template>
+<style>#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}</style>
+<div data-hf-id="hf-mf7c" id="root" data-composition-id="scene-01" data-width="1920" data-height="1080" data-duration="7">
+<img id="campus-plate" class="film-plate" src="assets/campus-plate.png" alt="南苏校园晨光像素场景">
+<canvas data-hf-id="hf-alzy" id="campus-art" class="film-canvas" width="480" height="270" data-layout-allow-overflow></canvas>
+<div data-hf-id="hf-a10g" class="film-copy"><span data-hf-id="hf-l10t" id="campus-eye" class="eyebrow">DOG MAP / TRAVEL SAVE</span><h1 data-hf-id="hf-59j1" id="campus-title">从熟悉的地方<br data-hf-id="hf-x5px">出发</h1><span data-hf-id="hf-axdr" id="campus-location" class="location">南京大学苏州校区</span></div>
+</div><script>
+(()=>{const c=document.getElementById('campus-art').getContext('2d'),state={t:0},tl=gsap.timeline({paused:true});
+tl.to(state,{t:7,duration:7,ease:'none',onUpdate:()=>DogPixel.illustrated(c,state.t,'campus')},0);
+tl.fromTo('#campus-plate',{scale:1.035},{scale:1,duration:1.8,ease:'power3.out'},0);
+tl.fromTo('#campus-eye',{opacity:0,y:12},{opacity:1,y:0,duration:.4},.5);
+tl.fromTo('#campus-title',{opacity:0,y:20},{opacity:1,y:0,duration:.6,ease:'power3.out'},1.5);
+tl.fromTo('#campus-location',{opacity:0,y:8},{opacity:1,y:0,duration:.4},4.2);
+DogPixel.illustrated(c,0,'campus');window.__timelines['scene-01']=tl;})();
+</script></template></body></html>

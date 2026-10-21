@@ -1,0 +1,12 @@
+{
+  "name": "dog-map-pixel-journey",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "node scripts/prepare.mjs && node scripts/prepare-ride-assets.mjs",
+    "dev": "npx --yes --package=node@22 --package=hyperframes@0.8.181 -- hyperframes preview --background --port 3017",
+    "check": "npx --yes --package=node@22 --package=hyperframes@0.8.181 -- hyperframes check --snapshots",
+    "verify": "node scripts/verify.mjs",
+    "render": "npx --yes --package=node@22 --package=hyperframes@0.8.181 -- hyperframes render --output renders/dog-map-pixel-journey-v2.mp4 --quality delivery --fps 30 --experimental-fast-capture=false"
+  }
+}

@@ -1,0 +1,15 @@
+<!doctype html><html><body><template>
+<style>#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}#market-copy{top:84px}#market-title{font-size:60px}</style>
+<div data-hf-id="hf-4gnp" id="root" data-composition-id="scene-02" data-width="1920" data-height="1080" data-duration="7">
+<img data-hf-id="hf-f4kr" id="market-plate" class="film-plate" src="assets/market-plate.png" alt="东渚夜市像素场景">
+<canvas data-hf-id="hf-erqd" id="market-art" class="film-canvas" width="480" height="270" data-layout-allow-overflow></canvas>
+<div data-hf-id="hf-4cx0" id="market-copy" class="film-copy"><span data-hf-id="hf-h6s9" id="market-eye" class="eyebrow">01 / NEARBY</span><h1 data-hf-id="hf-651u" id="market-title">把日常<br data-hf-id="hf-x5px">走成风景</h1><span data-hf-id="hf-mmye" id="market-location" class="location">东渚夜市与街道</span></div>
+</div><script>
+(()=>{const c=document.getElementById('market-art').getContext('2d'),state={t:0},tl=gsap.timeline({paused:true});
+tl.to(state,{t:7,duration:7,ease:'none',onUpdate:()=>DogPixel.illustrated(c,state.t,'market')},0);
+tl.fromTo('#market-plate',{scale:1.035},{scale:1,duration:1.8,ease:'power3.out'},0);
+tl.fromTo('#market-eye',{opacity:0,y:12},{opacity:1,y:0,duration:.4},.4);
+tl.fromTo('#market-title',{opacity:0,y:20},{opacity:1,y:0,duration:.6,ease:'power3.out'},1.8);
+tl.fromTo('#market-location',{opacity:0,y:8},{opacity:1,y:0,duration:.4},4.3);
+DogPixel.illustrated(c,0,'market');window.__timelines['scene-02']=tl;})();
+</script></template></body></html>

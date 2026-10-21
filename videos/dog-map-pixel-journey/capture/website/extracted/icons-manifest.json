@@ -1,0 +1,22 @@
+{
+  "schema": "hyperframes.capture.icons.v1",
+  "headline": {
+    "file": "assets/favicon.ico",
+    "source": "assets/icon-icon-any.ico",
+    "rank": 0,
+    "shape": "unknown",
+    "reason": "no bare-mark candidate among 1 icon(s); used the best-ranked unknown"
+  },
+  "icons": [
+    {
+      "file": "assets/icon-icon-any.ico",
+      "url": "https://map.zylatent.com/favicon.ico?v=bold-map-pin-01",
+      "rel": "icon",
+      "sizes": "any",
+      "type": null,
+      "rank": 0,
+      "shape": "unknown",
+      "shapeReason": "image format could not be decoded for inspection"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "typography": [
+    {
+      "role": "label",
+      "fontFamily": "Optima Nova Black",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "color": "#F2EADC",
+      "sampleText": "OpenFreeMap © OpenMapTiles Data from OpenStreetMap➤南京大学鼓楼校区1"
+    },
+    {
+      "role": "link",
+      "fontFamily": "Optima Nova Black",
+      "fontSize": "9px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "color": "#F2EADC",
+      "sampleText": "OpenFreeMap"
+    }
+  ],
+  "spacing": {
+    "observed": [
+      8,
+      9,
+      12
+    ],
+    "baseUnit": 4
+  },
+  "radius": [],
+  "shadows": [
+    {
+      "value": "rgba(17, 17, 17, 0.58) 5px 5px 0px 0px",
+      "count": 1
+    }
+  ],
+  "buttons": [
+    {
+      "label": "button",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#F2EADC",
+      "padding": "0px",
+      "borderRadius": "0px",
+      "border": "0px none rgb(242, 234, 220)",
+      "boxShadow": "none",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "height": "142px"
+    }
+  ],
+  "cards": [],
+  "nav": null,
+  "chips": [],
+  "statCells": [],
+  "tabs": [],
+  "backgrounds": [],
+  "glass": []
+}

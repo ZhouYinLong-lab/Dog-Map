@@ -1,0 +1,122 @@
+[
+  {
+    "place": "nju-suzhou-campus",
+    "source": "public/media/nju-suzhou-campus/nju-suzhou-campus-sticker-v4.webp",
+    "target": "assets/ride/nju-suzhou-campus-icon.webp",
+    "sha256": "f654e3f08fafcb399817278aa6dcebf7000c1acf789b583acf93f25d3313f001"
+  },
+  {
+    "place": "nju-suzhou-campus",
+    "source": "public/media/nju-suzhou-campus/IMG20260824095359.webp",
+    "target": "assets/ride/nju-suzhou-campus-photo-1.webp",
+    "sha256": "8b984c37e52bc26267ee5c7cc8a8bba04226e0073f5bd606ce7a520c70dd4695"
+  },
+  {
+    "place": "nju-suzhou-campus",
+    "source": "public/media/nju-suzhou-campus/IMG20260824095937.webp",
+    "target": "assets/ride/nju-suzhou-campus-photo-2.webp",
+    "sha256": "a74d37677172215485506eff2d2df2e7e0e04f0b1bc8bc6b3800f7284b358c5c"
+  },
+  {
+    "place": "nju-suzhou-campus",
+    "source": "public/media/nju-suzhou-campus/IMG20260824100145.webp",
+    "target": "assets/ride/nju-suzhou-campus-photo-3.webp",
+    "sha256": "52ca85bc537b5e8ce5c8e16e5e2250c9d6262e0461ada9d2742cc63b0da20d51"
+  },
+  {
+    "place": "dongzhu-night-market",
+    "source": "public/media/dongzhu-night-market/dongzhu-night-market-sticker-v4.webp",
+    "target": "assets/ride/dongzhu-night-market-icon.webp",
+    "sha256": "34816b54df27fa2fc9c13860cc1d3fd751fde9956204e3bddacff044374a762e"
+  },
+  {
+    "place": "dongzhu-night-market",
+    "source": "public/media/dongzhu-night-market/dongzhu-night-market-04.webp",
+    "target": "assets/ride/dongzhu-night-market-photo-1.webp",
+    "sha256": "3252af8220aa4c1d5418be178a0c0259fad59f178ec7e4fdd7b11b87f0f64930"
+  },
+  {
+    "place": "dongzhu-night-market",
+    "source": "public/media/dongzhu-night-market/dongzhu-night-market-01.webp",
+    "target": "assets/ride/dongzhu-night-market-photo-2.webp",
+    "sha256": "a71fcc785685ece31dde52ae73c679a9e7720a5bcb04ebb4d72171d6d60eb761"
+  },
+  {
+    "place": "dongzhu-night-market",
+    "source": "public/media/dongzhu-night-market/dongzhu-night-market-05.webp",
+    "target": "assets/ride/dongzhu-night-market-photo-3.webp",
+    "sha256": "ae89529b69cbe3cc5d21de83240ee4edad912a1d2f037a8dd3afb0f4bff03349"
+  },
+  {
+    "place": "jinji-lake",
+    "source": "public/media/jinji-lake/jinji-lake-sticker-v4.webp",
+    "target": "assets/ride/jinji-lake-icon.webp",
+    "sha256": "7a68d6b170c75b321a5aa04155351aa8774914990fba384549b9ba774539ce83"
+  },
+  {
+    "place": "jinji-lake",
+    "source": "public/media/jinji-lake/jinji-lake-09.webp",
+    "target": "assets/ride/jinji-lake-photo-1.webp",
+    "sha256": "2fb4733087c488afa1e16d1b842b21078583bab14f0418573417c9324f12ec90"
+  },
+  {
+    "place": "jinji-lake",
+    "source": "public/media/jinji-lake/jinji-lake-03.webp",
+    "target": "assets/ride/jinji-lake-photo-2.webp",
+    "sha256": "112c952f7106edabf5ca230e1bcf1aad43d4357ef6f94021cc636c9569dab372"
+  },
+  {
+    "place": "jinji-lake",
+    "source": "public/media/jinji-lake/jinji-lake-02.webp",
+    "target": "assets/ride/jinji-lake-photo-3.webp",
+    "sha256": "dd5d25db92dfb32ddfdb28a24164eb7c81a0b5ee428568eaab52e3260782879c"
+  },
+  {
+    "place": "huangshan",
+    "source": "public/media/huangshan/huangshan-sticker-v4.webp",
+    "target": "assets/ride/huangshan-icon.webp",
+    "sha256": "91f7be62e7a65ef1cb128115cfea4d2fab919c97030dab8a0cd64c358eaca6f5"
+  },
+  {
+    "place": "huangshan",
+    "source": "public/media/huangshan/huangshan-01.webp",
+    "target": "assets/ride/huangshan-photo-1.webp",
+    "sha256": "81cdcc32fdb6e1c19c92659a88ebc6755a1e94e1af5cbc5cd8a95d29d49ccf52"
+  },
+  {
+    "place": "huangshan",
+    "source": "public/media/huangshan/huangshan-03.webp",
+    "target": "assets/ride/huangshan-photo-2.webp",
+    "sha256": "5e0ac77305542beef79a3b41adad515f3322272196589669041b458ee9df311d"
+  },
+  {
+    "place": "huangshan",
+    "source": "public/media/huangshan/huangshan-05.webp",
+    "target": "assets/ride/huangshan-photo-3.webp",
+    "sha256": "65b8c54299582a5c81fffabb795c4de04b3b678a213041819a999894843d2f28"
+  },
+  {
+    "place": "west-lake",
+    "source": "public/media/west-lake/west-lake-sticker-v4.webp",
+    "target": "assets/ride/west-lake-icon.webp",
+    "sha256": "0cfac54668f13cc70e8bb580e9ebf84a7ce8ad982164e9df00b139a64e95f7ed"
+  },
+  {
+    "place": "west-lake",
+    "source": "public/media/west-lake/west-lake-01.webp",
+    "target": "assets/ride/west-lake-photo-1.webp",
+    "sha256": "203037e8eca2cef784505c5fbaeec6e10af3a0e7f8d9d54900b42b002ec20405"
+  },
+  {
+    "place": "west-lake",
+    "source": "public/media/west-lake/west-lake-03.webp",
+    "target": "assets/ride/west-lake-photo-2.webp",
+    "sha256": "cad585f470679e32a82daab7752ba420fcc494480074fce3723634da9e36c3b3"
+  },
+  {
+    "place": "west-lake",
+    "source": "public/media/west-lake/west-lake-05.webp",
+    "target": "assets/ride/west-lake-photo-3.webp",
+    "sha256": "df2835ca915c02ba2cb2e4c62a5aa62b54aafbc8be35ecdde5c066f29300bc7c"
+  }
+]

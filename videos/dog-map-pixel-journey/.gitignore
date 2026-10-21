@@ -1,0 +1,12 @@
+.hyperframes/
+.thumbnails/
+renders/
+node_modules/
+assets/journey.wav
+capture/references/
+capture/website/assets/
+capture/website/fonts/
+capture/website/screenshots/
+capture/website/AGENTS.md
+capture/website/CLAUDE.md
+capture/website/.cursorrules

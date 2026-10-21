@@ -1,0 +1,18 @@
+<!doctype html><html><body><template>
+<style>#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}#memory-copy{top:72px}#memory-copy h1{display:inline-block}#memory-title2{color:#E4A24C;margin-left:36px}#photo-lake{left:600px;top:290px;width:720px;height:580px}#photo-mountain{left:110px;top:390px;width:470px;height:370px}#photo-west{left:1340px;top:390px;width:470px;height:370px}</style>
+<div data-hf-id="hf-cqf3" id="root" data-composition-id="scene-04" data-width="1920" data-height="1080" data-duration="7">
+<canvas data-hf-id="hf-18t0" id="memory-art" class="film-canvas" width="480" height="270" data-layout-allow-overflow></canvas>
+<div data-hf-id="hf-y8dj" id="memory-copy" class="film-copy"><span data-hf-id="hf-tatg" class="eyebrow">03 / OPEN A MEMORY</span><h1 data-hf-id="hf-wmss" id="memory-title1">打开一枚坐标</h1><h1 data-hf-id="hf-2qkv" id="memory-title2">回到那一刻</h1></div>
+<div data-hf-id="hf-bl15" id="photo-mountain" class="photo-card"><img data-hf-id="hf-hng1" src="assets/huangshan.webp" alt="黄山旅行照片"><span data-hf-id="hf-iqmu">黄山 / HUANGSHAN</span></div>
+<div data-hf-id="hf-13lp" id="photo-west" class="photo-card"><img data-hf-id="hf-89u3" src="assets/west-lake.webp" alt="西湖旅行照片"><span data-hf-id="hf-yd9b">西湖 / WEST LAKE</span></div>
+<div data-hf-id="hf-2s3t" id="photo-lake" class="photo-card"><img data-hf-id="hf-k00b" src="assets/jinji-lake.webp" alt="金鸡湖夜景"><span data-hf-id="hf-1krx">金鸡湖 / JINJI LAKE</span></div>
+</div><script>
+(()=>{const c=document.getElementById('memory-art').getContext('2d'),state={t:0},tl=gsap.timeline({paused:true});
+tl.to(state,{t:7,duration:7,ease:'none',onUpdate:()=>DogPixel.memory(c,state.t)},0);
+tl.fromTo('#memory-title1',{opacity:0,y:16},{opacity:1,y:0,duration:.5},.25);
+tl.fromTo('#photo-lake',{scale:.04,opacity:0},{scale:1,opacity:1,duration:.9,ease:'power3.out'},1.2);
+tl.fromTo('#photo-mountain',{x:120,opacity:0},{x:0,opacity:1,duration:.7,ease:'power3.out'},3.1);
+tl.fromTo('#photo-west',{x:-120,opacity:0},{x:0,opacity:1,duration:.7,ease:'power3.out'},3.7);
+tl.fromTo('#memory-title2',{opacity:0,y:16},{opacity:1,y:0,duration:.5},4.6);
+DogPixel.memory(c,0);window.__timelines['scene-04']=tl;})();
+</script></template></body></html>

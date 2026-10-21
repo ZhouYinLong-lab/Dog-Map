@@ -59,7 +59,7 @@ test('Display reframing preserves proportions without editing source pixels',()=
   assert.match(css,/object-position:var\(--photo-focus,50% 50%\)/);
 });
 
-test('Jinji Lake has no cycling claim and no cyclist, including reverse seeks',()=>{
+test('Cyclist is a continuous film motif, never a Jinji Lake transport claim',()=>{
   const scene=readFileSync(new URL('compositions/frames/ride-03.html',root),'utf8');
   assert.match(scene,/湖畔灯火，收进相册/);
   assert.doesNotMatch(scene,/骑行|骑车|步行/);
@@ -67,11 +67,28 @@ test('Jinji Lake has no cycling claim and no cyclist, including reverse seeks',(
   const ctx={clearRect(){},fillRect(x,y,w,h){if(w===3&&h===3)markers++;},drawImage(){sprites++;}};
   const context=vm.createContext({window:{},document:{getElementById:id=>id==='ride-travel'?{getContext:()=>ctx}:{naturalWidth:96,naturalHeight:32}}});
   vm.runInContext(readFileSync(new URL('assets/ride.js',root),'utf8'),context);
-  for(const time of [0,13.99,14,14.01,17.5,20.999,21,28,35,17.5,13,14]){
+  for(const time of [0,6,19.99,20,20.01,23.5,26.999,27,34,41,47,23.5,19,20]){
     sprites=0;markers=0;
     context.window.drawRideProgress(time);
-    const jinji=time>=14&&time<21;
-    assert.equal(sprites,jinji?0:1,`Wrong travel symbol at ${time}s`);
-    assert.equal(markers,jinji?1:0,`Missing neutral progress marker at ${time}s`);
+    assert.equal(sprites,1,`Cyclist disappeared at ${time}s`);
+    assert.equal(markers,0,`Unexpected replacement marker at ${time}s`);
   }
+});
+
+test('Bookends cover 47s with a shared campus image at the six-second seam',()=>{
+  const index=readFileSync(new URL('index.html',root),'utf8');
+  const opening=readFileSync(new URL('compositions/frames/opening.html',root),'utf8');
+  const campus=readFileSync(new URL('compositions/frames/ride-01.html',root),'utf8');
+  const closing=readFileSync(new URL('compositions/frames/closing.html',root),'utf8');
+  assert.match(index,/id="film"[^>]+data-duration="47"/);
+  const scenes=[...index.matchAll(/data-composition-src="([^"]+)" data-start="([\d.]+)" data-duration="([\d.]+)"/g)];
+  let end=0;
+  for(const [,file,start,duration] of scenes){assert.equal(+start,end,`${file}: gap or overlap`);end=+start + +duration;}
+  assert.equal(end,47);
+  for(const html of [opening,campus])assert.ok(html.includes('assets/bookends/campus.png'));
+  assert.match(opening,/scale:2\/3,x:48,y:192/);
+  assert.match(opening,/assets\/bookends\/user-map.png/);
+  assert.match(closing,/下一站，继续。/);
+  assert.match(closing,/map.zylatent.com/);
+  assert.match(index,/id="music-original"[^>]+data-start="6"[^>]+data-duration="35"/);
 });

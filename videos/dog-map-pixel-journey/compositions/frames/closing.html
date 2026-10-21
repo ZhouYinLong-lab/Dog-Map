@@ -1,0 +1,29 @@
+<!doctype html><html><body><template>
+<div id="closing-root" class="ride-root" data-composition-id="closing" data-width="1920" data-height="1080" data-duration="6">
+<style>
+@font-face{font-family:DogPixel;src:url(assets/pixel.woff2);font-weight:400}
+#closing-root{background:#11182B}
+#closing-screen{position:absolute;inset:0;width:1920px;height:1080px;transform-origin:0 0}
+#closing-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#closing-lockup{position:absolute;left:112px;top:184px;width:940px;font-family:DogPixel,monospace;color:#E7D8B8}
+#closing-memory{font-size:36px;line-height:1.5;margin:0 0 20px}
+#closing-title{font-size:96px;font-weight:400;line-height:1.25;margin:0 0 40px}
+#closing-brandline{display:flex;align-items:center;gap:24px;margin-top:42px}
+#closing-brand{width:88px;height:88px;object-fit:contain}
+#closing-name{font-size:48px;line-height:1.3;color:#E4A24C;letter-spacing:4px}
+#closing-link{font-size:30px;line-height:1.5;margin:24px 0 0;color:#E7D8B8}
+#closing-invite{font-size:24px;line-height:1.5;margin:12px 0 0;color:#B9C7D8}
+</style>
+<div id="closing-screen"><img id="closing-last-web" src="assets/web/west-lake-detail.png" alt="西湖真实网页"><img id="closing-map" src="assets/bookends/user-map.png" alt="回到用户的太湖全景地图"></div>
+<div id="closing-lockup"><p id="closing-memory">走过的，成为回忆。</p><h1 id="closing-title">下一站，继续。</h1><div id="closing-brandline"><img id="closing-brand" src="assets/bookends/brand.png" alt="Dog Map 网站图标"><div id="closing-name">DOG MAP</div></div><p id="closing-link">map.zylatent.com</p><p id="closing-invite">打开地图，看看沿途。</p></div>
+</div>
+<script>
+(()=>{const tl=gsap.timeline({paused:true});
+tl.fromTo('#closing-screen',{scale:2/3,x:48,y:192},{scale:1,x:0,y:0,duration:1.1,ease:'power2.inOut'},0);
+tl.fromTo('#closing-map',{opacity:0},{opacity:1,duration:.6,ease:'none'},.9);
+tl.to('#closing-screen',{opacity:.48,duration:.6,ease:'none'},1.45);
+tl.fromTo('#closing-lockup',{opacity:0,y:16},{opacity:1,y:0,duration:.6,ease:'power2.out'},1.7);
+tl.fromTo('#closing-brandline',{opacity:0,y:12},{opacity:1,y:0,duration:.4,ease:'power2.out'},2.65);
+tl.fromTo(['#closing-link','#closing-invite'],{opacity:0},{opacity:1,duration:.4,stagger:.15},3.05);
+window.__timelines.closing=tl;})();
+</script></template></body></html>

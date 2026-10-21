@@ -1,10 +1,38 @@
 ---
 format: 1920x1080
-duration: 35s
+duration: 47s
 mode: autonomous
 message: 走过的地方，都是我的存档。
 music: original warm chiptune, 60 beats / 35 seconds
 ---
+# v5 · 从真实地图出发，回到地图继续
+
+| 时间 | 画面 | 意图 |
+| --- | --- | --- |
+| 0–6 | 用户太湖全景 → 真实网站向南苏推进 → 地图收进正文框 | 把走过的地方，留在地图上。 |
+| 6–13 | 南京大学苏州校区，直接承接推进终点 | 从熟悉的地方出发 |
+| 13–20 | 东渚夜市与街道，原照片堆叠 | 正文节奏不变 |
+| 20–27 | 金鸡湖，原照片堆叠 | 湖畔灯火，收进相册 |
+| 27–34 | 黄山 | 正文节奏不变 |
+| 34–41 | 西湖 | 最后一组旅行照片 |
+| 41–47 | 西湖网页展开 → 太湖全景 → 品牌、网址停留 | 走过的，成为回忆。下一站，继续。 |
+
+## Frame opening
+status: animated
+src: compositions/frames/opening.html
+rules: coordinate-target-zoom (real map projection capture); hyperframes-keyframes shared-element transform handoff.
+真实网页镜头逐帧离线采集，冻结为 4.8 秒视频。最后一帧接静帧并缩至 (48,192,1280,720)，正文使用同一静帧，避免接缝。文字在湖面左侧出现，推进中退场。
+
+## Frame closing
+status: animated
+src: compositions/frames/closing.html
+rules: hyperframes-keyframes same-subject wrapper transform; registered GSAP opacity/position reveals.
+西湖真实网页从正文框展开，随后切回用户全景。文案与真实网站图标、地址稳定停留至少两秒，不以黑屏结束。
+
+底部自行车是全片旅行叙事线索，金鸡湖也保留；不将其解释为真实交通方式。原配乐主体在 6–41 秒保留，首尾复用同源乐句并作淡入淡出。原照片不变。
+
+以下 v4 分镜为历史记录；以 v5 时间轴和自行车规则为准。
+
 # v4 · 统一大相框，克制堆叠，纠正金鸡湖出行语境
 
 按用户最新反馈：照片统一展示面积，避免大小不一和散乱交叉；保留逐张叠放，旧照片只露窄边。金鸡湖不是骑行，该段不出现骑行文案或自行车。右上角显示当前地点原网站图标；尽量多展示真实网页，不使用虚构地图。

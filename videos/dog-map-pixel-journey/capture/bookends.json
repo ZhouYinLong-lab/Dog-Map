@@ -1,0 +1,28 @@
+{
+  "source": "User supplied map screenshot, copied unchanged",
+  "sourceSha256": "4d2c934c5ae2385ab82d5b874fbdd799898391c1e2c7d241d6e98f7e7469afd9",
+  "capture": "Local production-source website; capture-only map handle, hidden action buttons; original geography/3D/markers preserved",
+  "poses": {
+    "start": {
+      "center": [
+        120.33680014999015,
+        31.337513926953804
+      ],
+      "zoom": 13.3,
+      "pitch": 58.00000000000001,
+      "bearing": 0
+    },
+    "end": {
+      "center": [
+        120.387037,
+        31.351239
+      ],
+      "zoom": 13.65,
+      "pitch": 58.00000000000001,
+      "bearing": 0
+    }
+  },
+  "frames": 144,
+  "fps": 30,
+  "duration": 4.8
+}

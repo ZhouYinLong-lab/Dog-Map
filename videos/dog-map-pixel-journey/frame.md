@@ -1,5 +1,21 @@
 # RPG Maker × Turner — production style contract
 
+## v5 override: true-map opening and closing
+
+47 seconds: 6-second opening, existing five 7-second chapters, 6-second closing.
+The user-supplied Taihu screenshot is the opening source and final backdrop.
+Use a captured, deterministic 3D website camera move toward NJU Suzhou, not a
+large raster enlargement or generated geography. The camera terminal still
+docks into the first chapter's exact 1280×720 website panel at (48,192).
+Original local pixel font, palette and restrained photo stack remain unchanged.
+The cyclist is a cinematic thread across ALL chapters, including Jinji Lake;
+it is not evidence of how the user travelled. Keep the neutral Jinji Lake title.
+Closing expands the last website panel, returns to the supplied map, then holds
+“走过的，成为回忆。 / 下一站，继续。” plus the real logo and website address.
+Reuse the existing original score with explicit opening/closing fades; no VO.
+No source-image edits. Capture-only hiding of map action buttons is documented.
+This overrides v4's cyclist exclusion and v2's initial campus illustration.
+
 ## v4 override: disciplined, full-size album stack
 
 Latest correction: Jinji Lake was NOT a cycling visit. No cyclist or cycling

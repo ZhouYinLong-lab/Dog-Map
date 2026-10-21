@@ -2,10 +2,9 @@
 <div id="ride1-root" class="ride-root" data-composition-id="scene-01" data-width="1920" data-height="1080" data-duration="7">
 <div class="ride-ground"></div>
 <div class="ride-eye">01 / 南京大学苏州校区</div><h1 id="ride1-title" class="ride-title">从熟悉的地方出发</h1>
-<div id="ride1-label" class="ride-screen-label">实景校核 · 像素演绎 → 真实网页</div>
+<div id="ride1-label" class="ride-screen-label">真实网页 · map.zylatent.com</div>
 <div class="ride-screen">
-<img class="ride-pixel" src="assets/campus-tianshu-v2.png" alt="地点像素风场景">
-<img id="ride1-web" src="assets/web/home.png" alt="Dog Map 01 / 南京大学苏州校区真实网页截图">
+<img id="ride1-web" src="assets/bookends/campus.png" alt="Dog Map 01 / 南京大学苏州校区真实网页截图">
 </div>
 <img id="ride1-icon" class="ride-icon" src="assets/ride/nju-suzhou-campus-icon.webp" alt="当前地点原网站图标">
 <div id="ride1-stack" class="ride-photo-stack">
@@ -18,7 +17,6 @@
 (()=>{const tl=gsap.timeline({paused:true});
 tl.fromTo('#ride1-title',{opacity:0,y:10},{opacity:1,y:0,duration:.35},.15);
 tl.fromTo('#ride1-icon',{opacity:0,y:12},{opacity:1,y:0,duration:.4},.15);
-tl.fromTo('#ride1-web',{opacity:0},{opacity:1,duration:.35,ease:'none'},2.3);
 window.addRidePhotoStack(tl,'ride1',{exit:true});
 
 

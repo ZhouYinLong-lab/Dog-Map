@@ -5,20 +5,25 @@
 <link rel="stylesheet" href="assets/scenes.css"><link rel="stylesheet" href="assets/ride.css"><script src="assets/ride.js"></script><script src="assets/photo-stack.js"></script>
 <style>html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#11182B}#film{position:relative;width:100%;height:100%}.clip{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}</style>
 </head><body>
-<div data-hf-id="hf-w77k" id="film" data-composition-id="main" data-start="0" data-duration="35" data-width="1920" data-height="1080">
-<div data-hf-id="hf-ktum" id="campus-scene" class="clip" data-composition-id="scene-01" data-composition-src="compositions/frames/ride-01.html" data-start="0" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
-<div data-hf-id="hf-crfj" id="market-scene" class="clip" data-composition-id="scene-02" data-composition-src="compositions/frames/ride-02.html" data-start="7" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
-<div data-hf-id="hf-x239" id="lake-scene" class="clip" data-composition-id="scene-03" data-composition-src="compositions/frames/ride-03.html" data-start="14" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
-<div data-hf-id="hf-jp4x" id="memory-scene" class="clip" data-composition-id="scene-04" data-composition-src="compositions/frames/ride-04.html" data-start="21" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
-<div data-hf-id="hf-347u" id="outro-scene" class="clip" data-composition-id="scene-05" data-composition-src="compositions/frames/ride-05.html" data-start="28" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div data-hf-id="hf-w77k" id="film" data-composition-id="main" data-start="0" data-duration="47" data-width="1920" data-height="1080">
+<div id="opening-scene" class="clip" data-composition-id="opening" data-composition-src="compositions/frames/opening.html" data-start="0" data-duration="6" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div data-hf-id="hf-ktum" id="campus-scene" class="clip" data-composition-id="scene-01" data-composition-src="compositions/frames/ride-01.html" data-start="6" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div data-hf-id="hf-crfj" id="market-scene" class="clip" data-composition-id="scene-02" data-composition-src="compositions/frames/ride-02.html" data-start="13" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div data-hf-id="hf-x239" id="lake-scene" class="clip" data-composition-id="scene-03" data-composition-src="compositions/frames/ride-03.html" data-start="20" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div data-hf-id="hf-jp4x" id="memory-scene" class="clip" data-composition-id="scene-04" data-composition-src="compositions/frames/ride-04.html" data-start="27" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div data-hf-id="hf-347u" id="outro-scene" class="clip" data-composition-id="scene-05" data-composition-src="compositions/frames/ride-05.html" data-start="34" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div id="closing-scene" class="clip" data-composition-id="closing" data-composition-src="compositions/frames/closing.html" data-start="41" data-duration="6" data-track-index="1" data-width="1920" data-height="1080"></div>
 <canvas id="ride-travel" width="480" height="40" data-layout-allow-overflow></canvas>
-<audio data-hf-id="hf-ued2" id="music-original" src="assets/journey.wav" data-start="0" data-duration="35" data-track-index="2" data-volume="0.8"></audio>
+<audio id="music-opening" src="assets/journey.wav" data-start="0" data-duration="6.2" data-media-start="0" data-track-index="3" data-volume="0.55" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.5},{&quot;t&quot;:5.5,&quot;v&quot;:0.5},{&quot;t&quot;:6.2,&quot;v&quot;:0}]}]}"></audio>
+<audio data-hf-id="hf-ued2" id="music-original" src="assets/journey.wav" data-start="6" data-duration="35" data-track-index="2" data-volume="0.8"></audio>
+<audio id="music-closing" src="assets/journey.wav" data-start="40.5" data-duration="6.5" data-media-start="28" data-track-index="3" data-volume="0.7" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0},{&quot;t&quot;:0.7,&quot;v&quot;:0.7},{&quot;t&quot;:4.5,&quot;v&quot;:0.7},{&quot;t&quot;:6.5,&quot;v&quot;:0}]}]}"></audio>
 <img id="rider-source" src="assets/rider-sheet.png" alt="" style="display:none" data-layout-ignore>
 </div><script>
 window.__timelines=window.__timelines||{};
 document.getElementById('rider-source').decode().then(()=>{
   const state={t:0};const timeline=gsap.timeline({paused:true});
-  timeline.to(state,{t:35,duration:35,ease:'none',onUpdate:()=>drawRideProgress(state.t)},0);
+  timeline.to(state,{t:47,duration:47,ease:'none',onUpdate:()=>drawRideProgress(state.t)},0);
+  timeline.fromTo('#ride-travel',{opacity:0},{opacity:1,duration:.5},4.8);
   drawRideProgress(0);window.__timelines.main=timeline;
   if(window.__hfForceTimelineRebind)window.__hfForceTimelineRebind();
 });

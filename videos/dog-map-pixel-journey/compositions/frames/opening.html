@@ -1,0 +1,32 @@
+<!doctype html><html><body><template>
+<div id="opening-root" class="ride-root" data-composition-id="opening" data-width="1920" data-height="1080" data-duration="6">
+<style>
+@font-face{font-family:DogPixel;src:url(assets/pixel.woff2);font-weight:400}
+#opening-root{background:#11182B}
+#opening-surface{position:absolute;inset:0;width:1920px;height:1080px;transform-origin:0 0}
+#opening-surface img,#opening-surface video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#opening-copy{position:absolute;left:112px;top:230px;width:1040px;color:#E7D8B8;font-family:DogPixel,monospace}
+#opening-brand{font-size:36px;line-height:1.5;color:#E4A24C;letter-spacing:6px;margin:0 0 24px}
+#opening-title{font-size:72px;font-weight:400;line-height:1.35;margin:0}
+#opening-subtitle{font-size:36px;line-height:1.5;margin:24px 0 0}
+#opening-arrive{position:absolute;left:668px;top:736px;width:584px;padding:18px 0;text-align:center;background:#11182B;color:#E7D8B8;font:28px/1.4 DogPixel,monospace;border-bottom:3px solid #E4A24C}
+</style>
+<div id="opening-surface">
+<video id="opening-map-video" class="clip" src="assets/bookends/map-push.mp4" data-start="0" data-duration="4.8" muted playsinline></video>
+<img id="opening-campus-hold" src="assets/bookends/campus.png" alt="真实南苏地图镜头终点">
+<img id="opening-user-map" src="assets/bookends/user-map.png" alt="用户提供的太湖全景地图">
+</div>
+<div id="opening-copy"><p id="opening-brand">DOG MAP</p><h1 id="opening-title">把走过的地方，</h1><p id="opening-subtitle">留在地图上。</p></div>
+<div id="opening-arrive">南京大学苏州校区 · 从这里出发</div>
+</div>
+<script>
+(()=>{const tl=gsap.timeline({paused:true});
+tl.fromTo('#opening-user-map',{opacity:1},{opacity:0,duration:.4,ease:'none'},.45);
+tl.fromTo('#opening-campus-hold',{opacity:0},{opacity:1,duration:.12,ease:'none'},4.6);
+tl.fromTo('#opening-copy',{opacity:0,y:16},{opacity:1,y:0,duration:.55,ease:'power2.out'},.65);
+tl.to('#opening-copy',{opacity:0,y:-12,duration:.35,ease:'power2.in'},2.9);
+tl.fromTo('#opening-arrive',{opacity:0,y:8},{opacity:1,y:0,duration:.3,ease:'power2.out'},3.85);
+tl.to('#opening-arrive',{opacity:0,duration:.25},4.55);
+tl.fromTo('#opening-surface',{scale:1,x:0,y:0},{scale:2/3,x:48,y:192,duration:1.05,ease:'power2.inOut'},4.95);
+window.__timelines.opening=tl;})();
+</script></template></body></html>

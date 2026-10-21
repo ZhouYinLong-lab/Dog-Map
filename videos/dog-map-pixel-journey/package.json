@@ -8,6 +8,6 @@
     "check": "npx --yes --package=node@22 --package=hyperframes@0.8.181 -- hyperframes check --snapshots",
     "test": "node --test scripts/photo-stack.test.mjs",
     "verify": "node scripts/verify.mjs",
-    "render": "npx --yes --package=node@22 --package=hyperframes@0.8.181 -- hyperframes render --output renders/dog-map-pixel-journey-v3.mp4 --quality delivery --fps 30 --experimental-fast-capture=false"
+    "render": "npx --yes --package=node@22 --package=hyperframes@0.8.181 -- hyperframes render --output renders/dog-map-pixel-journey-v4.mp4 --quality delivery --fps 30 --experimental-fast-capture=false"
   }
 }

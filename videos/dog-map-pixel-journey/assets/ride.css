@@ -6,10 +6,10 @@
 .ride-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;image-rendering:auto}
 .ride-screen .ride-pixel{image-rendering:pixelated}
 .ride-screen-label{position:absolute;left:56px;top:151px;font:22px/1.3 DogPixel,monospace;color:#B9C7D8}
-.ride-icon{position:absolute;right:126px;top:8px;width:240px;height:240px;object-fit:contain}
+.ride-icon{position:absolute;right:180px;top:20px;width:240px;height:240px;object-fit:contain}
 .ride-photo-stack{position:absolute;left:1346px;top:260px;width:548px;height:652px;isolation:isolate}
-.ride-photo{position:absolute;background:#0B151A;border:3px solid #E7D8B8;box-shadow:6px 9px 0 #080e18;transform-origin:center center}
-.ride-photo img{display:block;width:100%;height:100%;object-fit:contain}
-.ride-counter{position:absolute;left:32px;top:630px;font:24px/1.4 DogPixel,monospace;color:#B9C7D8}
+.ride-photo{position:absolute;background:#0B151A;border:3px solid #E7D8B8;box-shadow:3px 5px 0 #080e18;transform-origin:center center;overflow:hidden}
+.ride-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--photo-focus,50% 50%)}
+.ride-counter{position:absolute;left:32px;top:560px;font:24px/1.4 DogPixel,monospace;color:#B9C7D8}
 .ride-cta{position:absolute;left:56px;top:148px;font:28px/1.4 DogPixel,monospace;color:#E4A24C}
 #ride-travel{position:absolute;left:0;bottom:0;width:100%;height:160px;z-index:40;pointer-events:none;image-rendering:pixelated}

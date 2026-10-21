@@ -1,6 +1,22 @@
 # RPG Maker × Turner — production style contract
 
-## v3 override: accumulating photo stack
+## v4 override: disciplined, full-size album stack
+
+Latest correction: Jinji Lake was NOT a cycling visit. No cyclist or cycling
+claim may appear during 14–21s. Use a neutral film-progress square, not an
+invented alternative transport mode. Title: 湖畔灯火，收进相册.
+
+All photo frames measure 512×400 regardless of source aspect ratio. Object-fit
+cover preserves proportions while allowing display-only reframing; source files
+remain untouched. Use --photo-focus for subject-aware exceptions. No filters.
+The latest photo is the clear hero; older photos show only narrow edges behind
+it. Layer steps are 8px right / 16px up, rotations -2°, -1°, 0°. No swinging,
+alternating angles, or changing card sizes. Align the location sticker with the
+right column. Keep website imagery, scene timing and music unchanged.
+Regression checks cover geometry, layer order, stable display area and the
+Jinji Lake boundary/seek behavior. v4 supersedes the v3 no-crop/large-spread rules.
+
+## v3 direction (archived): accumulating photo stack
 
 The user's sketch specifies a real stack, not a carousel. Each new photo is
 painted above the preceding photos; older cards retain full opacity and their

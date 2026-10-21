@@ -20,7 +20,7 @@ for(const [copy,source] of photoPairs)assert.equal(sha(resolve(root,'assets',cop
 const assets=JSON.parse(readFileSync(resolve(root,'capture/ride-assets.json'),'utf8'));
 for(const asset of assets)assert.equal(sha(resolve(root,asset.target)),sha(resolve(root,'../..',asset.source)),`Ride asset changed: ${asset.target}`);
 assert.ok(files.every(f=>!readFileSync(resolve(root,f),'utf8').includes('DogPixel.outro')),'Synthetic map reintroduced');
-const path=resolve(root,process.argv[2]||'renders/dog-map-pixel-journey-v3.mp4');
+const path=resolve(root,process.argv[2]||'renders/dog-map-pixel-journey-v4.mp4');
 assert.ok(existsSync(path),`Render missing: ${path}`);
 const probe=JSON.parse(execFileSync('ffprobe',['-v','error','-count_frames','-show_streams','-show_format','-of','json',path],{encoding:'utf8'}));
 const video=probe.streams.find(s=>s.codec_type==='video'),audio=probe.streams.find(s=>s.codec_type==='audio');

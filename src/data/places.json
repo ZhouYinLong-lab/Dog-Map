@@ -2033,5 +2033,58 @@
       }
     ],
     "markerImage": "/media/jinji-lake/jinji-lake-sticker-v4.webp"
+  },
+  {
+    "id": "ufun-plaza",
+    "title": "悠方广场",
+    "englishTitle": "UFUN PLAZA",
+    "subtitle": "逛街与探店",
+    "date": "",
+    "coordinates": [
+      120.523428,
+      31.278089
+    ],
+    "coordinateSource": "photo-exif",
+    "coordinateReference": "用户提供的悠方广场外立面照片（附件第3张）GPS EXIF；其余3张位于约90米范围内",
+    "accent": "yellow",
+    "description": "悠方广场的照片与探店记录。",
+    "media": [
+      {
+        "type": "image",
+        "src": "/media/ufun-plaza/ufun-plaza-01.webp",
+        "alt": "悠方广场照片 01"
+      },
+      {
+        "type": "image",
+        "src": "/media/ufun-plaza/ufun-plaza-02.webp",
+        "alt": "悠方广场照片 02"
+      }
+    ],
+    "shops": [
+      {
+        "id": "liulang-paopao-bbq",
+        "name": "流浪泡泡烤肉",
+        "category": "烤肉",
+        "summary": "悠方广场探店记录。",
+        "description": "流浪泡泡烤肉的探店照片。",
+        "tags": [
+          "烤肉",
+          "悠方广场"
+        ],
+        "media": [
+          {
+            "type": "image",
+            "src": "/media/ufun-plaza/shops/liulang-paopao-bbq/liulang-paopao-bbq-01.webp",
+            "alt": "流浪泡泡烤肉探店照片 01"
+          },
+          {
+            "type": "image",
+            "src": "/media/ufun-plaza/shops/liulang-paopao-bbq/liulang-paopao-bbq-02.webp",
+            "alt": "流浪泡泡烤肉探店照片 02"
+          }
+        ]
+      }
+    ],
+    "markerImage": "/media/ufun-plaza/ufun-plaza-sticker-v4.webp"
   }
 ]

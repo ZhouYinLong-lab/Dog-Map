@@ -145,5 +145,15 @@
     ],
     "toleranceMeters": 400,
     "source": "9张金鸡湖现场照片 GPS EXIF 坐标均值；最大偏离约344米"
+  },
+  "ufun-plaza": {
+    "coordinates": [
+      120.523427777778,
+      31.278088888889
+    ],
+    "toleranceMeters": 20,
+    "source": "用户附件第3张悠方广场外立面原图 GPS EXIF：E120°31′24.34″ N31°16′41.12″；以可辨识商场外立面的拍摄点作为主地点锚点，未混用室内探店和街边照片的均值",
+    "sourceFile": "codex-clipboard-ad13c16f-8c0d-4725-a898-63f8e39ef604.jpg",
+    "sourceSha256": "1cf9cf02490c29e8c948c3ca6b10a2a71c5164244ad8ea958622346aec03cc98"
   }
 }

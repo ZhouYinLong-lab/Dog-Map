@@ -19,18 +19,24 @@ const labelTopByPlace = {
   'wanfo-temple': 0.65,
   'taihu-lakeshore': 0.68,
   'xuanwu-lake': 0.68,
+  'ufun-plaza': 0.78,
 }
 const labelPatchByPlace = {
+  'ufun-plaza': [[0.20, 0.85], [0.84, 0.77], [0.85, 0.85], [0.17, 0.96]],
   'wanfo-temple': [[0.22, 0.69], [0.78, 0.69], [0.94, 0.78], [0.85, 0.92], [0.15, 0.93], [0.06, 0.80]],
   'taihu-lakeshore': [[0.23, 0.69], [0.78, 0.69], [0.95, 0.80], [0.87, 0.95], [0.13, 0.97], [0.05, 0.83]],
+}
+const labelTextPositionByPlace = {
+  'ufun-plaza': { title: 0.86, english: 0.91 },
 }
 
 function svgForPlace(place, width, height) {
   const top = labelTopByPlace[place.id] ?? 0.72
   const panelHeight = 0.97 - top
   const centerX = width / 2
-  const titleBaseline = height * (top + panelHeight * 0.55)
-  const englishBaseline = height * (top + panelHeight * 0.82)
+  const textPosition = labelTextPositionByPlace[place.id]
+  const titleBaseline = height * (textPosition?.title ?? (top + panelHeight * 0.55))
+  const englishBaseline = height * (textPosition?.english ?? (top + panelHeight * 0.82))
   const englishTitle = place.englishTitle ?? place.id.toUpperCase()
   const englishSize = Math.min(height * panelHeight * 0.16, width * 0.58 / (englishTitle.length * 0.62))
   const safeTitle = place.title.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')

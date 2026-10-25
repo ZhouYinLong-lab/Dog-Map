@@ -2051,12 +2051,12 @@
     "media": [
       {
         "type": "image",
-        "src": "/media/ufun-plaza/ufun-plaza-01.webp",
+        "src": "/media/ufun-plaza/ufun-plaza-attachment-01.webp",
         "alt": "悠方广场照片 01"
       },
       {
         "type": "image",
-        "src": "/media/ufun-plaza/ufun-plaza-02.webp",
+        "src": "/media/ufun-plaza/ufun-plaza-attachment-03.webp",
         "alt": "悠方广场照片 02"
       }
     ],
@@ -2074,12 +2074,12 @@
         "media": [
           {
             "type": "image",
-            "src": "/media/ufun-plaza/shops/liulang-paopao-bbq/liulang-paopao-bbq-01.webp",
+            "src": "/media/ufun-plaza/shops/liulang-paopao-bbq/liulang-paopao-bbq-attachment-02.webp",
             "alt": "流浪泡泡烤肉探店照片 01"
           },
           {
             "type": "image",
-            "src": "/media/ufun-plaza/shops/liulang-paopao-bbq/liulang-paopao-bbq-02.webp",
+            "src": "/media/ufun-plaza/shops/liulang-paopao-bbq/liulang-paopao-bbq-attachment-04.webp",
             "alt": "流浪泡泡烤肉探店照片 02"
           }
         ]

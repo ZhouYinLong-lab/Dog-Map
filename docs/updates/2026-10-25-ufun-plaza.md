@@ -1,6 +1,6 @@
 # 悠方广场更新记录
 
-新增主地点 `ufun-plaza`（悠方广场 / UFUN PLAZA），包含一条 `liulang-paopao-bbq`（流浪泡泡烤肉）探店。按用户明确的附件顺序，前两张进入探店，后两张进入地点图册；不根据图片内容擅自调整归属。
+新增主地点 `ufun-plaza`（悠方广场 / UFUN PLAZA），包含一条 `liulang-paopao-bbq`（流浪泡泡烤肉）探店。用户后续更正发送顺序：第1、3张进入地点图册，第2、4张进入探店；两组各自按发送顺序排列。原先按前两张归探店的映射已纠正。
 
 ## 原图与输出对应
 
@@ -8,10 +8,10 @@
 
 | 附件 | 原文件名 | 尺寸 | GPS（经度, 纬度） | 网站副本（相对于 public/media/ufun-plaza） |
 | --- | --- | --- | --- | --- |
-| 1 | codex-clipboard-ea5ba761-c906-40ef-b76c-78e4f2b0ba32.jpg | 4096×3072 | 120.523427778, 31.278183333 | shops/liulang-paopao-bbq/liulang-paopao-bbq-01.webp |
-| 2 | codex-clipboard-cd756cf5-a71a-4b18-9365-8617ea662395.jpg | 5888×4416 | 120.523638889, 31.277330556 | shops/liulang-paopao-bbq/liulang-paopao-bbq-02.webp |
-| 3 | codex-clipboard-ad13c16f-8c0d-4725-a898-63f8e39ef604.jpg | 4096×3072 | 120.523427778, 31.278088889 | ufun-plaza-01.webp |
-| 4 | codex-clipboard-10f5a957-bb75-4f28-bc60-5dd1c101eda2.jpg | 5888×4416 | 120.523625, 31.277333333 | ufun-plaza-02.webp |
+| 1 | codex-clipboard-ea5ba761-c906-40ef-b76c-78e4f2b0ba32.jpg | 4096×3072 | 120.523427778, 31.278183333 | ufun-plaza-attachment-01.webp |
+| 2 | codex-clipboard-cd756cf5-a71a-4b18-9365-8617ea662395.jpg | 5888×4416 | 120.523638889, 31.277330556 | shops/liulang-paopao-bbq/liulang-paopao-bbq-attachment-02.webp |
+| 3 | codex-clipboard-ad13c16f-8c0d-4725-a898-63f8e39ef604.jpg | 4096×3072 | 120.523427778, 31.278088889 | ufun-plaza-attachment-03.webp |
+| 4 | codex-clipboard-10f5a957-bb75-4f28-bc60-5dd1c101eda2.jpg | 5888×4416 | 120.523625, 31.277333333 | shops/liulang-paopao-bbq/liulang-paopao-bbq-attachment-04.webp |
 
 原图 SHA-256，按附件顺序：
 
@@ -41,3 +41,9 @@ ab15a7451575fb380a07b157b10889c0c7a9a10507f01e7b1cb942586426cfe7
 - `npm run test:e2e -- --workers=2`：43项通过，1项按原配置跳过（手机项目不重复执行媒体 API 写入测试）。覆盖19个图标、悠方地点跳转、地点图册、独立探店图册、图片前后切换、返回地点以及既有地点功能。
 - 桌面1440×1000与Pixel 5截图目检完成。截图辅助脚本最初试图点击被详情遮住的地图按钮而超时；仅在截图脚本内改用事件切换以隐藏箭头后完成截图，该操作不计入点击交互测试。正式回归的地点/探店点击与预览均通过。
 - `git diff --check`：通过。原图、临时脚本/预览以及其他无关工作区文件不进入提交。
+
+## 照片归属更正验收
+
+用户明确更正为地点图册第1、3张，探店第2、4张。重新归档8个现有WebP/缩略图，逐文件SHA-256不变；使用带原附件编号的新URL，避免浏览器缓存仍显示旧归属。探店卡片封面改为第2张。定位、图标与原始JPEG不变。
+
+更正后 `npm run build`、19个地点坐标与362个派生图校验通过；桌面和手机专项回归2/2通过，覆盖卡片封面、两组照片顺序、预览前后切换与返回地点。照片分组对照图目检完成：上排地点第1、3张，下排探店第2、4张。

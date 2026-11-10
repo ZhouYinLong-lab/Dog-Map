@@ -355,6 +355,25 @@
             "alt": "椒点川菜菜品细节照片"
           }
         ]
+      },
+      {
+        "id": "cangshu-mutton",
+        "name": "藏书羊肉",
+        "category": "藏书羊肉",
+        "summary": "东渚街道的一次藏书羊肉探店记录。",
+        "description": "记录这次到店看到的一桌羊肉菜品，把东渚街道的本地味道留在地图里。",
+        "tags": [
+          "藏书羊肉",
+          "正餐",
+          "东渚"
+        ],
+        "media": [
+          {
+            "type": "image",
+            "src": "/media/dongzhu-night-market/shops/cangshu-mutton/cangshu-mutton-01.webp",
+            "alt": "藏书羊肉探店照片"
+          }
+        ]
       }
     ],
     "markerImage": "/media/dongzhu-night-market/dongzhu-night-market-sticker-v4.webp"

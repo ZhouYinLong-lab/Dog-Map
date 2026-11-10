@@ -206,6 +206,13 @@ test('opens the first Dongzhu shop log with the storefront photo first', async (
 
   await page.getByRole('button', { name: /返回地点/ }).click()
   await expect(page.getByRole('button', { name: '打开探店：椒点川菜' })).toBeVisible()
+
+  await page.getByRole('button', { name: '打开探店：藏书羊肉' }).click()
+  const cangshu = page.getByRole('region', { name: '藏书羊肉探店详情' })
+  await expect(cangshu).toBeVisible()
+  await expect(cangshu.locator('.media-preview-trigger')).toHaveCount(1)
+  await expect(page.getByRole('button', { name: '预览：藏书羊肉探店照片' }).first()).toBeVisible()
+  await expect(cangshu.locator('figcaption')).toHaveCount(0)
 })
 
 test('opens Ufun Plaza and its separate Liulang Paopao shop gallery', async ({ page }) => {

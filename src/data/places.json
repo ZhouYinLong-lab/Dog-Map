@@ -2105,5 +2105,284 @@
       }
     ],
     "markerImage": "/media/ufun-plaza/ufun-plaza-sticker-v4.webp"
+  },
+{
+  "id": "xinghai-square",
+  "title": "星海广场",
+  "englishTitle": "XINGHAI SQUARE",
+  "subtitle": "城市漫步",
+  "date": "2026.11.14",
+  "coordinates": [
+    120.66221,
+    31.317102
+  ],
+  "coordinateSource": "photo-exif",
+  "coordinateReference": "3张照片 GPS EXIF 坐标均值；视频与照片拍摄于同一段星海广场—中央公园步行记录",
+  "accent": "yellow",
+  "description": "从中央公园一侧走进星海广场，在高楼、街巷与雾气之间慢慢走过苏州园区的城市界面。",
+  "media": [
+    {
+      "type": "image",
+      "src": "/media/xinghai-square/IMG20261114141923.webp",
+      "alt": "星海广场照片 01"
+    },
+    {
+      "type": "image",
+      "src": "/media/xinghai-square/IMG20261114142418.webp",
+      "alt": "星海广场照片 02"
+    },
+    {
+      "type": "image",
+      "src": "/media/xinghai-square/IMG20261114142510.webp",
+      "alt": "星海广场照片 03"
+    },
+    {
+      "type": "video",
+      "src": "/media/xinghai-square/Video_1794642708636_587.mp4",
+      "poster": "/media/xinghai-square/Video_1794642708636_587-poster.webp",
+      "alt": "星海广场现场视频"
+    }
+  ],
+  "art": {
+    "seed": "xinghai-square",
+    "variant": "orbit"
   }
+},
+{
+  "id": "chongyuan-temple",
+  "title": "重元寺",
+  "englishTitle": "CHONGYUAN TEMPLE",
+  "subtitle": "阳澄湖半岛漫步",
+  "date": "2026.11.14",
+  "coordinates": [
+    120.777208,
+    31.406596
+  ],
+  "coordinateSource": "photo-exif",
+  "coordinateReference": "13张照片 GPS EXIF 坐标均值；照片覆盖重元寺山门、礼佛大道与寺院周边，最大偏离约329米",
+  "accent": "red",
+  "description": "沿着礼佛大道走进阳澄湖半岛，记录重元寺的山门、湖水与寺院轮廓。",
+  "media": [
+    {
+      "type": "image",
+      "src": "/media/chongyuan-temple/IMG20261114150139.webp",
+      "alt": "重元寺照片 01"
+    },
+    {
+      "type": "image",
+      "src": "/media/chongyuan-temple/IMG20261114150559.webp",
+      "alt": "重元寺照片 02"
+    },
+    {
+      "type": "image",
+      "src": "/media/chongyuan-temple/IMG20261114150623.webp",
+      "alt": "重元寺照片 03"
+    },
+    {
+      "type": "image",
+      "src": "/media/chongyuan-temple/IMG20261114150851.webp",
+      "alt": "重元寺照片 04"
+    },
+    {
+      "type": "image",
+      "src": "/media/chongyuan-temple/IMG20261114151047.webp",
+      "alt": "重元寺照片 05"
+    },
+    {
+      "type": "image",
+      "src": "/media/chongyuan-temple/IMG20261114151853_BURST001.webp",
+      "alt": "重元寺照片 06"
+    },
+    {
+      "type": "image",
+      "src": "/media/chongyuan-temple/IMG20261114152249.webp",
+      "alt": "重元寺照片 07"
+    },
+    {
+      "type": "image",
+      "src": "/media/chongyuan-temple/IMG20261114153655.webp",
+      "alt": "重元寺照片 08"
+    },
+    {
+      "type": "image",
+      "src": "/media/chongyuan-temple/IMG20261114155132.webp",
+      "alt": "重元寺照片 09"
+    },
+    {
+      "type": "image",
+      "src": "/media/chongyuan-temple/IMG20261114155545.webp",
+      "alt": "重元寺照片 10"
+    },
+    {
+      "type": "image",
+      "src": "/media/chongyuan-temple/IMG20261114160547.webp",
+      "alt": "重元寺照片 11"
+    },
+    {
+      "type": "image",
+      "src": "/media/chongyuan-temple/IMG20261114163227.webp",
+      "alt": "重元寺照片 12"
+    },
+    {
+      "type": "image",
+      "src": "/media/chongyuan-temple/IMG20261114163231.webp",
+      "alt": "重元寺照片 13"
+    }
+  ],
+  "art": {
+    "seed": "chongyuan-temple",
+    "variant": "burst"
+  }
+},
+{
+  "id": "yuanrong-times-square",
+  "title": "圆融时代广场",
+  "englishTitle": "YUANRONG TIMES SQUARE",
+  "subtitle": "城市漫步",
+  "date": "2026.11.14",
+  "coordinates": [
+    120.706259,
+    31.323294
+  ],
+  "coordinateSource": "photo-exif",
+  "coordinateReference": "26张照片 GPS EXIF 坐标均值；照片覆盖圆融时代广场、天幕及周边夜间步行路线，最大偏离约532米",
+  "accent": "yellow",
+  "description": "从圆融时代广场出发，走过天幕、商场、书店与金鸡湖东岸的夜色。",
+  "media": [
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114171416.webp",
+      "alt": "圆融时代广场照片 01"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114171536.webp",
+      "alt": "圆融时代广场照片 02"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114173713.webp",
+      "alt": "圆融时代广场照片 03"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114175251.webp",
+      "alt": "圆融时代广场照片 04"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114181623.webp",
+      "alt": "圆融时代广场照片 05"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114182705.webp",
+      "alt": "圆融时代广场照片 06"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114184513.webp",
+      "alt": "圆融时代广场照片 07"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114184646.webp",
+      "alt": "圆融时代广场照片 08"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114184720.webp",
+      "alt": "圆融时代广场照片 09"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114184726.webp",
+      "alt": "圆融时代广场照片 10"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114184826.webp",
+      "alt": "圆融时代广场照片 11"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114184904.webp",
+      "alt": "圆融时代广场照片 12"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114185103.webp",
+      "alt": "圆融时代广场照片 13"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114185301.webp",
+      "alt": "圆融时代广场照片 14"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114185450.webp",
+      "alt": "圆融时代广场照片 15"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114185545.webp",
+      "alt": "圆融时代广场照片 16"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114185608.webp",
+      "alt": "圆融时代广场照片 17"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114185652.webp",
+      "alt": "圆融时代广场照片 18"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114185701.webp",
+      "alt": "圆融时代广场照片 19"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114185716.webp",
+      "alt": "圆融时代广场照片 20"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114190251.webp",
+      "alt": "圆融时代广场照片 21"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114190258.webp",
+      "alt": "圆融时代广场照片 22"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114190434.webp",
+      "alt": "圆融时代广场照片 23"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114190534.webp",
+      "alt": "圆融时代广场照片 24"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114190710.webp",
+      "alt": "圆融时代广场照片 25"
+    },
+    {
+      "type": "image",
+      "src": "/media/yuanrong-times-square/IMG20261114191036.webp",
+      "alt": "圆融时代广场照片 26"
+    }
+  ],
+  "art": {
+    "seed": "yuanrong-times-square",
+    "variant": "slash"
+  }
+}
 ]

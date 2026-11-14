@@ -155,5 +155,30 @@
     "source": "用户附件第3张悠方广场外立面原图 GPS EXIF：E120°31′24.34″ N31°16′41.12″；以可辨识商场外立面的拍摄点作为主地点锚点，未混用室内探店和街边照片的均值",
     "sourceFile": "codex-clipboard-ad13c16f-8c0d-4725-a898-63f8e39ef604.jpg",
     "sourceSha256": "1cf9cf02490c29e8c948c3ca6b10a2a71c5164244ad8ea958622346aec03cc98"
+  },
+  "xinghai-square": {
+    "coordinates": [
+      120.66221,
+      31.317102
+    ],
+    "toleranceMeters": 80,
+    "source": "3张照片 GPS EXIF 坐标均值；视频与照片拍摄于同一段星海广场—中央公园步行记录"
+  },
+  "chongyuan-temple": {
+    "coordinates": [
+      120.777208,
+      31.406596
+    ],
+    "toleranceMeters": 380,
+    "source": "13张照片 GPS EXIF 坐标均值；照片覆盖重元寺山门、礼佛大道与寺院周边，最大偏离约329米",
+    "referenceUrl": "https://www.sipac.gov.cn/szdaglzx/yqfzrwls/202102/196e562f3862407c814ccb90f3326ae4.shtml"
+  },
+  "yuanrong-times-square": {
+    "coordinates": [
+      120.706259,
+      31.323294
+    ],
+    "toleranceMeters": 600,
+    "source": "26张照片 GPS EXIF 坐标均值；照片覆盖圆融时代广场、天幕及周边夜间步行路线，最大偏离约532米"
   }
 }

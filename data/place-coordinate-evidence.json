@@ -162,7 +162,7 @@
       31.317102
     ],
     "toleranceMeters": 80,
-    "source": "3张照片 GPS EXIF 坐标均值；视频与照片拍摄于同一段星海广场—中央公园步行记录"
+    "source": "3张照片 GPS EXIF 坐标均值；地点照片拍摄于星海广场—中央公园步行记录"
   },
   "chongyuan-temple": {
     "coordinates": [
@@ -170,7 +170,7 @@
       31.406596
     ],
     "toleranceMeters": 380,
-    "source": "13张照片 GPS EXIF 坐标均值；照片覆盖重元寺山门、礼佛大道与寺院周边，最大偏离约329米",
+    "source": "13张照片 GPS EXIF 坐标均值；照片与视频覆盖重元寺山门、礼佛大道与寺院周边，最大偏离约329米",
     "referenceUrl": "https://www.sipac.gov.cn/szdaglzx/yqfzrwls/202102/196e562f3862407c814ccb90f3326ae4.shtml"
   },
   "yuanrong-times-square": {

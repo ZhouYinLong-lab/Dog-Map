@@ -2135,14 +2135,9 @@
       "type": "image",
       "src": "/media/xinghai-square/IMG20261114142510.webp",
       "alt": "星海广场照片 03"
-    },
-    {
-      "type": "video",
-      "src": "/media/xinghai-square/Video_1794642708636_587.mp4",
-      "poster": "/media/xinghai-square/Video_1794642708636_587-poster.webp",
-      "alt": "星海广场现场视频"
     }
-  ],
+    ],
+    "markerImage": "/media/xinghai-square-sticker-v1.webp",
   "art": {
     "seed": "xinghai-square",
     "variant": "orbit"
@@ -2159,7 +2154,7 @@
     31.406596
   ],
   "coordinateSource": "photo-exif",
-  "coordinateReference": "13张照片 GPS EXIF 坐标均值；照片覆盖重元寺山门、礼佛大道与寺院周边，最大偏离约329米",
+    "coordinateReference": "13张照片 GPS EXIF 坐标均值；照片与视频覆盖重元寺山门、礼佛大道与寺院周边，最大偏离约329米",
   "accent": "red",
   "description": "沿着礼佛大道走进阳澄湖半岛，记录重元寺的山门、湖水与寺院轮廓。",
   "media": [
@@ -2223,13 +2218,20 @@
       "src": "/media/chongyuan-temple/IMG20261114163227.webp",
       "alt": "重元寺照片 12"
     },
-    {
-      "type": "image",
-      "src": "/media/chongyuan-temple/IMG20261114163231.webp",
-      "alt": "重元寺照片 13"
-    }
-  ],
-  "art": {
+      {
+        "type": "image",
+        "src": "/media/chongyuan-temple/IMG20261114163231.webp",
+        "alt": "重元寺照片 13"
+      },
+      {
+        "type": "video",
+        "src": "/media/chongyuan-temple/Video_1794642708636_587.mp4",
+        "poster": "/media/chongyuan-temple/Video_1794642708636_587-poster.webp",
+        "alt": "重元寺现场视频"
+      }
+    ],
+    "markerImage": "/media/chongyuan-temple-sticker-v1.webp",
+    "art": {
     "seed": "chongyuan-temple",
     "variant": "burst"
   }
@@ -2380,6 +2382,7 @@
       "alt": "圆融时代广场照片 26"
     }
   ],
+  "markerImage": "/media/yuanrong-times-square-sticker-v1.webp",
   "art": {
     "seed": "yuanrong-times-square",
     "variant": "slash"

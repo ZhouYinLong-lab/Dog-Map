@@ -2387,5 +2387,164 @@
     "seed": "yuanrong-times-square",
     "variant": "slash"
   }
+},
+{
+  "id": "hefei-government",
+  "title": "合肥市政府",
+  "englishTitle": "HEFEI MUNICIPAL GOVERNMENT",
+  "subtitle": "政务参观打卡",
+  "date": "2026.11.21",
+  "coordinates": [
+    117.221525,
+    31.822383
+  ],
+  "coordinateSource": "photo-exif",
+  "coordinateReference": "7张政府区域照片 GPS EXIF 与现场画面核对；视频 GPS 同步指向该区域，14:25 照片虽 GPS 离群但门头明确显示合肥市人民政府",
+  "accent": "yellow",
+  "description": "从政府广场、办公楼到门口的国旗与通行证，把这次合肥政务参观留在地图上。",
+  "media": [
+    {
+      "type": "image",
+      "src": "/media/hefei-government/Image_1795242453530_919.webp",
+      "alt": "合肥市政府照片 01"
+    },
+    {
+      "type": "image",
+      "src": "/media/hefei-government/IMG20261121084042.webp",
+      "alt": "合肥市政府照片 02"
+    },
+    {
+      "type": "image",
+      "src": "/media/hefei-government/IMG20261121084045.webp",
+      "alt": "合肥市政府照片 03"
+    },
+    {
+      "type": "image",
+      "src": "/media/hefei-government/IMG20261121093640.webp",
+      "alt": "合肥市政府照片 04"
+    },
+    {
+      "type": "image",
+      "src": "/media/hefei-government/IMG20261121093646.webp",
+      "alt": "合肥市政府照片 05"
+    },
+    {
+      "type": "image",
+      "src": "/media/hefei-government/IMG20261121093759.webp",
+      "alt": "合肥市政府照片 06"
+    },
+    {
+      "type": "image",
+      "src": "/media/hefei-government/IMG20261121093906.webp",
+      "alt": "合肥市政府照片 07"
+    },
+    {
+      "type": "image",
+      "src": "/media/hefei-government/IMG20261121095327.webp",
+      "alt": "合肥市政府照片 08"
+    },
+    {
+      "type": "image",
+      "src": "/media/hefei-government/IMG20261121142521.webp",
+      "alt": "合肥市政府门头照片"
+    },
+    {
+      "type": "video",
+      "src": "/media/hefei-government/VID20261121093852.mp4",
+      "poster": "/media/hefei-government/VID20261121093852-poster.webp",
+      "alt": "合肥市政府现场视频"
+    }
+  ],
+  "markerImage": "/media/hefei-government/hefei-government-sticker-v1.webp"
+},
+{
+  "id": "xiaoyaojin",
+  "title": "逍遥津",
+  "englishTitle": "XIAOYAOJIN PARK",
+  "subtitle": "园中漫步",
+  "date": "2026.11.21",
+  "coordinates": [
+    117.290623,
+    31.869433
+  ],
+  "coordinateSource": "photo-exif",
+  "coordinateReference": "11张逍遥津现场照片 GPS EXIF 坐标均值",
+  "accent": "yellow",
+  "description": "从园门、湖面和柳树，到老建筑与塔影，走进合肥城中的逍遥津。",
+  "media": [
+    {
+      "type": "image",
+      "src": "/media/xiaoyaojin/IMG20261121103352.webp",
+      "alt": "逍遥津照片 01"
+    },
+    {
+      "type": "image",
+      "src": "/media/xiaoyaojin/IMG20261121103529.webp",
+      "alt": "逍遥津照片 02"
+    },
+    {
+      "type": "image",
+      "src": "/media/xiaoyaojin/IMG20261121103626.webp",
+      "alt": "逍遥津照片 03"
+    },
+    {
+      "type": "image",
+      "src": "/media/xiaoyaojin/IMG20261121103753.webp",
+      "alt": "逍遥津照片 04"
+    },
+    {
+      "type": "image",
+      "src": "/media/xiaoyaojin/IMG20261121104855.webp",
+      "alt": "逍遥津照片 05"
+    },
+    {
+      "type": "image",
+      "src": "/media/xiaoyaojin/IMG20261121104858.webp",
+      "alt": "逍遥津照片 06"
+    },
+    {
+      "type": "image",
+      "src": "/media/xiaoyaojin/IMG20261121104918.webp",
+      "alt": "逍遥津照片 07"
+    },
+    {
+      "type": "image",
+      "src": "/media/xiaoyaojin/IMG20261121105028.webp",
+      "alt": "逍遥津照片 08"
+    },
+    {
+      "type": "image",
+      "src": "/media/xiaoyaojin/IMG20261121105519.webp",
+      "alt": "逍遥津照片 09"
+    },
+    {
+      "type": "image",
+      "src": "/media/xiaoyaojin/IMG20261121105657.webp",
+      "alt": "逍遥津照片 10"
+    },
+    {
+      "type": "image",
+      "src": "/media/xiaoyaojin/IMG20261121105747.webp",
+      "alt": "逍遥津照片 11"
+    }
+  ],
+  "markerImage": "/media/xiaoyaojin/xiaoyaojin-sticker-v1.webp"
+},
+{
+  "id": "huaihe-road",
+  "title": "淮河路",
+  "englishTitle": "HUAIHE ROAD",
+  "subtitle": "老城街巷",
+  "date": "2026.11.21",
+  "coordinates": [
+    117.288631,
+    31.866604
+  ],
+  "coordinateSource": "map-poi",
+  "coordinateReference": "合肥淮河路步行街街区坐标；本批照片中未发现可可靠归属淮河路的画面，未复用政府照片",
+  "accent": "yellow",
+  "description": "把淮河路作为这次合肥城市漫步的老城街区入口，后续可以继续补充街景与店铺记录。",
+  "media": [],
+  "markerImage": "/media/huaihe-road/huaihe-road-sticker-v1.webp"
 }
 ]

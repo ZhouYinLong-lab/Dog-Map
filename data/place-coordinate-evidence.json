@@ -180,5 +180,29 @@
     ],
     "toleranceMeters": 600,
     "source": "26张照片 GPS EXIF 坐标均值；照片覆盖圆融时代广场、天幕及周边夜间步行路线，最大偏离约532米"
+  },
+  "hefei-government": {
+    "coordinates": [
+      117.221525,
+      31.822383
+    ],
+    "toleranceMeters": 220,
+    "source": "7张政府区域照片 GPS EXIF 与现场画面核对；视频 GPS 同步指向该区域，另1张门头照片 GPS 离群但画面明确显示合肥市人民政府"
+  },
+  "xiaoyaojin": {
+    "coordinates": [
+      117.290623,
+      31.869433
+    ],
+    "toleranceMeters": 240,
+    "source": "11张逍遥津现场照片 GPS EXIF 坐标均值"
+  },
+  "huaihe-road": {
+    "coordinates": [
+      117.288631,
+      31.866604
+    ],
+    "toleranceMeters": 900,
+    "source": "合肥淮河路步行街街区坐标；本批照片未发现可可靠归属淮河路的画面"
   }
 }
